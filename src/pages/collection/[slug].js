@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const { data } = await client.query({
     query: gql`
       query AllCollectionsQuery {
-        collections(first: 100) {
+        collections(first: 100, channel: "uk") {
           edges {
             node {
               name
