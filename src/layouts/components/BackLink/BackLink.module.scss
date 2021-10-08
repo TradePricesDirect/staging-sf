@@ -1,0 +1,10 @@
+.link {
+  margin-bottom: 1rem;
+
+  @media (min-width: 992px) {
+    position: absolute;
+    z-index: 2;
+    top: 25%;
+    left: 1rem;
+  }
+}

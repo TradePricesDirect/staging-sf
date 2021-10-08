@@ -1,0 +1,71 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.modal {
+  position: relative;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  @include margin(3rem 0);
+  background-color: $white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  &.sm {
+    max-width: 576px;
+  }
+
+  &.md {
+    max-width: 768px;
+  }
+
+  .header {
+    flex: 0 1 0%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    .title {
+      margin: 0;
+      font-size: $font-size-lg;
+    }
+
+    .closeButton {
+      flex-shrink: 0;
+    }
+  }
+
+  .content {
+    flex: 1 1 0%;
+    padding: 0.5rem 1.5rem 1rem;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 1.5rem;
+  }
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1001;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}

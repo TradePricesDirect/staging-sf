@@ -1,0 +1,17 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  flex-grow: 1;
+}
+
+.backLink {
+  background-color: $white;
+
+  @media (min-width: 400px) {
+    position: absolute;
+    z-index: 10;
+    top: 6.725rem;
+    left: 1rem;
+  }
+}

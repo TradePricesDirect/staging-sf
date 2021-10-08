@@ -1,0 +1,22 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  display: none;
+
+  .button {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: $primary;
+  }
+
+  .icon {
+    font-size: 1.875rem;
+  }
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}

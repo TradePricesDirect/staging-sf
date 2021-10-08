@@ -1,0 +1,30 @@
+@import "styles/variables";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+  .close {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: -0.75rem;
+
+    svg {
+      color: $primary;
+      font-size: 1.875rem;
+    }
+  }
+
+  @media (min-width: 400px) {
+    padding: 1rem 4rem;
+  }
+}
+
+.logo {
+  margin: 0 auto;
+  max-width: 120px;
+}

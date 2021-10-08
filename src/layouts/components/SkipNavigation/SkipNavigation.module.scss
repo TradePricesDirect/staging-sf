@@ -1,0 +1,12 @@
+@import "styles/mixins";
+
+.wrap {
+  position: absolute;
+  z-index: 100;
+  top: 0.5rem;
+  left: 0.5rem;
+
+  a {
+    @include visually-hidden-focusable;
+  }
+}

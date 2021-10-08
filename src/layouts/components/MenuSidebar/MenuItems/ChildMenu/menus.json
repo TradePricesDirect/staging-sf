@@ -1,0 +1,49 @@
+{
+  "menu.kitchens": {
+    "title": "Kitchens",
+    "items": [
+      {
+        "path": "/category/kitchens",
+        "label": "Shop All"
+      },
+      {
+        "path": "/",
+        "label": "Kitchens on Finance"
+      },
+      {
+        "path": "/",
+        "label": "Kitchen Inspirations"
+      }
+    ]
+  },
+  "menu.bathrooms": {
+    "title": "Bathrooms",
+    "items": [
+      {
+        "path": "/category/bathrooms",
+        "label": "Shop All"
+      },
+      {
+        "path": "/",
+        "label": "Bathrooms on Finance"
+      },
+      {
+        "path": "/",
+        "label": "Bathroom Inspirations"
+      }
+    ]
+  },
+  "menu.boilers": {
+    "title": "Boilers",
+    "items": [
+      {
+        "path": "/category/boilers",
+        "label": "Shop All"
+      },
+      {
+        "path": "/",
+        "label": "Boilers on Finance"
+      }
+    ]
+  }
+}

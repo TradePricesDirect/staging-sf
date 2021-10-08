@@ -1,0 +1,44 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p a:not(.btn),
+small a:not(.btn) {
+  text-decoration: underline;
+}
+
+.vertical-text {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin: 0;
+  margin-left: 2rem;
+  display: none;
+  transform: rotate(-90deg);
+  color: $blue-300;
+  font-size: 2.5rem;
+  line-height: 1;
+  white-space: nowrap;
+
+  span {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media (min-width: 1350px) {
+    display: block;
+  }
+}
+
+.btn-circle {
+  &:not(.btn-sm) {
+    @include button-circle-variant($blue-300);
+  }
+
+  &.btn-sm {
+    @include button-circle-variant($blue-300, true);
+  }
+}

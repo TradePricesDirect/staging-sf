@@ -1,0 +1,42 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  padding: 1rem 0;
+  border-top: $border-width solid $border-color;
+}
+
+.row {
+  justify-content: space-between;
+}
+
+.copyright {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: inherit;
+}
+
+.menu {
+  @include list-unstyled;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+
+  li {
+    position: relative;
+    padding: 0;
+
+    + li::before {
+      content: "\2022";
+      position: absolute;
+      left: -0.625rem;
+    }
+  }
+}
+
+.trademark {
+  margin: 0;
+  font-size: 0.625rem;
+  color: $gray-600;
+}

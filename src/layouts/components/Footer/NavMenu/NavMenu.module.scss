@@ -1,0 +1,15 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.title {
+  margin-bottom: 1rem;
+  font-size: $font-size-lg;
+}
+
+.menu {
+  @include list-unstyled;
+
+  li {
+    padding: 0.5rem 0;
+  }
+}

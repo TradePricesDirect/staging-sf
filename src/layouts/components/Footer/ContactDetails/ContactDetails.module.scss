@@ -1,0 +1,25 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.title {
+  margin-bottom: 1rem;
+  font-size: $font-size-lg;
+}
+
+.details {
+  @include list-unstyled;
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+
+  a {
+    padding: 0.25rem;
+    margin: 0 -0.25rem;
+    color: $primary;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+}

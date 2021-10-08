@@ -1,0 +1,50 @@
+[
+  {
+    "id": "menu-item-1",
+    "path": "/category/kitchens",
+    "title": "Kitchens",
+    "overlay": "menu.kitchens"
+  },
+  {
+    "id": "menu-item-2",
+    "path": "/category/bathrooms",
+    "title": "Bathrooms",
+    "overlay": "menu.bathrooms"
+  },
+  {
+    "id": "menu-item-3",
+    "path": "/category/boilers",
+    "title": "Boilers",
+    "overlay": "menu.boilers"
+  },
+  {
+    "id": "menu-item-4",
+    "path": "/summer-sale",
+    "title": "Summer Sale"
+  },
+  {
+    "id": "menu-item-5",
+    "path": "/about-tpd",
+    "title": "About TPD"
+  },
+  {
+    "id": "menu-item-6",
+    "path": "/finance-options",
+    "title": "Finance Options"
+  },
+  {
+    "id": "menu-item-7",
+    "path": "/testimonials",
+    "title": "Testimonials"
+  },
+  {
+    "id": "menu-item-8",
+    "path": "/installation",
+    "title": "Installation"
+  },
+  {
+    "id": "menu-item-9",
+    "path": "/contact",
+    "title": "Contact Us"
+  }
+]

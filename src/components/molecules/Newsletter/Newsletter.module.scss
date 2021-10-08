@@ -1,0 +1,44 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  margin-bottom: 1rem;
+  max-width: 30rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: $font-size-sm;
+  color: $primary;
+}
+
+.disclaimer {
+  color: $gray-700;
+  font-size: 0.75rem;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.form {
+  margin-bottom: 1rem;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: nowrap;
+
+  input[type="email"] {
+    flex: 1 1 auto;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  button {
+    flex: 0 0 0;
+    white-space: nowrap;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

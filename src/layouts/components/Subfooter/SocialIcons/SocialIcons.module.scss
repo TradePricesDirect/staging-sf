@@ -1,0 +1,26 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.list {
+  @include list-unstyled;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+
+  .link {
+    display: block;
+    padding: 0 0.25rem;
+    font-size: 1.5rem;
+    line-height: 2.375rem;
+    color: $primary;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
+}
