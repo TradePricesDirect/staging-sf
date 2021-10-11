@@ -1,24 +1,31 @@
 import Head from "next/head";
-import data from "./config.json";
+import { META_DEFAULTS } from "core/config";
+import { apiUrl } from "core/constants";
 
-const MetaTags = () => {
+const BaseMetaTags = () => {
   return (
     <Head>
+      <link rel="preconnect" href={apiUrl} />
+
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <title>{data.title}</title>
-      <meta name="description" content={data.description} />
+      <title>{META_DEFAULTS.title}</title>
+      <meta name="description" content={META_DEFAULTS.description} />
 
       {/* Custom Font */}
       <link rel="stylesheet" href="https://use.typekit.net/vlg3ild.css" />
 
       {/* Open Graph Tags */}
-      <meta property="og:title" content={data.title} />
-      <meta property="og:description" content={data.description} />
-      <meta property="og:type" content={data.type} />
-      <meta property="og:url" content={data.url} />
-      <meta property="og:image" content={data.image} />
+      <meta key="og:title" property="og:title" content={META_DEFAULTS.title} />
+      <meta
+        key="og:description"
+        property="og:description"
+        content={META_DEFAULTS.description}
+      />
+      <meta key="og:type" property="og:type" content={META_DEFAULTS.type} />
+      <meta key="og:url" property="og:url" content={META_DEFAULTS.url} />
+      <meta key="og:image" property="og:image" content={META_DEFAULTS.image} />
 
       {/* Favicons */}
       <link
@@ -52,4 +59,4 @@ const MetaTags = () => {
   );
 };
 
-export default MetaTags;
+export default BaseMetaTags;

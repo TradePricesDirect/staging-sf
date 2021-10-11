@@ -1,30 +1,36 @@
-import { ApolloProvider } from "@apollo/client";
-import client from "lib/apollo-client";
-import AppLayout from "layouts/App";
-import ShopProvider from "contexts/ShopContext";
-import OverlayProvider from "contexts/OverlayContext";
-import NProgressBar from "components/atoms/NProgressBar";
+import NextApp from "next/app";
+import { SaleorProvider } from "@saleor/sdk";
+import { apiUrl, channelSlug, ssrMode } from "core/constants";
+import { getShopConfig } from "utils/ssr";
+import { NextQueryParamProvider } from "contexts/NextQueryParamProvider";
+import StorefrontApp from "../app";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "styles/global.scss";
 
-// Default layout wrapper
-const defaultLayout = (page) => <AppLayout>{page}</AppLayout>;
+const saleorConfig = { apiUrl, channel: channelSlug };
 
-const App = ({ Component, pageProps }) => {
-  const getLayout = Component.getLayout || defaultLayout;
-
+const App = ({ Component, pageProps, shopConfig }) => {
   return (
-    <ApolloProvider client={client}>
-      <ShopProvider>
-        <OverlayProvider>
-          <NProgressBar />
-
-          {getLayout(<Component {...pageProps} />)}
-        </OverlayProvider>
-      </ShopProvider>
-    </ApolloProvider>
+    <NextQueryParamProvider>
+      <SaleorProvider config={saleorConfig}>
+        <StorefrontApp layout={Component.getLayout} shopConfig={shopConfig}>
+          <Component {...pageProps} />
+        </StorefrontApp>
+      </SaleorProvider>
+    </NextQueryParamProvider>
   );
+};
+
+// Fetch shop config only once and cache it.
+let shopConfig = null;
+
+App.getInitialProps = async (appContext) => {
+  const appProps = await NextApp.getInitialProps(appContext);
+
+  if (ssrMode && !shopConfig) shopConfig = await getShopConfig();
+
+  return { ...appProps, ...shopConfig };
 };
 
 export default App;

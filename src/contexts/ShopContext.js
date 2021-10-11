@@ -1,13 +1,9 @@
 import { createContext, useState, useContext } from "react";
 
-const defaultContext = {
-  displayGrossPrices: false,
-};
+export const ShopContext = createContext();
 
-export const ShopContext = createContext(defaultContext);
-
-const Provider = ({ children }) => {
-  const [state] = useState(defaultContext);
+const Provider = ({ shopConfig, children }) => {
+  const [state] = useState(shopConfig);
 
   return <ShopContext.Provider value={state}>{children}</ShopContext.Provider>;
 };

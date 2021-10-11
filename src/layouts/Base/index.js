@@ -1,10 +1,10 @@
-import MetaTags from "layouts/components/MetaTags";
+import BaseMetaTags from "layouts/components/BaseMetaTags";
 import SkipNavigation from "layouts/components/SkipNavigation";
 
 const BaseLayout = ({ children }) => {
   return (
     <>
-      <MetaTags />
+      <BaseMetaTags />
 
       <SkipNavigation />
 

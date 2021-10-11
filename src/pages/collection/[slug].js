@@ -1,48 +1,37 @@
-import { gql } from "@apollo/client";
-import client from "lib/apollo-client";
-import CollectionPage from "views/Collection";
+import { exhaustList, getSaleorApi, getShopAttributes } from "utils/ssr";
+import { incrementalStaticRegenerationRevalidate } from "core/constants";
+import CollectionView from "views/Collection";
 
-export default CollectionPage;
+export default CollectionView;
 
 export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: gql`
-      query AllCollectionsQuery {
-        collections(first: 100, channel: "uk") {
-          edges {
-            node {
-              name
-              slug
-            }
-          }
-        }
-      }
-    `,
-  });
+  const { api } = await getSaleorApi();
 
-  const collections = data.collections.edges.map((e) => e.node) || [];
+  const { data } = await exhaustList(api.collections.getList({ first: 100 }));
 
-  const paths = collections.map(({ slug }) => ({ params: { slug } }));
+  const paths = data.map(({ slug }) => ({ params: { slug } }));
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const { data } = await client.query({
-    query: gql`
-      query CollectionPageQuery($slug: String!) {
-        collection(slug: $slug) {
-          name
-          slug
-        }
-      }
-    `,
-    variables: { slug },
-  });
+  const { api } = await getSaleorApi();
+
+  const { data: details } = await api.collections.getDetails({ slug });
+
+  const { id } = details;
+
+  // Get attributes
+  const attributes = await getShopAttributes({ collectionId: id });
 
   return {
+    revalidate: incrementalStaticRegenerationRevalidate,
     props: {
-      collection: data.collection,
+      data: {
+        id,
+        details,
+        attributes,
+      },
     },
   };
 }

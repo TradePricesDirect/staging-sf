@@ -1,0 +1,21 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.widget:not(:last-child) {
+  border-bottom: $border-width solid $border-color;
+}
+
+.title {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 1rem 1rem 1rem 0;
+  margin: 0;
+  color: $primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  user-select: none;
+}

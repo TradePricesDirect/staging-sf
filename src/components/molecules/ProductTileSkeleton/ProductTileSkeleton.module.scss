@@ -1,0 +1,15 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.skeleton * {
+  background-color: $gray-200;
+  border-radius: $border-radius;
+}
+
+.image {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 0 auto 1rem;
+  aspect-ratio: 1 / 1;
+}

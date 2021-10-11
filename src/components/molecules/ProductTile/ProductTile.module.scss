@@ -1,0 +1,39 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 25rem;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.image {
+  width: 90%;
+  margin: 0 auto 1rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  color: $primary;
+}
+
+.price {
+  margin-top: auto;
+  margin-bottom: 1rem;
+}

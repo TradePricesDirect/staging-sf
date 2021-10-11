@@ -1,8 +1,9 @@
-const HomePage = ({ shop }) => {
+const HomePage = ({ totalCounts }) => {
+  console.log(totalCounts);
+
   return (
     <div>
       <h1>Home Page</h1>
-      <h2>{shop.name}</h2>
     </div>
   );
 };

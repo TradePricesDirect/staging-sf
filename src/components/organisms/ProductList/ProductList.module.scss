@@ -1,0 +1,14 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.list {
+  @include list-unstyled;
+  margin: 0 0 2rem;
+  display: grid;
+  gap: $grid-gutter-width;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+  @media (min-width: 992px) {
+    gap: 2.5rem;
+  }
+}

@@ -1,0 +1,32 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  display: block;
+  color: $primary;
+  font-size: 1.5rem;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-sm;
+
+  del {
+    opacity: 0.5;
+    text-decoration: line-through;
+    color: $gray-600;
+  }
+
+  ins {
+    text-decoration: none;
+  }
+}
+
+.suffix {
+  display: block;
+  color: $gray-600;
+  font-size: 0.7em;
+  font-weight: $font-weight-normal;
+}
+
+.muted {
+  margin: 0;
+  color: $gray-600;
+}

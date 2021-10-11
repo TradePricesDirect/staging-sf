@@ -1,0 +1,12 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.total {
+  margin-bottom: 1rem;
+  color: $gray-700;
+  font-size: $font-size-sm;
+}
+
+.sort {
+  width: 12rem;
+}

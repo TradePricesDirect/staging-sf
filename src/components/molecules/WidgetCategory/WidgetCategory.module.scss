@@ -1,0 +1,14 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.list {
+  @include list-unstyled;
+  margin: 0 0 1rem;
+  padding: 0 0.5rem;
+  max-height: 20rem;
+  overflow: auto;
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+}

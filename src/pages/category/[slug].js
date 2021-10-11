@@ -1,48 +1,49 @@
-import { gql } from "@apollo/client";
-import client from "lib/apollo-client";
-import CategoryPage from "views/Category";
+import { exhaustList, getSaleorApi, getShopAttributes } from "utils/ssr";
+import { incrementalStaticRegenerationRevalidate } from "core/constants";
+import CategoryView from "views/Category";
 
-export default CategoryPage;
+export default CategoryView;
 
 export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: gql`
-      query AllCategoriesQuery {
-        categories(first: 100) {
-          edges {
-            node {
-              name
-              slug
-            }
-          }
-        }
-      }
-    `,
-  });
+  const { api } = await getSaleorApi();
 
-  const categories = data.categories.edges.map((e) => e.node) || [];
+  const { data } = await exhaustList(api.categories.getList({ first: 100 }));
 
-  const paths = categories.map(({ slug }) => ({ params: { slug } }));
+  const paths = data.map(({ slug }) => ({ params: { slug } }));
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const { data } = await client.query({
-    query: gql`
-      query CategoryPageQuery($slug: String!) {
-        category(slug: $slug) {
-          name
-          slug
-        }
-      }
-    `,
-    variables: { slug },
-  });
+  const { api } = await getSaleorApi();
+
+  const { data: details } = await api.categories.getDetails({ slug });
+
+  const { id } = details;
+
+  // Get category ancestors
+  const ancestors = await api.categories
+    .getAncestors({ first: 5, id })
+    .then(({ data }) => data);
+
+  // Get category children
+  const children = await api.categories
+    .getChildren({ first: 100, id })
+    .then(({ data }) => data);
+
+  // Get attributes
+  const attributes = await getShopAttributes({ categoryId: id });
 
   return {
+    revalidate: incrementalStaticRegenerationRevalidate,
     props: {
-      category: data.category,
+      data: {
+        id,
+        details,
+        ancestors,
+        children,
+        attributes,
+      },
     },
   };
 }
