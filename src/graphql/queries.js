@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 import { useQuery } from "react-apollo";
-import { attributeFragment } from "./fragments";
+import { attributeFragment, menuItemFragment } from "./fragments";
 
 export const useTypedQuery = (query, options) => {
   const queryResult = useQuery(query, options);
@@ -51,6 +51,91 @@ export const productTotalCountQuery = gql`
     }
     inStock: products(filter: { stockAvailability: IN_STOCK }) {
       totalCount
+    }
+  }
+`;
+
+export const shopMenusQuery = gql`
+  ${menuItemFragment}
+  query ShopMenusQuery(
+    $channel: String!
+    $main: String!
+    $kitchens: String!
+    $bathrooms: String!
+    $boilers: String!
+  ) {
+    main: menu(channel: $channel, slug: $main) {
+      items {
+        ...MenuItem
+        children {
+          ...MenuItem
+        }
+      }
+    }
+    kitchens: menu(channel: $channel, slug: $kitchens) {
+      name
+      items {
+        ...MenuItem
+        children {
+          ...MenuItem
+        }
+      }
+    }
+    bathrooms: menu(channel: $channel, slug: $bathrooms) {
+      name
+      items {
+        ...MenuItem
+        children {
+          ...MenuItem
+        }
+      }
+    }
+    boilers: menu(channel: $channel, slug: $boilers) {
+      name
+      items {
+        ...MenuItem
+        children {
+          ...MenuItem
+        }
+      }
+    }
+  }
+`;
+
+export const shopFooterMenusQuery = gql`
+  ${menuItemFragment}
+  query ShopFooterMenusQuery(
+    $channel: String!
+    $about: String!
+    $support: String!
+    $shop: String!
+  ) {
+    about: menu(channel: $channel, slug: $about) {
+      name
+      items {
+        ...MenuItem
+        children {
+          ...MenuItem
+        }
+      }
+    }
+    support: menu(channel: $channel, slug: $support) {
+      name
+      items {
+        ...MenuItem
+        children {
+          ...MenuItem
+        }
+      }
+    }
+    shop: menu(channel: $channel, slug: $shop) {
+      name
+      items {
+        ...MenuItem
+        children {
+          ...MenuItem
+        }
+      }
     }
   }
 `;

@@ -1,16 +1,15 @@
 import Link from "next/link";
-import paths from "paths";
+import paths from "core/paths";
 import Logo from "components/atoms/Logo";
 import Newsletter from "components/molecules/Newsletter";
 import NavMenu from "./NavMenu";
 import ContactDetails from "./ContactDetails";
 import BackToTop from "./BackToTop";
 import FooterBottom from "./FooterBottom";
-import menuConfig from "./menuConfig";
 
 import styles from "./Footer.module.scss";
 
-const Footer = () => {
+const Footer = ({ menus }) => {
   return (
     <footer className={styles.wrap}>
       <div className={styles.main}>
@@ -30,15 +29,15 @@ const Footer = () => {
             </div>
 
             <div className="col-12 col-sm-4 col-md-3 col-lg-2">
-              <NavMenu {...menuConfig.about} />
+              <NavMenu menu={menus.about} />
             </div>
 
             <div className="col-12 col-sm-4 col-md-3 col-lg-2">
-              <NavMenu {...menuConfig.support} />
+              <NavMenu menu={menus.support} />
             </div>
 
             <div className="col-12 col-sm-4 col-md-3 col-lg-2">
-              <NavMenu {...menuConfig.shop} />
+              <NavMenu menu={menus.shop} />
             </div>
 
             <div className="col-12 col-sm-4 col-md-3 col-lg-2">

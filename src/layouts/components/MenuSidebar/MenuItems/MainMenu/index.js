@@ -1,40 +1,25 @@
 import Link from "next/link";
+import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
+import paths from "core/paths";
 import { useOverlay } from "contexts/OverlayContext";
-import menu from "./menu.json";
+import NavLink from "components/atoms/NavLink";
 
 import styles from "./MainMenu.module.scss";
 
-const MainMenu = () => {
-  const overlay = useOverlay();
-
+const MainMenu = ({ menu }) => {
   return (
     <nav>
-      <ul className={styles.menu}>
-        {menu.map((item) => {
-          const hasChildren = item.hasOwnProperty("overlay");
-
+      <ul className={styles.list}>
+        {menu?.items.map((item) => {
           return (
-            <li key={item.id}>
-              <Link href={item.path}>
-                {hasChildren ? (
-                  <a
-                    className={styles.hasChildren}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      overlay.show(item.overlay);
-                    }}
-                  >
-                    {item.title}
-                    <div className={styles.icon}>
-                      <FontAwesomeIcon icon={faArrowRight} />
-                    </div>
-                  </a>
-                ) : (
-                  <a>{item.title}</a>
-                )}
-              </Link>
+            <li key={item.id} className={styles.listItem}>
+              {item.category ? (
+                <CategoryNavLink item={item} />
+              ) : (
+                <NavLink item={item} className={styles.link} />
+              )}
             </li>
           );
         })}
@@ -44,3 +29,26 @@ const MainMenu = () => {
 };
 
 export default MainMenu;
+
+const CategoryNavLink = ({ item }) => {
+  const overlay = useOverlay();
+
+  const { name, category } = item;
+
+  return (
+    <Link href={paths.category.replace("[slug]", category.slug)}>
+      <a
+        className={clsx(styles.link, styles.hasChildren)}
+        onClick={(e) => {
+          e.preventDefault();
+          overlay.show(category.slug);
+        }}
+      >
+        {name}
+        <div className={styles.icon}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </div>
+      </a>
+    </Link>
+  );
+};

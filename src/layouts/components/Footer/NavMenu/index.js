@@ -1,19 +1,16 @@
-import Link from "next/link";
-import { v4 as uuidv4 } from "uuid";
+import NavLink from "components/atoms/NavLink";
 
 import styles from "./NavMenu.module.scss";
 
-const NavMenu = ({ title, menu }) => {
+const NavMenu = ({ menu }) => {
   return (
     <>
-      <h3 className={styles.title}>{title}</h3>
+      <h3 className={styles.title}>{menu.name}</h3>
       <nav>
-        <ul className={styles.menu}>
-          {menu.map(({ path, label }) => (
-            <li key={uuidv4()}>
-              <Link href={path}>
-                <a>{label}</a>
-              </Link>
+        <ul className={styles.list}>
+          {menu.items.map((item) => (
+            <li key={item.id} className={styles.listItem}>
+              <NavLink item={item} />
             </li>
           ))}
         </ul>

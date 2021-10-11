@@ -3,7 +3,9 @@ const paths = {
   home: "/",
   shop: "/shop",
   category: "/category/[slug]",
+  collection: "/collection/[slug]",
   product: "/product/[slug]",
+  page: "/page/[slug]",
   // Legal
   privacy: "/legal/privacy-policy",
   terms: "/legal/terms-conditions",

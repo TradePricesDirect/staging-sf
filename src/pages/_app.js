@@ -10,11 +10,16 @@ import "styles/global.scss";
 
 const saleorConfig = { apiUrl, channel: channelSlug };
 
-const App = ({ Component, pageProps, shopConfig }) => {
+const App = ({ Component, pageProps, shopConfig, menus, footerMenus }) => {
   return (
     <NextQueryParamProvider>
       <SaleorProvider config={saleorConfig}>
-        <StorefrontApp layout={Component.getLayout} shopConfig={shopConfig}>
+        <StorefrontApp
+          layout={Component.getLayout}
+          shopConfig={shopConfig}
+          menus={menus}
+          footerMenus={footerMenus}
+        >
           <Component {...pageProps} />
         </StorefrontApp>
       </SaleorProvider>

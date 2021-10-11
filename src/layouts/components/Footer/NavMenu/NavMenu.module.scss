@@ -6,10 +6,10 @@
   font-size: $font-size-lg;
 }
 
-.menu {
+.list {
   @include list-unstyled;
+}
 
-  li {
-    padding: 0.5rem 0;
-  }
+.listItem {
+  padding: 0.5rem 0;
 }

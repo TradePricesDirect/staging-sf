@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhoneAlt } from "@fortawesome/pro-light-svg-icons";
+import { SUPPORT_PHONE, SUPPORT_EMAIL } from "core/config";
 
 import styles from "./ContactDetails.module.scss";
 
@@ -10,13 +11,16 @@ const ContactDetails = () => {
 
       <ul className={styles.details}>
         <li>
-          <a href="tel:03333350439" className="btn btn-sm">
+          <a
+            href={`tel:${SUPPORT_PHONE.replace(/ /g, "")}`}
+            className="btn btn-sm"
+          >
             <FontAwesomeIcon icon={faPhoneAlt} />
-            0333 335 0439
+            {SUPPORT_PHONE}
           </a>
         </li>
         <li>
-          <a href="mailto:hello@tradepricesdirect.com" className="btn btn-sm">
+          <a href={`mailto:${SUPPORT_EMAIL}`} className="btn btn-sm">
             <FontAwesomeIcon icon={faEnvelope} />
             Email us
           </a>

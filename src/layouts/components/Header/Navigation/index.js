@@ -16,27 +16,21 @@ const Navigation = () => {
       <ul className={styles.menu}>
         <li>
           <Link href="/category/kitchens">
-            <a
-              className="btn btn-sm"
-              onClick={handleMenuClick("menu.kitchens")}
-            >
+            <a className="btn btn-sm" onClick={handleMenuClick("kitchens")}>
               Kitchens
             </a>
           </Link>
         </li>
         <li>
           <Link href="/category/bathrooms">
-            <a
-              className="btn btn-sm"
-              onClick={handleMenuClick("menu.bathrooms")}
-            >
+            <a className="btn btn-sm" onClick={handleMenuClick("bathrooms")}>
               Bathrooms
             </a>
           </Link>
         </li>
         <li>
           <Link href="/category/boilers">
-            <a className="btn btn-sm" onClick={handleMenuClick("menu.boilers")}>
+            <a className="btn btn-sm" onClick={handleMenuClick("boilers")}>
               Boilers
             </a>
           </Link>

@@ -7,15 +7,12 @@ import MenuAccount from "./MenuAccount";
 
 import styles from "./MenuSidebar.module.scss";
 
-const MenuSidebar = () => {
+const MenuSidebar = ({ menus }) => {
   const overlay = useOverlay();
 
-  const isOpen = [
-    "menu",
-    "menu.kitchens",
-    "menu.bathrooms",
-    "menu.boilers",
-  ].includes(overlay.type);
+  const isOpen = ["menu", "kitchens", "bathrooms", "boilers"].includes(
+    overlay.type
+  );
 
   return (
     <Drawer isOpen={isOpen} position="left">
@@ -23,7 +20,7 @@ const MenuSidebar = () => {
         <MenuHeader />
 
         <div className={styles.body}>
-          <MenuItems />
+          <MenuItems menus={menus} />
 
           <MenuContactDetails />
 

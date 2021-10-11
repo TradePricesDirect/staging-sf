@@ -21,7 +21,7 @@ const variant = {
   },
 };
 
-const MenuItems = () => {
+const MenuItems = ({ menus }) => {
   const overlay = useOverlay();
 
   const isParent = overlay.type === "menu";
@@ -49,7 +49,11 @@ const MenuItems = () => {
           variants={variant}
           transition={{ ease: "easeOut", duration: 0.2 }}
         >
-          {isParent ? <MainMenu /> : <ChildMenu type={overlay.type} />}
+          {isParent ? (
+            <MainMenu menu={menus.main} />
+          ) : (
+            <ChildMenu menu={menus[overlay.type] || null} />
+          )}
         </motion.div>
       </AnimatePresence>
     </div>

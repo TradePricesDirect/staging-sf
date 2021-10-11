@@ -1,7 +1,12 @@
 import { SaleorManager } from "@saleor/sdk";
 import { getShop } from "@saleor/sdk/lib/queries/shop";
 import { apiUrl, channelSlug } from "core/constants";
-import { shopAttributesQuery, productTotalCountQuery } from "graphql/queries";
+import {
+  shopAttributesQuery,
+  productTotalCountQuery,
+  shopMenusQuery,
+  shopFooterMenusQuery,
+} from "graphql/queries";
 
 let CONNECTION = null;
 
@@ -73,5 +78,30 @@ export const getShopConfig = async () => {
     .query({ query: getShop })
     .then(({ data }) => data?.shop);
 
-  return { shopConfig };
+  const menus = await apolloClient
+    .query({
+      query: shopMenusQuery,
+      variables: {
+        channel: channelSlug,
+        main: "main",
+        kitchens: "main-kitchens",
+        bathrooms: "main-bathrooms",
+        boilers: "main-boilers",
+      },
+    })
+    .then(({ data }) => data);
+
+  const footerMenus = await apolloClient
+    .query({
+      query: shopFooterMenusQuery,
+      variables: {
+        channel: channelSlug,
+        about: "footer-about",
+        support: "footer-support",
+        shop: "footer-shop",
+      },
+    })
+    .then(({ data }) => data);
+
+  return { shopConfig, menus, footerMenus };
 };

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import paths from "paths";
+import paths from "core/paths";
 
 import styles from "./FooterBottom.module.scss";
 
