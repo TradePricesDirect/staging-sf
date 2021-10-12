@@ -1,13 +1,14 @@
 import Link from "next/link";
+import { useAuth } from "@saleor/sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBoxOpen, faHeart, faUser } from "@fortawesome/pro-light-svg-icons";
+import paths from "core/paths";
 import useGreeting from "hooks/useGreeting";
-import useUser from "hooks/useUser";
 
 import styles from "./MenuAccount.module.scss";
 
 const MenuAccount = () => {
-  const { user } = useUser();
+  const { user } = useAuth();
 
   return user ? <MenuAccountUser user={user} /> : <MenuAccountGuest />;
 };
@@ -15,6 +16,8 @@ const MenuAccount = () => {
 export default MenuAccount;
 
 function MenuAccountUser({ user }) {
+  const { signOut } = useAuth();
+
   const greeting = useGreeting(user.firstName);
 
   return (
@@ -24,7 +27,7 @@ function MenuAccountUser({ user }) {
       <nav className={styles.nav}>
         <ul className={styles.list}>
           <li>
-            <Link href="/account">
+            <Link href={paths.account.dashboard}>
               <a className={styles.link}>
                 My Account
                 <FontAwesomeIcon icon={faUser} />
@@ -32,7 +35,7 @@ function MenuAccountUser({ user }) {
             </Link>
           </li>
           <li>
-            <Link href="/account/orders">
+            <Link href={paths.account.orders}>
               <a className={styles.link}>
                 My Orders
                 <FontAwesomeIcon icon={faBoxOpen} />
@@ -40,7 +43,7 @@ function MenuAccountUser({ user }) {
             </Link>
           </li>
           <li>
-            <Link href="/lists">
+            <Link href={paths.wishlists}>
               <a className={styles.link}>
                 Wishlists
                 <FontAwesomeIcon icon={faHeart} />
@@ -51,7 +54,7 @@ function MenuAccountUser({ user }) {
       </nav>
 
       <button
-        onClick={() => console.log("SIGN OUT")}
+        onClick={() => signOut()}
         className="btn btn-outline-primary d-block w-100"
       >
         Sign Out
@@ -67,7 +70,7 @@ function MenuAccountGuest() {
     <div className={styles.wrap}>
       <h3 className={styles.title}>{greeting}</h3>
 
-      <Link href="/auth/login">
+      <Link href={paths.login}>
         <a className="btn btn-outline-primary d-block w-100">Sign In</a>
       </Link>
     </div>

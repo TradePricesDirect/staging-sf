@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@saleor/sdk";
 import FeefoBadge from "components/atoms/FeefoBadge";
 import paths from "core/paths";
 
 import styles from "./HomeHero.module.scss";
 
 const HomeHero = () => {
+  const { user } = useAuth();
+
   return (
     <section className={styles.wrap}>
       <div className={styles.content}>
@@ -22,8 +25,10 @@ const HomeHero = () => {
           </p>
 
           <div className={styles.buttons}>
-            <Link href={paths.register}>
-              <a className="btn btn-secondary">Register & Shop</a>
+            <Link href={user ? paths.shop : paths.register}>
+              <a className="btn btn-secondary">
+                {user ? "Shop Now" : "Register & Shop"}
+              </a>
             </Link>
 
             <Link href={paths.requestQuote}>

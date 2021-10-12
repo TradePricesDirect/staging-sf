@@ -63,7 +63,7 @@ const CategoryView = ({ data: category }) => {
   return (
     <>
       <MetaTags
-        title={category.details.seoTitle}
+        title={category.details.seoTitle || category.details.name}
         description={category.details.seoDescription}
         meta={{ "og:type": "product.category" }}
       />

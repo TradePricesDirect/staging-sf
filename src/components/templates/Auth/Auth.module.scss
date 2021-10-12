@@ -1,0 +1,43 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  @include padding(3rem 0);
+  background-color: $gray-100;
+  text-align: center;
+}
+
+.title {
+  color: $primary;
+  margin-bottom: 1rem;
+  @include font-size(2rem);
+
+  strong {
+    color: $secondary;
+  }
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 30rem;
+}
+
+.separator {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 2rem 0;
+
+  hr {
+    display: block;
+    width: 100%;
+    margin: 0;
+    opacity: 1;
+    border-bottom: 1px solid $border-color;
+  }
+
+  span {
+    padding: 0 0.5rem;
+    color: $text-muted;
+  }
+}

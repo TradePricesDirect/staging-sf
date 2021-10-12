@@ -1,10 +1,15 @@
+import { useAuth } from "@saleor/sdk";
 import Money from "components/atoms/Money";
 import { useShop } from "contexts/ShopContext";
 
 import styles from "./TaxedMoney.module.scss";
 
 const TaxedMoney = ({ taxedMoney }) => {
+  const { user } = useAuth();
+
   const { displayGrossPrices } = useShop();
+
+  if (!user) return <p className={styles.muted}>Please login to view prices</p>;
 
   return (
     <div className={styles.wrap}>

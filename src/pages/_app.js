@@ -1,6 +1,6 @@
 import NextApp from "next/app";
 import { SaleorProvider } from "@saleor/sdk";
-import { apiUrl, channelSlug, ssrMode } from "core/constants";
+import { apiUrl, channelSlug } from "core/constants";
 import { getShopConfig } from "utils/ssr";
 import { NextQueryParamProvider } from "contexts/NextQueryParamProvider";
 import StorefrontApp from "../app";
@@ -28,12 +28,10 @@ const App = ({ Component, pageProps, shopConfig, menus, footerMenus }) => {
 };
 
 // Fetch shop config only once and cache it.
-let shopConfig = null;
-
 App.getInitialProps = async (appContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
 
-  if (ssrMode && !shopConfig) shopConfig = await getShopConfig();
+  const shopConfig = await getShopConfig();
 
   return { ...appProps, ...shopConfig };
 };

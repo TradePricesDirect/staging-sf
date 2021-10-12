@@ -10,8 +10,13 @@ const paths = {
   privacy: "/legal/privacy-policy",
   terms: "/legal/terms-conditions",
   // Account
-  register: "/auth/login",
-  login: "/auth/login",
+  register: "/register",
+  registerNewUser: "/register/new-user",
+  login: "/login",
+  accountConfirm: "/account-confirm",
+  forgotPassword: "/forgot-password",
+  forgotPasswordSuccess: "/forgot-password/success",
+  passwordReset: "/reset-password",
   account: {
     dashboard: "/account",
     orders: "/account/orders",
