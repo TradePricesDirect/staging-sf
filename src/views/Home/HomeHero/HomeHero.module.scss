@@ -1,0 +1,135 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1rem;
+  background-color: $primary;
+  color: $white;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: -1;
+    opacity: 0.05;
+    background: url("/images/page-hero-arrow.svg") left center no-repeat;
+    background-size: contain;
+  }
+}
+
+.inner {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+
+  h6 {
+    margin: 0;
+    font-size: $font-size-sm;
+  }
+
+  h1 strong {
+    color: $secondary;
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .badge {
+    margin: 0;
+  }
+}
+
+.image {
+  position: relative;
+  aspect-ratio: 16/9;
+
+  img {
+    pointer-events: none;
+  }
+}
+
+.ribbon {
+  position: absolute;
+  top: 0;
+  left: 66%;
+  display: block;
+  padding: 1rem 0.5rem 2rem;
+  color: $white;
+  background-color: $primary;
+  clip-path: polygon(0% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%);
+
+  span {
+    position: relative;
+    display: block;
+    padding-left: 1.75rem;
+    width: 5rem;
+    font-size: 0.75rem;
+    line-height: 1;
+
+    &::before {
+      content: "£";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      font-size: 2.75rem;
+      font-weight: $font-weight-bold;
+      color: $secondary;
+      line-height: 0.8;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .inner {
+    p {
+      font-size: $font-size-lg;
+    }
+
+    .buttons {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .content {
+    flex: 0 1 60%;
+    max-width: 60%;
+    padding-top: 8vw;
+    padding-bottom: 8vw;
+  }
+
+  .image {
+    flex: 0 1 40%;
+    max-width: 40%;
+    aspect-ratio: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .content {
+    flex: 0 1 50%;
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+  }
+
+  .image {
+    flex: 0 1 50%;
+    max-width: 50%;
+  }
+}

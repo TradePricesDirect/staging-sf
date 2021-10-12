@@ -1,0 +1,49 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.card {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  background-color: $gray-100;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: block;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba($primary, 0.1) 80%,
+      rgba($primary, 0.5) 100%
+    );
+  }
+
+  .image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scale(1);
+    transition: transform 0.4s ease-in;
+  }
+
+  .title {
+    position: absolute;
+    z-index: 2;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: $black;
+    background-color: $white;
+  }
+
+  &:hover .image {
+    transform: scale(1.1);
+  }
+}

@@ -4,6 +4,7 @@ import { apiUrl, channelSlug } from "core/constants";
 import {
   shopAttributesQuery,
   productTotalCountQuery,
+  categoryLevelsQuery,
   shopMenusQuery,
   shopFooterMenusQuery,
 } from "graphql/queries";
@@ -67,6 +68,20 @@ export const getTotalProducts = async () => {
   const { apolloClient } = await getSaleorApi();
 
   const { data } = await apolloClient.query({ query: productTotalCountQuery });
+
+  return data;
+};
+
+export const getCategoryLevels = async () => {
+  const { apolloClient } = await getSaleorApi();
+
+  const { data } = await apolloClient.query({
+    query: categoryLevelsQuery,
+    variables: {
+      level0: 10,
+      level1: 20,
+    },
+  });
 
   return data;
 };

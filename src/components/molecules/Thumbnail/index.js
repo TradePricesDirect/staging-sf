@@ -2,9 +2,7 @@ import Image from "next/image";
 
 import styles from "./Thumbnail.module.scss";
 
-const Thumbnail = ({ source }) => {
-  let { thumbnail2x: thumbnail } = source;
-
+const Thumbnail = ({ thumbnail }) => {
   if (!thumbnail) {
     thumbnail = {
       url: "/images/placeholder-thumbnail.png",

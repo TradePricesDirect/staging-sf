@@ -1,0 +1,34 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+}
+
+.list {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  li {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 1px;
+  }
+}
+
+@media (min-width: 400px) {
+  .list li {
+    flex: 0 1 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .list li {
+    flex: 0 1 33.33%;
+    max-width: 33.33%;
+  }
+}

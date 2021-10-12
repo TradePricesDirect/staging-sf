@@ -1,0 +1,67 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+$feefo-yellow: #fed037;
+
+.wrap {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.header {
+  color: $black;
+  background-color: $feefo-yellow;
+}
+
+.title {
+  margin: 1rem 0;
+  font-size: 1.25rem;
+  font-weight: $font-weight-semibold;
+}
+
+.badge {
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.image {
+  display: block;
+  width: 8rem;
+  margin: 0 auto;
+
+  > div {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: 768px) {
+  .header .container {
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .badge {
+    margin-bottom: 0;
+  }
+
+  .image {
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    width: 15%;
+    max-width: 11.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .title {
+    font-size: 1.75rem;
+  }
+}

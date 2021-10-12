@@ -1,0 +1,71 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.tile {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: $box-shadow;
+  background-color: $blue-100;
+
+  h6 {
+    margin-bottom: 0.5rem;
+    font-size: $font-size-sm;
+    color: $secondary;
+  }
+
+  h5 {
+    margin-bottom: 1rem;
+    color: $primary;
+  }
+
+  p {
+    margin-bottom: 2rem;
+    font-size: $font-size-sm;
+  }
+
+  .imageWrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+    width: 33%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    pointer-events: none;
+  }
+
+  .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 400px) {
+    padding-left: 33%;
+
+    .imageWrap {
+      display: block;
+    }
+  }
+
+  @media (min-width: 768px) {
+    height: 100%;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 992px) {
+    padding: 2rem 2rem 2rem 33%;
+
+    p {
+      max-width: 18rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    h5 {
+      font-size: 1.5rem;
+    }
+  }
+}

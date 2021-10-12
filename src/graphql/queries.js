@@ -1,5 +1,6 @@
 import gql from "graphql-tag";
 import { useQuery } from "react-apollo";
+import { baseCategoryFragment } from "@saleor/sdk/lib/fragments/categories";
 import { attributeFragment, menuItemFragment } from "./fragments";
 
 export const useTypedQuery = (query, options) => {
@@ -134,6 +135,34 @@ export const shopFooterMenusQuery = gql`
         ...MenuItem
         children {
           ...MenuItem
+        }
+      }
+    }
+  }
+`;
+
+export const categoryLevelsQuery = gql`
+  ${baseCategoryFragment}
+  query CategoryLevels($level0: Int!, $level1: Int!) {
+    level0: categories(first: $level0, level: 0) {
+      edges {
+        node {
+          ...BaseCategory
+          backgroundImage {
+            url
+            alt
+          }
+        }
+      }
+    }
+    level1: categories(first: $level1, level: 1) {
+      edges {
+        node {
+          ...BaseCategory
+          backgroundImage {
+            url
+            alt
+          }
         }
       }
     }

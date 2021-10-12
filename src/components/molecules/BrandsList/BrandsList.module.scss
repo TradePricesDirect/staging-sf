@@ -1,0 +1,107 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 1rem;
+  color: $primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+
+  br {
+    display: none;
+  }
+}
+
+.list {
+  @include list-unstyled;
+  margin: 0 -0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  li {
+    flex: 0 1 50%;
+    max-width: 50%;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .image {
+    display: inline-block;
+    width: 100%;
+    max-width: 8rem;
+  }
+}
+
+.stat {
+  display: inline-block;
+  @include button-circle-variant($blue-300, true);
+  padding: 0.5rem 1rem 0;
+  margin-top: -0.5rem;
+  color: $primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  line-height: 1.1;
+  text-align: left;
+  white-space: nowrap;
+
+  strong {
+    display: block;
+    font-size: $font-size-lg;
+  }
+}
+
+@media (min-width: 576px) {
+  .list {
+    text-align: left;
+
+    li {
+      flex: 1 1 auto;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    position: relative;
+    margin: 0;
+    max-width: 14.5rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    text-align: left;
+    color: $white;
+    background-color: $primary;
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 1.25rem) 0%,
+      100% 50%,
+      calc(100% - 1.25rem) 100%,
+      0% 100%
+    );
+
+    br {
+      display: inline;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0.875rem;
+      right: 2.5rem;
+      display: block;
+      width: 17px;
+      height: 15px;
+      background: url("/images/brandslist-title-arrow.svg") center center
+        no-repeat;
+      background-size: 100% auto;
+    }
+  }
+}

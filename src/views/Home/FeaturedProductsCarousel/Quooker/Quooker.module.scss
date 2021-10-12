@@ -1,0 +1,44 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  padding: 1rem 0;
+
+  h6 {
+    color: $secondary;
+  }
+
+  h2 {
+    color: $primary;
+  }
+
+  .icons {
+    @include list-unstyled;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    max-width: 25rem;
+
+    li {
+      flex: 1 1 auto;
+      padding: 0.5rem;
+    }
+
+    svg {
+      margin-bottom: 0.5rem;
+    }
+
+    div {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-bold;
+      color: $gray-700;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      max-width: 30rem;
+      margin: 0 auto;
+    }
+  }
+}

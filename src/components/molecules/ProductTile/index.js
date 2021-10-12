@@ -15,7 +15,7 @@ const ProductTile = ({ product }) => {
       <Link href={paths.product.replace("[slug]", product.slug)}>
         <a className={styles.link}>
           <div className={styles.image}>
-            <Thumbnail source={product} />
+            <Thumbnail thumbnail={product.thumbnail2x} />
           </div>
 
           <h2 className={styles.title}>{product.name}</h2>
