@@ -4,6 +4,7 @@ const paths = {
   shop: "/shop",
   category: "/category/[slug]",
   collection: "/collection/[slug]",
+  search: "/search",
   product: "/product/[slug]",
   page: "/page/[slug]",
   // Legal

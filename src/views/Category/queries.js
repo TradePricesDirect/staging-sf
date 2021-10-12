@@ -25,8 +25,7 @@ export const useProductsQuery = (filters, ids) => {
 
   return useTypedQuery(productList, {
     variables,
-    fetchPolicy: "no-cache",
-    // fetchPolicy: "cache-and-network",
+    fetchPolicy: "cache-and-network",
     skip: !(categoryId || collectionId),
   });
 };

@@ -1,0 +1,42 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  @include padding(5rem 0);
+  @include margin-bottom(2rem);
+  text-align: center;
+  color: $white;
+  background-color: $primary;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 10%;
+    left: 0;
+    display: block;
+    width: 40%;
+    max-width: 22.5rem;
+    height: 80%;
+    background: url("/images/angle-bg-white.svg") left center no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 3;
+  margin: 0 auto;
+  max-width: 60rem;
+}
+
+.title {
+  @include font-size(3.75rem);
+}
+
+.text {
+  @include font-size(1.5rem);
+}

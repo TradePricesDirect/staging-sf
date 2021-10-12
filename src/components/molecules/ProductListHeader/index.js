@@ -1,10 +1,7 @@
-import Breadcrumbs, { extractBreadcrumbs } from "components/atoms/Breadcrumbs";
-
 import styles from "./ProductListHeader.module.scss";
 
 const ProductListHeader = ({
-  details,
-  ancestors,
+  renderBreadcrumb,
   numberOfProducts = 0,
   // onClearFilters,
   // activeSortOption,
@@ -16,9 +13,7 @@ const ProductListHeader = ({
 }) => {
   return (
     <div className="row justify-content-between">
-      <div className="col">
-        <Breadcrumbs breadcrumbs={extractBreadcrumbs(details, ancestors)} />
-      </div>
+      <div className="col">{renderBreadcrumb}</div>
       <div className="col-auto">
         <p className={styles.total}>{`Products Found: ${numberOfProducts}`}</p>
       </div>

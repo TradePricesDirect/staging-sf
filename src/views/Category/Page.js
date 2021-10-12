@@ -1,4 +1,5 @@
 import { PER_PAGE_OPTIONS, SORT_OPTIONS } from "utils/collections";
+import Breadcrumbs, { extractBreadcrumbs } from "components/atoms/Breadcrumbs";
 import ProductListHero from "components/molecules/ProductListHero";
 import ProductListHeader from "components/molecules/ProductListHeader";
 import ProductList from "components/organisms/ProductList";
@@ -32,9 +33,12 @@ const Page = ({
         <div className="row">
           <div className="col-lg order-lg-2">
             <ProductListHeader
-              details={details}
-              ancestors={ancestors}
               numberOfProducts={numberOfProducts}
+              renderBreadcrumb={
+                <Breadcrumbs
+                  breadcrumbs={extractBreadcrumbs(details, ancestors)}
+                />
+              }
               // onClearFilters={onClearFilters}
               // activeSortOption={activeSortOption}
               // sortOptions={SORT_OPTIONS}
