@@ -1,18 +1,28 @@
+import clsx from "clsx";
 import styles from "./ProductMeta.module.scss";
 
-const ProductMeta = ({ sku, stock }) => {
+const ProductMeta = ({ sku, quantityAvailable }) => {
+  const inStock = quantityAvailable && quantityAvailable > 0;
+
   return (
-    <div className="row gx-4 mb-4">
-      <div className="col-auto">
-        <div className={styles.sku}>
+    <ul className={styles.list}>
+      {sku && (
+        <li className={styles.sku}>
           SKU: <bdi>{sku}</bdi>
-        </div>
-      </div>
-      <div className="col-auto">
-        STOCK HERE
-        {/* <StockStatus stock={variant.stock} /> */}
-      </div>
-    </div>
+        </li>
+      )}
+
+      {quantityAvailable && (
+        <li
+          className={clsx(
+            styles.stock,
+            inStock ? styles.inStock : styles.outOfStock
+          )}
+        >
+          {inStock ? "IN STOCK" : "OUT OF STOCK"}
+        </li>
+      )}
+    </ul>
   );
 };
 

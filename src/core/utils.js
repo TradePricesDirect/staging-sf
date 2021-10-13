@@ -1,3 +1,5 @@
+import EditorJSHTML from "editorjs-html";
+
 export const convertToAttributeScalar = (attributes) => {
   return Object.entries(attributes)
     .map(([key, value]) =>
@@ -26,4 +28,17 @@ export const convertSortByFromString = (sortBy) => {
       return null;
   }
   return { field, direction };
+};
+
+export const convertRichTextToPlainText = (jsonData) => {
+  if (!jsonData) return null;
+
+  const editorHtml = EditorJSHTML();
+
+  const data = jsonData ? JSON.parse(jsonData) : [];
+
+  const HTML = editorHtml.parse(data).join("");
+  const text = HTML.replace(/<[^>]*>/g, "");
+
+  return text;
 };

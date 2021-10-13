@@ -38,6 +38,10 @@ const ProductGallery = ({ images }) => {
     embla.on("select", onSelect);
   }, [embla, onSelect]);
 
+  useEffect(() => {
+    if (embla) embla.scrollTo(0, true);
+  }, [images]);
+
   return (
     <div className={styles.wrap}>
       <div ref={mainViewportRef} className={styles.carouselWrap}>

@@ -8,6 +8,10 @@ import ProductGallery from "components/organisms/ProductGallery";
 import FinanceRibbon from "components/atoms/FinanceRibbon";
 import ProductMeta from "components/molecules/ProductMeta";
 import ProductDescription from "components/molecules/ProductDescription";
+import TaxedMoney from "components/molecules/TaxedMoney";
+import CallToActions from "./CallToActions";
+import ProductVariantSelection from "components/organisms/ProductVariantSelection";
+import AddToCartSection from "components/organisms/AddToCartSection";
 
 import styles from "./ProductPage.module.scss";
 
@@ -22,15 +26,12 @@ const populateBreadcrumbs = (product) => [
   },
 ];
 
-const Page = ({ product, onAdd, items }) => {
+const Page = ({ product }) => {
   const [variantId, setVariantId] = useState(
     product.defaultVariant?.id || null
   );
 
   const variant = getActiveVariant(product, variantId);
-
-  console.log(product);
-  console.log(variant);
 
   return (
     <>
@@ -50,19 +51,35 @@ const Page = ({ product, onAdd, items }) => {
 
               <h1 className={styles.title}>{product.name}</h1>
 
-              <ProductMeta sku={variant?.sku} stock={variant?.stock} />
-              {/* PRICE */}
-              {/* CALL TO ACTIONS */}
-              {/* VARIANT SELECTION (seVariantId) */}
-              {/* ADD TO BASKET (onAdd(variantId, quantity)) */}
+              <ProductMeta
+                sku={variant?.sku}
+                quantityAvailable={variant?.quantityAvailable}
+              />
+
+              <div className={styles.pricing}>
+                <TaxedMoney taxedMoney={variant?.pricing.price} />
+              </div>
+
+              <CallToActions />
+
+              <ProductVariantSelection
+                variants={product.variants}
+                variantId={variantId}
+                setVariantId={setVariantId}
+              />
+
+              {/* <AddToCartSection variantId={variantId} /> */}
+
+              {/* TODO: ADD TO BASKET (onAdd(variantId, quantity)) */}
+
               <ProductDescription description={product.description} />
-              {/* DESCRIPTION */}
-              {/* ADDITIONAL INFORMATION (attributes||metadata??) */}
+
+              {/* TODO: ADDITIONAL INFORMATION (attributes||metadata??) */}
             </article>
           </div>
         </div>
 
-        {/* OTHER PRODUCTS IN THIS CATEGORY */}
+        {/* TODO: OTHER PRODUCTS IN THIS CATEGORY */}
       </div>
 
       <FeefoReviews />

@@ -1,0 +1,40 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  margin-bottom: 1rem;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-size: $font-size-base;
+  color: $primary;
+  font-weight: $font-weight-semibold;
+
+  span {
+    color: $gray-700;
+    font-weight: $font-weight-base;
+  }
+}
+
+.thumbs {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  padding: 0.5rem;
+  background-color: $white;
+  border: 2px solid $white;
+  border-radius: $border-radius;
+
+  &.selected {
+    border: 2px solid $secondary;
+  }
+}

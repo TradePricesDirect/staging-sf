@@ -1,12 +1,22 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.sku {
+.list {
+  @include list-unstyled;
+  display: flex;
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
   font-size: $font-size-sm;
 }
 
 .stock {
-  font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  color: $green;
+
+  &.inStock {
+    color: $green;
+  }
+
+  &.outOfStock {
+    color: $red;
+  }
 }

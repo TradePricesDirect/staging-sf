@@ -1,4 +1,4 @@
-import EditorJSHTML from "editorjs-html";
+import { convertRichTextToPlainText } from "core/utils";
 
 export const productStructuredData = (product) => {
   const images = product.images.map((image) => new URL(image.url).pathname);
@@ -8,7 +8,7 @@ export const productStructuredData = (product) => {
     "@context": "https://schema.org/",
     "@type": "Product",
     description: !product.seoDescription
-      ? `${getPlainTextDescription(product.description)}`
+      ? `${convertRichTextToPlainText(product.description)}`
       : `${product.seoDescription}`,
     image: images,
     name: !product.seoTitle ? `${product.name}` : `${product.seoTitle}`,
@@ -28,12 +28,4 @@ const getVariantsStructuredData = (variants) => {
     priceCurrency: variant.pricing.price.gross.currency,
     sku: variant.sku,
   }));
-};
-
-const getPlainTextDescription = (description) => {
-  const editorHtml = EditorJSHTML();
-  const HTML = editorHtml.parse(JSON.parse(description));
-  const text = HTML.toString().replace(/<[^>]*>/g, "");
-
-  return text;
 };
