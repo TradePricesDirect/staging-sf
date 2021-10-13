@@ -1,6 +1,12 @@
 import gql from "graphql-tag";
 import { useQuery } from "react-apollo";
 import { baseCategoryFragment } from "@saleor/sdk/lib/fragments/categories";
+import {
+  baseProductFragment,
+  selectedAttributeFragment,
+  productVariantFragment,
+  productPricingFragment,
+} from "@saleor/sdk/lib/fragments/products";
 import { attributeFragment, menuItemFragment } from "./fragments";
 
 export const useTypedQuery = (query, options) => {
@@ -165,6 +171,58 @@ export const categoryLevelsQuery = gql`
           }
         }
       }
+    }
+  }
+`;
+
+export const productDetailsQuery = gql`
+  ${baseProductFragment}
+  ${selectedAttributeFragment}
+  ${productVariantFragment}
+  ${productPricingFragment}
+  query ProductDetails(
+    $id: ID
+    $slug: String
+    $countryCode: CountryCode
+    $channel: String
+    $variantSelection: VariantAttributeScope = ALL
+  ) {
+    product(id: $id, slug: $slug, channel: $channel) {
+      ...BaseProduct
+      ...ProductPricingField
+      description
+      category {
+        id
+        name
+        slug
+        products(first: 3, channel: $channel) {
+          edges {
+            node {
+              ...BaseProduct
+              ...ProductPricingField
+              category {
+                id
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+      images {
+        id
+        url
+      }
+      attributes {
+        ...SelectedAttributeFields
+      }
+      defaultVariant {
+        ...ProductVariantFields
+      }
+      variants {
+        ...ProductVariantFields
+      }
+      isAvailable
     }
   }
 `;

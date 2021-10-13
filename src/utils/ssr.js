@@ -1,4 +1,4 @@
-import { SaleorManager } from "@saleor/sdk";
+import { SaleorManager, VariantAttributeScope } from "@saleor/sdk";
 import { getShop } from "@saleor/sdk/lib/queries/shop";
 import { apiUrl, channelSlug } from "core/constants";
 import {
@@ -7,6 +7,7 @@ import {
   categoryLevelsQuery,
   shopMenusQuery,
   shopFooterMenusQuery,
+  productDetailsQuery,
 } from "graphql/queries";
 
 let CONNECTION = null;
@@ -119,4 +120,21 @@ export const getShopConfig = async () => {
     .then(({ data }) => data);
 
   return { shopConfig, menus, footerMenus };
+};
+
+export const getProductDetails = async (slug) => {
+  const { apolloClient } = await getSaleorApi();
+
+  const { product } = await apolloClient
+    .query({
+      query: productDetailsQuery,
+      variables: {
+        slug: slug,
+        channel: channelSlug,
+        variantSelection: VariantAttributeScope.VARIANT_SELECTION,
+      },
+    })
+    .then(({ data }) => data);
+
+  return product;
 };

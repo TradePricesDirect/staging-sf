@@ -1,0 +1,31 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.ribbon {
+  display: inline-block;
+  padding: 1rem 0.5rem 2rem;
+  color: $white;
+  background-color: $primary;
+  clip-path: polygon(0% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%);
+
+  span {
+    position: relative;
+    display: block;
+    padding-left: 1.75rem;
+    width: 5rem;
+    font-size: 0.75rem;
+    line-height: 1;
+
+    &::before {
+      content: "£";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      font-size: 2.75rem;
+      font-weight: $font-weight-bold;
+      color: $secondary;
+      line-height: 0.8;
+    }
+  }
+}

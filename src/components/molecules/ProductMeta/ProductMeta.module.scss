@@ -1,0 +1,12 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.sku {
+  font-size: $font-size-sm;
+}
+
+.stock {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $green;
+}

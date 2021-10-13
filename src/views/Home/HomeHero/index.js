@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "@saleor/sdk";
 import FeefoBadge from "components/atoms/FeefoBadge";
+import FinanceRibbon from "components/atoms/FinanceRibbon";
 import paths from "core/paths";
 
 import styles from "./HomeHero.module.scss";
@@ -47,9 +48,7 @@ const HomeHero = () => {
           objectFit="cover"
         />
 
-        <div className={styles.ribbon}>
-          <span>Finance Options Available</span>
-        </div>
+        <FinanceRibbon className={styles.ribbon} />
       </div>
     </section>
   );
