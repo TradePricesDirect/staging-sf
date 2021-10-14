@@ -1,2 +1,14 @@
 @import "styles/variables";
 @import "styles/mixins";
+
+.list {
+  @include list-unstyled;
+
+  > li {
+    padding: 0.5rem 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $border-color;
+    }
+  }
+}

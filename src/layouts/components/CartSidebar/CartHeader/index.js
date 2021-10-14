@@ -1,15 +1,18 @@
 import Link from "next/link";
+import { useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLockAlt, faTimes } from "@fortawesome/pro-light-svg-icons";
 import { useOverlay } from "contexts/OverlayContext";
+import { useShop } from "contexts/ShopContext";
+import Money from "components/atoms/Money";
 
 import styles from "./CartHeader.module.scss";
 
 const CartHeader = () => {
   const overlay = useOverlay();
-
-  const hasCheckoutLines = true;
+  const { items, subtotalPrice } = useCart();
+  const { displayGrossPrices } = useShop();
 
   return (
     <>
@@ -33,7 +36,15 @@ const CartHeader = () => {
           </div>
 
           <div className="col-auto">
-            <div className={styles.subtotal}>SUBTOTAL PRICE</div>
+            <div className={styles.subtotal}>
+              {subtotalPrice && (
+                <Money
+                  money={
+                    displayGrossPrices ? subtotalPrice.net : subtotalPrice.gross
+                  }
+                />
+              )}
+            </div>
           </div>
         </div>
 
@@ -42,7 +53,7 @@ const CartHeader = () => {
           encryption
         </p>
 
-        {hasCheckoutLines && (
+        {items?.length > 0 && (
           <div className={styles.buttons}>
             <Link href="/checkout">
               <a className={clsx("btn btn-primary", styles.checkoutButton)}>

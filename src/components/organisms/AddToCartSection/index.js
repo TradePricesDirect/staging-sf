@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus } from "@fortawesome/pro-light-svg-icons";
+import { faMinus, faPlus, faSpinner } from "@fortawesome/pro-light-svg-icons";
 import { useOverlay } from "contexts/OverlayContext";
 import { getAvailableQuantity } from "./stockHelpers";
 
@@ -14,6 +14,7 @@ const AddToCartSection = ({
   availableForPurchase,
   onAdd = null,
 }) => {
+  const [adding, setAdding] = useState(false);
   const { addItem, items } = useCart();
   const overlay = useOverlay();
 
@@ -46,11 +47,20 @@ const AddToCartSection = ({
     setQuantity(Math.min(quantity + 1, availableQuantity));
   };
 
-  const handleAddToCart = () => {
-    addItem(variant.id, quantity);
-    overlay.show("cart");
-    setQuantity(1);
-    if (onAdd) onAdd();
+  const handleAddToCart = async () => {
+    try {
+      setAdding(true);
+
+      await addItem(variant.id, quantity);
+
+      overlay.show("cart");
+      setAdding(false);
+      setQuantity(1);
+      if (onAdd) onAdd();
+    } catch (error) {
+      console.error(error);
+      location.reload();
+    }
   };
 
   if (isOutOfStock) {
@@ -96,6 +106,7 @@ const AddToCartSection = ({
           type="button"
           onClick={minusQuantity}
           className={styles.quantityIncrement}
+          disabled={adding}
         >
           <FontAwesomeIcon icon={faMinus} />
         </button>
@@ -108,6 +119,7 @@ const AddToCartSection = ({
           type="button"
           onClick={plusQuantity}
           className={styles.quantityIncrement}
+          disabled={adding}
         >
           <FontAwesomeIcon icon={faPlus} />
         </button>
@@ -117,8 +129,13 @@ const AddToCartSection = ({
         type="button"
         onClick={handleAddToCart}
         className={clsx("btn btn-primary", styles.button)}
+        disabled={adding}
       >
-        Add to Basket
+        {adding ? (
+          <FontAwesomeIcon icon={faSpinner} spin />
+        ) : (
+          <span>Add to Basket</span>
+        )}
       </button>
     </div>
   );

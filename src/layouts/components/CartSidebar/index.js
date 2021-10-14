@@ -1,3 +1,4 @@
+import { useAuth } from "@saleor/sdk";
 import { useOverlay } from "contexts/OverlayContext";
 import Drawer from "components/organisms/Drawer";
 import CartHeader from "./CartHeader";
@@ -10,7 +11,7 @@ import styles from "./CartSidebar.module.scss";
 const CartSidebar = () => {
   const overlay = useOverlay();
 
-  const user = false;
+  const { user } = useAuth();
 
   return (
     <Drawer isOpen={overlay.type === "cart"} position="right">

@@ -10,7 +10,7 @@ import styles from "./CallToActions.module.scss";
 const CallToActions = () => {
   return (
     <div className={styles.wrap}>
-      <div className="row gx-6 gy-2">
+      <div className="row gx-6">
         <div className="col-auto col-xxl">
           <div className={styles.cta}>
             <FontAwesomeIcon icon={faTruck} fixedWidth className="me-2" />

@@ -1,0 +1,105 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  padding: 0.5rem;
+
+  &.loading::before {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    inset: 0;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: wait;
+  }
+}
+
+.image {
+  flex: 0 1 20%;
+  max-width: 20%;
+}
+
+.content {
+  flex: 1 1 80%;
+  max-width: 80%;
+}
+
+.name {
+  margin: 0;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+}
+
+.variants {
+  @include list-unstyled;
+  margin: 0;
+}
+
+.variant {
+  font-size: $font-size-sm;
+  color: $primary;
+
+  span {
+    color: $body-color;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  color: $primary;
+}
+
+.quantitySelector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: $blue-300;
+  border-radius: $border-radius-pill;
+  line-height: 1.25;
+  overflow: hidden;
+  user-select: none;
+
+  .quantity {
+    position: relative;
+    z-index: 2;
+    min-width: 28px;
+    padding: 0.25rem;
+    background-color: inherit;
+    text-align: center;
+  }
+
+  .minus,
+  .plus {
+    position: relative;
+    z-index: 1;
+    width: 0;
+    background-color: inherit;
+    border-radius: $border-radius-pill;
+    transition: width 0.2s ease;
+
+    &:hover {
+      background-color: darken($blue-300, 10%);
+    }
+  }
+}
+
+.wrap:hover .quantitySelector {
+  .minus,
+  .plus {
+    width: 28px;
+  }
+}

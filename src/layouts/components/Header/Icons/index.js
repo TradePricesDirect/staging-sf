@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -77,6 +78,10 @@ function IconLink(props) {
 }
 
 function IconCart(props) {
+  const { items = [] } = useCart();
+
+  const cartItemsQuantity = items.reduce((acc, curr) => acc + curr.quantity, 0);
+
   const overlay = useOverlay();
 
   const [hover, setHover] = useState(false);
@@ -93,10 +98,12 @@ function IconCart(props) {
       <div className={styles.icon}>
         <FontAwesomeIcon icon={hover ? props.hover : props.icon} fixedWidth />
 
-        <div className={styles.badge}>
-          123
-          <span className="visually-hidden">{props.title} Count</span>
-        </div>
+        {cartItemsQuantity > 0 && (
+          <div className={styles.badge}>
+            {cartItemsQuantity}
+            <span className="visually-hidden">{props.title} Count</span>
+          </div>
+        )}
       </div>
 
       <div className={styles.label}>{props.title}</div>

@@ -5,7 +5,9 @@
 export const getAvailableQuantity = (variant, items) => {
   const { id, trackInventory, quantityAvailable } = variant;
 
-  if (!trackInventory) return 1000;
+  if (!trackInventory) {
+    return parseInt(process.env.NEXT_PUBLIC_MAX_CHECKOUT_LINE_QUANTITY, 10);
+  }
 
   const cartItem = items?.find((item) => item.variant.id === id);
   const quantityInCart = cartItem?.quantity || 0;

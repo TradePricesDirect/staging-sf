@@ -1,4 +1,5 @@
 import Link from "next/link";
+import paths from "core/paths";
 
 const CartGuest = () => {
   return (
@@ -7,7 +8,7 @@ const CartGuest = () => {
         Please sign in or register for an account.
       </div>
 
-      <Link href="/auth/login">
+      <Link href={paths.login}>
         <a className="btn btn-primary">Sign in or Create an Account</a>
       </Link>
     </div>
