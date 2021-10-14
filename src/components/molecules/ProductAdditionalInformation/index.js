@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import sortBy from "lodash/sortby";
+import sortBy from "lodash/sortBy";
 import { v4 as uuid } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faTimes } from "@fortawesome/pro-light-svg-icons";
