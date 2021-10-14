@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useCart } from "@saleor/sdk";
+import { useAuth, useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faSpinner } from "@fortawesome/pro-light-svg-icons";
@@ -15,6 +15,7 @@ const AddToCartSection = ({
   onAdd = null,
 }) => {
   const [adding, setAdding] = useState(false);
+  const { user } = useAuth();
   const { addItem, items } = useCart();
   const overlay = useOverlay();
 
@@ -62,6 +63,8 @@ const AddToCartSection = ({
       location.reload();
     }
   };
+
+  if (!user) return null;
 
   if (isOutOfStock) {
     return (

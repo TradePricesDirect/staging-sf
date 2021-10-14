@@ -1,10 +1,13 @@
 import { useCart } from "@saleor/sdk";
+import Loader from "components/atoms/Loader";
 import CartItem from "../CartItem";
 
 import styles from "./CartItems.module.scss";
 
 const CartItems = () => {
-  const { items, removeItem, updateItem } = useCart();
+  const { loaded, items, removeItem, updateItem } = useCart();
+
+  if (!loaded) return <Loader />;
 
   if (!items?.length) {
     return (

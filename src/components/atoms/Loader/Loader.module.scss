@@ -1,0 +1,23 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 3rem;
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+}
+
+.spinner {
+  width: 3rem;
+  height: 3rem;
+}
+
+.text {
+  margin: 0;
+}
