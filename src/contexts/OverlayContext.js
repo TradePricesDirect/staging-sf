@@ -21,12 +21,12 @@ const Provider = ({ children }) => {
 
   const show = (type) => {
     setState({ type });
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
   };
 
   const hide = () => {
     setState({ type: null });
-    document.body.style.overflow = "";
+    // document.body.style.overflow = "";
   };
 
   return (

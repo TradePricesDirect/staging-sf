@@ -195,7 +195,7 @@ export const productDetailsQuery = gql`
         id
         name
         slug
-        products(first: 3, channel: $channel) {
+        products(first: 10, channel: $channel) {
           edges {
             node {
               ...BaseProduct
@@ -216,11 +216,16 @@ export const productDetailsQuery = gql`
       attributes {
         ...SelectedAttributeFields
       }
+      metadata {
+        key
+        value
+      }
       defaultVariant {
-        ...ProductVariantFields
+        id
       }
       variants {
         ...ProductVariantFields
+        trackInventory
       }
       isAvailable
     }

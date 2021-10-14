@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import styles from "./ProductMeta.module.scss";
 
-const ProductMeta = ({ sku, quantityAvailable }) => {
-  const inStock = quantityAvailable && quantityAvailable > 0;
+const ProductMeta = ({ sku, quantityAvailable = null }) => {
+  const inStock = quantityAvailable > 0;
 
   return (
     <ul className={styles.list}>
@@ -12,16 +12,14 @@ const ProductMeta = ({ sku, quantityAvailable }) => {
         </li>
       )}
 
-      {quantityAvailable && (
-        <li
-          className={clsx(
-            styles.stock,
-            inStock ? styles.inStock : styles.outOfStock
-          )}
-        >
-          {inStock ? "IN STOCK" : "OUT OF STOCK"}
-        </li>
-      )}
+      <li
+        className={clsx(
+          styles.stock,
+          inStock ? styles.inStock : styles.outOfStock
+        )}
+      >
+        {inStock ? "IN STOCK" : "OUT OF STOCK"}
+      </li>
     </ul>
   );
 };

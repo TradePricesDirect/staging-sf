@@ -4,7 +4,7 @@
 .content {
   position: relative;
   margin-bottom: 1rem;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: $box-shadow;
   background-color: $blue-100;
 }
@@ -28,6 +28,10 @@
 }
 
 @media (min-width: 576px) {
+  .content {
+    padding: 2rem;
+  }
+
   .ribbon {
     display: block;
   }

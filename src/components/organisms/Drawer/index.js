@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import ClientOnlyPortal from "components/organisms/ClientOnlyPortal";
 import { useOverlay } from "contexts/OverlayContext";
 
@@ -18,6 +20,15 @@ const Drawer = ({
   target = "#overlay-root",
 }) => {
   const overlay = useOverlay();
+
+  // Lock scroll on open
+  useEffect(() => {
+    if (isOpen) {
+      disableBodyScroll(document.querySelector(target));
+    } else {
+      clearAllBodyScrollLocks();
+    }
+  }, [isOpen]);
 
   return (
     <ClientOnlyPortal selector={target}>

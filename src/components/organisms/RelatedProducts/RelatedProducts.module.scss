@@ -1,0 +1,12 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  padding: 2rem 0;
+}
+
+.title {
+  display: block;
+  color: $primary;
+  text-align: center;
+}

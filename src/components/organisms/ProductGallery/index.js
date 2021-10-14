@@ -9,7 +9,7 @@ const ProductGallery = ({ images }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const [mainViewportRef, embla] = useEmblaCarousel({
-    skipSnaps: false,
+    draggable: false,
   });
 
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({

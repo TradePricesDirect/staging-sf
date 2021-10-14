@@ -1,0 +1,30 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  text-align: center;
+}
+
+.icon {
+  display: none;
+  width: 5.5rem;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-base;
+  color: $primary;
+}
+
+.text {
+  margin: 0;
+  color: $gray-600;
+  font-size: $font-size-sm;
+}
+
+@media (min-width: 400px) {
+  .icon {
+    display: block;
+  }
+}

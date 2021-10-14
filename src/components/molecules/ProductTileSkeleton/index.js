@@ -12,7 +12,9 @@ const ProductTileSkeleton = () => {
         animate={animate}
         transition={transition}
         className={styles.image}
-      />
+      >
+        <div className={styles.imageInner} />
+      </motion.div>
       <motion.div
         animate={animate}
         transition={transition}

@@ -17,7 +17,7 @@ const ProductPage = ({ product }) => {
         meta={extractMeta(product)}
       />
 
-      <Page product={product} />
+      <Page key={product.id} product={product} />
     </>
   );
 };

@@ -13,6 +13,7 @@
   background-clip: padding-box;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
   outline: 0;
+  overflow: auto;
 
   &.right {
     left: auto;

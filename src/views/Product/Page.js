@@ -1,17 +1,19 @@
 import { useState } from "react";
 import paths from "core/paths";
 import { productStructuredData } from "core/SEO/structuredData";
-import { getActiveVariant, getImages } from "./utils";
+import { getActiveVariant, getImages, getRelatedProducts } from "./utils";
 import Breadcrumbs from "components/atoms/Breadcrumbs";
 import FeefoReviews from "components/molecules/FeefoReviews";
 import ProductGallery from "components/organisms/ProductGallery";
 import FinanceRibbon from "components/atoms/FinanceRibbon";
 import ProductMeta from "components/molecules/ProductMeta";
 import ProductDescription from "components/molecules/ProductDescription";
+import ProductAdditionalInformation from "components/molecules/ProductAdditionalInformation";
 import TaxedMoney from "components/molecules/TaxedMoney";
 import CallToActions from "./CallToActions";
 import ProductVariantSelection from "components/organisms/ProductVariantSelection";
 import AddToCartSection from "components/organisms/AddToCartSection";
+import RelatedProducts from "components/organisms/RelatedProducts";
 
 import styles from "./ProductPage.module.scss";
 
@@ -68,18 +70,28 @@ const Page = ({ product }) => {
                 setVariantId={setVariantId}
               />
 
-              {/* <AddToCartSection variantId={variantId} /> */}
-
-              {/* TODO: ADD TO BASKET (onAdd(variantId, quantity)) */}
+              <AddToCartSection
+                variant={variant}
+                isAvailableForPurchase={product.isAvailableForPurchase}
+                availableForPurchase={product.availableForPurchase}
+              />
 
               <ProductDescription description={product.description} />
 
-              {/* TODO: ADDITIONAL INFORMATION (attributes||metadata??) */}
+              <ProductAdditionalInformation
+                product={product}
+                variant={variant}
+                attributes={product.attributes}
+                metadata={product.metadata}
+              />
             </article>
           </div>
         </div>
 
-        {/* TODO: OTHER PRODUCTS IN THIS CATEGORY */}
+        <RelatedProducts
+          title={`Other products you may be interested in...`}
+          products={getRelatedProducts(product.category, product.id)}
+        />
       </div>
 
       <FeefoReviews />

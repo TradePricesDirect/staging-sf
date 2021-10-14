@@ -31,3 +31,9 @@ export const getImages = (product, variantId) => {
 
   return product.images;
 };
+
+export const getRelatedProducts = (category, currentProductId) => {
+  const products = category.products?.edges?.map(({ node }) => node) || [];
+
+  return products.filter((product) => product.id !== currentProductId);
+};
