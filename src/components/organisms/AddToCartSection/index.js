@@ -49,6 +49,7 @@ const AddToCartSection = ({
   const handleAddToCart = () => {
     addItem(variant.id, quantity);
     overlay.show("cart");
+    setQuantity(1);
     if (onAdd) onAdd();
   };
 
