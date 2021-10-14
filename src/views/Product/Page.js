@@ -66,7 +66,7 @@ const Page = ({ product }) => {
 
               <ProductVariantSelection
                 variants={product.variants}
-                variantId={variantId}
+                variant={variant}
                 setVariantId={setVariantId}
               />
 

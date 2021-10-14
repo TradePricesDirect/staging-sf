@@ -29,6 +29,8 @@ const BasketPage = () => {
 
   if (!loaded) return <Loader />;
 
+  // TODO: Continue with this page...
+
   return (
     <div className="container">
       <h1>Basket Page</h1>

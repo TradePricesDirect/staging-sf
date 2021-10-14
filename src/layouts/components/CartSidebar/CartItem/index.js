@@ -34,9 +34,10 @@ const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
         <h5 className={styles.name}>{variant.product.name}</h5>
 
         <ul className={styles.variants}>
-          {variant.attributes.map(({ attribute }) => (
+          {variant.attributes.map(({ attribute, values }) => (
             <li key={attribute.id} className={styles.variant}>
-              {attribute.name}: <span>{variant.name}</span>
+              {attribute.name}:{" "}
+              <span>{values.map((value) => value.name).join(", ")}</span>
             </li>
           ))}
         </ul>

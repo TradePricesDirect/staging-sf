@@ -5,6 +5,10 @@
   margin-bottom: 2rem;
 }
 
+.variant {
+  margin-bottom: 1rem;
+}
+
 .label {
   margin-bottom: 0.5rem;
   font-size: $font-size-base;
@@ -37,4 +41,8 @@
   &.selected {
     border: 2px solid $secondary;
   }
+}
+
+.dropdown {
+  max-width: 20rem;
 }
