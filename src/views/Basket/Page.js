@@ -9,8 +9,6 @@ const Page = () => {
   const { checkout } = useCheckout();
   const { items, removeItem, updateItem } = useCart();
 
-  console.log(items[0]);
-
   return (
     <div className="row">
       <div className="col-12 col-lg-8">
