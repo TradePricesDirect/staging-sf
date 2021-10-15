@@ -1,0 +1,9 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: sticky;
+    top: 8.5rem;
+  }
+}

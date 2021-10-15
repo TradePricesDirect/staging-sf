@@ -1,0 +1,20 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.banner {
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  text-align: center;
+}
+
+.klarna {
+  background-color: #fff999;
+  color: #000;
+}
+
+.propensio {
+  background-color: #393c5a;
+  color: #fff;
+}

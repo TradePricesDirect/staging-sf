@@ -1,19 +1,19 @@
 // import { isEqual } from "lodash";
-import TaxedMoney from "components/molecules/TaxedMoney";
+import TaxedMoneyProduct from "components/molecules/TaxedMoneyProduct";
 
 const ProductPricing = ({ variantPricing, productPricing }) => {
   if (variantPricing) {
-    return <TaxedMoney taxedMoney={variantPricing.price} />;
+    return <TaxedMoneyProduct taxedMoney={variantPricing.price} />;
 
     // TODO: The below can display discounted prices nicely
     // if (isEqual(variantPricing.priceUndiscounted, variantPricing.price)) {
-    //   return <TaxedMoney taxedMoney={variantPricing.price} />;
+    //   return <TaxedMoneyProduct taxedMoney={variantPricing.price} />;
     // }
 
     // return (
     //   <>
-    //     <TaxedMoney taxedMoney={variantPricing.priceUndiscounted} />
-    //     <TaxedMoney taxedMoney={variantPricing.price} />
+    //     <TaxedMoneyProduct taxedMoney={variantPricing.priceUndiscounted} />
+    //     <TaxedMoneyProduct taxedMoney={variantPricing.price} />
     //   </>
     // );
   }
@@ -22,14 +22,14 @@ const ProductPricing = ({ variantPricing, productPricing }) => {
 
   const { start, stop } = productPricing.priceRange;
 
-  return <TaxedMoney taxedMoney={start} />;
+  return <TaxedMoneyProduct taxedMoney={start} />;
 
   // TODO: The below can display price range
-  // if (isEqual(start, stop)) return <TaxedMoney taxedMoney={start} />;
+  // if (isEqual(start, stop)) return <TaxedMoneyProduct taxedMoney={start} />;
 
   // return (
   //   <>
-  //     <TaxedMoney taxedMoney={start} /> - <TaxedMoney taxedMoney={stop} />
+  //     <TaxedMoneyProduct taxedMoney={start} /> - <TaxedMoneyProduct taxedMoney={stop} />
   //   </>
   // );
 };

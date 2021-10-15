@@ -1,26 +1,14 @@
-import { useAuth, useCart, useCheckout } from "@saleor/sdk";
+import { useAuth, useCart } from "@saleor/sdk";
 import { useRouter } from "next/router";
 import paths from "core/paths";
 import Loader from "components/atoms/Loader";
+import Empty from "./Empty";
+import Page from "./Page";
 
 const BasketPage = () => {
   const router = useRouter();
   const { user } = useAuth();
-  const { checkout } = useCheckout();
-  console.log(checkout);
-
-  const cart = useCart();
-  console.log(cart);
-
-  const {
-    loaded,
-    removeItem,
-    updateItem,
-    items,
-    totalPrice,
-    subtotalPrice,
-    shippingPrice,
-  } = useCart();
+  const { loaded, items } = useCart();
 
   if (!user) {
     router.push(paths.home);
@@ -29,14 +17,8 @@ const BasketPage = () => {
 
   if (!loaded) return <Loader />;
 
-  // TODO: Continue with this page...
-
   return (
-    <div className="container">
-      <h1>Basket Page</h1>
-
-      <p>Cool stuff will go here...</p>
-    </div>
+    <div className="container py-4">{items?.length ? <Page /> : <Empty />}</div>
   );
 };
 

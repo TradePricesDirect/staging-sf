@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Thumbnail from "components/molecules/Thumbnail";
-import TaxedMoney from "components/molecules/TaxedMoney";
+import TaxedMoneyProduct from "components/molecules/TaxedMoneyProduct";
 
 import paths from "core/paths";
 
@@ -21,7 +21,7 @@ const ProductTile = ({ product }) => {
           <h2 className={styles.title}>{product.name}</h2>
 
           <div className={styles.price}>
-            <TaxedMoney taxedMoney={price} />
+            <TaxedMoneyProduct taxedMoney={price} />
           </div>
         </a>
       </Link>

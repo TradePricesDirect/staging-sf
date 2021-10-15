@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useDebouncedCallback } from "use-debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/pro-light-svg-icons";
-import Money from "components/atoms/Money";
+import paths from "core/paths";
+import TaxedMoney from "components/molecules/TaxedMoney";
 import Thumbnail from "components/molecules/Thumbnail";
-import { useShop } from "contexts/ShopContext";
 
 import styles from "./CartItem.module.scss";
 
 const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
-  const { displayGrossPrices } = useShop();
-
   const [value, setValue] = useState(quantity);
 
   const debounced = useDebouncedCallback(updateItem, 300);
@@ -22,8 +21,6 @@ const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
     }
   }, [value]);
 
-  const unitPrice = variant.pricing.price[displayGrossPrices ? "net" : "gross"];
-
   return (
     <div className={styles.wrap}>
       <div className={styles.image}>
@@ -31,7 +28,9 @@ const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
       </div>
 
       <div className={styles.content}>
-        <h5 className={styles.name}>{variant.product.name}</h5>
+        <Link href={paths.product.replace("[slug]", variant.product.slug)}>
+          <a className={styles.name}>{variant.product.name}</a>
+        </Link>
 
         <ul className={styles.variants}>
           {variant.attributes.map(({ attribute, values }) => (
@@ -44,7 +43,7 @@ const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
 
         <div className={styles.footer}>
           <div className={styles.price}>
-            <Money money={unitPrice} />
+            <TaxedMoney taxedMoney={variant.pricing.price} gross />
           </div>
 
           <button

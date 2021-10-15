@@ -7,6 +7,8 @@ const paths = {
   search: "/search",
   product: "/product/[slug]",
   page: "/page/[slug]",
+  basket: "/basket",
+  checkout: "/checkout",
   // Legal
   privacy: "/legal/privacy-policy",
   terms: "/legal/terms-conditions",

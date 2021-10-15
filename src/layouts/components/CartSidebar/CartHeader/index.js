@@ -8,6 +8,7 @@ import { useShop } from "contexts/ShopContext";
 import Money from "components/atoms/Money";
 
 import styles from "./CartHeader.module.scss";
+import paths from "core/paths";
 
 const CartHeader = () => {
   const overlay = useOverlay();
@@ -55,13 +56,13 @@ const CartHeader = () => {
 
         {items?.length > 0 && (
           <div className={styles.buttons}>
-            <Link href="/checkout">
+            <Link href={paths.checkout}>
               <a className={clsx("btn btn-primary", styles.checkoutButton)}>
                 Proceed To Checkout
               </a>
             </Link>
 
-            <Link href="/basket">
+            <Link href={paths.basket}>
               <a
                 className={clsx(
                   "btn btn-outline-secondary",
