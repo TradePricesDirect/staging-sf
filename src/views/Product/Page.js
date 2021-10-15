@@ -9,7 +9,7 @@ import FinanceRibbon from "components/atoms/FinanceRibbon";
 import ProductMeta from "components/molecules/ProductMeta";
 import ProductDescription from "components/molecules/ProductDescription";
 import ProductAdditionalInformation from "components/molecules/ProductAdditionalInformation";
-import TaxedMoney from "components/molecules/TaxedMoney";
+import ProductPricing from "components/molecules/ProductPricing";
 import CallToActions from "./CallToActions";
 import ProductVariantSelection from "components/organisms/ProductVariantSelection";
 import AddToCartSection from "components/organisms/AddToCartSection";
@@ -30,7 +30,7 @@ const populateBreadcrumbs = (product) => [
 
 const Page = ({ product }) => {
   const [variantId, setVariantId] = useState(
-    product.defaultVariant?.id || null
+    product.variants.length === 1 ? product.variants[0].id : null
   );
 
   const variant = getActiveVariant(product, variantId);
@@ -59,7 +59,10 @@ const Page = ({ product }) => {
               />
 
               <div className={styles.pricing}>
-                <TaxedMoney taxedMoney={variant?.pricing.price} />
+                <ProductPricing
+                  productPricing={product?.pricing}
+                  variantPricing={variant?.pricing}
+                />
               </div>
 
               <CallToActions />
@@ -70,11 +73,13 @@ const Page = ({ product }) => {
                 setVariantId={setVariantId}
               />
 
-              <AddToCartSection
-                variant={variant}
-                isAvailableForPurchase={product.isAvailableForPurchase}
-                availableForPurchase={product.availableForPurchase}
-              />
+              {variant && (
+                <AddToCartSection
+                  variant={variant}
+                  isAvailableForPurchase={product.isAvailableForPurchase}
+                  availableForPurchase={product.availableForPurchase}
+                />
+              )}
 
               <ProductDescription description={product.description} />
 
@@ -89,7 +94,7 @@ const Page = ({ product }) => {
         </div>
 
         <RelatedProducts
-          title={`Other products you may be interested in...`}
+          title="Other products you may be interested in..."
           products={getRelatedProducts(product.category, product.id)}
         />
       </div>

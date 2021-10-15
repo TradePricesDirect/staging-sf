@@ -6,92 +6,83 @@ export const useProductVariantSelection = ({
   variant,
   setVariantId,
 }) => {
-  const attributes = groupVariantAttributes(variants);
-
   const [selectedAttributes, setSelectedAttributes] = useState(
-    Object.keys(attributes).reduce((acc, id) => ({ ...acc, [id]: null }), {})
+    getVariantSelectedAttributes(variant)
   );
 
+  const attributes = groupByAttributes(variants, selectedAttributes);
+
   useEffect(() => {
-    const variantAttributes = variant.attributes.reduce(
-      (acc, curr) => ({
-        ...acc,
-        [curr.attribute.id]: curr.values.length ? curr.values[0].id : null,
-      }),
-      {}
-    );
+    const allSelected =
+      Object.keys(attributes).length === Object.keys(selectedAttributes).length;
 
-    setSelectedAttributes(variantAttributes);
-  }, [variant]);
+    if (allSelected) {
+      const [variant] = getVariantsByAttributes(variants, selectedAttributes);
 
-  const onAttributeChange = (attributeId, valueId) => {
-    const variantAttributes = { ...selectedAttributes, [attributeId]: valueId };
+      if (variant) {
+        setVariantId(variant.id);
+        return;
+      }
+    }
 
-    setSelectedAttributes(variantAttributes);
+    setVariantId(null);
+  }, [selectedAttributes]);
 
-    // Check all attributes are set
-    const emptyAttributes = Object.values(variantAttributes).filter(
-      (v) => v === null
-    );
-
-    if (!emptyAttributes.length) {
-      const variant = getSelectedVariantByAttributes(
-        variants,
-        variantAttributes
-      );
-
-      if (variant) setVariantId(variant.id);
+  const onAttributeChange = (attributeId, valueId, override = false) => {
+    if (override) {
+      setSelectedAttributes({ [attributeId]: valueId });
+    } else {
+      setSelectedAttributes({
+        ...selectedAttributes,
+        [attributeId]: valueId,
+      });
     }
   };
 
-  return { attributes, selectedAttributes, onAttributeChange };
+  return { attributes, onAttributeChange };
+};
+
+const groupByAttributes = (variants, selectedAttributes) => {
+  // Loop all variants...
+  return variants.reduce((attributes, variant) => {
+    // Grab first image as variant thumbnail
+    const thumbnail = variant.images.length ? variant.images[0] : null;
+
+    // Loop their attributes...
+    return variant.attributes.reduce((acc, curr) => {
+      // Check if attribute object exists
+      const index = acc.findIndex((a) => a.id === curr.attribute.id);
+
+      // Format attribute values with extra info
+      const values = curr.values.map((value) => ({
+        ...value,
+        thumbnail: curr.attribute.slug === "colour" ? thumbnail : null,
+        selected: selectedAttributes?.[curr.attribute.id] === value.id,
+        // Work out how many variants are available if this attribute was selected
+        variants: getVariantsByAttributes(variants, {
+          ...selectedAttributes,
+          [curr.attribute.id]: value.id,
+        }),
+      }));
+
+      if (index < 0) return [...acc, { ...curr.attribute, values }];
+
+      acc[index].values = unionBy(acc[index].values, values, "id");
+      return acc;
+    }, attributes);
+  }, []);
 };
 
 /**
- * Group product variants by attribute and values.
- *
+ * Get a subset of variants based upon selected attributes
  * @param {array} variants Product Variants
- * @returns {object} Object of attributes and associated values
+ * @param {object} attributes attributeId: valueId pairings
+ * @returns
  */
-const groupVariantAttributes = (variants) => {
-  const variantsAttributes = {};
-
-  variants.forEach((variant) => {
-    const thumbnail = variant.images.length ? variant.images[0] : null;
-
-    variant.attributes.forEach(({ attribute, values }) => {
-      const { id, slug } = attribute;
-
-      const exists = variantsAttributes.hasOwnProperty(id);
-
-      if (exists) {
-        variantsAttributes[id].values = unionBy(
-          variantsAttributes[id].values,
-          values.map((value) => ({
-            ...value,
-            thumbnail: slug === "colour" ? thumbnail : null,
-          })),
-          "id"
-        );
-      } else {
-        variantsAttributes[id] = {
-          attribute: attribute,
-          values: values.map((value) => ({
-            ...value,
-            thumbnail: slug === "colour" ? thumbnail : null,
-          })),
-        };
-      }
-    });
-  });
-
-  return variantsAttributes;
-};
-
-const getSelectedVariantByAttributes = (variants, attributes) => {
+const getVariantsByAttributes = (variants, attributes) => {
   const attributeIds = Object.keys(attributes);
 
-  return variants.find((variant) => {
+  return variants.filter((variant) => {
     const matches = variant.attributes.filter(({ attribute, values }) => {
       if (attributeIds.includes(attribute.id)) {
         return !!values.find(({ id }) => id === attributes[attribute.id]);
@@ -102,4 +93,16 @@ const getSelectedVariantByAttributes = (variants, attributes) => {
 
     return matches.length === attributeIds.length;
   });
+};
+
+const getVariantSelectedAttributes = (variant) => {
+  const attributes = {};
+
+  if (!variant) return attributes;
+
+  variant.attributes.forEach(({ attribute, values }) => {
+    attributes[attribute.id] = values[0].id;
+  });
+
+  return attributes;
 };

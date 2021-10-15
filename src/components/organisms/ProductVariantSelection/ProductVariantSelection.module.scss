@@ -21,28 +21,37 @@
   }
 }
 
-.thumbs {
+.values {
   @include list-unstyled;
   margin: 0;
   display: flex;
   gap: 1rem;
 }
 
-.thumb {
+.thumb,
+.button {
   position: relative;
   display: block;
-  width: 5rem;
-  height: 5rem;
-  padding: 0.5rem;
   background-color: $white;
-  border: 2px solid $white;
+  border: 2px solid $gray-200;
   border-radius: $border-radius;
 
   &.selected {
     border: 2px solid $secondary;
   }
+
+  &.disabled {
+    opacity: 0.5;
+  }
 }
 
-.dropdown {
-  max-width: 20rem;
+.thumb {
+  width: 5rem;
+  height: 5rem;
+  padding: 0.5rem;
+}
+
+.button {
+  min-width: 5rem;
+  padding: 0.5rem 1rem;
 }

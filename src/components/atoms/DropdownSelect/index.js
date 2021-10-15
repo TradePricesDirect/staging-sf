@@ -11,16 +11,8 @@ const customTheme = (theme) => ({
   },
 });
 
-const DropdownSelect = ({ options, name, value, onChange }) => {
-  return (
-    <ReactSelect
-      name={name}
-      options={options}
-      value={value}
-      onChange={onChange}
-      theme={customTheme}
-    />
-  );
+const DropdownSelect = (props) => {
+  return <ReactSelect theme={customTheme} {...props} />;
 };
 
 export default DropdownSelect;

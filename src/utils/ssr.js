@@ -133,7 +133,7 @@ export const getProductDetails = async (slug) => {
         channel: channelSlug,
         variantSelection: VariantAttributeScope.VARIANT_SELECTION,
       },
-      fetchPolicy: "no-cache",
+      fetchPolicy: "network-only",
     })
     .then(({ data }) => data);
 

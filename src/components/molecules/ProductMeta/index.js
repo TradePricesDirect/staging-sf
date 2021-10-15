@@ -12,14 +12,16 @@ const ProductMeta = ({ sku, quantityAvailable = null }) => {
         </li>
       )}
 
-      <li
-        className={clsx(
-          styles.stock,
-          inStock ? styles.inStock : styles.outOfStock
-        )}
-      >
-        {inStock ? "IN STOCK" : "OUT OF STOCK"}
-      </li>
+      {quantityAvailable !== null && (
+        <li
+          className={clsx(
+            styles.stock,
+            inStock ? styles.inStock : styles.outOfStock
+          )}
+        >
+          {inStock ? "IN STOCK" : "OUT OF STOCK"}
+        </li>
+      )}
     </ul>
   );
 };
