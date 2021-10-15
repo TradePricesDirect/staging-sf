@@ -1,4 +1,4 @@
-import { useCart, useCheckout } from "@saleor/sdk";
+import { useCart } from "@saleor/sdk";
 import CartRow from "components/organisms/CartRow";
 import CartSummary from "components/molecules/CartSummary";
 import CartFinanceBanner from "components/molecules/CartFinanceBanner";
@@ -6,7 +6,6 @@ import CartFinanceBanner from "components/molecules/CartFinanceBanner";
 import styles from "./BasketPage.module.scss";
 
 const Page = () => {
-  const { checkout } = useCheckout();
   const { items, removeItem, updateItem } = useCart();
 
   return (

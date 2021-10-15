@@ -5,7 +5,7 @@ import { faMinus, faPlus } from "@fortawesome/pro-light-svg-icons";
 
 import styles from "./QuantitySelector.module.scss";
 
-const QuantitySelector = ({ quantity, onUpdate, onRemove }) => {
+const QuantitySelector = ({ quantity, onUpdate, debounce = true }) => {
   const [value, setValue] = useState(quantity);
 
   useEffect(() => {
@@ -16,8 +16,8 @@ const QuantitySelector = ({ quantity, onUpdate, onRemove }) => {
 
   useEffect(() => {
     if (value !== quantity) {
-      if (value < 1) onRemove();
-      else debounced(value);
+      if (debounce) debounced(value);
+      else onUpdate(value);
     }
   }, [value]);
 

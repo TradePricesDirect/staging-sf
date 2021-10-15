@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useAuth, useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus, faSpinner } from "@fortawesome/pro-light-svg-icons";
+import { faSpinner } from "@fortawesome/pro-light-svg-icons";
 import { useOverlay } from "contexts/OverlayContext";
 import { getAvailableQuantity } from "./stockHelpers";
 
 import styles from "./AddToCartSection.module.scss";
+import QuantitySelector from "components/molecules/QuantitySelector";
 
 const AddToCartSection = ({
   variant,
@@ -104,29 +105,11 @@ const AddToCartSection = ({
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.quantitySelector}>
-        <button
-          type="button"
-          onClick={minusQuantity}
-          className={styles.quantityIncrement}
-          disabled={adding}
-        >
-          <FontAwesomeIcon icon={faMinus} />
-        </button>
-
-        <div className={styles.quantity}>
-          {quantity.toString().padStart(2, "0")}
-        </div>
-
-        <button
-          type="button"
-          onClick={plusQuantity}
-          className={styles.quantityIncrement}
-          disabled={adding}
-        >
-          <FontAwesomeIcon icon={faPlus} />
-        </button>
-      </div>
+      <QuantitySelector
+        quantity={quantity}
+        onUpdate={setQuantity}
+        debounce={false}
+      />
 
       <button
         type="button"
