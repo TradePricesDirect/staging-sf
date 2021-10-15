@@ -1,0 +1,32 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  user-select: none;
+}
+
+.button {
+  display: inline-block;
+  min-width: 2.25rem;
+  padding: 0.5rem;
+  line-height: 1;
+  color: $primary;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.quantity {
+  display: inline-block;
+  min-width: 2.5rem;
+  padding: 0.5rem;
+  font-size: $font-size-lg;
+  line-height: 1.2;
+  text-align: center;
+  color: $white;
+  background-color: $primary;
+  border-radius: $border-radius-pill;
+}

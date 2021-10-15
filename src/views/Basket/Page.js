@@ -7,13 +7,22 @@ import styles from "./BasketPage.module.scss";
 
 const Page = () => {
   const { checkout } = useCheckout();
-  const { items } = useCart();
+  const { items, removeItem, updateItem } = useCart();
+
+  console.log(items[0]);
 
   return (
     <div className="row">
       <div className="col-12 col-lg-8">
-        {items?.map((item) => (
-          <CartRow key={item.id} item={item} />
+        {items?.map(({ id, variant, quantity, totalPrice }) => (
+          <CartRow
+            key={id}
+            variant={variant}
+            quantity={quantity}
+            totalPrice={totalPrice}
+            onRemove={() => removeItem(variant.id)}
+            onUpdate={(quantity) => updateItem(variant.id, quantity)}
+          />
         ))}
       </div>
 
