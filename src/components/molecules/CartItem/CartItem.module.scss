@@ -43,6 +43,7 @@
 }
 
 .variant {
+  margin-bottom: 0.5rem;
   font-size: $font-size-sm;
   color: $primary;
 
@@ -58,8 +59,19 @@
   justify-content: space-between;
 }
 
-.price {
+.pricing {
+  display: block;
+}
+
+.subtotalPrice {
   color: $primary;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-sm;
+}
+
+.unitPrice {
+  color: $text-muted;
+  font-size: $font-size-sm;
 }
 
 .quantitySelector {

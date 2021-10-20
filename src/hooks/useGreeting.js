@@ -9,8 +9,8 @@ const useGreeting = (name) => {
   const hour = now.getHours();
 
   let greeting = "Good Evening";
-  if (hour < 12) greeting = "Good Morning";
   if (hour < 18) greeting = "Good Afternoon";
+  if (hour < 12) greeting = "Good Morning";
 
   return name ? `${greeting}, ${name}` : greeting;
 };

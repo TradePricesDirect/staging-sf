@@ -8,7 +8,14 @@ const paths = {
   product: "/product/[slug]",
   page: "/page/[slug]",
   basket: "/basket",
+  // Checkout
   checkout: "/checkout",
+  checkoutAddress: "/checkout/address",
+  checkoutShipping: "/checkout/shipping",
+  checkoutPayment: "/checkout/payment",
+  checkoutPaymentConfirm: "/checkout/payment-confirm",
+  checkoutReview: "/checkout/review",
+  orderThankYou: "/thank-you",
   // Legal
   privacy: "/legal/privacy-policy",
   terms: "/legal/terms-conditions",

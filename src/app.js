@@ -3,6 +3,12 @@ import ShopProvider from "contexts/ShopContext";
 import OverlayProvider from "contexts/OverlayContext";
 import NProgressBar from "components/atoms/NProgressBar";
 
+const DEFAULT_LAYOUT = (page, menus, footerMenus) => (
+  <AppLayout menus={menus} footerMenus={footerMenus}>
+    {page}
+  </AppLayout>
+);
+
 const StorefrontApp = ({
   layout,
   shopConfig,
@@ -10,19 +16,14 @@ const StorefrontApp = ({
   footerMenus,
   children,
 }) => {
-  const defaultLayout = (page) => (
-    <AppLayout menus={menus} footerMenus={footerMenus}>
-      {page}
-    </AppLayout>
-  );
-  const getLayout = layout || defaultLayout;
+  const getLayout = layout || DEFAULT_LAYOUT;
 
   return (
     <ShopProvider shopConfig={shopConfig}>
       <OverlayProvider>
         <NProgressBar />
 
-        {getLayout(children)}
+        {getLayout(children, menus, footerMenus)}
       </OverlayProvider>
     </ShopProvider>
   );

@@ -3,7 +3,7 @@ import { useOverlay } from "contexts/OverlayContext";
 import Drawer from "components/organisms/Drawer";
 import CartHeader from "./CartHeader";
 import CartFooter from "./CartFooter";
-import CartItems from "./CartItems";
+import CartItems from "components/organisms/CartItems";
 import CartGuest from "./CartGuest";
 
 import styles from "./CartSidebar.module.scss";

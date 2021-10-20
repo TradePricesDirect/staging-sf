@@ -1,0 +1,44 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  padding: 1.5rem 0;
+  background-color: $gray-100;
+}
+
+.nav {
+  position: sticky;
+  top: 8.5rem;
+}
+
+.list {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  a {
+    display: block;
+    padding: 0.5rem;
+    border-radius: $border-radius;
+    background-color: $white;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+    transition: $transition-base;
+    border: 1px solid $border-color;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+
+  a:hover {
+    background-color: $blue-100;
+  }
+
+  a.active {
+    background-color: $primary;
+    color: $white;
+  }
+}

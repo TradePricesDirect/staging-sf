@@ -20,7 +20,14 @@ const customTheme = (theme) => ({
   },
 });
 
-const Select = ({ label, name, control, defaultValue, options }) => {
+const Select = ({
+  label,
+  name,
+  control,
+  defaultValue,
+  options,
+  placeholder,
+}) => {
   return (
     <div className="mb-4">
       {label && <label className="form-label">{label}</label>}
@@ -34,10 +41,12 @@ const Select = ({ label, name, control, defaultValue, options }) => {
             {...field}
             id={`${name}_select`}
             instanceId={`${name}_select`}
-            value={find(options, { value: field.value })}
             options={options}
+            value={find(options, { value: field.value })}
             theme={customTheme}
             styles={customStyles}
+            placeholder={placeholder}
+            onChange={(value) => field.onChange(value?.value)}
           />
         )}
       />

@@ -9,16 +9,13 @@ import Thumbnail from "components/molecules/Thumbnail";
 
 import styles from "./CartItem.module.scss";
 
-const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
+const CartItem = ({ variant, quantity, totalPrice, onRemove, onUpdate }) => {
   const [value, setValue] = useState(quantity);
 
-  const debounced = useDebouncedCallback(updateItem, 300);
+  const debounced = useDebouncedCallback(onUpdate, 300);
 
   useEffect(() => {
-    if (value !== quantity) {
-      if (value < 1) removeItem(variant.id);
-      else debounced(variant.id, value);
-    }
+    if (value !== quantity) debounced(value);
   }, [value]);
 
   return (
@@ -42,12 +39,24 @@ const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
         </ul>
 
         <div className={styles.footer}>
-          <div className={styles.price}>
-            <TaxedMoney taxedMoney={variant.pricing.price} gross />
+          <div className={styles.pricing}>
+            <div className={styles.subtotalPrice}>
+              <TaxedMoney taxedMoney={totalPrice} gross />
+            </div>
+
+            {quantity > 1 && (
+              <div className={styles.unitPrice}>
+                <TaxedMoney
+                  taxedMoney={variant.pricing.price}
+                  gross
+                  suffix="per item"
+                />
+              </div>
+            )}
           </div>
 
           <button
-            onClick={() => removeItem(variant.id)}
+            onClick={onRemove}
             type="button"
             className="btn btn-sm text-danger"
           >
@@ -60,7 +69,7 @@ const CartItem = ({ quantity, variant, removeItem, updateItem }) => {
       <div className={styles.quantitySelector}>
         <button
           type="button"
-          onClick={() => setValue((prevValue) => prevValue - 1)}
+          onClick={() => setValue((prevValue) => Math.max(prevValue - 1, 1))}
           className={styles.minus}
         >
           <FontAwesomeIcon icon={faMinus} />

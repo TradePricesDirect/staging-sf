@@ -1,0 +1,63 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+
+.header {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.count {
+  margin: 0;
+}
+
+.button {
+  color: $primary;
+}
+
+.cartItems {
+  overflow: hidden;
+
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+.table {
+  th {
+    text-align: left;
+    font-weight: inherit;
+  }
+
+  td {
+    text-align: right;
+  }
+
+  .total {
+    font-size: 1.25rem;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .title {
+    font-size: $font-size-lg;
+  }
+}

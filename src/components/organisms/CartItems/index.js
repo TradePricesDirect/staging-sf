@@ -1,6 +1,6 @@
 import { useCart } from "@saleor/sdk";
 import Loader from "components/atoms/Loader";
-import CartItem from "../CartItem";
+import CartItem from "components/molecules/CartItem";
 
 import styles from "./CartItems.module.scss";
 
@@ -19,13 +19,14 @@ const CartItems = () => {
 
   return (
     <ul className={styles.list}>
-      {items.map((item) => (
-        <li key={item.variant.id}>
+      {items.map(({ id, variant, quantity, totalPrice }) => (
+        <li key={id}>
           <CartItem
-            quantity={item.quantity}
-            variant={item.variant}
-            removeItem={removeItem}
-            updateItem={updateItem}
+            variant={variant}
+            quantity={quantity}
+            totalPrice={totalPrice}
+            onRemove={() => removeItem(variant.id)}
+            onUpdate={(quantity) => updateItem(variant.id, quantity)}
           />
         </li>
       ))}
