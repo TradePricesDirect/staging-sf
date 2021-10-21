@@ -1,0 +1,16 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.title {
+  margin-bottom: 1rem;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+}
+
+.subtitle {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+}

@@ -2,31 +2,24 @@ import Link from "next/link";
 import clsx from "clsx";
 
 import styles from "./CheckoutProgressBar.module.scss";
+import useCheckoutStepState from "hooks/useCheckoutStepState";
 
-const CheckoutProgressBar = ({ steps, activeStepIndex }) => {
+const CheckoutProgressBar = ({ steps, activeStep }) => {
+  const { maxPossibleStep } = useCheckoutStepState();
+
+  const activeStepIndex = activeStep.index;
+
   return (
     <div className={styles.wrap}>
-      {steps?.map((step, index) => {
+      {steps?.map((step) => {
         return (
-          <div key={step.index} className={styles.step}>
-            <Link href={step.link}>
-              <a className={styles.link}>
-                <Dot stepIndex={index} activeStepIndex={activeStepIndex} />
-
-                <Label
-                  stepIndex={index}
-                  name={step.name}
-                  numberOfSteps={steps.length}
-                />
-              </a>
-            </Link>
-
-            <ProgressBar
-              stepIndex={index}
-              activeStepIndex={activeStepIndex}
-              numberOfSteps={steps.length}
-            />
-          </div>
+          <Step
+            key={`step-${step.index}`}
+            step={step}
+            activeStepIndex={activeStepIndex}
+            maxPossibleStep={maxPossibleStep}
+            numberOfSteps={steps.length}
+          />
         );
       })}
     </div>
@@ -34,6 +27,44 @@ const CheckoutProgressBar = ({ steps, activeStepIndex }) => {
 };
 
 export default CheckoutProgressBar;
+
+const Step = ({ step, activeStepIndex, maxPossibleStep, numberOfSteps }) => {
+  const isDisabled = step.index > maxPossibleStep;
+
+  return (
+    <div className={styles.step}>
+      {isDisabled ? (
+        <span className={styles.link}>
+          <Dot stepIndex={step.index} activeStepIndex={activeStepIndex} />
+
+          <Label
+            stepIndex={step.index}
+            name={step.name}
+            numberOfSteps={numberOfSteps}
+          />
+        </span>
+      ) : (
+        <Link href={step.link}>
+          <a className={styles.link}>
+            <Dot stepIndex={step.index} activeStepIndex={activeStepIndex} />
+
+            <Label
+              stepIndex={step.index}
+              name={step.name}
+              numberOfSteps={numberOfSteps}
+            />
+          </a>
+        </Link>
+      )}
+
+      <ProgressBar
+        stepIndex={step.index}
+        activeStepIndex={activeStepIndex}
+        numberOfSteps={numberOfSteps}
+      />
+    </div>
+  );
+};
 
 const Dot = ({ stepIndex, activeStepIndex }) => {
   if (stepIndex < activeStepIndex) {
@@ -48,11 +79,11 @@ const Dot = ({ stepIndex, activeStepIndex }) => {
 };
 
 const Label = ({ stepIndex, name, numberOfSteps }) => {
-  if (stepIndex === 0) {
+  if (stepIndex === 1) {
     return <span className={clsx(styles.label, styles.first)}>{name}</span>;
   }
 
-  if (stepIndex === numberOfSteps - 1) {
+  if (stepIndex === numberOfSteps) {
     return <span className={clsx(styles.label, styles.last)}>{name}</span>;
   }
 
@@ -60,7 +91,7 @@ const Label = ({ stepIndex, name, numberOfSteps }) => {
 };
 
 const ProgressBar = ({ stepIndex, activeStepIndex, numberOfSteps }) => {
-  if (stepIndex === numberOfSteps - 1) return null;
+  if (stepIndex === numberOfSteps) return null;
 
   return (
     <div

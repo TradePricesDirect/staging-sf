@@ -1,45 +1,46 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useCart, useCheckout } from "@saleor/sdk";
+import { useCart } from "@saleor/sdk";
+import paths from "core/paths";
+import useCheckoutStepState from "hooks/useCheckoutStepState";
 import {
-  CHECKOUT_STEPS,
   checkIfShippingRequiredForProducts,
+  CheckoutStepEnum,
+  CHECKOUT_STEPS,
 } from "views/Checkout/utils";
-import useCheckoutStepState from "./useCheckoutStepState";
 
-const useRedirectToCorrectCheckoutStep = (cartLoaded) => {
+const useRedirectToCorrectCheckoutStep = () => {
+  const { items } = useCart();
+
   const { pathname, replace } = useRouter();
-  const { totalPrice, items } = useCart();
-  const { checkout, payment } = useCheckout();
-  const { recommendedStep, maxPossibleStep } = useCheckoutStepState(
-    items,
-    checkout,
-    payment,
-    totalPrice
-  );
 
+  const { recommendedStep, maxPossibleStep } = useCheckoutStepState();
+
+  // Make sure we're on the right step for checkout session
   useEffect(() => {
-    // Current step
-    const stepFromPath = CHECKOUT_STEPS.find(
-      ({ link }) => link === pathname
-    )?.step;
+    // Cart is empty
+    if (!items?.length) {
+      replace(paths.basket);
+    }
+    // Calculate checkout step
+    else if (pathname !== paths.checkoutPaymentConfirm) {
+      const step = CHECKOUT_STEPS.find(({ link }) => link === pathname)?.index;
 
-    const isShippingRequired = checkIfShippingRequiredForProducts(items);
+      const isShippingRequired = checkIfShippingRequiredForProducts(items);
 
-    // Are we on the wrong step for checkout session
-    const isIncorrectStep =
-      !stepFromPath ||
-      stepFromPath > maxPossibleStep ||
-      (pathname === CHECKOUT_STEPS[1].link && !isShippingRequired);
+      const isIncorrectStep =
+        !step ||
+        step > maxPossibleStep ||
+        (step === CheckoutStepEnum.Shipping && !isShippingRequired);
 
-    // Get the recommended step, or first
-    const getStepLink = () =>
-      CHECKOUT_STEPS.find((stepObj) => stepObj.step === recommendedStep)
-        ?.link || CHECKOUT_STEPS[0].link;
-
-    // If incorrect, replace
-    if (cartLoaded && isIncorrectStep) replace(getStepLink());
-  }, [pathname, cartLoaded]);
+      if (isIncorrectStep) {
+        const correctStep = CHECKOUT_STEPS.find(
+          ({ index }) => index === recommendedStep
+        );
+        replace(correctStep.link);
+      }
+    }
+  }, [pathname]);
 };
 
 export default useRedirectToCorrectCheckoutStep;

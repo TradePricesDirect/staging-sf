@@ -21,6 +21,7 @@
 }
 
 .link {
+  position: relative;
   display: block;
   text-align: center;
 }
@@ -40,6 +41,7 @@
   position: absolute;
   display: block;
   top: 100%;
+  left: 50%;
   margin-top: 0.5rem;
   white-space: pre;
   transform: translateX(-50%);
@@ -48,10 +50,12 @@
 
   &.first {
     transform: none;
+    left: 0;
   }
 
   &.last {
     transform: none;
+    left: auto;
     right: 0;
   }
 }

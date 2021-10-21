@@ -1,88 +1,67 @@
+import { useState } from "react";
 import { useCheckout } from "@saleor/sdk";
+import { PROVIDERS } from "core/config";
+import DummyPaymentGateway from "components/organisms/DummyPaymentGateway";
+import StripePaymentGateway from "components/organisms/StripePaymentGateway";
+import PaymentMethod from "./PaymentMethod";
 
-export const CheckoutPayment = () => {
-  const { availablePaymentGateways } = useCheckout();
+import styles from "./CheckoutPayment.module.scss";
 
-  console.log(availablePaymentGateways);
+export const CheckoutPayment = ({ onSubmitSuccess, paymentGatewayFormRef }) => {
+  const { availablePaymentGateways, payment } = useCheckout();
+
+  const [state, setState] = useState({
+    loading: false,
+    errors: [],
+    paymentGateway: payment?.gateway,
+  });
+
+  const paymentGateways = availablePaymentGateways || [];
+
+  const handleChange = (id) => setState({ ...state, paymentGateway: id });
 
   return (
-    <div>
-      <h2>Payment Options</h2>
-    </div>
+    <>
+      <h2 className={styles.title}>Payment Method</h2>
+
+      {paymentGateways.map(({ id, name, config }) => {
+        const selected = state.paymentGateway === id;
+
+        switch (id) {
+          case PROVIDERS.DUMMY.id:
+            return (
+              <PaymentMethod
+                key={id}
+                name="Finance"
+                onChange={() => handleChange(id)}
+                selected={selected}
+                gateway={
+                  <DummyPaymentGateway
+                    id={id}
+                    onSubmitSuccess={onSubmitSuccess}
+                  />
+                }
+              />
+            );
+
+          case PROVIDERS.STRIPE.id:
+            return (
+              <PaymentMethod
+                key={id}
+                name={name}
+                onChange={() => handleChange(id)}
+                selected={selected}
+                gateway={
+                  <StripePaymentGateway
+                    id={id}
+                    config={config}
+                    formRef={paymentGatewayFormRef}
+                  />
+                }
+              />
+            );
+        }
+      })}
+    </>
   );
 };
-
-/*
-  const handleProcessPayment = async (
-    gateway: string,
-    token?: string,
-    cardData?: ICardData
-  ) => {
-    const paymentConfirmStepLink = CHECKOUT_STEPS.find(
-      (step) => step.step === CheckoutStep.PaymentConfirm
-    )?.link;
-    const { dataError } = await createPayment({
-      gateway,
-      token,
-      creditCard: cardData,
-      returnUrl: `${window.location.origin}${paymentConfirmStepLink}`,
-    });
-    const errors = dataError?.error;
-    setSubmitInProgress(false);
-    if (errors) {
-      setPaymentGatewayErrors(errors);
-    } else {
-      setPaymentGatewayErrors([]);
-      handleStepSubmitSuccess(CheckoutStep.Payment);
-    }
-  };
-
-  const handleSubmitPayment = async (paymentData?: object) => {
-    const response = await completeCheckout({ paymentData });
-    return {
-      confirmationData: response.data?.confirmationData,
-      confirmationNeeded: response.data?.confirmationNeeded,
-      order: response.data?.order,
-      errors: response.dataError?.error,
-    } as IPaymentSubmitResult;
-  };
-
-  const handleSubmitPaymentSuccess = (
-    order?: CompleteCheckout_checkoutComplete_order | null
-  ) => {
-    setSubmitInProgress(false);
-    setPaymentGatewayErrors([]);
-    handleStepSubmitSuccess(CheckoutStep.Review, {
-      id: order?.id,
-      orderNumber: order?.number,
-      token: order?.token,
-    });
-  };
-
-  const handlePaymentGatewayError = (errors: IFormError[]) => {
-    setSubmitInProgress(false);
-    setPaymentGatewayErrors(errors);
-    const paymentStepLink = steps.find(
-      (step) => step.step === CheckoutStep.Payment
-    )?.link;
-    if (paymentStepLink) {
-      push(paymentStepLink);
-    }
-  };
-
-  const paymentGateways = availablePaymentGateways && (
-    <PaymentGatewaysList
-      paymentGateways={availablePaymentGateways}
-      processPayment={handleProcessPayment}
-      submitPayment={handleSubmitPayment}
-      submitPaymentSuccess={handleSubmitPaymentSuccess}
-      formId={CHECKOUT_GETEWAY_FORM_ID}
-      formRef={checkoutGatewayFormRef}
-      selectedPaymentGateway={selectedPaymentGateway}
-      selectedPaymentGatewayToken={selectedPaymentGatewayToken}
-      selectPaymentGateway={setSelectedPaymentGateway}
-      onError={handlePaymentGatewayError}
-      errors={paymentGatewayErrors}
-    />
-  );
-*/

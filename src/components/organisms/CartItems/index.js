@@ -4,7 +4,7 @@ import CartItem from "components/molecules/CartItem";
 
 import styles from "./CartItems.module.scss";
 
-const CartItems = () => {
+const CartItems = ({ isCheckout }) => {
   const { loaded, items, removeItem, updateItem } = useCart();
 
   if (!loaded) return <Loader />;
@@ -19,14 +19,15 @@ const CartItems = () => {
 
   return (
     <ul className={styles.list}>
-      {items.map(({ id, variant, quantity, totalPrice }) => (
-        <li key={id}>
+      {items.map(({ variant, quantity, totalPrice }, index) => (
+        <li key={`cart-item-${index}-${variant.id}`}>
           <CartItem
             variant={variant}
             quantity={quantity}
             totalPrice={totalPrice}
             onRemove={() => removeItem(variant.id)}
             onUpdate={(quantity) => updateItem(variant.id, quantity)}
+            isCheckout={isCheckout}
           />
         </li>
       ))}

@@ -9,7 +9,14 @@ import Thumbnail from "components/molecules/Thumbnail";
 
 import styles from "./CartItem.module.scss";
 
-const CartItem = ({ variant, quantity, totalPrice, onRemove, onUpdate }) => {
+const CartItem = ({
+  variant,
+  quantity,
+  totalPrice,
+  onRemove,
+  onUpdate,
+  isCheckout,
+}) => {
   const [value, setValue] = useState(quantity);
 
   const debounced = useDebouncedCallback(onUpdate, 300);
@@ -25,9 +32,13 @@ const CartItem = ({ variant, quantity, totalPrice, onRemove, onUpdate }) => {
       </div>
 
       <div className={styles.content}>
-        <Link href={paths.product.replace("[slug]", variant.product.slug)}>
-          <a className={styles.name}>{variant.product.name}</a>
-        </Link>
+        {isCheckout ? (
+          <span className={styles.name}>{variant.product.name}</span>
+        ) : (
+          <Link href={paths.product.replace("[slug]", variant.product.slug)}>
+            <a className={styles.name}>{variant.product.name}</a>
+          </Link>
+        )}
 
         <ul className={styles.variants}>
           {variant.attributes.map(({ attribute, values }) => (
@@ -55,38 +66,48 @@ const CartItem = ({ variant, quantity, totalPrice, onRemove, onUpdate }) => {
             )}
           </div>
 
+          {!isCheckout && (
+            <button
+              onClick={onRemove}
+              type="button"
+              className="btn btn-sm text-danger"
+            >
+              <FontAwesomeIcon icon={faTrash} />
+              <span className="visually-hidden">Remove this item</span>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {isCheckout ? (
+        <div className={styles.quantitySelector}>
+          <div className={styles.quantity}>
+            {value.toString().padStart(2, "0")}
+          </div>
+        </div>
+      ) : (
+        <div className={styles.quantitySelector}>
           <button
-            onClick={onRemove}
             type="button"
-            className="btn btn-sm text-danger"
+            onClick={() => setValue((prevValue) => Math.max(prevValue - 1, 1))}
+            className={styles.minus}
           >
-            <FontAwesomeIcon icon={faTrash} />
-            <span className="visually-hidden">Remove this item</span>
+            <FontAwesomeIcon icon={faMinus} />
+          </button>
+
+          <div className={styles.quantity}>
+            {value.toString().padStart(2, "0")}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setValue((prevValue) => prevValue + 1)}
+            className={styles.plus}
+          >
+            <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
-      </div>
-
-      <div className={styles.quantitySelector}>
-        <button
-          type="button"
-          onClick={() => setValue((prevValue) => Math.max(prevValue - 1, 1))}
-          className={styles.minus}
-        >
-          <FontAwesomeIcon icon={faMinus} />
-        </button>
-
-        <div className={styles.quantity}>
-          {value.toString().padStart(2, "0")}
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setValue((prevValue) => prevValue + 1)}
-          className={styles.plus}
-        >
-          <FontAwesomeIcon icon={faPlus} />
-        </button>
-      </div>
+      )}
     </div>
   );
 };

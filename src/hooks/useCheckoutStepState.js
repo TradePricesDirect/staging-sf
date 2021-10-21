@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { checkIfShippingRequiredForProducts } from "views/Checkout/utils";
+import { useCart, useCheckout } from "@saleor/sdk";
+import {
+  CheckoutStepEnum,
+  checkIfShippingRequiredForProducts,
+} from "views/Checkout/utils";
 import { isPriceEqual } from "utils/money";
 
-export const CheckoutStep = {
-  ADDRESS: 1,
-  SHIPPING: 2,
-  PAYMENT: 3,
-  REVIEW: 4,
-  PAYMENT_CONFIRM: 4,
-};
+const useCheckoutStepState = () => {
+  const { items, totalPrice } = useCart();
+  const { checkout, payment } = useCheckout();
 
-const useCheckoutStepState = (items, checkout, payment, totalPrice) => {
   const isShippingRequiredForProducts =
     checkIfShippingRequiredForProducts(items);
 
@@ -22,7 +21,7 @@ const useCheckoutStepState = (items, checkout, payment, totalPrice) => {
   // Get the max possible step based upon checkout state
   const getMaxPossibleStep = () => {
     // we are creating checkout during address set up
-    if (!checkout?.id && items) return "ADDRESS";
+    if (!checkout?.id && items) return CheckoutStepEnum.Address;
 
     const isShippingAddressSet =
       !isShippingRequiredForProducts || !!checkout?.shippingAddress;
@@ -35,26 +34,34 @@ const useCheckoutStepState = (items, checkout, payment, totalPrice) => {
     const isPaymentMethodSet =
       !!payment?.id && isCheckoutPriceEqualPaymentPrice;
 
-    if (!isShippingAddressSet || !isBillingAddressSet) return "ADDRESS";
+    // Are shipping and billing addresses set
+    if (!isShippingAddressSet || !isBillingAddressSet) {
+      return CheckoutStepEnum.Address;
+    }
 
-    if (!isShippingMethodSet) return "SHIPPING";
+    // Is shipping method set
+    if (!isShippingMethodSet) {
+      return CheckoutStepEnum.Shipping;
+    }
 
-    if (!isPaymentMethodSet) return "PAYMENT";
+    if (!isPaymentMethodSet) {
+      return CheckoutStepEnum.Payment;
+    }
 
-    return "REVIEW";
+    return CheckoutStepEnum.Review;
   };
 
   // Get the recommended step based upon checkout state
   const getRecommendedStep = (newMaxPossibleStep) => {
     const isPaymentRecreateRequired =
-      CheckoutStep[newMaxPossibleStep] > CheckoutStep["SHIPPING"] &&
+      newMaxPossibleStep > CheckoutStepEnum.Shipping &&
       !isCheckoutPriceEqualPaymentPrice;
 
     if (isPaymentRecreateRequired && isShippingRequiredForProducts) {
-      return "SHIPPING";
+      return CheckoutStepEnum.Shipping;
     }
 
-    if (isPaymentRecreateRequired) return "PAYMENT";
+    if (isPaymentRecreateRequired) return CheckoutStepEnum.Payment;
 
     return newMaxPossibleStep;
   };

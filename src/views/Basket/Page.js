@@ -11,9 +11,9 @@ const Page = () => {
   return (
     <div className="row">
       <div className="col-12 col-lg-8">
-        {items?.map(({ id, variant, quantity, totalPrice }) => (
+        {items?.map(({ variant, quantity, totalPrice }, index) => (
           <CartRow
-            key={id}
+            key={`cart-row-${index}-${variant.id}`}
             variant={variant}
             quantity={quantity}
             totalPrice={totalPrice}

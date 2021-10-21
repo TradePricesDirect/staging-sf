@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuth, useCheckout } from "@saleor/sdk";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/pro-light-svg-icons";
 import useDisclosure from "hooks/useDisclosure";
+import SubmitButton from "components/atoms/SubmitButton";
 import AddressFormModal from "components/organisms/AddressFormModal";
 import AddressOption from "./AddressOption";
 
 import styles from "./CheckoutAddress.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSpinner } from "@fortawesome/pro-light-svg-icons";
 
 export const CheckoutAddress = ({ onSubmitSuccess }) => {
   const { user } = useAuth();
+
   const {
     selectedShippingAddressId,
     selectedBillingAddressId,
@@ -57,6 +59,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
     if (!state.loading) {
       setState((prevState) => ({
         ...prevState,
+        billing: null,
         billingAsShipping: !prevState.billingAsShipping,
       }));
     }
@@ -89,7 +92,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
         if (dataError?.error) throw dataError.error[0];
       }
 
-      onSubmitSuccess("ADDRESS");
+      onSubmitSuccess();
     } catch (error) {
       console.error(error);
       setState({ ...state, loading: false, error: error });
@@ -98,7 +101,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
 
   const canSubmit =
     (state.shipping && state.billingAsShipping) ||
-    (state.shipping && state.selectedBilling);
+    (state.shipping && state.billing);
 
   return (
     <>
@@ -154,17 +157,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
         <div className="row justify-content-between">
           <div className="col-auto">
             {canSubmit && (
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={state.loading}
-              >
-                {state.loading ? (
-                  <FontAwesomeIcon icon={faSpinner} spin />
-                ) : (
-                  <span>Continue</span>
-                )}
-              </button>
+              <SubmitButton loading={state.loading}>Continue</SubmitButton>
             )}
           </div>
           <div className="col-auto">

@@ -1,0 +1,8 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.title {
+  margin-bottom: 1rem;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+}

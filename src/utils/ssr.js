@@ -1,4 +1,5 @@
 import { SaleorManager, VariantAttributeScope } from "@saleor/sdk";
+import { orderDetailsByTokenQuery } from "@saleor/sdk/lib/queries/orders";
 import { getShop } from "@saleor/sdk/lib/queries/shop";
 import { apiUrl, channelSlug } from "core/constants";
 import {
@@ -138,4 +139,17 @@ export const getProductDetails = async (slug) => {
     .then(({ data }) => data);
 
   return product;
+};
+
+export const getOrderDetails = async (token) => {
+  const { apolloClient } = await getSaleorApi();
+
+  const order = await apolloClient
+    .query({
+      query: orderDetailsByTokenQuery,
+      variables: { token },
+    })
+    .then(({ data }) => data?.orderByToken);
+
+  return order;
 };

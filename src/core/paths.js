@@ -30,10 +30,9 @@ const paths = {
   account: {
     dashboard: "/account",
     orders: "/account/orders",
+    order: "/account/orders/[token]",
     details: "/account/details",
     addresses: "/account/addresses",
-    addressAdd: "/account/addresses/add",
-    address: "/account/addresses/edit/[id]",
     paymentMethods: "/account/payment-methods",
   },
   wishlists: "/lists",

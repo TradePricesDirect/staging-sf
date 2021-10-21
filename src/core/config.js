@@ -13,3 +13,14 @@ export const META_DEFAULTS = {
   url: !ssrMode ? window.location.origin : "",
   "og:image": "/branding/og-image.jpg",
 };
+
+export const PROVIDERS = {
+  DUMMY: {
+    id: "mirumee.payments.dummy",
+    label: "Dummy",
+  },
+  STRIPE: {
+    id: "saleor.payments.stripe",
+    label: "Stripe",
+  },
+};

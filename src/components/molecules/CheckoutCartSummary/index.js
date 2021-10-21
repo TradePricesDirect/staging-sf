@@ -69,7 +69,7 @@ const CheckoutCartSummary = () => {
             exit={{ height: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <CartItems />
+            <CartItems isCheckout />
           </motion.div>
         )}
       </AnimatePresence>

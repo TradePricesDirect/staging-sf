@@ -1,39 +1,42 @@
 import paths from "core/paths";
 
+export const CheckoutStepEnum = {
+  Address: 1,
+  Shipping: 2,
+  Payment: 3,
+  Review: 4,
+  PaymentConfirm: 5,
+};
+
 export const CHECKOUT_STEPS = [
   {
-    index: 0,
+    index: CheckoutStepEnum.Address,
     name: "Address",
     link: paths.checkoutAddress,
-    step: "ADDRESS",
     onlyIfShippingRequired: false,
   },
   {
-    index: 1,
+    index: CheckoutStepEnum.Shipping,
     name: "Delivery",
     link: paths.checkoutShipping,
-    step: "SHIPPING",
     onlyIfShippingRequired: true,
   },
   {
-    index: 2,
+    index: CheckoutStepEnum.Payment,
     name: "Payment",
     link: paths.checkoutPayment,
-    step: "PAYMENT",
     onlyIfShippingRequired: false,
   },
   {
-    index: 3,
+    index: CheckoutStepEnum.Review,
     name: "Review",
     link: paths.checkoutReview,
-    step: "REVIEW",
     onlyIfShippingRequired: false,
   },
   {
-    index: 4,
+    index: CheckoutStepEnum.PaymentConfirm,
     name: "Payment Confirm",
     link: paths.checkoutPaymentConfirm,
-    step: "PAYMENT_CONFIRM",
     onlyIfShippingRequired: false,
     withoutOwnView: true,
   },
@@ -58,13 +61,8 @@ export const getAvailableSteps = (items) => {
 };
 
 // Get currently active checkout step
-export const getCurrentStep = (pathname, steps) => {
-  let activeStepIndex = steps.findIndex(({ link }) => link === pathname);
-  activeStepIndex = activeStepIndex !== -1 ? activeStepIndex : 0;
-
-  const activeStep = steps[activeStepIndex];
-
-  return { activeStepIndex, activeStep };
+export const getStepByPathname = (pathname, steps) => {
+  return steps.find(({ link }) => link === pathname);
 };
 
 export const stepSubmitSuccessHandler = (push, steps, activeStepIndex) => {
