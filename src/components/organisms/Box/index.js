@@ -9,7 +9,7 @@ const Box = ({ className, button, href, center, children, ...props }) => {
   if (button) {
     return (
       <button className={classes} {...props}>
-        {children}
+        <div>{children}</div>
       </button>
     );
   }
@@ -17,12 +17,18 @@ const Box = ({ className, button, href, center, children, ...props }) => {
   if (href) {
     return (
       <Link href={href}>
-        <a className={classes}>{children}</a>
+        <a className={classes}>
+          <div>{children}</div>
+        </a>
       </Link>
     );
   }
 
-  return <div className={classes}>{children}</div>;
+  return (
+    <div className={classes}>
+      <div>{children}</div>
+    </div>
+  );
 };
 
 export default Box;

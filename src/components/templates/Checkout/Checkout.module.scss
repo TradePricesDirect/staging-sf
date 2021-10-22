@@ -1,0 +1,45 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  background-color: $gray-100;
+}
+
+.nav {
+  margin-bottom: 2rem;
+}
+
+.navList {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
+
+  li {
+    flex: 0 1 100%;
+    padding: 0.5rem;
+  }
+
+  .navItem {
+    padding: 0.75rem 0.5rem;
+  }
+
+  @media (min-width: 480px) {
+    li {
+      flex: 0 1 50%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    li {
+      flex: 0 1 33.33%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    li {
+      flex: 0 1 16.66%;
+    }
+  }
+}

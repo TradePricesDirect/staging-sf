@@ -10,8 +10,3 @@ export const incrementalStaticRegenerationRevalidate = parseInt(
 );
 
 export const staticPathsFetchBatch = 100;
-
-export const paymentGatewayNames = {
-  dummy: "mirumee.payments.dummy",
-  stripe: "saleor.payments.stripe",
-};

@@ -1,13 +1,6 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.wrap {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-}
-
 .header {
   margin-bottom: 0.5rem;
 }
@@ -50,7 +43,7 @@
 }
 
 @media (min-width: 768px) {
-  .wrap {
+  .box {
     position: sticky;
     top: 1rem;
   }

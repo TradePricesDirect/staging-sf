@@ -8,10 +8,11 @@ import {
   faTrash,
 } from "@fortawesome/pro-regular-svg-icons";
 import clsx from "clsx";
+import useDisclosure from "hooks/useDisclosure";
+import { formatAddress } from "utils/address";
+import Box from "components/organisms/Box";
 
 import styles from "./AddressTile.module.scss";
-import useDisclosure from "hooks/useDisclosure";
-import Box from "components/organisms/Box";
 
 const AddressTile = ({ address, onEdit, onRemove }) => {
   const { isOpen, onToggle, onClose } = useDisclosure();
@@ -110,16 +111,3 @@ const AddressTile = ({ address, onEdit, onRemove }) => {
 };
 
 export default AddressTile;
-
-const formatAddress = (address) => {
-  const result = [
-    address.companyName,
-    address.streetAddress1,
-    address.streetAddress2,
-    address.city,
-    address.postalCode,
-    address.country.country,
-  ].filter((item) => item);
-
-  return result.join("\n");
-};

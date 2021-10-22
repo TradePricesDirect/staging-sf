@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import { useCheckout } from "@saleor/sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,111 +6,106 @@ import {
   faCreditCard,
   faTruck,
 } from "@fortawesome/pro-regular-svg-icons";
-import { paymentGatewayNames } from "core/constants";
-import Alert from "components/atoms/Alert";
+import { FormattedAddress } from "utils/address";
+import {
+  getPaymentGatewayInfo,
+  getStripeConfig,
+  PaymentGatewayEnum,
+} from "views/Checkout/utils";
 import Money from "components/atoms/Money";
-import SubmitButton from "components/atoms/SubmitButton";
-import AddressTileInfo from "components/molecules/AddressTileInfo";
+import Box from "components/organisms/Box";
+import FinancePaymentGateway from "components/organisms/FinancePaymentGateway";
+import StripePaymentGateway from "components/organisms/StripePaymentGateway";
 
 import styles from "./CheckoutReview.module.scss";
-import { useOrderAddNoteMutation } from "graphql/mutations";
 
-export const CheckoutReview = ({ onSubmitSuccess }) => {
-  const { checkout, payment, completeCheckout } = useCheckout();
-  const [orderAddNote] = useOrderAddNoteMutation();
+export const CheckoutReview = ({ onSubmitSuccess, onSubmitPaymentSuccess }) => {
+  const { checkout, payment, availablePaymentGateways } = useCheckout();
 
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState(null);
+  const paymentGateway = getPaymentGatewayInfo(payment?.gateway);
 
-  const paymentMethod = getPaymentMethodDescription(payment);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (loading) return;
-
-    setLoading(true);
-
-    // Stripe
-    if (payment.gateway === paymentGatewayNames.stripe) {
-      console.log("COMPLETE STRIPE");
+  const PaymentGateway = useMemo(() => {
+    switch (payment?.gateway) {
+      case PaymentGatewayEnum.Stripe:
+        return (
+          <StripePaymentGateway
+            id={PaymentGatewayEnum.Stripe}
+            config={getStripeConfig(availablePaymentGateways)}
+            onSubmitPaymentSuccess={onSubmitPaymentSuccess}
+          />
+        );
+      case PaymentGatewayEnum.Finance:
+        return <FinancePaymentGateway onSubmitSuccess={onSubmitSuccess} />;
+      default:
+        return null;
     }
-    // Finance (Dummy)
-    else if (payment.gateway === paymentGatewayNames.dummy) {
-      const { data, dataError } = await completeCheckout();
-
-      if (dataError?.error) {
-        setLoading(false);
-        setErrors(dataError.error);
-      } else {
-        await orderAddNote({
-          variables: {
-            id: data.order.id,
-            message: "Pay By Finance Requested",
-          },
-        });
-
-        onSubmitSuccess(data.order.token);
-      }
-    }
-  };
+  }, [payment]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <h2 className={styles.title}>Review Order</h2>
 
-      {errors?.map((error) => (
-        <Alert type="danger">{error.message}</Alert>
-      ))}
-
-      <div className="row gy-4">
-        <div className="col-12 col-sm-6">
+      <div className={styles.grid}>
+        <Box>
           <h3 className={styles.subtitle}>
-            <FontAwesomeIcon icon={faAddressBook} fixedWidth className="me-1" />
+            <FontAwesomeIcon
+              icon={faAddressBook}
+              fixedWidth
+              size="sm"
+              className="me-2"
+            />
             Delivery Address
           </h3>
-          <AddressTileInfo address={checkout.shippingAddress} />
-        </div>
-        <div className="col-12 col-sm-6">
+
+          <FormattedAddress address={checkout.shippingAddress} />
+        </Box>
+
+        <Box>
           <h3 className={styles.subtitle}>
-            <FontAwesomeIcon icon={faAddressBook} fixedWidth className="me-1" />
+            <FontAwesomeIcon
+              icon={faAddressBook}
+              fixedWidth
+              size="sm"
+              className="me-2"
+            />
             Billing Address
           </h3>
-          <AddressTileInfo address={checkout.billingAddress} />
-        </div>
 
-        <div className="col-12 col-sm-6">
+          <FormattedAddress address={checkout.billingAddress} />
+        </Box>
+
+        <Box>
           <h3 className={styles.subtitle}>
-            <FontAwesomeIcon icon={faTruck} fixedWidth className="me-1" />
-            Shipping Method
+            <FontAwesomeIcon
+              icon={faTruck}
+              fixedWidth
+              size="sm"
+              className="me-2"
+            />
+            Delivery Method
           </h3>
-
-          <p>
+          <p className="m-0">
             {checkout.shippingMethod.name}:{" "}
             <Money money={checkout.shippingMethod.price} />
           </p>
-        </div>
-        <div className="col-12 col-sm-6">
+        </Box>
+
+        <Box>
           <h3 className={styles.subtitle}>
-            <FontAwesomeIcon icon={faCreditCard} fixedWidth className="me-1" />
+            <FontAwesomeIcon
+              icon={faCreditCard}
+              fixedWidth
+              size="sm"
+              className="me-2"
+            />
             Payment Method
           </h3>
 
-          <p>{paymentMethod}</p>
-        </div>
+          <p className="m-0">{paymentGateway?.label}</p>
+        </Box>
       </div>
 
-      <SubmitButton loading={loading}>Place Order</SubmitButton>
-    </form>
+      {PaymentGateway}
+    </>
   );
-};
-
-const getPaymentMethodDescription = (payment) => {
-  if (payment?.gateway === paymentGatewayNames.dummy) {
-    return "Pay by Finance";
-  }
-  if (payment?.creditCard) {
-    return `Ending in ${payment?.creditCard.lastDigits}`;
-  }
-  return "";
 };

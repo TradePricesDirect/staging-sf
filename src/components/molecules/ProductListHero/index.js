@@ -1,8 +1,8 @@
 import Image from "next/image";
 import FeefoBadge from "components/atoms/FeefoBadge";
+import RichTextEditorContent from "components/atoms/RichTextEditorContent";
 
 import styles from "./ProductListHero.module.scss";
-import RichTextEditorContent from "components/atoms/RichTextEditorContent";
 
 const ProductListHero = ({ title, description, backgroundImage }) => {
   return (

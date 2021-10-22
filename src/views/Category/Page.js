@@ -24,6 +24,7 @@ const Page = ({
   return (
     <>
       <ProductListHero
+        key={details.id}
         title={details.name}
         description={details.description}
         backgroundImage={details.backgroundImage}

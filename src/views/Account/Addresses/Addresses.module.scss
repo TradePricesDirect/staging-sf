@@ -20,10 +20,6 @@
   margin-bottom: 2rem;
 }
 
-.addAddressButton {
-  min-height: 10rem;
-}
-
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

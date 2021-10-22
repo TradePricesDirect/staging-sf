@@ -6,50 +6,58 @@ import {
 } from "@stripe/react-stripe-js";
 import paths from "core/paths";
 import SubmitButton from "components/atoms/SubmitButton";
+import CheckoutErrors from "../CheckoutErrors";
 
-const StripeCreditCardForm = ({ clientSecret }) => {
+const StripeCreditCardForm = ({ onSubmitPaymentSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [state, setState] = useState({
-    loading: false,
-    error: null,
-  });
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements) return;
+    if (!stripe || !elements || loading) return;
 
-    setState({ ...state, loading: true });
+    setLoading(true);
 
-    const res = await stripe.confirmCardPayment(clientSecret);
+    const { paymentIntent, error } = await stripe.confirmPayment({
+      elements,
+      redirect: "if_required",
+      confirmParams: {
+        return_url: `${window.location.origin}${paths.checkoutPaymentConfirm}`,
+      },
+    });
 
-    console.log(res);
+    if (error) {
+      setErrors([error]);
+      setLoading(false);
+    } else {
+      if (paymentIntent.status === "succeeded") {
+        onSubmitPaymentSuccess();
+      } else {
+        const error = {
+          code: "STRIPE_ERROR",
+          message: "Your payment was not successful.",
+        };
 
-    // const { error } = await stripe.confirmPayment({
-    //   elements,
-    //   // redirect: "if_required",
-    //   confirmParams: {
-    //     return_url: `${window.location.origin}${paths.checkoutPaymentConfirm}`,
-    //   },
-    // });
-
-    // if (error) {
-    //   setState({ loading: false, error: error.message });
-    // } else {
-    //   console.log("NO REDIRECT");
-    // }
+        setErrors([error]);
+        setLoading(false);
+      }
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement className="mb-4" />
+    <>
+      <form onSubmit={handleSubmit} className="mb-4">
+        <PaymentElement className="mb-4" />
 
-      <SubmitButton loading={state.loading}>Submit</SubmitButton>
+        <SubmitButton loading={loading}>Place Order</SubmitButton>
+      </form>
 
-      {state.error && <p className="mt-4 text-danger">{state.error}</p>}
-    </form>
+      <CheckoutErrors errors={errors} />
+    </>
   );
 };
 

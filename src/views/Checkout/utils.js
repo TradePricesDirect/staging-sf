@@ -1,3 +1,4 @@
+import { PROVIDERS } from "core/config";
 import paths from "core/paths";
 
 export const CheckoutStepEnum = {
@@ -6,6 +7,11 @@ export const CheckoutStepEnum = {
   Payment: 3,
   Review: 4,
   PaymentConfirm: 5,
+};
+
+export const PaymentGatewayEnum = {
+  Stripe: "saleor.payments.stripe",
+  Finance: "mirumee.payments.dummy",
 };
 
 export const CHECKOUT_STEPS = [
@@ -73,4 +79,16 @@ export const stepSubmitSuccessHandler = (push, steps, activeStepIndex) => {
       push(steps[activeStepIndex + 1].link);
     }
   };
+};
+
+export const getPaymentGatewayInfo = (paymentGatewayId) => {
+  return PROVIDERS.find(({ id }) => id === paymentGatewayId);
+};
+
+export const getStripeConfig = (availablePaymentGateways) => {
+  const stripe = availablePaymentGateways.find(
+    ({ id }) => id === PaymentGatewayEnum.Stripe
+  );
+
+  return stripe?.config;
 };

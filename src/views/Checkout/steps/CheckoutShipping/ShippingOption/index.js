@@ -1,30 +1,36 @@
 import clsx from "clsx";
 import Money from "components/atoms/Money";
+import Box from "components/organisms/Box";
+
 import styles from "./ShippingOption.module.scss";
 
-const ShippingOption = ({ shippingMethod, onChange, selected }) => {
+const ShippingOption = ({ shippingMethod, onClick, selected }) => {
+  const description = getShippingMethodDescription(shippingMethod);
+
   return (
-    <label className={clsx(styles.wrap, selected && styles.selected)}>
-      <input
-        type="radio"
-        name="shippingMethod"
-        checked={selected}
-        onChange={onChange}
-        className={styles.input}
-      />
+    <Box
+      button
+      type="button"
+      onClick={onClick}
+      className={clsx(styles.box, selected && styles.selected)}
+    >
+      <h4 className={styles.title}>{shippingMethod.name}</h4>
 
-      <div className="row g-4">
-        <div className="col-auto">
-          <div className={clsx(styles.dot, selected && styles.selected)} />
-        </div>
-        <div className="col">
-          <h4 className={styles.title}>{shippingMethod.name}</h4>
+      {description && <p className={styles.text}>{description}</p>}
 
-          <Money money={shippingMethod.price} />
-        </div>
+      <div className={styles.price}>
+        <Money money={shippingMethod.price} />
       </div>
-    </label>
+    </Box>
   );
 };
 
 export default ShippingOption;
+
+const getShippingMethodDescription = (shippingMethod) => {
+  if (shippingMethod.price.amount === 0) {
+    return "This order qualifies for free delivery. We aim to ship your products within 3-5 business days.";
+  }
+
+  return null;
+};

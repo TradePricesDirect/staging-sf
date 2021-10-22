@@ -8,9 +8,21 @@
 }
 
 .subtitle {
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  display: block;
   border-bottom: 1px solid $border-color;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: $font-size-lg;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 576px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

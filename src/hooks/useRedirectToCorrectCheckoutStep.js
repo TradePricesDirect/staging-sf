@@ -21,24 +21,32 @@ const useRedirectToCorrectCheckoutStep = () => {
     // Cart is empty
     if (!items?.length) {
       replace(paths.basket);
+      return;
     }
+
+    // If on payment confirm, don't redirect in this hook
+    if (pathname === paths.checkoutPaymentConfirm) return;
+
     // Calculate checkout step
-    else if (pathname !== paths.checkoutPaymentConfirm) {
-      const step = CHECKOUT_STEPS.find(({ link }) => link === pathname)?.index;
+    const step = CHECKOUT_STEPS.find(({ link }) => link === pathname)?.index;
 
-      const isShippingRequired = checkIfShippingRequiredForProducts(items);
+    if (!step) {
+      replace(paths.checkoutAddress);
+      return;
+    }
 
-      const isIncorrectStep =
-        !step ||
-        step > maxPossibleStep ||
-        (step === CheckoutStepEnum.Shipping && !isShippingRequired);
+    const isShippingRequired = checkIfShippingRequiredForProducts(items);
 
-      if (isIncorrectStep) {
-        const correctStep = CHECKOUT_STEPS.find(
-          ({ index }) => index === recommendedStep
-        );
-        replace(correctStep.link);
-      }
+    const isIncorrectStep =
+      !step ||
+      step > maxPossibleStep ||
+      (step === CheckoutStepEnum.Shipping && !isShippingRequired);
+
+    if (isIncorrectStep) {
+      const correctStep = CHECKOUT_STEPS.find(
+        ({ index }) => index === recommendedStep
+      );
+      replace(correctStep.link);
     }
   }, [pathname]);
 };

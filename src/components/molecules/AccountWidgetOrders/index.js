@@ -9,7 +9,10 @@ import Loader from "components/atoms/Loader";
 import styles from "./AccountWidgetOrders.module.scss";
 
 const AccountWidgetOrders = () => {
-  const { data, loading } = useOrdersByUser({ perPage: 3 });
+  const { data, loading } = useOrdersByUser(
+    { perPage: 3 },
+    { fetchPolicy: "network-only" }
+  );
 
   const orders = data?.edges.map((e) => e.node) || [];
 

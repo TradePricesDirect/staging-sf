@@ -14,13 +14,27 @@ export const META_DEFAULTS = {
   "og:image": "/branding/og-image.jpg",
 };
 
-export const PROVIDERS = {
-  DUMMY: {
+export const PROVIDERS = [
+  {
     id: "mirumee.payments.dummy",
-    label: "Dummy",
+    label: "Pay By Finance",
+    description:
+      "We offer a range of competitive finance options with 0% deposit available.",
+    icons: [
+      { url: "/icons/payment-klarna.svg", alt: "Klarna" },
+      { url: "/icons/payment-propensio.svg", alt: "Propensio" },
+    ],
   },
-  STRIPE: {
+  {
     id: "saleor.payments.stripe",
-    label: "Stripe",
+    label: "Credit/Debit Card",
+    description:
+      "We accept all major credit and debit cards. Payments are processed securely.",
+    icons: [
+      { url: "/icons/payment-stripe.svg", alt: "Stripe" },
+      { url: "/icons/payment-visa.svg", alt: "Visa" },
+      { url: "/icons/payment-mastercard.svg", alt: "Mastercard" },
+      { url: "/icons/payment-amex.svg", alt: "Amex" },
+    ],
   },
-};
+];

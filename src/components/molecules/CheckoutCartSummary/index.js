@@ -9,6 +9,7 @@ import TaxedMoney from "components/molecules/TaxedMoney";
 import CartItems from "components/organisms/CartItems";
 
 import styles from "./CheckoutCartSummary.module.scss";
+import Box from "components/organisms/Box";
 
 const CheckoutCartSummary = () => {
   const { checkout } = useCheckout();
@@ -38,7 +39,7 @@ const CheckoutCartSummary = () => {
     !!discountTaxedPrice?.gross && discountTaxedPrice.gross.amount !== 0;
 
   return (
-    <section className={styles.wrap}>
+    <Box className={styles.box}>
       <header className={styles.header}>
         <div className="row">
           <div className="col">
@@ -114,7 +115,7 @@ const CheckoutCartSummary = () => {
           </tr>
         </tbody>
       </table>
-    </section>
+    </Box>
   );
 };
 

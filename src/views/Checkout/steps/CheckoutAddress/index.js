@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAuth, useCheckout } from "@saleor/sdk";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/pro-light-svg-icons";
 import useDisclosure from "hooks/useDisclosure";
-import Alert from "components/atoms/Alert";
 import SubmitButton from "components/atoms/SubmitButton";
+import AddAddressButton from "components/molecules/AddAddressButton";
 import AddressFormModal from "components/organisms/AddressFormModal";
+import CheckoutErrors from "components/organisms/CheckoutErrors";
 import AddressOption from "./AddressOption";
 
 import styles from "./CheckoutAddress.module.scss";
@@ -117,31 +116,24 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
 
   return (
     <>
-      {errors?.map((error) => (
-        <Alert key={error.code} type="danger">
-          {error.message}
-        </Alert>
-      ))}
+      <CheckoutErrors errors={errors} />
 
       <form onSubmit={handleSubmit}>
         <fieldset className="mb-4">
           <legend className={styles.title}>Delivery Address</legend>
 
-          {!user.addresses.length && (
-            <button type="button" onClick={onOpen} className="btn btn-primary">
-              <FontAwesomeIcon icon={faPlus} className="me-2" />
-              Add Address
-            </button>
-          )}
+          <div className={styles.grid}>
+            {user.addresses.map((address) => (
+              <AddressOption
+                key={`delivery-${address.id}`}
+                address={address}
+                onClick={() => handleShippingChange(address)}
+                selected={state.shipping?.id === address.id}
+              />
+            ))}
 
-          {user.addresses.map((address) => (
-            <AddressOption
-              key={`delivery-${address.id}`}
-              address={address}
-              onChange={() => handleShippingChange(address)}
-              selected={state.shipping?.id === address.id}
-            />
-          ))}
+            <AddAddressButton onClick={onOpen} />
+          </div>
         </fieldset>
 
         <fieldset className="mb-4">
@@ -161,34 +153,23 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
             </label>
           </div>
 
-          {!state.billingAsShipping &&
-            user.addresses.map((address) => (
-              <AddressOption
-                key={`billing-${address.id}`}
-                address={address}
-                onChange={() => handleBillingChange(address)}
-                selected={state.billing?.id === address.id}
-              />
-            ))}
+          {!state.billingAsShipping && (
+            <div className={styles.grid}>
+              {user.addresses.map((address) => (
+                <AddressOption
+                  key={`billing-${address.id}`}
+                  address={address}
+                  onClick={() => handleBillingChange(address)}
+                  selected={state.billing?.id === address.id}
+                />
+              ))}
+
+              <AddAddressButton onClick={onOpen} />
+            </div>
+          )}
         </fieldset>
 
-        <div className="row justify-content-between">
-          <div className="col-auto">
-            {canSubmit && (
-              <SubmitButton loading={loading}>Continue</SubmitButton>
-            )}
-          </div>
-          <div className="col-auto">
-            <button
-              type="button"
-              onClick={onOpen}
-              className="btn btn-link px-4"
-            >
-              <FontAwesomeIcon icon={faPlus} className="me-2" />
-              Add Address
-            </button>
-          </div>
-        </div>
+        {canSubmit && <SubmitButton loading={loading}>Continue</SubmitButton>}
       </form>
 
       <AddressFormModal isOpen={isOpen} onClose={onClose} />

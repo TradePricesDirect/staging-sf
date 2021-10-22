@@ -1,8 +1,8 @@
 import Link from "next/link";
 import clsx from "clsx";
+import useCheckoutStepState from "hooks/useCheckoutStepState";
 
 import styles from "./CheckoutProgressBar.module.scss";
-import useCheckoutStepState from "hooks/useCheckoutStepState";
 
 const CheckoutProgressBar = ({ steps, activeStep }) => {
   const { maxPossibleStep } = useCheckoutStepState();

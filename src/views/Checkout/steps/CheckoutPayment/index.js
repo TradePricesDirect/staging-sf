@@ -1,70 +1,73 @@
 import { useState } from "react";
 import { useCheckout } from "@saleor/sdk";
-import { PROVIDERS } from "core/config";
-import DummyPaymentGateway from "components/organisms/DummyPaymentGateway";
-import StripePaymentGateway from "components/organisms/StripePaymentGateway";
-import PaymentMethod from "./PaymentMethod";
+import { PaymentGatewayEnum } from "views/Checkout/utils";
+import SubmitButton from "components/atoms/SubmitButton";
+import CheckoutErrors from "components/organisms/CheckoutErrors";
+import PaymentOption from "./PaymentOption";
 
 import styles from "./CheckoutPayment.module.scss";
 
-/*
-TODO
+export const CheckoutPayment = ({ onSubmitSuccess }) => {
+  const { availablePaymentGateways, payment, createPayment } = useCheckout();
 
-This step will just have 2 big tiles to select either finance or stripe (credit card).
-If the customer selected Stripe, we can load stripe+clientSecret on this step, then the reivew step a the bottom can render the form instantly and have the Place Order capture payment.
-*/
-
-export const CheckoutPayment = ({ onSubmitSuccess, paymentGatewayFormRef }) => {
-  const { availablePaymentGateways, payment } = useCheckout();
-
-  const [paymentGateway, setPaymentGateway] = useState(payment?.gateway);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+  const [paymentGatewayId, setPaymentGatewayId] = useState(payment?.gateway);
 
   const paymentGateways = availablePaymentGateways || [];
 
-  const handleChange = (id) => setPaymentGateway(id);
+  const handleChange = (id) => setPaymentGatewayId(id);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (loading) return;
+
+    // Loading
+    setLoading(true);
+
+    const createPaymentInput = { gateway: paymentGatewayId };
+
+    // Finance order status
+    if (paymentGatewayId === PaymentGatewayEnum.Finance) {
+      createPaymentInput.token = "not-charged";
+    }
+
+    const { dataError } = await createPayment(createPaymentInput);
+
+    if (dataError?.error) {
+      setErrors(dataError.error);
+      setLoading(false);
+      return;
+    }
+
+    onSubmitSuccess();
+  };
+
+  const canSubmit = !!paymentGatewayId;
 
   return (
     <>
-      <h2 className={styles.title}>Payment Method</h2>
+      <CheckoutErrors errors={errors} />
 
-      {paymentGateways.map(({ id, name, config }) => {
-        const selected = paymentGateway === id;
+      <form onSubmit={handleSubmit}>
+        <fieldset className="mb-4">
+          <legend className={styles.title}>Payment Method</legend>
 
-        switch (id) {
-          case PROVIDERS.DUMMY.id:
-            return (
-              <PaymentMethod
-                key={id}
-                name="Finance"
-                onChange={() => handleChange(id)}
-                selected={selected}
-                gateway={
-                  <DummyPaymentGateway
-                    id={id}
-                    onSubmitSuccess={onSubmitSuccess}
-                  />
-                }
+          <div className={styles.grid}>
+            {paymentGateways.map((paymentGateway) => (
+              <PaymentOption
+                key={`gateway-${paymentGateway.id}`}
+                paymentGateway={paymentGateway}
+                onClick={() => handleChange(paymentGateway.id)}
+                selected={paymentGatewayId === paymentGateway.id}
               />
-            );
+            ))}
+          </div>
+        </fieldset>
 
-          case PROVIDERS.STRIPE.id:
-            return (
-              <PaymentMethod
-                key={id}
-                name={name}
-                onChange={() => handleChange(id)}
-                selected={selected}
-                gateway={
-                  <StripePaymentGateway
-                    id={id}
-                    config={config}
-                    formRef={paymentGatewayFormRef}
-                  />
-                }
-              />
-            );
-        }
-      })}
+        {canSubmit && <SubmitButton loading={loading}>Continue</SubmitButton>}
+      </form>
     </>
   );
 };

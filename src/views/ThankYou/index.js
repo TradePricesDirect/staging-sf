@@ -4,8 +4,6 @@ import paths from "core/paths";
 import styles from "./ThankYouPage.module.scss";
 
 const ThankYouPage = ({ order, token }) => {
-  console.log(order);
-
   return (
     <section className={styles.wrap}>
       <div className="container">
