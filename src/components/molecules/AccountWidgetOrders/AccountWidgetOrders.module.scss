@@ -1,0 +1,25 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.text {
+  margin: 0 0 1rem;
+  font-size: $font-size-sm;
+  color: $text-muted;
+}
+
+.table {
+  font-size: $font-size-sm;
+
+  th {
+    font-weight: $font-weight-semibold;
+  }
+
+  td {
+    color: $text-muted;
+  }
+
+  .actionColumn {
+    width: 0;
+    white-space: nowrap;
+  }
+}

@@ -1,4 +1,6 @@
 export const formatAddress = (address, join = "\n") => {
+  if (!address) return null;
+
   const result = [
     address.companyName,
     address.streetAddress1,

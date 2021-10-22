@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { useAuth } from "@saleor/sdk";
+import { useAuth, useDeleteUserAddresss } from "@saleor/sdk";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/pro-regular-svg-icons";
 import useDisclosure from "hooks/useDisclosure";
 import withAuth from "../withAuth";
-import Account from "components/templates/Account";
-import AddressBook from "components/organisms/AddressBook";
+import AddressTile from "components/molecules/AddressTile";
+import Box from "components/organisms/Box";
 import AddressFormModal from "components/organisms/AddressFormModal";
+import Account from "components/templates/Account";
+
+import styles from "./Addresses.module.scss";
 
 const AccountAddresses = () => {
   const { user } = useAuth();
+  const [setDeleteUserAddress] = useDeleteUserAddresss();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addressData, setAddressData] = useState(null);
@@ -24,18 +30,35 @@ const AccountAddresses = () => {
 
   return (
     <Account>
-      <h2 className="mb-4">Your Addresses</h2>
+      <h1 className={styles.title}>Your Addresses</h1>
 
       <p>
         For a faster checkout, securely store shipping and billing addresses for
         your account.
       </p>
 
-      <AddressBook addresses={user.addresses} onEdit={onEdit} />
+      <div className={styles.grid}>
+        {user.addresses.map((address) => (
+          <AddressTile
+            key={address.id}
+            address={address}
+            onEdit={() => onEdit(address)}
+            onRemove={() => setDeleteUserAddress({ addressId: address.id })}
+          />
+        ))}
 
-      <button type="button" onClick={onOpen} className="btn btn-primary">
-        Add new Address
-      </button>
+        <Box
+          button
+          type="button"
+          onClick={onOpen}
+          className={styles.addAddressButton}
+        >
+          <span className="btn">
+            <FontAwesomeIcon icon={faPlus} className="me-2" />
+            Add Address
+          </span>
+        </Box>
+      </div>
 
       <AddressFormModal
         isOpen={isOpen}

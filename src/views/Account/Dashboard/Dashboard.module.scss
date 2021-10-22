@@ -1,0 +1,53 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.title {
+  margin-bottom: 1rem;
+  @include font-size(2rem);
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
+
+  .header {
+    flex: 0 1 auto;
+  }
+
+  .body {
+    flex: 1 1 auto;
+  }
+
+  .footer {
+    flex: 0 1 auto;
+  }
+}
+
+.subtitle {
+  display: block;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: $font-size-lg;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    gap: 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

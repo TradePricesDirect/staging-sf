@@ -11,6 +11,7 @@ import clsx from "clsx";
 
 import styles from "./AddressTile.module.scss";
 import useDisclosure from "hooks/useDisclosure";
+import Box from "components/organisms/Box";
 
 const AddressTile = ({ address, onEdit, onRemove }) => {
   const { isOpen, onToggle, onClose } = useDisclosure();
@@ -25,29 +26,34 @@ const AddressTile = ({ address, onEdit, onRemove }) => {
   };
 
   return (
-    <div className={styles.wrap}>
-      <span>{`${address.firstName} ${address.lastName}`}</span>
+    <Box>
+      <section className={styles.box}>
+        <div className={styles.body}>
+          <span>{`${address.firstName} ${address.lastName}`}</span>
 
-      <address className={styles.address}>
-        {addressString.split("\n").map((item, key) => {
-          return (
-            <Fragment key={key}>
-              {item}
-              <br />
-            </Fragment>
-          );
-        })}
-      </address>
+          <address className={styles.address}>
+            {addressString.split("\n").map((item, key) => {
+              return (
+                <Fragment key={key}>
+                  {item}
+                  <br />
+                </Fragment>
+              );
+            })}
+          </address>
+        </div>
 
-      <div className={styles.actions}>
-        <button onClick={onEdit} className="btn btn-sm btn-outline-primary">
-          <FontAwesomeIcon icon={faPencil} fixedWidth />
-        </button>
+        <footer className={styles.footer}>
+          <button onClick={onEdit} className="btn btn-sm btn-outline-primary">
+            <FontAwesomeIcon icon={faPencil} fixedWidth className="me-2" />
+            Edit Address
+          </button>
 
-        <button onClick={onRemove} className="btn btn-sm btn-outline-danger">
-          <FontAwesomeIcon icon={faTrash} fixedWidth />
-        </button>
-      </div>
+          <button onClick={onRemove} className="btn btn-sm btn-outline-danger">
+            <FontAwesomeIcon icon={faTrash} fixedWidth />
+          </button>
+        </footer>
+      </section>
 
       <button
         onClick={onToggle}
@@ -99,7 +105,7 @@ const AddressTile = ({ address, onEdit, onRemove }) => {
           </ul>
         </div>
       )}
-    </div>
+    </Box>
   );
 };
 

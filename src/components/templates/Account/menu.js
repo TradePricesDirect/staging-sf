@@ -31,7 +31,7 @@ const routes = [
   {
     id: uuid(),
     href: paths.account.addresses,
-    name: "Edit Addresses",
+    name: "Addresses",
     icon: faAddressBook,
   },
   {

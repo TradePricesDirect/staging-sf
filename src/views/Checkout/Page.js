@@ -104,15 +104,17 @@ const Page = () => {
   if (!activeStep || !items?.length) return <Loader />;
 
   return (
-    <div className="container py-8">
-      <div className="row">
-        <div className="col-12 col-md-7 col-lg-8">
-          <CheckoutProgressBar steps={steps} activeStep={activeStep} />
+    <div className="bg-gray-300">
+      <div className="container py-8">
+        <div className="row">
+          <div className="col-12 col-md-7 col-lg-8">
+            <CheckoutProgressBar steps={steps} activeStep={activeStep} />
 
-          {CheckoutStep}
-        </div>
-        <div className="col-12 col-md-5 col-lg-4">
-          <CheckoutCartSummary />
+            {CheckoutStep}
+          </div>
+          <div className="col-12 col-md-5 col-lg-4">
+            <CheckoutCartSummary />
+          </div>
         </div>
       </div>
     </div>

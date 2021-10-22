@@ -1,0 +1,14 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+}
+
+.text {
+  margin: 0 0 1rem;
+  font-size: $font-size-sm;
+  color: $text-muted;
+}

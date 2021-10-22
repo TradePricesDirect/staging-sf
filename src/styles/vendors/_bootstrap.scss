@@ -48,6 +48,7 @@
 $utilities: map-get-multiple(
   $utilities,
   (
+    "align",
     "color",
     "display",
     "order",
@@ -75,7 +76,8 @@ $utilities: map-get-multiple(
     "padding-bottom",
     "padding-start",
     "width",
-    "text-align"
+    "text-align",
+    "white-space"
   )
 );
 

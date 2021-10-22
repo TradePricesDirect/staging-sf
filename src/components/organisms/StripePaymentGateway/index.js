@@ -53,6 +53,12 @@ const StripePaymentGateway = ({ id, config, formRef }) => {
     };
   }, [stripePromise]);
 
+  // useEffect(() => {
+
+  // }, [formRef, stripePromise])
+
+  const handleSubmit = () => {};
+
   if (errors) {
     return errors?.map((error) => <Alert type="danger">{error.message}</Alert>);
   }
@@ -63,7 +69,7 @@ const StripePaymentGateway = ({ id, config, formRef }) => {
 
   return (
     <Elements stripe={stripePromise} options={options}>
-      <StripeCreditCardForm formRef={formRef} />
+      <StripeCreditCardForm clientSecret={clientSecret} />
     </Elements>
   );
 };

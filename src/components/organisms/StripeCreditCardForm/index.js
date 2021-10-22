@@ -7,7 +7,7 @@ import {
 import paths from "core/paths";
 import SubmitButton from "components/atoms/SubmitButton";
 
-const StripeCreditCardForm = () => {
+const StripeCreditCardForm = ({ clientSecret }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -23,19 +23,23 @@ const StripeCreditCardForm = () => {
 
     setState({ ...state, loading: true });
 
-    const { error } = await stripe.confirmPayment({
-      elements,
-      // redirect: "if_required",
-      confirmParams: {
-        return_url: `${window.location.origin}${paths.checkoutPaymentConfirm}`,
-      },
-    });
+    const res = await stripe.confirmCardPayment(clientSecret);
 
-    if (error) {
-      setState({ loading: false, error: error.message });
-    } else {
-      console.log("NO REDIRECT");
-    }
+    console.log(res);
+
+    // const { error } = await stripe.confirmPayment({
+    //   elements,
+    //   // redirect: "if_required",
+    //   confirmParams: {
+    //     return_url: `${window.location.origin}${paths.checkoutPaymentConfirm}`,
+    //   },
+    // });
+
+    // if (error) {
+    //   setState({ loading: false, error: error.message });
+    // } else {
+    //   console.log("NO REDIRECT");
+    // }
   };
 
   return (

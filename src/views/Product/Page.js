@@ -29,9 +29,7 @@ const populateBreadcrumbs = (product) => [
 ];
 
 const Page = ({ product }) => {
-  const [variantId, setVariantId] = useState(
-    product.variants.length === 1 ? product.variants[0].id : null
-  );
+  const [variantId, setVariantId] = useState(product.defaultVariant?.id);
 
   const variant = getActiveVariant(product, variantId);
 

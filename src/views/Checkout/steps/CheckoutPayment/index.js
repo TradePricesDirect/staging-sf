@@ -7,25 +7,28 @@ import PaymentMethod from "./PaymentMethod";
 
 import styles from "./CheckoutPayment.module.scss";
 
+/*
+TODO
+
+This step will just have 2 big tiles to select either finance or stripe (credit card).
+If the customer selected Stripe, we can load stripe+clientSecret on this step, then the reivew step a the bottom can render the form instantly and have the Place Order capture payment.
+*/
+
 export const CheckoutPayment = ({ onSubmitSuccess, paymentGatewayFormRef }) => {
   const { availablePaymentGateways, payment } = useCheckout();
 
-  const [state, setState] = useState({
-    loading: false,
-    errors: [],
-    paymentGateway: payment?.gateway,
-  });
+  const [paymentGateway, setPaymentGateway] = useState(payment?.gateway);
 
   const paymentGateways = availablePaymentGateways || [];
 
-  const handleChange = (id) => setState({ ...state, paymentGateway: id });
+  const handleChange = (id) => setPaymentGateway(id);
 
   return (
     <>
       <h2 className={styles.title}>Payment Method</h2>
 
       {paymentGateways.map(({ id, name, config }) => {
-        const selected = state.paymentGateway === id;
+        const selected = paymentGateway === id;
 
         switch (id) {
           case PROVIDERS.DUMMY.id:

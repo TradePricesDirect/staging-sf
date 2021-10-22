@@ -3,6 +3,7 @@ import { useAuth, useCheckout } from "@saleor/sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/pro-light-svg-icons";
 import useDisclosure from "hooks/useDisclosure";
+import Alert from "components/atoms/Alert";
 import SubmitButton from "components/atoms/SubmitButton";
 import AddressFormModal from "components/organisms/AddressFormModal";
 import AddressOption from "./AddressOption";
@@ -21,9 +22,10 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
   } = useCheckout();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+
   const [state, setState] = useState({
-    loading: false,
-    error: null,
     shipping: null,
     billing: null,
     billingAsShipping: true,
@@ -48,15 +50,15 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
   }, [selectedShippingAddressId, selectedBillingAddressId]);
 
   const handleShippingChange = (address) => {
-    if (!state.loading) setState({ ...state, shipping: address });
+    if (!loading) setState({ ...state, shipping: address });
   };
 
   const handleBillingChange = (address) => {
-    if (!state.loading) setState({ ...state, billing: address });
+    if (!loading) setState({ ...state, billing: address });
   };
 
   const handleBillingAsShippingChange = () => {
-    if (!state.loading) {
+    if (!loading) {
       setState((prevState) => ({
         ...prevState,
         billing: null,
@@ -68,35 +70,45 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const { loading, shipping, billingAsShipping, billing } = state;
+    const { shipping, billingAsShipping, billing } = state;
 
-      if (loading) return;
+    if (loading) return;
 
-      // Loading
-      setState({ ...state, loading: true });
+    // Loading
+    setLoading(true);
 
-      // Set Shipping Address
-      const { dataError: shippingError } = await setShippingAddress(
-        shipping,
-        user.email
-      );
-      if (shippingError?.error) throw shippingError.error[0];
+    // Set Shipping Address
+    const { dataError: shippingError } = await setShippingAddress(
+      shipping,
+      user.email
+    );
 
-      // Set Billing Address
-      if (billingAsShipping) {
-        const { dataError } = await setBillingAsShippingAddress();
-        if (dataError?.error) throw dataError.error[0];
-      } else {
-        const { dataError } = await setBillingAddress(billing, user.email);
-        if (dataError?.error) throw dataError.error[0];
-      }
-
-      onSubmitSuccess();
-    } catch (error) {
-      console.error(error);
-      setState({ ...state, loading: false, error: error });
+    if (shippingError?.error) {
+      setErrors(shippingError.error);
+      setLoading(false);
+      return;
     }
+
+    // Set Billing Address
+    if (billingAsShipping) {
+      const { dataError } = await setBillingAsShippingAddress();
+
+      if (dataError?.error) {
+        setErrors(dataError.error);
+        setLoading(false);
+        return;
+      }
+    } else {
+      const { dataError } = await setBillingAddress(billing, user.email);
+
+      if (dataError?.error) {
+        setErrors(dataError.error);
+        setLoading(false);
+        return;
+      }
+    }
+
+    onSubmitSuccess();
   };
 
   const canSubmit =
@@ -105,6 +117,12 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
 
   return (
     <>
+      {errors?.map((error) => (
+        <Alert key={error.code} type="danger">
+          {error.message}
+        </Alert>
+      ))}
+
       <form onSubmit={handleSubmit}>
         <fieldset className="mb-4">
           <legend className={styles.title}>Delivery Address</legend>
@@ -157,7 +175,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
         <div className="row justify-content-between">
           <div className="col-auto">
             {canSubmit && (
-              <SubmitButton loading={state.loading}>Continue</SubmitButton>
+              <SubmitButton loading={loading}>Continue</SubmitButton>
             )}
           </div>
           <div className="col-auto">

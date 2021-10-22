@@ -32,8 +32,7 @@ const CheckoutCartSummary = () => {
     net: discount,
   };
 
-  const isShipping =
-    !!shippingTaxedPrice?.gross && shippingTaxedPrice.gross.amount !== 0;
+  const isShipping = !!shippingTaxedPrice?.gross;
 
   const isDiscount =
     !!discountTaxedPrice?.gross && discountTaxedPrice.gross.amount !== 0;
@@ -89,7 +88,11 @@ const CheckoutCartSummary = () => {
             <tr>
               <th>Shipping</th>
               <td>
-                <TaxedMoney taxedMoney={shippingTaxedPrice} gross />
+                {shippingTaxedPrice.gross.amount === 0 ? (
+                  <span>Free</span>
+                ) : (
+                  <TaxedMoney taxedMoney={shippingTaxedPrice} gross />
+                )}
               </td>
             </tr>
           )}

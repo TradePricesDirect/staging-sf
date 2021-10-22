@@ -220,6 +220,9 @@ export const productDetailsQuery = gql`
         key
         value
       }
+      defaultVariant {
+        id
+      }
       variants {
         ...ProductVariantFields
         trackInventory

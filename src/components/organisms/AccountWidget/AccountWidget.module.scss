@@ -1,0 +1,28 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+
+  > * {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .body {
+    flex: 1 1 auto;
+  }
+}
+
+.title {
+  display: block;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: $font-size-lg;
+}
