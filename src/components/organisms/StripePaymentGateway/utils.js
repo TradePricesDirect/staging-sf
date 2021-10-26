@@ -33,9 +33,9 @@ export const useStripePaymentGateway = ({ id, config }) => {
 
       // First complete checkout creates the client secret
       const { data } = await completeCheckout({
+        storeSource: true,
         paymentData: {
-          setup_future_usage: "off_session",
-          payment_method_type: ["card", "klarna"],
+          payment_method_types: ["card", "klarna"],
         },
       });
 

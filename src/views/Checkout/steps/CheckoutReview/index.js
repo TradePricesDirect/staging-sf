@@ -18,8 +18,13 @@ import FinancePaymentGateway from "components/organisms/FinancePaymentGateway";
 import StripePaymentGateway from "components/organisms/StripePaymentGateway";
 
 import styles from "./CheckoutReview.module.scss";
+import CheckoutErrors from "components/organisms/CheckoutErrors";
 
-export const CheckoutReview = ({ onSubmitSuccess, onSubmitPaymentSuccess }) => {
+export const CheckoutReview = ({
+  onSubmitSuccess,
+  onSubmitPaymentSuccess,
+  errors,
+}) => {
   const { checkout, payment, availablePaymentGateways } = useCheckout();
 
   const paymentGateway = getPaymentGatewayInfo(payment?.gateway);
@@ -105,6 +110,7 @@ export const CheckoutReview = ({ onSubmitSuccess, onSubmitPaymentSuccess }) => {
         </Box>
       </div>
 
+      <CheckoutErrors errors={errors} />
       {PaymentGateway}
     </>
   );

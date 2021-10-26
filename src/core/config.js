@@ -20,10 +20,7 @@ export const PROVIDERS = [
     label: "Pay By Finance",
     description:
       "We offer a range of competitive finance options with 0% deposit available.",
-    icons: [
-      { url: "/icons/payment-klarna.svg", alt: "Klarna" },
-      { url: "/icons/payment-propensio.svg", alt: "Propensio" },
-    ],
+    icons: [{ url: "/icons/payment-propensio.svg", alt: "Propensio" }],
   },
   {
     id: "saleor.payments.stripe",
@@ -35,6 +32,7 @@ export const PROVIDERS = [
       { url: "/icons/payment-visa.svg", alt: "Visa" },
       { url: "/icons/payment-mastercard.svg", alt: "Mastercard" },
       { url: "/icons/payment-amex.svg", alt: "Amex" },
+      { url: "/icons/payment-klarna.svg", alt: "Klarna" },
     ],
   },
 ];

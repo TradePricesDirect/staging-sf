@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import { useCart, useCheckout } from "@saleor/sdk";
 import paths from "core/paths";
@@ -27,6 +27,8 @@ const Page = () => {
   const { items } = useCart();
   const { payment, completeCheckout } = useCheckout();
 
+  const [paymentGatewayErrors, setPaymentGatewayErrors] = useState(null);
+
   /* Steps */
   const steps = getAvailableSteps(items);
   const activeStep = getStepByPathname(pathname, steps);
@@ -49,21 +51,31 @@ const Page = () => {
   };
 
   const handleSubmitPaymentSuccess = async () => {
-    const { data, dataError } = await completeCheckout();
+    const { data, dataError } = await completeCheckout({ foo: "bar" });
 
     // We shouldn't hit errors here, but console logging just in case
     if (dataError?.error) {
-      console.error("Error on handlePaymentConfirm for Stripe");
-      console.trace();
+      setPaymentGatewayErrors(dataError.error);
+      push(paths.checkoutReview);
+    } else {
+      handleStepSubmitSuccess(data?.order?.token, CheckoutStepEnum.Review);
     }
-
-    handleStepSubmitSuccess(data.order.token, CheckoutStepEnum.Review);
   };
 
   // When a payment gateway navigates externally and then returns back
   const handlePaymentConfirm = async () => {
     if (payment?.gateway === PaymentGatewayEnum.Stripe) {
-      await handleSubmitPaymentSuccess();
+      if (query.redirect_status === "failed") {
+        setPaymentGatewayErrors([
+          {
+            code: "PAYMENT_FAILED",
+            message: "Unable to process payment. Please try again.",
+          },
+        ]);
+        push(paths.checkoutReview);
+      } else {
+        await handleSubmitPaymentSuccess();
+      }
     }
   };
 
@@ -88,6 +100,7 @@ const Page = () => {
           <CheckoutReview
             onSubmitSuccess={handleStepSubmitSuccess}
             onSubmitPaymentSuccess={handleSubmitPaymentSuccess}
+            errors={paymentGatewayErrors}
           />
         );
       default:
