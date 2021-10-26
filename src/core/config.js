@@ -32,7 +32,12 @@ export const PROVIDERS = [
       { url: "/icons/payment-visa.svg", alt: "Visa" },
       { url: "/icons/payment-mastercard.svg", alt: "Mastercard" },
       { url: "/icons/payment-amex.svg", alt: "Amex" },
-      { url: "/icons/payment-klarna.svg", alt: "Klarna" },
     ],
+  },
+  {
+    id: "saleor.payments.stripe2",
+    label: "Pay By Finance",
+    description: "Spread the cost with interest-free instalments.",
+    icons: [{ url: "/icons/payment-klarna.svg", alt: "Klarna" }],
   },
 ];

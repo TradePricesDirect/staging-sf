@@ -12,6 +12,7 @@ export const CheckoutStepEnum = {
 export const PaymentGatewayEnum = {
   Stripe: "saleor.payments.stripe",
   Finance: "mirumee.payments.dummy",
+  Klarna: "saleor.payments.stripe2",
 };
 
 export const CHECKOUT_STEPS = [
@@ -79,6 +80,26 @@ export const stepSubmitSuccessHandler = (push, steps, activeStepIndex) => {
       push(steps[activeStepIndex + 1].link);
     }
   };
+};
+
+export const getAvailablePaymentGateways = (
+  availablePaymentGateways = [],
+  totalPrice
+) => {
+  let gateways = availablePaymentGateways;
+
+  if (totalPrice < 1000) {
+    // Remove Propensio
+    gateways = gateways.filter(({ id }) => id !== PaymentGatewayEnum.Finance);
+
+    // Add Klarna (Stripe Duplicate)
+    const stripe = gateways.find(({ id }) => id === PaymentGatewayEnum.Stripe);
+    if (stripe) {
+      gateways = [{ ...stripe, id: PaymentGatewayEnum.Klarna }, ...gateways];
+    }
+  }
+
+  return gateways;
 };
 
 export const getPaymentGatewayInfo = (paymentGatewayId) => {

@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { useCheckout } from "@saleor/sdk";
-import { PaymentGatewayEnum } from "views/Checkout/utils";
+import { useCart, useCheckout } from "@saleor/sdk";
+import {
+  PaymentGatewayEnum,
+  getAvailablePaymentGateways,
+} from "views/Checkout/utils";
 import SubmitButton from "components/atoms/SubmitButton";
 import CheckoutErrors from "components/organisms/CheckoutErrors";
 import PaymentOption from "./PaymentOption";
@@ -8,13 +11,18 @@ import PaymentOption from "./PaymentOption";
 import styles from "./CheckoutPayment.module.scss";
 
 export const CheckoutPayment = ({ onSubmitSuccess }) => {
+  const { totalPrice } = useCart();
+
   const { availablePaymentGateways, payment, createPayment } = useCheckout();
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
   const [paymentGatewayId, setPaymentGatewayId] = useState(payment?.gateway);
 
-  const paymentGateways = availablePaymentGateways || [];
+  const paymentGateways = getAvailablePaymentGateways(
+    availablePaymentGateways,
+    totalPrice?.gross.amount
+  );
 
   const handleChange = (id) => setPaymentGatewayId(id);
 
@@ -26,10 +34,16 @@ export const CheckoutPayment = ({ onSubmitSuccess }) => {
     // Loading
     setLoading(true);
 
-    const createPaymentInput = { gateway: paymentGatewayId };
+    // Klarna is stripe
+    const gateway =
+      paymentGatewayId === PaymentGatewayEnum.Klarna
+        ? PaymentGatewayEnum.Stripe
+        : paymentGatewayId;
+
+    const createPaymentInput = { gateway };
 
     // Finance order status
-    if (paymentGatewayId === PaymentGatewayEnum.Finance) {
+    if (gateway === PaymentGatewayEnum.Finance) {
       createPaymentInput.token = "not-charged";
     }
 
