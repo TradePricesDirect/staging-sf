@@ -29,8 +29,8 @@ const paths = {
   passwordReset: "/reset-password",
   account: {
     dashboard: "/account",
-    orders: "/account/orders",
-    order: "/account/orders/[token]",
+    orders: "/account/order-history",
+    order: "/account/order-history/[token]",
     details: "/account/details",
     addresses: "/account/addresses",
     paymentMethods: "/account/payment-methods",

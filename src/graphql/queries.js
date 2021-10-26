@@ -7,6 +7,11 @@ import {
   productVariantFragment,
   productPricingFragment,
 } from "@saleor/sdk/lib/fragments/products";
+import { orderPriceFragment } from "@saleor/sdk/lib/fragments/order";
+import {
+  checkoutAddressFragment,
+  checkoutProductVariantFragment,
+} from "@saleor/sdk/lib/fragments/checkout";
 import { attributeFragment, menuItemFragment } from "./fragments";
 
 export const useTypedQuery = (query, options) => {
@@ -228,6 +233,55 @@ export const productDetailsQuery = gql`
         trackInventory
       }
       isAvailable
+    }
+  }
+`;
+
+export const orderDetailsByTokenQuery = gql`
+  ${orderPriceFragment}
+  ${checkoutAddressFragment}
+  ${checkoutProductVariantFragment}
+  query OrderByToken($token: UUID!) {
+    orderByToken(token: $token) {
+      id
+      token
+      number
+      created
+      paymentStatus
+      paymentStatusDisplay
+      status
+      statusDisplay
+      shippingAddress {
+        ...Address
+      }
+      billingAddress {
+        ...Address
+      }
+      subtotal {
+        ...OrderPrice
+      }
+      total {
+        ...OrderPrice
+      }
+      shippingPrice {
+        ...OrderPrice
+      }
+      lines {
+        id
+        productName
+        quantity
+        variant {
+          ...ProductVariant
+        }
+        unitPrice {
+          currency
+          ...OrderPrice
+        }
+        totalPrice {
+          currency
+          ...OrderPrice
+        }
+      }
     }
   }
 `;

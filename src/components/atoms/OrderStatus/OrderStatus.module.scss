@@ -1,0 +1,34 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: $border-radius;
+
+  &.red {
+    color: #fff;
+    background-color: $red;
+  }
+
+  &.yellow {
+    color: #fff;
+    background-color: $yellow;
+  }
+
+  &.green {
+    color: #fff;
+    background-color: $green;
+  }
+
+  &.blue {
+    color: #fff;
+    background-color: $blue;
+  }
+}

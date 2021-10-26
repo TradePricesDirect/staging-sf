@@ -1,0 +1,67 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: $border-width solid $border-color;
+}
+
+.content {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 1rem;
+  min-width: 20rem;
+}
+
+.thumbnail {
+  display: block;
+  flex: 0 0 4rem;
+  width: 4rem;
+}
+
+.body {
+  flex: 1 1 auto;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+}
+
+.name {
+  display: block;
+  margin: 0 0 0.25rem;
+  font-weight: $font-weight-semibold;
+}
+
+.sku {
+  margin: 0 0 0.25rem;
+  color: $text-muted;
+}
+
+.variants {
+  @include list-unstyled;
+  margin: 0 0 1rem;
+}
+
+.variant {
+  color: $primary;
+
+  span {
+    color: $body-color;
+  }
+}
+
+@media (min-width: 768px) {
+  .thumbnail {
+    flex: 0 0 6rem;
+    width: 6rem;
+  }
+
+  .body {
+    font-size: $font-size-base;
+  }
+}

@@ -1,5 +1,4 @@
 import { SaleorManager, VariantAttributeScope } from "@saleor/sdk";
-import { orderDetailsByTokenQuery } from "@saleor/sdk/lib/queries/orders";
 import { getShop } from "@saleor/sdk/lib/queries/shop";
 import { apiUrl, channelSlug } from "core/constants";
 import {
@@ -9,6 +8,7 @@ import {
   shopMenusQuery,
   shopFooterMenusQuery,
   productDetailsQuery,
+  orderDetailsByTokenQuery,
 } from "graphql/queries";
 
 let CONNECTION = null;

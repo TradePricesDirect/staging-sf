@@ -34,9 +34,15 @@ const ProductList = ({
       </ul>
 
       {canLoadMore && (
-        <button type="button" onClick={onLoadMore} className="btn btn-primary">
-          Load More
-        </button>
+        <div className="text-center py-4">
+          <button
+            type="button"
+            onClick={onLoadMore}
+            className="btn btn-primary"
+          >
+            Load More
+          </button>
+        </div>
       )}
     </>
   );
