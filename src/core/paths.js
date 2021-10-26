@@ -42,6 +42,7 @@ const paths = {
   commercial: "/commercial",
   finance: "/finance",
   requestQuote: "/request-quote",
+  requestQuoteThankYou: "/request-quote/thank-you",
 };
 
 export default paths;

@@ -1,0 +1,80 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.content {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1rem;
+  background-color: #f1f6f8;
+  border: 2px solid $white;
+  border-radius: $border-radius;
+  transition: $transition-base;
+  cursor: pointer;
+
+  @media (min-width: 576px) {
+    padding: 2rem;
+  }
+}
+
+.title {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0 0 0.5rem;
+  font-size: 1.375rem;
+  font-weight: $font-weight-semibold;
+  color: $gray-900;
+
+  svg {
+    opacity: 0.5;
+    margin-left: auto;
+    opacity: 0.5;
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  padding-right: 4rem;
+  font-size: $font-size-sm;
+}
+
+.icon {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  display: block;
+  width: 7.5rem;
+  height: auto;
+}
+
+.input {
+  @include visually-hidden;
+
+  &:focus + .content {
+    box-shadow: 0 0 0 2px rgba($blue-300, 0.5);
+  }
+
+  &:checked + .content {
+    border-color: $primary;
+
+    .inner {
+      opacity: 1;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .inner {
+    opacity: 0;
+    transition: $transition-fade;
+  }
+
+  .tile:hover .inner {
+    opacity: 1;
+  }
+}

@@ -48,6 +48,7 @@
 
 .image {
   position: relative;
+  min-height: 50vw;
 
   img {
     pointer-events: none;
@@ -89,6 +90,7 @@
   .image {
     flex: 0 1 40%;
     max-width: 40%;
+    min-height: 0;
   }
 }
 

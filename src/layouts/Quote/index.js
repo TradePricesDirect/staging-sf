@@ -3,11 +3,11 @@ import BackLink from "layouts/components/BackLink";
 
 import styles from "./QuoteLayout.module.scss";
 
-const QuoteLayout = ({ children }) => {
+const QuoteLayout = ({ children, backLink = true }) => {
   return (
     <BaseLayout>
       <main id="main" className={styles.wrap}>
-        <BackLink />
+        {backLink && <BackLink />}
 
         {children}
       </main>

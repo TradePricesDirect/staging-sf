@@ -1,0 +1,68 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  margin-bottom: 1rem;
+}
+
+.list {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.listItem {
+  flex: 0 1 auto;
+  position: relative;
+  padding: 0 1rem;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+.line {
+  flex: 1 1 auto;
+  height: 1px;
+  width: 100%;
+  background-color: $primary;
+}
+
+.link {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  font-size: 1.125rem;
+  font-weight: $font-weight-semibold;
+  text-align: center;
+  background-color: $blue-300;
+  border-radius: $border-radius-pill;
+  transition: $transition-base;
+
+  &:hover {
+    color: $white;
+    background-color: $primary;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 $btn-focus-width rgba($blue-300, 0.5);
+  }
+
+  &:disabled {
+    color: inherit;
+    pointer-events: none;
+  }
+
+  &.active {
+    color: $white;
+    background-color: $primary;
+  }
+}

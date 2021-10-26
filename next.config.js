@@ -11,6 +11,11 @@ module.exports = {
       use: ["@svgr/webpack"],
     });
 
+    config.module.rules.push({
+      test: /\.mjml$/,
+      use: ["mjml-loader"],
+    });
+
     return config;
   },
 };

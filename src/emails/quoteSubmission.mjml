@@ -1,0 +1,65 @@
+<mjml>
+  <mj-head>
+    <mj-preview>Trade Prices Direct - Request a Quote</mj-preview>
+    <mj-title>Trade Prices Direct - Request a Quote</mj-title>
+
+    <mj-attributes>
+      <mj-all
+        font-family="Arial"
+        font-size="16px"
+        line-height="1.5"
+        padding="0"
+        color="#222321"
+      />
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body background-color="#f4f4f4">
+    <mj-wrapper padding="15px">
+      <mj-section padding="15px" background-color="#ffffff">
+        <mj-column>
+          <mj-image
+            width="120px"
+            padding-bottom="4px"
+            src="http://tradepricesdirect.com/branding/tpd-site-logo.png"
+            href="https://tradepricesdirect.com"
+          />
+          <mj-text
+            align="center"
+            color="#03284c"
+            font-size="18px"
+            font-weight="700"
+          >
+            Trade Prices Direct
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 15px 15px" background-color="#ffffff">
+        <mj-column>
+          <mj-text padding-bottom="10px" font-size="20px" align="center">
+            Request a Quote Submission
+          </mj-text>
+
+          <mj-text> <b>Full Name:</b> [firstName] [lastName]</mj-text>
+          <mj-text> <b>Email Address:</b> [email]</mj-text>
+          <mj-text> <b>Telephone:</b> [phone]</mj-text>
+          <mj-text> <b>Type:</b> [type]</mj-text>
+          <mj-text> <b>Timeframe:</b> [timeframe]</mj-text>
+          <mj-text> <b>Finance:</b> [finance]</mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="10px">
+        <mj-column>
+          <mj-text align="center" font-size="12px" color="#6c757d"
+            >This is an automated email sent from
+            <a href="https://tradepricesdirect.com" style="color: #03284c"
+              >tradepricesdirect.com</a
+            >
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

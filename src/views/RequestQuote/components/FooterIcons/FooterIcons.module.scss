@@ -1,0 +1,43 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.list {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 1rem;
+
+  li {
+    flex: 1 0 0%;
+  }
+}
+
+.link {
+  display: block;
+  text-align: center;
+
+  .image {
+    display: block;
+    width: 80%;
+    max-width: 8rem;
+    margin: 0 auto 1rem;
+  }
+
+  .title {
+    color: $primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+
+    @media (min-width: 576px) {
+      font-size: $font-size-lg;
+    }
+  }
+}
