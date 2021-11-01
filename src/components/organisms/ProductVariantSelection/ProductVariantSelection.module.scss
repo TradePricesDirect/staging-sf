@@ -25,6 +25,7 @@
   @include list-unstyled;
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
