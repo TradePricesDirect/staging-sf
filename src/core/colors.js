@@ -3,9 +3,12 @@ export const ColorHexEnum = {
   Cashmere: "#DED9D2",
   Cream: "#FFFDD0",
   DustGrey: "#929390",
-  Indigo: "#FEFAE8",
+  Indigo: "#3f51b5",
   Ivory: "#191e28",
   LightGrey: "#E3E3DF",
+  Mussel: "#e2e2d6",
+  Oak: "#ceb089",
+  SageGreen: "#d8d7b9",
   White: "#FFFFFF",
   PaintToOrder:
     "linear-gradient(135deg, rgba(255,0,0,1) 0%, rgba(255,165,0,1) 20%, rgba(255,255,0,1) 40%, rgba(0,128,0,1) 60%, rgba(0,0,255,1) 80%, rgba(75,0,130,1) 100%)",
@@ -51,6 +54,21 @@ export const ColorsEnum = {
     name: "Light Grey",
     slug: "light-grey",
     value: ColorHexEnum.LightGrey,
+  },
+  Mussel: {
+    name: "Mussel",
+    slug: "mussel",
+    value: ColorHexEnum.Mussel,
+  },
+  Oak: {
+    name: "Oak",
+    slug: "oak",
+    value: ColorHexEnum.Oak,
+  },
+  SageGreen: {
+    name: "Sage Green",
+    slug: "sage-green",
+    value: ColorHexEnum.SageGreen,
   },
   White: {
     name: "White",

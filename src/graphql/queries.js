@@ -332,6 +332,7 @@ export const kitchenRangesQuery = gql`
   query KitchenRanges {
     pages(
       first: 100
+      sortBy: { field: TITLE, direction: ASC }
       filter: { metadata: { key: "Kitchen Range", value: "true" } }
     ) {
       edges {

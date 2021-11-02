@@ -1,5 +1,194 @@
 import { ColorsEnum } from "core/colors";
 
+const ASCOT = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.PaintToOrder],
+  images: [
+    "/kitchen-ranges/ascot/paint-to-order-light-grey-1.jpg",
+    "/kitchen-ranges/ascot/paint-to-order-light-grey-2.jpg",
+    "/kitchen-ranges/ascot/paint-to-order-white-1.jpg",
+  ],
+};
+
+const CAMBRIDGE = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Mussel,
+    ColorsEnum.Oak,
+    ColorsEnum.PaintToOrder,
+  ],
+  images: [
+    "/kitchen-ranges/cambridge/dust-grey-1.jpg",
+    "/kitchen-ranges/cambridge/dust-grey-2.jpg",
+    "/kitchen-ranges/cambridge/dust-grey-3.jpg",
+    "/kitchen-ranges/cambridge/indigo-1.jpg",
+    "/kitchen-ranges/cambridge/ivory-1.jpg",
+    "/kitchen-ranges/cambridge/ivory-2.jpg",
+    "/kitchen-ranges/cambridge/ivory-3.jpg",
+    "/kitchen-ranges/cambridge/ivory-4.jpg",
+    "/kitchen-ranges/cambridge/ivory-5.jpg",
+    "/kitchen-ranges/cambridge/light-grey-1.jpg",
+    "/kitchen-ranges/cambridge/light-grey-2.jpg",
+    "/kitchen-ranges/cambridge/light-grey-3.jpg",
+    "/kitchen-ranges/cambridge/light-grey-4.jpg",
+    "/kitchen-ranges/cambridge/mussel-1.jpg",
+    "/kitchen-ranges/cambridge/mussel-2.jpg",
+    "/kitchen-ranges/cambridge/mussel-3.jpg",
+    "/kitchen-ranges/cambridge/mussel-4.jpg",
+    "/kitchen-ranges/cambridge/mussel-5.jpg",
+    "/kitchen-ranges/cambridge/oak-1.jpg",
+    "/kitchen-ranges/cambridge/oak-2.jpg",
+    "/kitchen-ranges/cambridge/oak-3.jpg",
+    "/kitchen-ranges/cambridge/oak-4.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-brown-grey-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-brown-grey-2.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-cashmere-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-chalkstone-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-chalkstone-2.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-cream-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-dakar-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-denim-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-denim-2.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-fjord-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-french-grey-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-lava-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-multi-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-olive-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-porcelain-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-porcelain-2.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-sage-green-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-silver-grey-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-stone-grey-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-white-1.jpg",
+    "/kitchen-ranges/cambridge/paint-to-order-white-2.jpg",
+  ],
+};
+
+const CARTMEL = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [
+    ColorsEnum.Anthracite,
+    ColorsEnum.Cashmere,
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Mussel,
+    ColorsEnum.SageGreen,
+    ColorsEnum.White,
+  ],
+  images: [
+    "/kitchen-ranges/cartmel/anthracite-1.jpg",
+    "/kitchen-ranges/cartmel/cashmere-1.jpg",
+    "/kitchen-ranges/cartmel/cashmere-2.jpg",
+    "/kitchen-ranges/cartmel/dust-grey-1.jpg",
+    "/kitchen-ranges/cartmel/dust-grey-2.jpg",
+    "/kitchen-ranges/cartmel/indigo-1.jpg",
+    "/kitchen-ranges/cartmel/indigo-2.jpg",
+    "/kitchen-ranges/cartmel/ivory-1.jpg",
+    "/kitchen-ranges/cartmel/ivory-2.jpg",
+    "/kitchen-ranges/cartmel/light-grey-1.jpg",
+    "/kitchen-ranges/cartmel/mussel-1.jpg",
+    "/kitchen-ranges/cartmel/mussel-2.jpg",
+    "/kitchen-ranges/cartmel/mussel-3.jpg",
+    "/kitchen-ranges/cartmel/oak-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-blue-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-brown-grey-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-chalkstone-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-cream-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-dakar-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-denim-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-fjord-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-french-grey-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-lava-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-light-grey-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-olive-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-porcelain-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-silver-grey-1.jpg",
+    "/kitchen-ranges/cartmel/paint-to-order-stone-grey-1.jpg",
+    "/kitchen-ranges/cartmel/sage-green-1.jpg",
+    "/kitchen-ranges/cartmel/sage-green-2.jpg",
+    "/kitchen-ranges/cartmel/white-1.jpg",
+    "/kitchen-ranges/cartmel/white-2.jpg",
+    "/kitchen-ranges/cartmel/white-3.jpg",
+    "/kitchen-ranges/cartmel/white-4.jpg",
+  ],
+};
+
+const LINEAR_ANTHRACITE_MOUNTAIN_LARCH = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Anthracite],
+  images: ["/kitchen-ranges/linear-anthracite-mountain-larch/anthracite-1.jpg"],
+};
+
+const LINEAR_ANTHRACITE_MOUNTAIN_LARCH_FOR_VERO_SYSTEM = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Anthracite],
+  images: [
+    "/kitchen-ranges/linear-anthracite-mountain-larch-for-vero-system/anthracite-1.jpg",
+  ],
+};
+
+const LINEAR_NATURAL_HALIFAX = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak, ColorsEnum.White],
+  images: [
+    "/kitchen-ranges/linear-natural-halifax/oak-1.jpg",
+    "/kitchen-ranges/linear-natural-halifax/white-1.jpg",
+  ],
+};
+
+const LINEAR_NATURAL_HALIFAX_FOR_VERO_SYSTEM = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak, ColorsEnum.White],
+  images: [
+    "/kitchen-ranges/linear-natural-halifax-for-vero-system/oak-1.jpg",
+    "/kitchen-ranges/linear-natural-halifax-for-vero-system/white-1.jpg",
+  ],
+};
+
+const LINEAR_NATURAL_KENDAL = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak],
+  images: ["/kitchen-ranges/linear-natural-kendal/oak-1.jpg"],
+};
+
+const LINEAR_NATURAL_KENDAL_FOR_VERO_SYSTEM = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak],
+  images: ["/kitchen-ranges/linear-natural-kendal-for-vero-system/oak-1.jpg"],
+};
+
+const LINEAR_SHOREWOOD = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak],
+  images: ["/kitchen-ranges/linear-shorewood/oak-1.jpg"],
+};
+
+const LINEAR_SHOREWOOD_FOR_VERO_SYSTEM = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak],
+  images: ["/kitchen-ranges/linear-shorewood-for-vero-system/oak-1.jpg"],
+};
+
+const LINEAR_TRUFFLE_BROWN_DENVER = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak],
+  images: ["/kitchen-ranges/linear-truffle-brown-denver/oak-1.jpg"],
+};
+
+const LINEAR_TRUFFLE_BROWN_DENVER_FOR_VERO_SYSTEM = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [ColorsEnum.Oak],
+  images: [
+    "/kitchen-ranges/linear-truffle-brown-denver-for-vero-system/oak-1.jpg",
+  ],
+};
+
 const LUCENTE_GLOSS = {
   price: { amount: 4444, currency: "GBP" },
   colors: [
@@ -89,6 +278,92 @@ const LUCENTE_MATT = {
   ],
 };
 
+const NEWMARKET = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.PaintToOrder,
+  ],
+  images: [
+    "/kitchen-ranges/newmarket/dust-grey-1.jpg",
+    "/kitchen-ranges/newmarket/indigo-1.jpg",
+    "/kitchen-ranges/newmarket/ivory-1.jpg",
+    "/kitchen-ranges/newmarket/light-grey-1.jpg",
+    "/kitchen-ranges/newmarket/paint-to-order-chalkstone-1.jpg",
+    "/kitchen-ranges/newmarket/paint-to-order-french-grey-1.jpg",
+    "/kitchen-ranges/newmarket/paint-to-order-pebble-grey-1.jpg",
+    "/kitchen-ranges/newmarket/paint-to-order-silver-grey-1.jpg",
+    "/kitchen-ranges/newmarket/paint-to-order-white-1.jpg",
+  ],
+};
+
+const OXFORD = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [
+    ColorsEnum.Anthracite,
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  images: [
+    "/kitchen-ranges/oxford/anthracite-1.jpg",
+    "/kitchen-ranges/oxford/anthracite-2.jpg",
+    "/kitchen-ranges/oxford/anthracite-3.jpg",
+    "/kitchen-ranges/oxford/anthracite-4.jpg",
+    "/kitchen-ranges/oxford/dust-grey-1.jpg",
+    "/kitchen-ranges/oxford/indigo-1.jpg",
+    "/kitchen-ranges/oxford/ivory-1.jpg",
+    "/kitchen-ranges/oxford/ivory-2.jpg",
+    "/kitchen-ranges/oxford/ivory-3.jpg",
+    "/kitchen-ranges/oxford/ivory-4.jpg",
+    "/kitchen-ranges/oxford/light-grey-1.jpg",
+    "/kitchen-ranges/oxford/light-grey-2.jpg",
+    "/kitchen-ranges/oxford/light-grey-3.jpg",
+    "/kitchen-ranges/oxford/light-grey-4.jpg",
+    "/kitchen-ranges/oxford/white-1.jpg",
+    "/kitchen-ranges/oxford/white-2.jpg",
+    "/kitchen-ranges/oxford/white-3.jpg",
+    "/kitchen-ranges/oxford/white-4.jpg",
+  ],
+};
+
+const STRATTO = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  images: [
+    "/kitchen-ranges/stratto/dust-grey-1.jpg",
+    "/kitchen-ranges/stratto/dust-grey-2.jpg",
+    "/kitchen-ranges/stratto/indigo-1.jpg",
+    "/kitchen-ranges/stratto/light-grey-1.jpg",
+    "/kitchen-ranges/stratto/white-1.jpg",
+  ],
+};
+
+const STRATTO_FOR_VERO_SYSTEM = {
+  price: { amount: 4444, currency: "GBP" },
+  colors: [
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  images: [
+    "/kitchen-ranges/stratto-for-vero-system/indigo-1.jpg",
+    "/kitchen-ranges/stratto-for-vero-system/white-1.jpg",
+    "/kitchen-ranges/stratto-for-vero-system/white-2.jpg",
+  ],
+};
+
 const VIVO_GLOSS = {
   price: { amount: 6666, currency: "GBP" },
   colors: [
@@ -120,10 +395,182 @@ const VIVO_GLOSS = {
   ],
 };
 
+const VIVO_GLOSS_FOR_VERO_SYSTEM = {
+  price: { amount: 8888, currency: "GBP" },
+  colors: [
+    ColorsEnum.Anthracite,
+    ColorsEnum.Cashmere,
+    ColorsEnum.DustGrey,
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  images: [
+    "/kitchen-ranges/vivo-gloss-for-vero-system/light-grey-1.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/anthracite-1.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/cashmere-1.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/dust-grey-1.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/dust-grey-2.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/ivory-1.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/stone-1.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/white-1.jpg",
+    "/kitchen-ranges/vivo-gloss-for-vero-system/white-2.jpg",
+  ],
+};
+
+const VIVO_MATT = {
+  price: { amount: 7777, currency: "GBP" },
+  colors: [
+    ColorsEnum.Anthracite,
+    ColorsEnum.Cashmere,
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.LightGrey,
+    ColorsEnum.White,
+    ColorsEnum.PaintToOrder,
+  ],
+  images: [
+    "/kitchen-ranges/vivo-matt/anthracite-1.jpg",
+    "/kitchen-ranges/vivo-matt/anthracite-2.jpg",
+    "/kitchen-ranges/vivo-matt/anthracite-3.jpg",
+    "/kitchen-ranges/vivo-matt/anthracite-4.jpg",
+    "/kitchen-ranges/vivo-matt/cashmere-1.jpg",
+    "/kitchen-ranges/vivo-matt/cashmere-2.jpg",
+    "/kitchen-ranges/vivo-matt/cashmere-3.jpg",
+    "/kitchen-ranges/vivo-matt/cashmere-4.jpg",
+    "/kitchen-ranges/vivo-matt/cashmere-5.jpg",
+    "/kitchen-ranges/vivo-matt/dust-grey-1.jpg",
+    "/kitchen-ranges/vivo-matt/dust-grey-2.jpg",
+    "/kitchen-ranges/vivo-matt/indigo-1.jpg",
+    "/kitchen-ranges/vivo-matt/indigo-2.jpg",
+    "/kitchen-ranges/vivo-matt/ivory-1.jpg",
+    "/kitchen-ranges/vivo-matt/ivory-2.jpg",
+    "/kitchen-ranges/vivo-matt/ivory-3.jpg",
+    "/kitchen-ranges/vivo-matt/light-grey-1.jpg",
+    "/kitchen-ranges/vivo-matt/light-grey-2.jpg",
+    "/kitchen-ranges/vivo-matt/light-grey-3.jpg",
+    "/kitchen-ranges/vivo-matt/light-grey-4.jpg",
+    "/kitchen-ranges/vivo-matt/light-grey-5.jpg",
+    "/kitchen-ranges/vivo-matt/paint-to-order-midnight-blue-1.jpg",
+    "/kitchen-ranges/vivo-matt/paint-to-order-onyx-grey-1.jpg",
+    "/kitchen-ranges/vivo-matt/paint-to-order-pebble-grey-1.jpg",
+    "/kitchen-ranges/vivo-matt/paint-to-order-sage-green-1.jpg",
+    "/kitchen-ranges/vivo-matt/white-1.jpg",
+    "/kitchen-ranges/vivo-matt/white-2.jpg",
+    "/kitchen-ranges/vivo-matt/white-3.jpg",
+    "/kitchen-ranges/vivo-matt/white-4.jpg",
+  ],
+};
+
+const VIVO_MATT_FOR_VERO_SYSTEM = {
+  price: { amount: 9999, currency: "GBP" },
+  colors: [
+    ColorsEnum.Anthracite,
+    ColorsEnum.Cashmere,
+    ColorsEnum.DustGrey,
+    ColorsEnum.Indigo,
+    ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  images: [
+    "/kitchen-ranges/vivo-matt-for-vero-system/anthracite-1.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/cashmere-1.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/cashmere-2.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/dust-grey-1.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/dust-grey-2.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/indigo-1.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/ivory-1.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/light-grey-1.jpg",
+    "/kitchen-ranges/vivo-matt-for-vero-system/white-1.jpg",
+  ],
+};
+
+const WINDSOR = {
+  price: { amount: 8888, currency: "GBP" },
+  colors: [
+    ColorsEnum.DustGrey,
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Mussel,
+    ColorsEnum.Oak,
+    ColorsEnum.PaintToOrder,
+  ],
+  images: [
+    "/kitchen-ranges/windsor/dust-grey-1.jpg",
+    "/kitchen-ranges/windsor/dust-grey-2.jpg",
+    "/kitchen-ranges/windsor/dust-grey-3.jpg",
+    "/kitchen-ranges/windsor/ivory-1.jpg",
+    "/kitchen-ranges/windsor/ivory-2.jpg",
+    "/kitchen-ranges/windsor/ivory-3.jpg",
+    "/kitchen-ranges/windsor/ivory-4.jpg",
+    "/kitchen-ranges/windsor/ivory-5.jpg",
+    "/kitchen-ranges/windsor/light-grey-1.jpg",
+    "/kitchen-ranges/windsor/light-grey-2.jpg",
+    "/kitchen-ranges/windsor/light-grey-3.jpg",
+    "/kitchen-ranges/windsor/light-grey-4.jpg",
+    "/kitchen-ranges/windsor/mussel-1.jpg",
+    "/kitchen-ranges/windsor/mussel-2.jpg",
+    "/kitchen-ranges/windsor/oak-1.jpg",
+    "/kitchen-ranges/windsor/oak-2.jpg",
+    "/kitchen-ranges/windsor/oak-3.jpg",
+    "/kitchen-ranges/windsor/oak-4.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-chalkstone-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-cream-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-dakar-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-denim-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-denim-2.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-fjord-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-french-grey-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-french-grey-2.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-lava-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-midnight-blue-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-olive-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-onyx-grey-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-onyx-grey-2.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-pebble-grey-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-porcelain-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-sage-green-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-silver-grey-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-silver-grey-2.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-smokeblue-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-stone-grey-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-taupe-grey-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-white-1.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-white-2.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-white-3.jpg",
+    "/kitchen-ranges/windsor/paint-to-order-white-4.jpg",
+  ],
+};
+
 const config = {
+  ascot: ASCOT,
+  cambridge: CAMBRIDGE,
+  cartmel: CARTMEL,
+  "linear-anthracite-mountain-larch": LINEAR_ANTHRACITE_MOUNTAIN_LARCH,
+  "linear-anthracite-mountain-larch-for-vero-system":
+    LINEAR_ANTHRACITE_MOUNTAIN_LARCH_FOR_VERO_SYSTEM,
+  "linear-natural-halifax": LINEAR_NATURAL_HALIFAX,
+  "linear-natural-halifax-for-vero-system":
+    LINEAR_NATURAL_HALIFAX_FOR_VERO_SYSTEM,
+  "linear-natural-kendal": LINEAR_NATURAL_KENDAL,
+  "linear-natural-kendal-for-vero-system":
+    LINEAR_NATURAL_KENDAL_FOR_VERO_SYSTEM,
+  "linear-shorewood": LINEAR_SHOREWOOD,
+  "linear-shorewood-for-vero-system": LINEAR_SHOREWOOD_FOR_VERO_SYSTEM,
+  "linear-truffle-brown-denver": LINEAR_TRUFFLE_BROWN_DENVER,
+  "linear-truffle-brown-denver-for-vero-system":
+    LINEAR_TRUFFLE_BROWN_DENVER_FOR_VERO_SYSTEM,
   "lucente-gloss": LUCENTE_GLOSS,
   "lucente-matt": LUCENTE_MATT,
+  newmarket: NEWMARKET,
+  oxford: OXFORD,
+  stratto: STRATTO,
+  "stratto-for-vero-system": STRATTO_FOR_VERO_SYSTEM,
   "vivo-gloss": VIVO_GLOSS,
+  "vivo-gloss-for-vero-system": VIVO_GLOSS_FOR_VERO_SYSTEM,
+  "vivo-matt": VIVO_MATT,
+  "vivo-matt-for-vero-system": VIVO_MATT_FOR_VERO_SYSTEM,
+  windsor: WINDSOR,
 };
 
 export default config;

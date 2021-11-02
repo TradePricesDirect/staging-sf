@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
