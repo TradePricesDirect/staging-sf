@@ -19,7 +19,7 @@ export const FILTERS = [
   },
   {
     title: "Shaker",
-    name: "features",
+    name: "type",
     value: "shaker",
     image: "/images/kitchen-shaker-thumbnail.jpg",
   },
