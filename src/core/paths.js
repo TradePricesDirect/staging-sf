@@ -6,7 +6,7 @@ const paths = {
   collection: "/collection/[slug]",
   search: "/search",
   product: "/product/[slug]",
-  page: "/page/[slug]",
+  page: "/[slug]",
   basket: "/basket",
   // Checkout
   checkout: "/checkout",
@@ -16,9 +16,12 @@ const paths = {
   checkoutPaymentConfirm: "/checkout/payment-confirm",
   checkoutReview: "/checkout/review",
   orderThankYou: "/thank-you",
+  // Kichen Ranges
+  kitchenRanges: "/kitchen-ranges",
+  kitchenRange: "/kitchen-ranges/[slug]",
   // Legal
-  privacy: "/legal/privacy-policy",
-  terms: "/legal/terms-conditions",
+  privacy: "/privacy-policy",
+  terms: "/terms-conditions",
   // Account
   register: "/register",
   registerNewUser: "/register/new-user",

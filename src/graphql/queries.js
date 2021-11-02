@@ -285,3 +285,72 @@ export const orderDetailsByTokenQuery = gql`
     }
   }
 `;
+
+export const pagesQuery = gql`
+  query Pages {
+    pages(first: 100) {
+      edges {
+        node {
+          id
+          slug
+          pageType {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const pageDetailsQuery = gql`
+  query PageDetails($slug: String!) {
+    page(slug: $slug) {
+      pageType {
+        slug
+      }
+      id
+      title
+      content
+      attributes {
+        attribute {
+          name
+        }
+        values {
+          name
+          slug
+        }
+      }
+      metadata {
+        key
+        value
+      }
+    }
+  }
+`;
+
+export const kitchenRangesQuery = gql`
+  query KitchenRanges {
+    pages(
+      first: 100
+      filter: { metadata: { key: "Kitchen Range", value: "true" } }
+    ) {
+      edges {
+        node {
+          id
+          slug
+          title
+          attributes {
+            attribute {
+              name
+              slug
+            }
+            values {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+`;

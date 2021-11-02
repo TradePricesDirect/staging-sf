@@ -1,0 +1,16 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  background-color: $blue-100;
+}
+
+.container {
+  max-width: 1232px;
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: $primary;
+  @include font-size(2rem);
+}

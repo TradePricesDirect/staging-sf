@@ -9,6 +9,9 @@ import {
   shopFooterMenusQuery,
   productDetailsQuery,
   orderDetailsByTokenQuery,
+  pagesQuery,
+  pageDetailsQuery,
+  kitchenRangesQuery,
 } from "graphql/queries";
 
 let CONNECTION = null;
@@ -152,4 +155,40 @@ export const getOrderDetails = async (token) => {
     .then(({ data }) => data?.orderByToken);
 
   return order;
+};
+
+export const getPages = async () => {
+  const { apolloClient } = await getSaleorApi();
+
+  const { data } = await apolloClient.query({ query: pagesQuery });
+
+  let pages = data.pages.edges.filter(
+    ({ node }) => node.pageType.slug === "page"
+  );
+
+  return pages.map((e) => e.node);
+};
+
+export const getPageDetails = async (slug) => {
+  const { apolloClient } = await getSaleorApi();
+
+  const { page } = await apolloClient
+    .query({
+      query: pageDetailsQuery,
+      variables: { slug: slug },
+      fetchPolicy: "network-only",
+    })
+    .then(({ data }) => data);
+
+  return page;
+};
+
+export const getKitchenRanges = async () => {
+  const { apolloClient } = await getSaleorApi();
+
+  const { data } = await apolloClient.query({
+    query: kitchenRangesQuery,
+  });
+
+  return data?.pages?.edges.map((e) => e.node) || [];
 };

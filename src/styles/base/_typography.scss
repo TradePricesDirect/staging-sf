@@ -42,3 +42,12 @@ small a:not(.btn) {
     @include button-circle-variant($blue-300, true);
   }
 }
+
+.is-draggable {
+  cursor: move;
+  cursor: grab;
+
+  &.is-dragging {
+    cursor: grabbing;
+  }
+}

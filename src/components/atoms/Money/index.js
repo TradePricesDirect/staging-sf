@@ -1,14 +1,12 @@
-const Money = ({ money, suffix }) => {
-  const value = formatMoney(money);
+import { formatMoney } from "utils/money";
 
-  return <bdi>{suffix ? `${value} ${suffix}` : value}</bdi>;
+const Money = ({ money, suffix, prefix, ...options }) => {
+  let value = formatMoney(money, options);
+
+  if (suffix) value = `${value} ${suffix}`;
+  if (prefix) value = `${prefix} ${value}`;
+
+  return <bdi>{value}</bdi>;
 };
 
 export default Money;
-
-const formatMoney = ({ amount, currency }) => {
-  return new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: currency,
-  }).format(amount);
-};

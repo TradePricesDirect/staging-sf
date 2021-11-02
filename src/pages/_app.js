@@ -6,6 +6,7 @@ import { NextQueryParamProvider } from "contexts/NextQueryParamProvider";
 import StorefrontApp from "../app";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import "styles/global.scss";
 
 const saleorConfig = { apiUrl, channel: channelSlug };

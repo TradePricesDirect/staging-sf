@@ -26,9 +26,10 @@ const MetaTags = ({ title, description, meta }) => {
         </>
       )}
 
-      {Object.entries(meta).map(([key, value]) => (
-        <meta key={key} property={key} content={value} />
-      ))}
+      {meta &&
+        Object.entries(meta).map(([key, value]) => (
+          <meta key={key} property={key} content={value} />
+        ))}
     </Head>
   );
 };
