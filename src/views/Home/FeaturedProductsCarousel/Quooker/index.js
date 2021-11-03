@@ -23,7 +23,7 @@ const Quooker = () => {
             <h2>Pure Convenience at Unbeatable Prices</h2>
 
             <p>
-              Hot, cold, sparkling and filtered water on demand this tap from
+              Hot, cold, sparkling and filtered water on demand, this tap from
               Quooker has become an indispensable tool in kitchens all over the
               world.
             </p>

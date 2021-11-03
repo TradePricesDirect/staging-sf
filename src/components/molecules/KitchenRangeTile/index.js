@@ -61,6 +61,24 @@ const KitchenRangeTile = ({ range }) => {
         </div>
       </div>
 
+      <div className={styles.colorsWrap}>
+        <ul className={styles.colors}>
+          {colors.map(({ name, slug, value }) => (
+            <li key={`${range.slug}-colour-${slug}`}>
+              <button
+                type="button"
+                onClick={() => handleColor(slug)}
+                className={styles.colorSwatch}
+                style={{ background: value }}
+                data-color={slug}
+              >
+                <span className="visually-hidden">{name}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className={styles.content}>
         <div className="row align-items-center justify-content-between gx-4 gy-2">
           <div className="col-auto">
@@ -72,21 +90,9 @@ const KitchenRangeTile = ({ range }) => {
             </div>
           </div>
           <div className="col-auto">
-            <ul className={styles.colors}>
-              {colors.map(({ name, slug, value }) => (
-                <li key={`${range.slug}-colour-${slug}`}>
-                  <button
-                    type="button"
-                    onClick={() => handleColor(slug)}
-                    className={styles.colorSwatch}
-                    style={{ background: value }}
-                    data-color={slug}
-                  >
-                    <span className="visually-hidden">{name}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <Link href={url}>
+              <a className="btn btn-primary">View Range</a>
+            </Link>
           </div>
         </div>
       </div>

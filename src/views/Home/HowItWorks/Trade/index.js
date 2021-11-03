@@ -26,11 +26,11 @@ const Trade = () => {
       <li>
         <Image
           src="/images/process-customer-pay.svg"
-          alt="Pay Online of Finance"
+          alt="Pay Online or Finance"
           width={140}
           height={160}
         />
-        <h4>Pay Online of Finance</h4>
+        <h4>Pay Online or Finance</h4>
       </li>
       <li>
         <Image
