@@ -15,38 +15,38 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
   const {
     selectedShippingAddressId,
     selectedBillingAddressId,
+    billingAsShipping,
     setShippingAddress,
     setBillingAddress,
     setBillingAsShippingAddress,
   } = useCheckout();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
 
+  // Selected shipping address, or default shipping address, or null
+  const selectedShipping = getAddress(
+    user.addresses,
+    selectedShippingAddressId || user?.defaultShippingAddress?.id || null
+  );
+
+  // Selected billing address, or default billing address, or null
+  const selectedBilling = getAddress(
+    user.addresses,
+    selectedBillingAddressId || user?.defaultBillingAddress?.id || null
+  );
+
+  // Selected billingAsShipping option, or if shipping equals billing
+  const selectedBillingAsShipping =
+    billingAsShipping || selectedShipping === selectedBilling;
+
   const [state, setState] = useState({
-    shipping: null,
-    billing: null,
-    billingAsShipping: true,
+    shipping: selectedShipping,
+    billing: selectedBilling,
+    billingAsShipping: selectedBillingAsShipping,
   });
-
-  useEffect(() => {
-    const newState = {};
-
-    if (selectedShippingAddressId) {
-      newState.shipping = user.addresses.find(
-        ({ id }) => id === selectedShippingAddressId
-      );
-    }
-
-    if (selectedBillingAddressId) {
-      newState.billing = user.addresses.find(
-        ({ id }) => id === selectedBillingAddressId
-      );
-    }
-
-    setState({ ...state, ...newState });
-  }, [selectedShippingAddressId, selectedBillingAddressId]);
 
   const handleShippingChange = (address) => {
     if (!loading) setState({ ...state, shipping: address });
@@ -69,8 +69,6 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { shipping, billingAsShipping, billing } = state;
-
     if (loading) return;
 
     // Loading
@@ -78,7 +76,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
 
     // Set Shipping Address
     const { dataError: shippingError } = await setShippingAddress(
-      shipping,
+      state.shipping,
       user.email
     );
 
@@ -89,7 +87,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
     }
 
     // Set Billing Address
-    if (billingAsShipping) {
+    if (state.billingAsShipping) {
       const { dataError } = await setBillingAsShippingAddress();
 
       if (dataError?.error) {
@@ -98,7 +96,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
         return;
       }
     } else {
-      const { dataError } = await setBillingAddress(billing, user.email);
+      const { dataError } = await setBillingAddress(state.billing, user.email);
 
       if (dataError?.error) {
         setErrors(dataError.error);
@@ -176,4 +174,8 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
       <AddressFormModal isOpen={isOpen} onClose={onClose} />
     </>
   );
+};
+
+const getAddress = (addresses, id) => {
+  return addresses.find((address) => address.id === id);
 };
