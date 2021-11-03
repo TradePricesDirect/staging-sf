@@ -4,10 +4,11 @@ import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import CategoryTile from "components/molecules/CategoryTile";
+import paths from "core/paths";
 
 import styles from "./CategoryCarousel.module.scss";
 
-const CategoryCarousel = ({ categories }) => {
+const CategoryCarousel = ({ categories, viewAllButton = true }) => {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: false,
     align: "start",
@@ -33,9 +34,11 @@ const CategoryCarousel = ({ categories }) => {
             </div>
 
             <div className="col-sm-auto">
-              <Link href="/shop">
-                <a className="btn btn-sm btn-circle">View All</a>
-              </Link>
+              {viewAllButton && (
+                <Link href={paths.shop}>
+                  <a className="btn btn-sm btn-circle">View All</a>
+                </Link>
+              )}
 
               <div className={styles.nav}>
                 <button
