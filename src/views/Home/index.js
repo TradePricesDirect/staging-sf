@@ -3,9 +3,18 @@ import Tiles from "./Tiles";
 import BrandsList from "components/molecules/BrandsList";
 import CategoryList from "components/organisms/CategoryList";
 import CategoryCarousel from "components/organisms/CategoryCarousel";
-import FeaturedProductsCarousel from "./FeaturedProductsCarousel";
-import HowItWorks from "./HowItWorks";
+import FeaturedCarousel from "components/organisms/FeaturedCarousel";
 import FeefoReviews from "components/molecules/FeefoReviews";
+import FeaturedQuooker from "components/molecules/FeaturedQuooker";
+import FeaturedTado from "components/molecules/FeaturedTado";
+import FeaturedMultipanel from "components/molecules/FeaturedMultipanel";
+import FeaturedSynergy from "components/molecules/FeaturedSynergy";
+import FeaturedFernox from "components/molecules/FeaturedFernox";
+import FeaturedAeg from "components/molecules/FeaturedAeg";
+import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
+import FeaturedVaillant from "components/molecules/FeaturedVaillant";
+import FeaturedGrohe from "components/molecules/FeaturedGrohe";
+import HowItWorks from "./HowItWorks";
 import TilesLarge from "./TilesLarge";
 
 const HomePage = ({ categories, totalCounts }) => {
@@ -19,7 +28,19 @@ const HomePage = ({ categories, totalCounts }) => {
       <BrandsList totalCounts={totalCounts} />
       <CategoryList categories={level0} />
       <CategoryCarousel categories={level1} />
-      <FeaturedProductsCarousel />
+      <FeaturedCarousel
+        slides={[
+          <FeaturedQuooker />,
+          <FeaturedTado />,
+          <FeaturedMultipanel />,
+          <FeaturedSynergy />,
+          <FeaturedFernox />,
+          <FeaturedAeg />,
+          <FeaturedXLJoinery />,
+          <FeaturedVaillant />,
+          <FeaturedGrohe />,
+        ]}
+      />
       <HowItWorks />
       <FeefoReviews />
       <TilesLarge />

@@ -1,21 +1,22 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
-import NavPills from "components/atoms/NavPills";
-import Quooker from "./Quooker";
-
-import styles from "./FeaturedProductsCarousel.module.scss";
 import paths from "core/paths";
+import NavPills from "components/atoms/NavPills";
 
-const THUMBNAILS = [
-  { id: uuidv4(), name: "Quooker" },
-  { id: uuidv4(), name: "Quooker" },
-];
+import styles from "./FeaturedCarousel.module.scss";
 
-const FeaturedProductsCarousel = () => {
+const FeaturedCarousel = ({ slides }) => {
+  const thumbnails = useMemo(() => {
+    return slides.map((s) => ({
+      id: uuidv4(),
+      name: s?.type?.displayName || "Featured",
+    }));
+  }, [slides.length]);
+
   const [viewportRef, embla] = useEmblaCarousel({ loop: false });
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -67,18 +68,17 @@ const FeaturedProductsCarousel = () => {
 
       <div ref={viewportRef} className={styles.carouselWrap}>
         <div className={styles.carousel}>
-          <div className={styles.slide}>
-            <Quooker />
-          </div>
-          <div className={styles.slide}>
-            <Quooker />
-          </div>
+          {slides.map((slide, index) => (
+            <div key={`featured-carousel-${index}`} className={styles.slide}>
+              {slide}
+            </div>
+          ))}
         </div>
       </div>
 
       <div className={styles.navPills}>
         <NavPills
-          values={THUMBNAILS}
+          values={thumbnails}
           activeIndex={activeIndex}
           onValueClick={handleGoTo}
         />
@@ -87,4 +87,4 @@ const FeaturedProductsCarousel = () => {
   );
 };
 
-export default FeaturedProductsCarousel;
+export default FeaturedCarousel;
