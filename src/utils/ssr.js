@@ -70,9 +70,16 @@ export const getShopAttributes = async ({
 };
 
 export const getTotalProducts = async () => {
-  const { apolloClient } = await getSaleorApi();
+  // TODO: Saleor doesn't give us totalCount for products that aren't "Show in product listings"
 
-  const { data } = await apolloClient.query({ query: productTotalCountQuery });
+  // const { apolloClient } = await getSaleorApi();
+  // const { data } = await apolloClient.query({ query: productTotalCountQuery });
+
+  // For now, we'll estimate these values...
+  const data = {
+    all: { totalCount: 69142 },
+    inStock: { totalCount: 69142 },
+  };
 
   return data;
 };
