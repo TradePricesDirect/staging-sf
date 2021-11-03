@@ -2,9 +2,14 @@
 @import "styles/mixins";
 
 .title {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
+}
+
+.lead {
+  color: $gray-600;
+  margin-bottom: 1rem;
 }
 
 .grid {

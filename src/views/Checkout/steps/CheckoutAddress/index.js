@@ -121,6 +121,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
       <form onSubmit={handleSubmit}>
         <fieldset className="mb-4">
           <legend className={styles.title}>Delivery Address</legend>
+          <p className={styles.lead}>Add or select an address to continue</p>
 
           <div className={styles.grid}>
             {user.addresses.map((address) => (

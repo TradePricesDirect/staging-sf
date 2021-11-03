@@ -22,11 +22,11 @@ const config = [
     url: "https://www.instagram.com/tradepricesdirectuk/",
     icon: faInstagram,
   },
-  {
-    title: "LinkedIn",
-    url: "#",
-    icon: faLinkedinIn,
-  },
+  // {
+  //   title: "LinkedIn",
+  //   url: "#",
+  //   icon: faLinkedinIn,
+  // },
   {
     title: "YouTube",
     url: "https://www.youtube.com/channel/UCzDo8youTsrZiTmOs2ZtJWQ",

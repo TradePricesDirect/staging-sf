@@ -68,6 +68,8 @@ export const CheckoutPayment = ({ onSubmitSuccess }) => {
         <fieldset className="mb-4">
           <legend className={styles.title}>Payment Method</legend>
 
+          <p className={styles.lead}>Select a payment method to continue</p>
+
           <div className={styles.grid}>
             {paymentGateways.map((paymentGateway) => (
               <PaymentOption

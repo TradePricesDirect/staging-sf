@@ -2,23 +2,30 @@ import { usePasswordChange } from "@saleor/sdk";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import Alert from "components/atoms/Alert";
 import Input from "components/atoms/Input";
 
 const PasswordChange = () => {
-  const [setPasswordChange] = usePasswordChange();
+  const [setPasswordChange, { data, error }] = usePasswordChange();
 
   const { register, handleSubmit, formState } = useForm();
-  const { errors, isSubmitting, isSubmitSuccessful } = formState;
+  const { errors, isSubmitting } = formState;
 
   const onSubmit = (data) => setPasswordChange(data);
 
+  const isSubmitSuccessful = data && !error;
+
+  const formErrors = error?.extraInfo?.userInputErrors || [];
+
   return (
     <>
-      {isSubmitSuccessful && (
-        <div className="alert alert-success" role="alert">
-          Password updated!
-        </div>
-      )}
+      {formErrors?.map((error) => (
+        <Alert key={error.code} type="danger">
+          {error.message}
+        </Alert>
+      ))}
+
+      {isSubmitSuccessful && <Alert type="success">Password updated!</Alert>}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
