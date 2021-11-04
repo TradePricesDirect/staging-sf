@@ -14,6 +14,7 @@ import {
   kitchenRangesQuery,
   kitchenRangeDetailsQuery,
 } from "graphql/queries";
+import { formatKitchenRangeData } from "utils/kitchen-ranges";
 
 let CONNECTION = null;
 
@@ -209,12 +210,17 @@ export const getKitchenRanges = async () => {
 export const getKitchenRangeDetails = async (slug) => {
   const { apolloClient } = await getSaleorApi();
 
-  const { page: range } = await apolloClient
+  const { page } = await apolloClient
     .query({
       query: kitchenRangeDetailsQuery,
       variables: { slug },
     })
     .then(({ data }) => data);
+
+  const range = formatKitchenRangeData({
+    ...page,
+    ...kitchenRangeConfig[page.slug],
+  });
 
   return range;
 };

@@ -1,0 +1,93 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1 1 auto;
+  width: 100%;
+  @include margin-bottom(4rem);
+  font-size: $font-size-lg;
+  line-height: 1.75;
+}
+
+.tile {
+  position: relative;
+  background-color: $blue-100;
+  padding: 1rem;
+  padding-right: 6.5rem;
+  margin-bottom: 1rem;
+
+  h3 {
+    color: $primary;
+    font-size: $font-size-lg;
+  }
+
+  p {
+    margin: 0;
+    font-size: $font-size-sm;
+  }
+
+  .image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width: 6rem;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.stats {
+  dt {
+    color: $primary;
+    font-weight: $font-weight-semibold;
+  }
+
+  dd {
+    margin-bottom: 1.5rem;
+    color: $gray-700;
+  }
+}
+
+.colors {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colorItem {
+  flex: 0 1 4.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: $gray-700;
+}
+
+.colorSwatch {
+  display: block;
+  margin: 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: $border-radius;
+
+  &[data-color="white"] {
+    border: 1px solid $border-color;
+  }
+}
+
+@media (min-width: 1200px) {
+  .tile {
+    padding-right: 8rem;
+
+    .image {
+      width: 7.5rem;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  background: $gray-200 center center no-repeat;
+  background-size: cover;
+}
+
+.image {
+  position: relative;
+  z-index: 1;
+  height: 300px;
+  height: 50vw;
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: $white;
+}
+
+.content {
+  width: 100%;
+}
+
+.subtitle {
+  margin: 0 0 0.25rem;
+  color: $secondary;
+  font-size: $font-size-sm;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  color: $primary;
+  font-size: $font-size-lg;
+}
+
+@media (min-width: 576px) {
+  .wrap {
+    padding: 12vw 6vw;
+  }
+
+  .image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .body {
+    max-width: 34rem;
+    border-left: 4px solid $secondary;
+    box-shadow: $box-shadow-sm;
+  }
+
+  .content {
+    max-width: 27rem;
+  }
+
+  .subtitle {
+    font-size: $font-size-base;
+  }
+
+  .title {
+    @include font-size(1.75rem);
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrap {
+    padding: 12rem 6rem;
+  }
+}

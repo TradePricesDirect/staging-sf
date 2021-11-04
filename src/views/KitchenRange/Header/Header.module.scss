@@ -1,0 +1,47 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.header {
+  padding: 1rem 1rem 0;
+}
+
+.title {
+  color: $primary;
+  @include font-size(1.5rem);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-sm;
+}
+
+@media (min-width: 992px) {
+  .wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .header {
+    position: relative;
+    width: 66.66%;
+    background-color: $white;
+    border-top-right-radius: $border-radius-lg;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 100%;
+      display: block;
+      width: 999em;
+      height: 100%;
+      background-color: inherit;
+    }
+  }
+
+  .subtitle {
+    margin: 0;
+  }
+}

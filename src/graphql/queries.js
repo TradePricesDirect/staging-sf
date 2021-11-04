@@ -362,6 +362,7 @@ export const kitchenRangeDetailsQuery = gql`
       id
       title
       slug
+      content
       metadata {
         key
         value
