@@ -17,9 +17,11 @@ const Modal = ({
   // Lock scroll on open
   useEffect(() => {
     if (isOpen) {
-      disableBodyScroll(document.querySelector(target));
+      document.body.style.overflow = "hidden";
+      // disableBodyScroll(document.querySelector(target));
     } else {
-      clearAllBodyScrollLocks();
+      document.body.style.overflow = "auto";
+      // clearAllBodyScrollLocks();
     }
   }, [isOpen]);
 
