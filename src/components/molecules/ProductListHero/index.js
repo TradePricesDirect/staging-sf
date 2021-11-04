@@ -13,11 +13,7 @@ const ProductListHero = ({ title, description, backgroundImage }) => {
 
           {description && (
             <div className={styles.content}>
-              {typeof description === "object" ? (
-                <RichTextEditorContent jsonData={description} />
-              ) : (
-                <p>{description}</p>
-              )}
+              <RichTextEditorContent jsonData={description} />
             </div>
           )}
 

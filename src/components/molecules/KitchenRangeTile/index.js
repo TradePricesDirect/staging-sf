@@ -7,7 +7,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import paths from "core/paths";
-import config from "core/kitchen-ranges";
 import Money from "components/atoms/Money";
 
 import styles from "./KitchenRangeTile.module.scss";
@@ -23,12 +22,12 @@ const KitchenRangeTile = ({ range }) => {
     if (embla) embla.scrollNext();
   }, [embla]);
 
-  const { colors, images, price } = config[range.slug];
-
   const handleColor = useCallback(
     (color) => {
       if (embla) {
-        const index = images.findIndex((image) => _.includes(image, color));
+        const index = range.images.findIndex((image) =>
+          _.includes(image, color)
+        );
         if (index >= 0) embla.scrollTo(index, true);
       }
     },
@@ -42,7 +41,7 @@ const KitchenRangeTile = ({ range }) => {
       <div className={styles.gallery}>
         <div ref={viewportRef} className={styles.carousel}>
           <div className={styles.carouselContainer}>
-            {images.map((image, index) => (
+            {range.images.map((image, index) => (
               <Slide key={`${range.slug}-image-${index}`} image={image} />
             ))}
           </div>
@@ -63,7 +62,7 @@ const KitchenRangeTile = ({ range }) => {
 
       <div className={styles.colorsWrap}>
         <ul className={styles.colors}>
-          {colors.map(({ name, slug, value }) => (
+          {range.colors.map(({ name, slug, value }) => (
             <li key={`${range.slug}-colour-${slug}`}>
               <button
                 type="button"
@@ -86,7 +85,11 @@ const KitchenRangeTile = ({ range }) => {
               <a className={styles.title}>{range.title}</a>
             </Link>
             <div className={styles.price}>
-              <Money prefix="From" money={price} maximumFractionDigits={0} />
+              <Money
+                prefix="From"
+                money={range.price}
+                maximumFractionDigits={0}
+              />
             </div>
           </div>
           <div className="col-auto">

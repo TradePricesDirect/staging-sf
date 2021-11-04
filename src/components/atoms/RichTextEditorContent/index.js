@@ -5,7 +5,7 @@ const RichTextEditorContent = ({ jsonData }) => {
 
   const editorHtml = EditorJSHTML();
 
-  const data = jsonData ? JSON.parse(jsonData) : [];
+  const data = typeof jsonData === "string" ? JSON.parse(jsonData) : jsonData;
 
   return (
     <div

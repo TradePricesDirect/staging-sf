@@ -10,7 +10,18 @@ const ShopPage = ({ categories }) => {
     <>
       <ProductListHero
         title="Shop All"
-        description="Buy kitchens, bathrooms, boilers, & more at trade prices direct from the manufacturer."
+        description={{
+          time: 1636020324746,
+          blocks: [
+            {
+              data: {
+                text: "Buy kitchens, bathrooms, boilers, & more at trade prices direct from the manufacturer.",
+              },
+              type: "paragraph",
+            },
+          ],
+          version: "2.20.0",
+        }}
       />
 
       <CategoryList categories={level0} />

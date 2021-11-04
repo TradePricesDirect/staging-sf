@@ -355,3 +355,17 @@ export const kitchenRangesQuery = gql`
     }
   }
 `;
+
+export const kitchenRangeDetailsQuery = gql`
+  query KitchenRangeDetails($slug: String!) {
+    page(slug: $slug) {
+      id
+      title
+      slug
+      metadata {
+        key
+        value
+      }
+    }
+  }
+`;

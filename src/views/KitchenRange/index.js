@@ -1,7 +1,7 @@
-const KitchenRangePage = () => {
+const KitchenRangePage = ({ range }) => {
   return (
     <div>
-      <h1>Single Kitchen Range</h1>
+      <h1>{range.title}</h1>
     </div>
   );
 };

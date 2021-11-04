@@ -1,9 +1,9 @@
 import { SaleorManager, VariantAttributeScope } from "@saleor/sdk";
 import { getShop } from "@saleor/sdk/lib/queries/shop";
 import { apiUrl, channelSlug } from "core/constants";
+import kitchenRangeConfig from "core/kitchen-ranges";
 import {
   shopAttributesQuery,
-  productTotalCountQuery,
   categoryLevelsQuery,
   shopMenusQuery,
   shopFooterMenusQuery,
@@ -12,6 +12,7 @@ import {
   pagesQuery,
   pageDetailsQuery,
   kitchenRangesQuery,
+  kitchenRangeDetailsQuery,
 } from "graphql/queries";
 
 let CONNECTION = null;
@@ -197,5 +198,23 @@ export const getKitchenRanges = async () => {
     query: kitchenRangesQuery,
   });
 
-  return data?.pages?.edges.map((e) => e.node) || [];
+  const ranges = data?.pages?.edges.map((e) => ({
+    ...e.node,
+    ...kitchenRangeConfig[e.node.slug],
+  }));
+
+  return ranges || [];
+};
+
+export const getKitchenRangeDetails = async (slug) => {
+  const { apolloClient } = await getSaleorApi();
+
+  const { page: range } = await apolloClient
+    .query({
+      query: kitchenRangeDetailsQuery,
+      variables: { slug },
+    })
+    .then(({ data }) => data);
+
+  return range;
 };
