@@ -9,6 +9,7 @@ export const ColorHexEnum = {
   Mussel: "#e2e2d6",
   Oak: "#ceb089",
   SageGreen: "#d8d7b9",
+  StoneGrey: "#888c8d",
   White: "#FFFFFF",
   PaintToOrder:
     "linear-gradient(135deg, rgba(255,0,0,1) 0%, rgba(255,165,0,1) 20%, rgba(255,255,0,1) 40%, rgba(0,128,0,1) 60%, rgba(0,0,255,1) 80%, rgba(75,0,130,1) 100%)",
@@ -69,6 +70,11 @@ export const ColorsEnum = {
     name: "Sage Green",
     slug: "sage-green",
     value: ColorHexEnum.SageGreen,
+  },
+  StoneGrey: {
+    name: "Stone Grey",
+    slug: "stone-grey",
+    value: ColorHexEnum.StoneGrey,
   },
   White: {
     name: "White",

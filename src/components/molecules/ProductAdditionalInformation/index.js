@@ -6,7 +6,7 @@ import { faAngleRight, faTimes } from "@fortawesome/pro-light-svg-icons";
 import useDisclosure from "hooks/useDisclosure";
 import Drawer from "components/organisms/Drawer";
 import AddToCartSection from "components/organisms/AddToCartSection";
-import CallToAction from "./CallToAction";
+import GetHelpCallToAction from "components/molecules/GetHelpCallToAction";
 
 import styles from "./ProductAdditionalInformation.module.scss";
 
@@ -73,7 +73,7 @@ const ProductAdditionalInformation = ({
               />
             )}
 
-            <CallToAction />
+            <GetHelpCallToAction />
           </footer>
         </section>
       </Drawer>

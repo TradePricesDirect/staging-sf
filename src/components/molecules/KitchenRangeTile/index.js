@@ -62,7 +62,7 @@ const KitchenRangeTile = ({ range }) => {
 
       <div className={styles.colorsWrap}>
         <ul className={styles.colors}>
-          {range.colors.map(({ name, slug, value }) => (
+          {range.door_colors.map(({ name, slug, value }) => (
             <li key={`${range.slug}-colour-${slug}`}>
               <button
                 type="button"

@@ -4,9 +4,9 @@ import { faPhoneAlt } from "@fortawesome/pro-light-svg-icons";
 import { SUPPORT_PHONE } from "core/config";
 import Icon from "./cta-call.svg";
 
-import styles from "./CallToAction.module.scss";
+import styles from "./GetHelpCallToAction.module.scss";
 
-const CallToAction = () => {
+const GetHelpCallToAction = () => {
   return (
     <div className={styles.wrap}>
       <Icon className={styles.icon} />
@@ -25,4 +25,4 @@ const CallToAction = () => {
   );
 };
 
-export default CallToAction;
+export default GetHelpCallToAction;

@@ -2,7 +2,14 @@ import { ColorsEnum } from "core/colors";
 
 const ASCOT = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.PaintToOrder],
+  door_colors: [ColorsEnum.PaintToOrder],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: [
     "/kitchen-ranges/ascot/paint-to-order-light-grey-1.jpg",
     "/kitchen-ranges/ascot/paint-to-order-light-grey-2.jpg",
@@ -12,7 +19,7 @@ const ASCOT = {
 
 const CAMBRIDGE = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.DustGrey,
     ColorsEnum.Indigo,
     ColorsEnum.Ivory,
@@ -20,6 +27,13 @@ const CAMBRIDGE = {
     ColorsEnum.Mussel,
     ColorsEnum.Oak,
     ColorsEnum.PaintToOrder,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
   ],
   images: [
     "/kitchen-ranges/cambridge/dust-grey-1.jpg",
@@ -70,7 +84,7 @@ const CAMBRIDGE = {
 
 const CARTMEL = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.Cashmere,
     ColorsEnum.DustGrey,
@@ -79,6 +93,13 @@ const CARTMEL = {
     ColorsEnum.LightGrey,
     ColorsEnum.Mussel,
     ColorsEnum.SageGreen,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -121,13 +142,27 @@ const CARTMEL = {
 
 const LINEAR_ANTHRACITE_MOUNTAIN_LARCH = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Anthracite],
+  door_colors: [ColorsEnum.Anthracite],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: ["/kitchen-ranges/linear-anthracite-mountain-larch/anthracite-1.jpg"],
 };
 
 const LINEAR_ANTHRACITE_MOUNTAIN_LARCH_FOR_VERO_SYSTEM = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Anthracite],
+  door_colors: [ColorsEnum.Anthracite],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: [
     "/kitchen-ranges/linear-anthracite-mountain-larch-for-vero-system/anthracite-1.jpg",
   ],
@@ -135,7 +170,14 @@ const LINEAR_ANTHRACITE_MOUNTAIN_LARCH_FOR_VERO_SYSTEM = {
 
 const LINEAR_NATURAL_HALIFAX = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak, ColorsEnum.White],
+  door_colors: [ColorsEnum.Oak, ColorsEnum.White],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: [
     "/kitchen-ranges/linear-natural-halifax/oak-1.jpg",
     "/kitchen-ranges/linear-natural-halifax/white-1.jpg",
@@ -144,7 +186,14 @@ const LINEAR_NATURAL_HALIFAX = {
 
 const LINEAR_NATURAL_HALIFAX_FOR_VERO_SYSTEM = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak, ColorsEnum.White],
+  door_colors: [ColorsEnum.Oak, ColorsEnum.White],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: [
     "/kitchen-ranges/linear-natural-halifax-for-vero-system/oak-1.jpg",
     "/kitchen-ranges/linear-natural-halifax-for-vero-system/white-1.jpg",
@@ -153,37 +202,78 @@ const LINEAR_NATURAL_HALIFAX_FOR_VERO_SYSTEM = {
 
 const LINEAR_NATURAL_KENDAL = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak],
+  door_colors: [ColorsEnum.Oak],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: ["/kitchen-ranges/linear-natural-kendal/oak-1.jpg"],
 };
 
 const LINEAR_NATURAL_KENDAL_FOR_VERO_SYSTEM = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak],
+  door_colors: [ColorsEnum.Oak],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: ["/kitchen-ranges/linear-natural-kendal-for-vero-system/oak-1.jpg"],
 };
 
 const LINEAR_SHOREWOOD = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak],
+  door_colors: [ColorsEnum.Oak],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: ["/kitchen-ranges/linear-shorewood/oak-1.jpg"],
 };
 
 const LINEAR_SHOREWOOD_FOR_VERO_SYSTEM = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak],
+  door_colors: [ColorsEnum.Oak],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: ["/kitchen-ranges/linear-shorewood-for-vero-system/oak-1.jpg"],
 };
 
 const LINEAR_TRUFFLE_BROWN_DENVER = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak],
+  door_colors: [ColorsEnum.Oak],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: ["/kitchen-ranges/linear-truffle-brown-denver/oak-1.jpg"],
 };
 
 const LINEAR_TRUFFLE_BROWN_DENVER_FOR_VERO_SYSTEM = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [ColorsEnum.Oak],
+  door_colors: [ColorsEnum.Oak],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
+  ],
   images: [
     "/kitchen-ranges/linear-truffle-brown-denver-for-vero-system/oak-1.jpg",
   ],
@@ -191,12 +281,19 @@ const LINEAR_TRUFFLE_BROWN_DENVER_FOR_VERO_SYSTEM = {
 
 const LUCENTE_GLOSS = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.Cashmere,
     ColorsEnum.Cream,
     ColorsEnum.DustGrey,
     ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -220,7 +317,7 @@ const LUCENTE_GLOSS = {
 
 const LUCENTE_MATT = {
   price: { amount: 5555, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.Cashmere,
     ColorsEnum.DustGrey,
@@ -228,6 +325,13 @@ const LUCENTE_MATT = {
     ColorsEnum.LightGrey,
     ColorsEnum.White,
     ColorsEnum.PaintToOrder,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
   ],
   images: [
     "/kitchen-ranges/lucente-matt/anthracite-1.jpg",
@@ -280,12 +384,19 @@ const LUCENTE_MATT = {
 
 const NEWMARKET = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.DustGrey,
     ColorsEnum.Indigo,
     ColorsEnum.Ivory,
     ColorsEnum.LightGrey,
     ColorsEnum.PaintToOrder,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
   ],
   images: [
     "/kitchen-ranges/newmarket/dust-grey-1.jpg",
@@ -302,12 +413,19 @@ const NEWMARKET = {
 
 const OXFORD = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.DustGrey,
     ColorsEnum.Indigo,
     ColorsEnum.Ivory,
     ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -334,10 +452,17 @@ const OXFORD = {
 
 const STRATTO = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.DustGrey,
     ColorsEnum.Indigo,
     ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -351,10 +476,16 @@ const STRATTO = {
 
 const STRATTO_FOR_VERO_SYSTEM = {
   price: { amount: 4444, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.DustGrey,
     ColorsEnum.Indigo,
     ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -366,12 +497,19 @@ const STRATTO_FOR_VERO_SYSTEM = {
 
 const VIVO_GLOSS = {
   price: { amount: 6666, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.Cashmere,
     ColorsEnum.DustGrey,
     ColorsEnum.Ivory,
     ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -397,12 +535,18 @@ const VIVO_GLOSS = {
 
 const VIVO_GLOSS_FOR_VERO_SYSTEM = {
   price: { amount: 8888, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.Cashmere,
     ColorsEnum.DustGrey,
     ColorsEnum.Ivory,
     ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -420,7 +564,7 @@ const VIVO_GLOSS_FOR_VERO_SYSTEM = {
 
 const VIVO_MATT = {
   price: { amount: 7777, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.Cashmere,
     ColorsEnum.DustGrey,
@@ -428,6 +572,13 @@ const VIVO_MATT = {
     ColorsEnum.LightGrey,
     ColorsEnum.White,
     ColorsEnum.PaintToOrder,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
   ],
   images: [
     "/kitchen-ranges/vivo-matt/anthracite-1.jpg",
@@ -464,12 +615,18 @@ const VIVO_MATT = {
 
 const VIVO_MATT_FOR_VERO_SYSTEM = {
   price: { amount: 9999, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.Anthracite,
     ColorsEnum.Cashmere,
     ColorsEnum.DustGrey,
     ColorsEnum.Indigo,
     ColorsEnum.LightGrey,
+    ColorsEnum.White,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],
   images: [
@@ -487,13 +644,20 @@ const VIVO_MATT_FOR_VERO_SYSTEM = {
 
 const WINDSOR = {
   price: { amount: 8888, currency: "GBP" },
-  colors: [
+  door_colors: [
     ColorsEnum.DustGrey,
     ColorsEnum.Ivory,
     ColorsEnum.LightGrey,
     ColorsEnum.Mussel,
     ColorsEnum.Oak,
     ColorsEnum.PaintToOrder,
+  ],
+  cabinet_colors: [
+    ColorsEnum.Ivory,
+    ColorsEnum.LightGrey,
+    ColorsEnum.Oak,
+    ColorsEnum.StoneGrey,
+    ColorsEnum.White,
   ],
   images: [
     "/kitchen-ranges/windsor/dust-grey-1.jpg",
