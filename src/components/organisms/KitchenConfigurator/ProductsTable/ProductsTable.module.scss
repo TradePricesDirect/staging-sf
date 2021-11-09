@@ -1,0 +1,129 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.list {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.nav {
+  background-color: $blue-100;
+  white-space: nowrap;
+
+  .button {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: $font-size-sm;
+    color: $gray-700;
+    border-radius: $border-radius-pill;
+
+    &.selected {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+}
+
+.subNav {
+  background-color: $gray-100;
+  border-bottom: 1px solid $border-color;
+
+  .button {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    color: $gray-700;
+    white-space: nowrap;
+
+    &.selected {
+      color: $primary;
+      text-decoration: underline;
+    }
+  }
+}
+
+.lead {
+  margin: 0 0 1rem;
+  padding: 0 1rem;
+  font-weight: $font-weight-semibold;
+  color: $primary;
+}
+
+.tableWrap {
+  position: relative;
+  max-height: 420px;
+  padding: 0 1rem;
+  overflow: auto;
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  th {
+    position: sticky;
+    top: 0;
+    color: $primary;
+    background-color: $white;
+    font-weight: $font-weight-normal;
+  }
+
+  .sku {
+    width: 0;
+    min-width: 9rem;
+  }
+
+  .shrink {
+    width: 0;
+    text-align: center;
+  }
+}
+
+.quantitySelector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: $blue-300;
+  border-radius: $border-radius-pill;
+  line-height: 1.25;
+  overflow: hidden;
+  user-select: none;
+
+  .button {
+    display: inline-block;
+    min-width: 2.25rem;
+    padding: 0.5rem;
+    line-height: 1;
+    color: $primary;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  .quantity {
+    display: inline-block;
+    min-width: 2.5rem;
+    padding: 0.5rem;
+    font-size: $font-size-lg;
+    line-height: 1.2;
+    text-align: center;
+    color: $white;
+    background-color: $primary;
+    border-radius: $border-radius-pill;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav,
+  .subNav {
+    padding: 0 1rem;
+  }
+}

@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 import { useDebouncedCallback } from "use-debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/pro-light-svg-icons";
 
 import styles from "./QuantitySelector.module.scss";
 
-const QuantitySelector = ({ quantity, onUpdate, debounce = true }) => {
+const QuantitySelector = ({
+  quantity,
+  onUpdate,
+  debounce = true,
+  small = false,
+}) => {
   const [value, setValue] = useState(quantity);
 
   useEffect(() => {
@@ -22,7 +28,7 @@ const QuantitySelector = ({ quantity, onUpdate, debounce = true }) => {
   }, [value]);
 
   return (
-    <div className={styles.wrap}>
+    <div className={clsx(styles.wrap, small ? styles.small : styles.large)}>
       <button
         type="button"
         onClick={() => setValue((prevValue) => Math.max(prevValue - 1, 1))}

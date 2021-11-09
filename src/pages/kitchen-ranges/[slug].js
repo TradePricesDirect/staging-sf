@@ -1,4 +1,9 @@
-import { getKitchenRangeDetails, getKitchenRanges } from "utils/ssr";
+import {
+  getKitchenRanges,
+  getKitchenRangeDetails,
+  getKitchenRangeComponents,
+} from "utils/ssr";
+import { incrementalStaticRegenerationRevalidate } from "core/constants";
 import KitchenRangePage from "views/KitchenRange";
 
 export default KitchenRangePage;
@@ -14,5 +19,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const range = await getKitchenRangeDetails(slug);
 
-  return { props: { range } };
+  const products = await getKitchenRangeComponents(slug);
+
+  return {
+    revalidate: incrementalStaticRegenerationRevalidate,
+    props: { range, products },
+  };
 }

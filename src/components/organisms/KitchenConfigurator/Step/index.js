@@ -1,36 +1,35 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/pro-light-svg-icons";
-import useDisclosure from "hooks/useDisclosure";
 
 import styles from "./Step.module.scss";
 
-const Step = ({ title, children, open = false }) => {
-  const { isOpen, onToggle } = useDisclosure(open);
-
+const Step = ({ title, children, open, onToggle }) => {
   return (
     <div className={styles.wrap}>
-      <h2>
+      <h2 className="m-0">
         <button
           type="button"
           onClick={onToggle}
-          aria-expanded={isOpen ? "true" : "false"}
+          aria-expanded={open ? "true" : "false"}
           className={styles.heading}
         >
           {title}
           <FontAwesomeIcon
-            icon={isOpen ? faAngleUp : faAngleDown}
+            icon={open ? faAngleUp : faAngleDown}
             className={styles.icon}
           />
         </button>
       </h2>
 
       <AnimatePresence initial={false}>
-        {isOpen && (
+        {open && (
           <motion.div
-            initial={{ height: 0, overflow: "hidden" }}
-            animate={{ height: "auto", overflow: "visible" }}
-            exit={{ height: 0, overflow: "hidden" }}
+            style={{ overflow: "hidden" }}
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
           >
             {children}
           </motion.div>

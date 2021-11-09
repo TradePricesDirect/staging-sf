@@ -8,6 +8,7 @@ import {
   productPricingFragment,
 } from "@saleor/sdk/lib/fragments/products";
 import { orderPriceFragment } from "@saleor/sdk/lib/fragments/order";
+import { checkoutPriceFragment } from "@saleor/sdk/lib/fragments/checkout";
 import {
   checkoutAddressFragment,
   checkoutProductVariantFragment,
@@ -366,6 +367,65 @@ export const kitchenRangeDetailsQuery = gql`
       metadata {
         key
         value
+      }
+    }
+  }
+`;
+
+export const kitchenRangeComponentsQuery = gql`
+  ${checkoutPriceFragment}
+  query KitchenRangeComponents(
+    $slug: String!
+    $channel: String
+    $first: Int!
+    $after: String
+    $sortBy: ProductOrder
+  ) {
+    collection(slug: $slug, channel: $channel) {
+      id
+      products(first: $first, after: $after, sortBy: $sortBy) {
+        totalCount
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+        edges {
+          node {
+            id
+            name
+            slug
+            attributes {
+              attribute {
+                id
+                slug
+              }
+              values {
+                id
+                slug
+                name
+              }
+            }
+            variants {
+              id
+              sku
+              pricing {
+                price {
+                  ...Price
+                }
+              }
+              attributes {
+                attribute {
+                  id
+                  slug
+                }
+                values {
+                  id
+                  slug
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

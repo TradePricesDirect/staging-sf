@@ -15,7 +15,9 @@ const Page = ({ ranges, filters, onFiltersChange }) => {
           onFiltersChange={onFiltersChange}
         />
 
-        {!ranges.length && <p>No kitchen ranges matching them filters.</p>}
+        {!ranges.length && (
+          <p>No kitchen ranges matching the selected filters.</p>
+        )}
 
         {ranges.map((range) => (
           <KitchenRangeTile key={range.id} range={range} />

@@ -13,6 +13,7 @@ import {
   pageDetailsQuery,
   kitchenRangesQuery,
   kitchenRangeDetailsQuery,
+  kitchenRangeComponentsQuery,
 } from "graphql/queries";
 import { formatKitchenRangeData } from "utils/kitchen-ranges";
 
@@ -223,4 +224,33 @@ export const getKitchenRangeDetails = async (slug) => {
   });
 
   return range;
+};
+
+export const getKitchenRangeComponents = async (slug) => {
+  const { apolloClient } = await getSaleorApi();
+
+  let products = [];
+  let hasNextPage = true;
+  let cursor = null;
+
+  while (hasNextPage) {
+    const { data } = await apolloClient.query({
+      query: kitchenRangeComponentsQuery,
+      variables: {
+        slug: slug,
+        channel: channelSlug,
+        first: 20,
+        sortBy: { field: "NAME", direction: "ASC" },
+        after: cursor,
+      },
+    });
+
+    let chunk = data.collection.products.edges.map((e) => e.node) || [];
+    products = [...products, ...chunk];
+
+    hasNextPage = data.collection.products.pageInfo.hasNextPage;
+    cursor = data.collection.products.pageInfo.endCursor;
+  }
+
+  return products;
 };

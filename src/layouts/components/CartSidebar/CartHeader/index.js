@@ -3,12 +3,12 @@ import { useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLockAlt, faTimes } from "@fortawesome/pro-light-svg-icons";
+import paths from "core/paths";
 import { useOverlay } from "contexts/OverlayContext";
 import { useShop } from "contexts/ShopContext";
 import Money from "components/atoms/Money";
 
 import styles from "./CartHeader.module.scss";
-import paths from "core/paths";
 
 const CartHeader = () => {
   const overlay = useOverlay();

@@ -1,78 +1,110 @@
 import { useMemo, useState } from "react";
-import { ColorsEnum } from "core/colors";
-import Configurator from "./Configurator";
-import { useProductsQuery } from "./queries";
+import _ from "lodash";
+import GetHelpCallToAction from "components/molecules/GetHelpCallToAction";
+import { StepsEnum } from "./utils";
+import ColorOptions from "./ColorOptions";
+import UnitOptions from "./UnitOptions";
+import WorktopOptions from "./WorktopOptions";
+import AccessoryOptions from "./AccessoryOptions";
+import Sidebar from "./Sidebar";
+import { filterProductsByVariants } from "./utils";
 
-const StepsEnum = {
-  Color: "color",
-  Units: "unit",
-  Accessories: "accessories",
-};
+import styles from "./KitchenConfigurator.module.scss";
 
-const KitchenConfigurator = ({ slug, ...colorOptions }) => {
-  const [state, setState] = useState({
-    colors: {
-      door: null,
-      cabinet: null,
-      custom: null,
-    },
-    step: StepsEnum.Color,
-    category: null,
-    subcategory: null,
+const KitchenConfigurator = ({ data, doorColors, cabinetColors }) => {
+  const [step, setStep] = useState(StepsEnum.Color);
+
+  const [colors, setColors] = useState({
+    door: null,
+    cabinet: null,
+    custom: null,
   });
 
-  // const { data, loading } = useProductsQuery(
-  //   {
-  //     range: slug,
-  //     step,
-  //     category,
-  //     subcategory,
-  //   },
-  //   colors
-  // );
-
-  // const [products, numberOfProducts] = useMemo(
-  //   () => [
-  //     data?.products?.edges.map((e) => e.node) || [],
-  //     data?.products?.totalCount || 0,
-  //   ],
-  //   [data]
-  // );
-
-  // console.log(products);
-  // console.log(numberOfProducts);
-
-  const [paintToOrder, doorColors, cabinetColors] = useMemo(
-    () => [
-      colorOptions.doorColors.find(
-        (color) => color.slug === ColorsEnum.PaintToOrder.slug
-      ),
-      colorOptions.doorColors.filter(
-        (color) => color.slug !== ColorsEnum.PaintToOrder.slug
-      ) || [],
-      colorOptions.cabinetColors,
-    ],
-    [colorOptions]
+  const products = useMemo(
+    () => (colors.door ? filterProductsByVariants(data, colors) : []),
+    [colors]
   );
 
-  const handleColorChange = (type, color) => {
-    let colors = { ...state.colors };
+  const [units, worktops, accessories] = useMemo(
+    () => [
+      _.filter(products, (p) => _.find(p.step, ["slug", "unit"])),
+      _.filter(products, (p) => _.find(p.step, ["slug", "worktop"])),
+      _.filter(products, (p) => _.find(p.step, ["slug", "accessory"])),
+    ],
+    [products]
+  );
 
-    colors[type] = color;
+  const handleToggle = (newStep) => setStep(step === newStep ? null : newStep);
 
-    if (type === "door" && color !== "paint-to-order") colors.custom = null;
+  const handleColorChange = (name, value) => {
+    let newColors = { ...colors, [name]: value };
 
-    setState({ ...state, colors });
+    if (name === "door" && value !== "paint-to-order") newColors.custom = null;
+    if (name === "door" && value === "paint-to-order") newColors.cabinet = null;
+
+    setColors(newColors);
   };
 
+  const handleColorSubmit = (newColors) => {
+    setColors(newColors);
+    setStep(StepsEnum.Units);
+  };
+
+  const hasColorCombo = colors.door && colors.cabinet;
+
   return (
-    <Configurator
-      selectedColors={state.colors}
-      doorColors={doorColors}
-      cabinetColors={cabinetColors}
-      paintToOrder={paintToOrder}
-      onColorChange={handleColorChange}
-    />
+    <div className={styles.wrap}>
+      <div className="container py-8">
+        <h2 className={styles.title}>Buy Your Complete Kitchen</h2>
+
+        <div className="row">
+          <div className="col-12 col-lg-8">
+            <ColorOptions
+              colors={colors}
+              doorColors={doorColors}
+              cabinetColors={cabinetColors}
+              onColorChange={handleColorChange}
+              onStepChange={setStep}
+              open={step === StepsEnum.Color}
+              onToggle={() => handleToggle(StepsEnum.Color)}
+              onSubmit={() => handleToggle(StepsEnum.Units)}
+            />
+
+            {hasColorCombo && (
+              <>
+                <UnitOptions
+                  data={units}
+                  open={step === StepsEnum.Units}
+                  onToggle={() => handleToggle(StepsEnum.Units)}
+                />
+
+                <WorktopOptions
+                  data={worktops}
+                  open={step === StepsEnum.Worktops}
+                  onToggle={() => handleToggle(StepsEnum.Worktops)}
+                />
+
+                <AccessoryOptions
+                  data={accessories}
+                  open={step === StepsEnum.Accessories}
+                  onToggle={() => handleToggle(StepsEnum.Accessories)}
+                />
+              </>
+            )}
+          </div>
+          <div className="col-12 col-lg-4">
+            <div className={styles.sidebar}>
+              <Sidebar
+                colors={colors}
+                onColorToggle={() => handleToggle(StepsEnum.Color)}
+              />
+
+              <GetHelpCallToAction />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

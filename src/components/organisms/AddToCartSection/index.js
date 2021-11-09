@@ -41,14 +41,6 @@ const AddToCartSection = ({
     availableForPurchase &&
     Date.parse(availableForPurchase);
 
-  const minusQuantity = () => {
-    setQuantity(Math.max(quantity - 1, 1));
-  };
-
-  const plusQuantity = () => {
-    setQuantity(Math.min(quantity + 1, availableQuantity));
-  };
-
   const handleAddToCart = async () => {
     try {
       setAdding(true);

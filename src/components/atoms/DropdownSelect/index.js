@@ -1,4 +1,5 @@
 import ReactSelect from "react-select";
+import _ from "lodash";
 
 const customTheme = (theme) => ({
   ...theme,
@@ -12,7 +13,15 @@ const customTheme = (theme) => ({
 });
 
 const DropdownSelect = (props) => {
-  return <ReactSelect theme={customTheme} {...props} />;
+  return (
+    <ReactSelect
+      {...props}
+      value={_.find(props.options, ["value", props.value])}
+      theme={customTheme}
+      menuPortalTarget={document.body}
+      styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+    />
+  );
 };
 
 export default DropdownSelect;

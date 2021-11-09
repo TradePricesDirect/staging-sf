@@ -7,25 +7,30 @@ import { PAINT_TO_ORDER_OPTIONS } from "../utils";
 
 import styles from "./ColorOptions.module.scss";
 
+const PAINT_TO_ORDER = "paint-to-order";
+
 const ColorOptions = ({
-  selectedColors: { door, cabinet, custom },
-  paintToOrder,
+  open,
+  colors,
+  onColorChange,
   doorColors,
   cabinetColors,
-  onColorChange,
+  onSubmit,
+  onToggle,
 }) => {
+  const isPTO = colors.door === "paint-to-order";
+
+  const hasDoorColor = (isPTO && colors.custom) || (!isPTO && colors.door);
+  const canSubmit = hasDoorColor && !!colors.cabinet;
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (canSubmit) onSubmit();
   };
 
-  const isPaintToOrder = door === paintToOrder?.slug;
-
-  const hasDoorColor = (isPaintToOrder && custom) || (!isPaintToOrder && door);
-
-  const canSubmit = hasDoorColor && cabinet;
-
   return (
-    <Step title="Step 1 - Colour Options" open>
+    <Step title="Step 1 - Colour Options" open={open} onToggle={onToggle}>
       <div className={styles.wrap}>
         <form onSubmit={handleSubmit}>
           <fieldset>
@@ -34,32 +39,31 @@ const ColorOptions = ({
             <ul className={styles.colors}>
               {doorColors.map(({ name, slug, value }) => (
                 <li key={`doorColor-${slug}`} className={styles.colorItem}>
-                  <ColorSwatch
-                    name={name}
-                    slug={slug}
-                    value={value}
-                    selected={door === slug}
-                    onClick={() => onColorChange("door", slug)}
-                  />
+                  {slug === PAINT_TO_ORDER ? (
+                    <PaintToOrderSwatch
+                      name={name}
+                      selected={isPTO}
+                      onClick={() => onColorChange("door", slug)}
+                    />
+                  ) : (
+                    <ColorSwatch
+                      name={name}
+                      slug={slug}
+                      value={value}
+                      selected={colors.door === slug}
+                      onClick={() => onColorChange("door", slug)}
+                    />
+                  )}
                 </li>
               ))}
-
-              {paintToOrder && (
-                <li className={styles.colorItem}>
-                  <PaintToOrderSwatch
-                    name={paintToOrder.name}
-                    selected={isPaintToOrder}
-                    onClick={() => onColorChange("door", paintToOrder.slug)}
-                  />
-                </li>
-              )}
             </ul>
 
-            {isPaintToOrder && (
+            {isPTO && (
               <div className={styles.dropdown}>
                 <label className={styles.label}>Paint to Order Colour</label>
 
                 <DropdownSelect
+                  value={colors.custom}
                   placeholder="Please select a colour"
                   options={PAINT_TO_ORDER_OPTIONS}
                   onChange={({ value }) => onColorChange("custom", value)}
@@ -79,7 +83,7 @@ const ColorOptions = ({
                       name={name}
                       slug={slug}
                       value={value}
-                      selected={cabinet === slug}
+                      selected={colors.cabinet === slug}
                       onClick={() => onColorChange("cabinet", slug)}
                     />
                   </li>
