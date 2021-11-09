@@ -15,7 +15,8 @@ const Sidebar = ({ colors, onColorToggle }) => {
   const cabinetColor = getColorBySlug(colors.cabinet);
 
   const items = useMemo(
-    () => filterCartByVariants(cart.items, colors),
+    () => cart.items,
+    // () => filterCartByVariants(cart.items, colors),
     [cart.items, colors]
   );
 
