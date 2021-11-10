@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import { useCart, useCheckout } from "@saleor/sdk";
 import paths from "core/paths";
+import { useOrderAddNoteMutation } from "graphql/mutations";
 import useRedirectToCorrectCheckoutStep from "hooks/useRedirectToCorrectCheckoutStep";
+import useLocalStorage from "hooks/useLocalStorage";
 import Loader from "components/atoms/Loader";
 import CheckoutProgressBar from "components/molecules/CheckoutProgressBar";
 import Checkout from "components/templates/Checkout";
@@ -27,6 +29,9 @@ const Page = () => {
   const { items } = useCart();
   const { payment, completeCheckout } = useCheckout();
 
+  const [metadata, setMetadata] = useLocalStorage("data_checkout_metadata");
+  const [orderAddNote] = useOrderAddNoteMutation();
+
   const [paymentGatewayErrors, setPaymentGatewayErrors] = useState(null);
 
   /* Steps */
@@ -36,12 +41,22 @@ const Page = () => {
   /* Event Handlers */
 
   // Progress to next step route
-  const handleStepSubmitSuccess = (token, stepIndex) => {
+  const handleStepSubmitSuccess = async (stepIndex, order) => {
     const activeStepIndex = stepIndex || activeStep.index;
 
     if (activeStepIndex === CheckoutStepEnum.Review) {
+      // Pass metadata to order
+      if (metadata) {
+        for (const [key, value] of Object.entries(metadata)) {
+          await orderAddNote({
+            variables: { id: order.id, message: `${key} - ${value}` },
+          });
+        }
+        setMetadata({});
+      }
+
       push(
-        { pathname: paths.orderThankYou, query: { token } },
+        { pathname: paths.orderThankYou, query: { token: order.token } },
         paths.orderThankYou
       );
     } else {
@@ -51,14 +66,14 @@ const Page = () => {
   };
 
   const handleSubmitPaymentSuccess = async () => {
-    const { data, dataError } = await completeCheckout({ foo: "bar" });
+    const { data, dataError } = await completeCheckout();
 
     // We shouldn't hit errors here, but console logging just in case
     if (dataError?.error) {
       setPaymentGatewayErrors(dataError.error);
       push(paths.checkoutReview);
     } else {
-      handleStepSubmitSuccess(data?.order?.token, CheckoutStepEnum.Review);
+      handleStepSubmitSuccess(CheckoutStepEnum.Review, data?.order);
     }
   };
 

@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 import paths from "core/paths";
 import useDisclosure from "hooks/useDisclosure";
+import useLocalStorage from "hooks/useLocalStorage";
 import Thumbnail from "components/molecules/Thumbnail";
 import Money from "components/atoms/Money";
 import TaxedMoney from "components/molecules/TaxedMoney";
@@ -20,11 +21,15 @@ import styles from "./CartRangeRow.module.scss";
 const CartRangeRow = ({ range, onRemove }) => {
   const { isOpen, onToggle } = useDisclosure();
 
+  const [metadata] = useLocalStorage("data_checkout_metadata");
+  const custom = metadata?.[`${range.name} Paint to Order Colour`];
+
   const path = {
     pathname: paths.kitchenRange.replace("[slug]", range.slug),
     query: {
       door: range.door?.slug,
       cabinet: range.cabinets.length > 0 ? range.cabinets[0].slug : null,
+      custom: custom,
     },
   };
 
@@ -32,6 +37,11 @@ const CartRangeRow = ({ range, onRemove }) => {
     amount: _.sumBy(range.items, "totalPrice.gross.amount"),
     currency: "GBP",
   };
+
+  let doorName = range.door.name;
+  if (range.door.slug === "paint-to-order" && custom) {
+    doorName += ` - ${custom}`;
+  }
 
   return (
     <div className={styles.wrap}>
@@ -54,9 +64,7 @@ const CartRangeRow = ({ range, onRemove }) => {
                   </Link>
 
                   <ul className={styles.variants}>
-                    <li className={styles.variant}>
-                      Door Colour: {range.door.name}
-                    </li>
+                    <li className={styles.variant}>Door Colour: {doorName}</li>
 
                     {range.cabinets.length > 0 && (
                       <li className={styles.variant}>
@@ -121,7 +129,7 @@ const CartRangeRow = ({ range, onRemove }) => {
               >
                 <tbody>
                   {range.items.map((item) => (
-                    <tr key={item.id}>
+                    <tr key={item.variant.id}>
                       <td className={styles.shrink}>
                         <div className={styles.quantity}>{item.quantity}</div>
                       </td>

@@ -16,3 +16,33 @@ const orderAddNoteMutation = gql`
 export const useOrderAddNoteMutation = () => {
   return useMutation(orderAddNoteMutation);
 };
+
+const updateMetadataMutation = gql`
+  mutation updateMetaData($id: ID!, $input: [MetadataInput!]!) {
+    updateMetadata(id: $id, input: $input) {
+      errors {
+        code
+        message
+      }
+    }
+  }
+`;
+
+export const useUpdateMetadataMutation = () => {
+  return useMutation(updateMetadataMutation);
+};
+
+const deleteMetadataMutation = gql`
+  mutation deleteMetaData($id: ID!, $keys: [String!]!) {
+    deleteMetadata(id: $id, keys: $keys) {
+      errors {
+        code
+        message
+      }
+    }
+  }
+`;
+
+export const useDeleteMetadataMutation = () => {
+  return useMutation(deleteMetadataMutation);
+};

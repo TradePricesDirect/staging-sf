@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import _ from "lodash";
 import { StringParam, useQueryParams } from "use-query-params";
+import useLocalStorage from "hooks/useLocalStorage";
 import GetHelpCallToAction from "components/molecules/GetHelpCallToAction";
 import { StepsEnum } from "./utils";
 import ColorOptions from "./ColorOptions";
@@ -12,7 +13,15 @@ import { filterProductsByVariants } from "./utils";
 
 import styles from "./KitchenConfigurator.module.scss";
 
-const KitchenConfigurator = ({ slug, data, doorColors, cabinetColors }) => {
+const KitchenConfigurator = ({
+  title,
+  slug,
+  data,
+  doorColors,
+  cabinetColors,
+}) => {
+  const [metadata, setMetadata] = useLocalStorage("data_checkout_metadata");
+
   const [query] = useQueryParams({
     door: StringParam,
     cabinet: StringParam,
@@ -22,6 +31,18 @@ const KitchenConfigurator = ({ slug, data, doorColors, cabinetColors }) => {
   const [colors, setColors] = useState(query);
 
   const [step, setStep] = useState(StepsEnum.Color);
+
+  useEffect(() => {
+    const customColor = colors.door === "paint-to-order" ? colors.custom : null;
+
+    const key = `${title} Paint to Order Colour`;
+
+    const state = { ...metadata };
+    if (customColor) state[key] = customColor;
+    else if (state.hasOwnProperty(key)) delete state[key];
+
+    setMetadata(state);
+  }, [colors.door, colors.custom]);
 
   const products = useMemo(
     () => (colors.door ? filterProductsByVariants(data, colors) : []),

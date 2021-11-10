@@ -21,6 +21,7 @@ const KitchenRangePage = ({ range, products }) => {
 
       <KitchenConfigurator
         data={products}
+        title={range.title}
         slug={range.slug}
         doorColors={range.door_colors}
         cabinetColors={range.cabinet_colors}

@@ -6,7 +6,7 @@ export default HomePage;
 export async function getStaticProps() {
   const totalCounts = await getTotalProducts();
 
-  const categories = await getCategoryLevels();
+  const categories = await getCategoryLevels(3, 50);
 
   return {
     props: {

@@ -14,6 +14,7 @@ import {
   checkoutProductVariantFragment,
 } from "@saleor/sdk/lib/fragments/checkout";
 import { attributeFragment, menuItemFragment } from "./fragments";
+import { useCheckout } from "@saleor/sdk";
 
 export const useTypedQuery = (query, options) => {
   const queryResult = useQuery(query, options);
@@ -430,3 +431,32 @@ export const kitchenRangeComponentsQuery = gql`
     }
   }
 `;
+
+export const checkoutMetadataQuery = gql`
+  query CheckoutMetaData($token: UUID!) {
+    checkout(token: $token) {
+      id
+      metadata {
+        key
+        value
+      }
+    }
+  }
+`;
+
+export const useCheckoutMetadata = () => {
+  const { checkout } = useCheckout();
+
+  const token = checkout?.token;
+
+  const { data, loading } = useQuery(checkoutMetadataQuery, {
+    variables: { token },
+    fetchPolicy: "network-only",
+    skip: !token,
+  });
+
+  return {
+    data: data?.checkout?.metadata || [],
+    loading,
+  };
+};
