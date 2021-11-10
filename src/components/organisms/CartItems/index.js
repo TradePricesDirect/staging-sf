@@ -1,15 +1,18 @@
+import { useMemo } from "react";
 import { useCart } from "@saleor/sdk";
+import { groupCartItems } from "utils/cart";
 import Loader from "components/atoms/Loader";
+import CartRangeItem from "components/molecules/CartRangeItem";
 import CartItem from "components/molecules/CartItem";
 
 import styles from "./CartItems.module.scss";
 
 const CartItems = ({ isCheckout }) => {
-  const { loaded, items, removeItem, updateItem } = useCart();
+  const { loaded, items: cartItems, removeItem, updateItem } = useCart();
 
   if (!loaded) return <Loader />;
 
-  if (!items?.length) {
+  if (!cartItems?.length) {
     return (
       <div className="alert alert-primary" role="alert">
         No products in the basket.
@@ -17,8 +20,23 @@ const CartItems = ({ isCheckout }) => {
     );
   }
 
+  const { items, ranges } = useMemo(
+    () => groupCartItems(cartItems),
+    [cartItems]
+  );
+
   return (
     <ul className={styles.list}>
+      {ranges.map((range, index) => (
+        <li key={`cart-item-${index}-${range.id}`}>
+          <CartRangeItem
+            range={range}
+            onRemove={removeItem}
+            isCheckout={isCheckout}
+          />
+        </li>
+      ))}
+
       {items.map(({ variant, quantity, totalPrice }, index) => (
         <li key={`cart-item-${index}-${variant.id}`}>
           <CartItem

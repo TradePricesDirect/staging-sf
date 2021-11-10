@@ -53,10 +53,29 @@ const ProductAdditionalInformation = ({
           <div className={styles.body}>
             <table className={styles.table}>
               <tbody>
-                {list.map(({ key, value }) => (
-                  <tr key={uuid()}>
+                {list.map(({ id, key, values }) => (
+                  <tr key={id}>
                     <th className={styles.th}>{key}</th>
-                    <td className={styles.td}>{value}</td>
+                    <td className={styles.td}>
+                      {values.map((value) => {
+                        const fileUrl = value?.file?.url;
+
+                        if (fileUrl) {
+                          return (
+                            <a
+                              key={value.id}
+                              href={fileUrl}
+                              target="_blank"
+                              download
+                            >
+                              {value.name}
+                            </a>
+                          );
+                        }
+
+                        return <span key={value.id}>{value.name}</span>;
+                      })}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -85,10 +104,15 @@ export default ProductAdditionalInformation;
 
 const combineDataLists = (attributes, metadata) => {
   const list = [
-    ...metadata,
+    ...metadata.map(({ key, value }) => ({
+      id: uuid(),
+      key,
+      values: [{ name: value }],
+    })),
     ...attributes.map(({ attribute, values }) => ({
+      id: attribute.id,
       key: attribute.name,
-      value: values.map((value) => value.name).join(", "),
+      values: values,
     })),
   ];
 

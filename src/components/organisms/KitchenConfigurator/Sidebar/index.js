@@ -3,21 +3,23 @@ import Link from "next/link";
 import { useCart } from "@saleor/sdk";
 import _ from "lodash";
 import clsx from "clsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/pro-light-svg-icons";
 import paths from "core/paths";
+import TaxedMoney from "components/molecules/TaxedMoney";
 import { filterCartByVariants, getColorBySlug } from "../utils";
 
 import styles from "./Sidebar.module.scss";
 
-const Sidebar = ({ colors, onColorToggle }) => {
-  const cart = useCart();
+const Sidebar = ({ slug, colors, onColorToggle }) => {
+  const { items, removeItem } = useCart();
 
   const doorColor = getColorBySlug(colors.door);
   const cabinetColor = getColorBySlug(colors.cabinet);
 
-  const items = useMemo(
-    () => cart.items,
-    // () => filterCartByVariants(cart.items, colors),
-    [cart.items, colors]
+  const categories = useMemo(
+    () => filterCartByVariants(items, slug, colors),
+    [items, colors]
   );
 
   if (!doorColor || !cabinetColor) return null;
@@ -52,6 +54,43 @@ const Sidebar = ({ colors, onColorToggle }) => {
           </table>
         </div>
       )}
+
+      {categories.map((category) => (
+        <div key={category.id} className={styles.tableWrap}>
+          <table
+            className={clsx("table table-sm table-borderless", styles.table)}
+          >
+            <thead>
+              <tr>
+                <th colSpan={4}>{category.name}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {category.items.map((item) => (
+                <tr key={item.variant.id}>
+                  <td className={styles.shrink}>
+                    <div className={styles.quantity}>{item.quantity}</div>
+                  </td>
+                  <td>{item.variant.product.name}</td>
+                  <td className={clsx(styles.shrink, styles.price)}>
+                    <TaxedMoney taxedMoney={item.variant.pricing.price} gross />
+                  </td>
+                  <td className={styles.shrink}>
+                    <button
+                      onClick={() => removeItem(item.variant.id)}
+                      type="button"
+                      className="btn btn-sm text-danger py-0 px-1"
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                      <span className="visually-hidden">Remove this item</span>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
 
       <footer>
         <Link href={paths.checkout}>

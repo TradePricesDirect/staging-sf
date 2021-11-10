@@ -71,22 +71,55 @@ export const filterProductsByVariants = (products, { door, cabinet }) => {
   }, []);
 };
 
-export const filterCartByVariants = (items, { door, cabinet }) => {
-  console.log(items);
+export const filterCartByVariants = (cartItems, slug, { door, cabinet }) => {
+  if (!cartItems) return [];
 
-  if (!items) return;
+  // Get all items in the collection `slug`
+  let items = _.filter(cartItems, (item) =>
+    _.find(item.variant?.product?.collections, ["slug", slug])
+  );
 
-  return items.filter((item) => {
+  // Filter by selected door & cabinet colours
+  items = _.filter(items, (item) => {
     const { attributes } = item.variant;
+
+    if (!attributes.length) return true;
 
     const doors = getAttributeValues(attributes, "door-colour");
     const cabinets = getAttributeValues(attributes, "cabinet-colour");
 
-    console.log(doors);
-    console.log(cabinets);
-
-    return true;
+    return (
+      _.find(doors, ["slug", door]) &&
+      _.find(cabinets, ({ slug }) => slug === cabinet || slug === "all")
+    );
   });
+
+  // Group into categories
+  const categories = items.reduce((acc, curr) => {
+    const product = curr.variant.product;
+
+    const categories = getAttributeValues(
+      product.attributes,
+      "kitchen-range-category"
+    );
+
+    categories.forEach((category) => {
+      const index = acc.findIndex((p) => p.slug === category.slug);
+
+      if (index > -1) {
+        acc[index].items = _.sortBy(
+          [...acc[index].items, curr],
+          ["variant.product.name"]
+        );
+      } else {
+        acc.push({ ...category, items: [curr] });
+      }
+    });
+
+    return acc;
+  }, []);
+
+  return _.sortBy(categories, ["name"]);
 };
 
 export const groupCategories = (products) => {

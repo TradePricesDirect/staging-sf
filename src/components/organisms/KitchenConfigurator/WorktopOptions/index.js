@@ -18,7 +18,7 @@ const WorktopOptions = ({ data, open, onToggle }) => {
 
       return _.find(categories, ["slug", state.category]);
     });
-  }, [state]);
+  }, [data, state]);
 
   return (
     <Step title="Step 3 - Worktops & Surfaces" open={open} onToggle={onToggle}>

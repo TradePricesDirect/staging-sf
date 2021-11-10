@@ -3,10 +3,7 @@
 
 .wrap {
   position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0;
 
   &.loading::before {
     content: "";
@@ -17,6 +14,12 @@
     background-color: rgba(255, 255, 255, 0.5);
     cursor: wait;
   }
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
 }
 
 .image {
@@ -56,62 +59,56 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
-.pricing {
-  display: block;
-}
-
-.subtotalPrice {
+.price {
   color: $primary;
   font-weight: $font-weight-semibold;
   line-height: $line-height-sm;
 }
 
-.unitPrice {
-  color: $text-muted;
+.toggle {
+  display: block;
+  width: 100%;
+  text-align: left;
   font-size: $font-size-sm;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-.quantitySelector {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-wrap: nowrap;
-  background-color: $blue-300;
+.quantity {
+  display: inline-block;
+  text-align: center;
   border-radius: $border-radius-pill;
-  line-height: 1.25;
-  overflow: hidden;
-  user-select: none;
-
-  .quantity {
-    position: relative;
-    z-index: 2;
-    min-width: 28px;
-    padding: 0.25rem;
-    background-color: inherit;
-    text-align: center;
-  }
-
-  .minus,
-  .plus {
-    position: relative;
-    z-index: 1;
-    width: 0;
-    background-color: inherit;
-    border-radius: $border-radius-pill;
-    transition: width 0.2s ease;
-
-    &:hover {
-      background-color: darken($blue-300, 10%);
-    }
-  }
+  min-width: 2rem;
+  padding: 0.5rem;
+  line-height: 1.2;
+  color: $primary;
+  background-color: $blue-300;
 }
 
-.wrap:hover .quantitySelector {
-  .minus,
-  .plus {
-    width: 28px;
+.tableWrap {
+  padding-top: 0.25rem;
+  border-top: 1px solid $border-color;
+
+  .table {
+    margin: 0;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-sm;
+    vertical-align: middle;
+
+    th {
+      color: $primary;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+    }
+
+    .shrink {
+      width: 0;
+      white-space: nowrap;
+    }
   }
 }

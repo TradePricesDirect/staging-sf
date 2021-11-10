@@ -1,4 +1,7 @@
+import { useMemo } from "react";
 import { useCart } from "@saleor/sdk";
+import { groupCartItems } from "utils/cart";
+import CartRangeRow from "components/organisms/CartRangeRow";
 import CartRow from "components/organisms/CartRow";
 import CartSummary from "components/molecules/CartSummary";
 import CartFinanceBanner from "components/molecules/CartFinanceBanner";
@@ -6,11 +9,24 @@ import CartFinanceBanner from "components/molecules/CartFinanceBanner";
 import styles from "./BasketPage.module.scss";
 
 const Page = () => {
-  const { items, removeItem, updateItem } = useCart();
+  const { items: cartItems, removeItem, updateItem } = useCart();
+
+  const { items, ranges } = useMemo(
+    () => groupCartItems(cartItems),
+    [cartItems]
+  );
 
   return (
     <div className="row">
       <div className="col-12 col-lg-8">
+        {ranges.map((range, index) => (
+          <CartRangeRow
+            key={`cart-row-${index}-${range.id}`}
+            range={range}
+            onRemove={removeItem}
+          />
+        ))}
+
         {items?.map(({ variant, quantity, totalPrice }, index) => (
           <CartRow
             key={`cart-row-${index}-${variant.id}`}

@@ -26,21 +26,22 @@
 .tableWrap {
   margin-bottom: 1rem;
   border-bottom: 1px solid $border-color;
-}
 
-.table {
-  font-weight: $font-weight-normal;
-  font-size: $font-size-sm;
+  .table {
+    font-weight: $font-weight-normal;
+    font-size: $font-size-sm;
+    vertical-align: middle;
 
-  th {
-    color: $primary;
-    font-size: $font-size-base;
-    font-weight: $font-weight-semibold;
-  }
+    th {
+      color: $primary;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+    }
 
-  .shrink {
-    width: 0;
-    white-space: nowrap;
+    .shrink {
+      width: 0;
+      white-space: nowrap;
+    }
   }
 }
 
@@ -62,7 +63,19 @@
   }
 }
 
-.button {
+.button,
+.price {
   line-height: $line-height-sm;
   font-weight: $font-weight-semibold;
+}
+
+.quantity {
+  display: inline-block;
+  text-align: center;
+  border-radius: $border-radius-pill;
+  min-width: 2rem;
+  padding: 0.5rem;
+  line-height: 1.2;
+  color: $primary;
+  background-color: $blue-300;
 }

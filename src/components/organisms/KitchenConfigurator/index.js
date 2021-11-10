@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import _ from "lodash";
+import { StringParam, useQueryParams } from "use-query-params";
 import GetHelpCallToAction from "components/molecules/GetHelpCallToAction";
 import { StepsEnum } from "./utils";
 import ColorOptions from "./ColorOptions";
@@ -11,18 +12,20 @@ import { filterProductsByVariants } from "./utils";
 
 import styles from "./KitchenConfigurator.module.scss";
 
-const KitchenConfigurator = ({ data, doorColors, cabinetColors }) => {
-  const [step, setStep] = useState(StepsEnum.Color);
-
-  const [colors, setColors] = useState({
-    door: null,
-    cabinet: null,
-    custom: null,
+const KitchenConfigurator = ({ slug, data, doorColors, cabinetColors }) => {
+  const [query] = useQueryParams({
+    door: StringParam,
+    cabinet: StringParam,
+    custom: StringParam,
   });
+
+  const [colors, setColors] = useState(query);
+
+  const [step, setStep] = useState(StepsEnum.Color);
 
   const products = useMemo(
     () => (colors.door ? filterProductsByVariants(data, colors) : []),
-    [colors]
+    [colors.door, colors.cabinet]
   );
 
   const [units, worktops, accessories] = useMemo(
@@ -43,11 +46,6 @@ const KitchenConfigurator = ({ data, doorColors, cabinetColors }) => {
     if (name === "door" && value === "paint-to-order") newColors.cabinet = null;
 
     setColors(newColors);
-  };
-
-  const handleColorSubmit = (newColors) => {
-    setColors(newColors);
-    setStep(StepsEnum.Units);
   };
 
   const hasColorCombo = colors.door && colors.cabinet;
@@ -95,6 +93,7 @@ const KitchenConfigurator = ({ data, doorColors, cabinetColors }) => {
           <div className="col-12 col-lg-4">
             <div className={styles.sidebar}>
               <Sidebar
+                slug={slug}
                 colors={colors}
                 onColorToggle={() => handleToggle(StepsEnum.Color)}
               />

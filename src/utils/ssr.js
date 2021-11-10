@@ -80,8 +80,8 @@ export const getTotalProducts = async () => {
 
   // For now, we'll estimate these values...
   const data = {
-    all: { totalCount: 69142 },
-    inStock: { totalCount: 69142 },
+    all: { totalCount: 69265 },
+    inStock: { totalCount: 69265 },
   };
 
   return data;
@@ -139,7 +139,7 @@ export const getShopConfig = async () => {
 export const getProductDetails = async (slug) => {
   const { apolloClient } = await getSaleorApi();
 
-  const { product } = await apolloClient
+  let { product } = await apolloClient
     .query({
       query: productDetailsQuery,
       variables: {
@@ -150,6 +150,9 @@ export const getProductDetails = async (slug) => {
       fetchPolicy: "network-only",
     })
     .then(({ data }) => data);
+
+  // Replace product.attribute[].values[].file.url (Saleor bug)
+  product.attributes = fixFileAttributeValueUrl(product.attributes);
 
   return product;
 };
@@ -253,4 +256,28 @@ export const getKitchenRangeComponents = async (slug) => {
   }
 
   return products;
+};
+
+// Saleor Bug where AttributeValue file url is not using AWS
+// Mutation is uploading to AWS, but query isn't returning
+const fixFileAttributeValueUrl = (attributes) => {
+  return attributes.map((attribute) => {
+    return {
+      ...attribute,
+      values: attribute.values.map((value) => {
+        if (!value?.file) return value;
+
+        return {
+          ...value,
+          file: {
+            ...value.file,
+            url: value.file.url.replace(
+              "https://app.tradepricesdirect.com",
+              "https://tradepricesdirect.s3.amazonaws.com"
+            ),
+          },
+        };
+      }),
+    };
+  });
 };

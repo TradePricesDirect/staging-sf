@@ -15,7 +15,7 @@ const MainMenu = ({ menu }) => {
         {menu?.items.map((item) => {
           return (
             <li key={item.id} className={styles.listItem}>
-              {item.category ? (
+              {isTopLevelCategory(item?.category) ? (
                 <CategoryNavLink item={item} />
               ) : (
                 <NavLink item={item} className={styles.link} />
@@ -51,4 +51,9 @@ const CategoryNavLink = ({ item }) => {
       </a>
     </Link>
   );
+};
+
+const isTopLevelCategory = (category) => {
+  if (!category) return false;
+  return ["kitchens", "bathrooms", "boilers"].includes(category.slug);
 };

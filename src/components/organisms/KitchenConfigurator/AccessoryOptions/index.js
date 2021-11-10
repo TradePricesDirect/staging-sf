@@ -24,7 +24,7 @@ const AccessoryOptions = ({ data, open, onToggle }) => {
 
       return cat && subcat;
     });
-  }, [state]);
+  }, [data, state]);
 
   const handleCategoryChange = (slug) => {
     setState({ ...state, category: slug, subcategory: null });
