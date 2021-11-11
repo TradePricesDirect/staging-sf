@@ -37,6 +37,7 @@
   }
 
   h1 {
+    margin-bottom: 1rem;
     color: $primary;
     @include font-size(2.5rem);
     line-height: 1.1;
@@ -45,6 +46,10 @@
       color: $secondary;
       font-weight: inherit;
     }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -66,7 +71,7 @@
 
 @media (min-width: 1200px) {
   .body {
-    min-height: 500px;
+    min-height: 440px;
   }
 }
 

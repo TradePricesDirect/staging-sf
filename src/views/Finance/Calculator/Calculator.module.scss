@@ -1,0 +1,96 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  @include padding(4rem 0);
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: $primary;
+  @include font-size(1.75rem);
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 26rem;
+
+  h4 {
+    color: $primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+  }
+
+  .small {
+    margin-bottom: 0.5rem;
+    font-size: $font-size-sm;
+  }
+}
+
+.amount {
+  margin-bottom: 0.5rem;
+  text-align: right;
+  font-size: $font-size-lg;
+}
+
+.input {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 100%;
+    pointer-events: none;
+    color: $primary;
+  }
+
+  input {
+    padding-left: 2rem;
+  }
+}
+
+.results {
+  max-width: 485px;
+  margin: 2rem auto 0;
+  padding: 1rem;
+  background-color: $blue-100;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+
+  h3 {
+    color: $primary;
+    font-size: 1.125rem;
+  }
+}
+
+.tableWrap {
+  position: relative;
+  overflow: auto;
+}
+
+.table {
+  margin: 0 -0.25rem;
+  white-space: nowrap;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+
+  th {
+    color: $gray-700;
+    font-weight: inherit;
+  }
+
+  td {
+    color: $primary;
+    text-align: right;
+  }
+}
+
+@media (min-width: 992px) {
+  .results {
+    padding: 1.5rem 2rem;
+  }
+}

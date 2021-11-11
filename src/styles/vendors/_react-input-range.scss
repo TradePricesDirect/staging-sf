@@ -1,0 +1,106 @@
+.input-range {
+  position: relative;
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 2rem;
+
+  &__slider {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: -0.75rem;
+    margin-left: -0.625rem;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 100%;
+    border: 6px solid $primary;
+    background-color: $gray-150;
+    box-shadow: none;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+
+    &:active {
+      transform: scale(1.2);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($primary, 25%);
+    }
+
+    .input-range--disabled & {
+      border-color: $gray-600;
+      transform: none;
+    }
+  }
+
+  &__label {
+    color: $gray-600;
+    font-size: $font-size-xs;
+    transform: translateZ(0);
+    white-space: nowrap;
+
+    &--min,
+    &--max {
+      position: absolute;
+      z-index: 1;
+      bottom: -1rem;
+    }
+
+    &--min {
+      left: 0;
+    }
+
+    &--max {
+      right: 0;
+    }
+
+    &--value {
+      position: absolute;
+      z-index: 2;
+      left: -2rem;
+      bottom: -2.25rem;
+      font-size: $font-size-base;
+      color: $primary;
+    }
+  }
+
+  &__label-container {
+    position: relative;
+
+    .input-range__label--value & {
+      display: block;
+      min-width: 4rem;
+      padding-top: 0.75rem;
+      background-color: $white;
+      text-align: center;
+    }
+  }
+
+  &__track {
+    position: relative;
+    display: block;
+    height: 0.5rem;
+    border-radius: 2rem;
+    background-color: $gray-150;
+    cursor: pointer;
+
+    &--background {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin-top: -0.25rem;
+    }
+
+    &--active {
+      background-color: $primary;
+    }
+
+    .input-range--disabled & {
+      background-color: $gray-600;
+    }
+  }
+}

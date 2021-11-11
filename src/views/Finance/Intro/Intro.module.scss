@@ -1,0 +1,89 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  @include padding(4rem 0);
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  max-width: 1232px;
+}
+
+.title {
+  margin-bottom: 2rem;
+  color: $primary;
+  @include font-size(2rem);
+}
+
+.content {
+  h3 {
+    color: $secondary;
+    font-size: $font-size-sm;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: $primary;
+    @include font-size(2rem);
+    line-height: 1.1;
+  }
+
+  p {
+    line-height: 1.75;
+  }
+}
+
+.options {
+  @include list-unstyled;
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 16rem;
+  margin: 1rem 0;
+  justify-content: space-between;
+}
+
+.option {
+  font-size: $font-size-sm;
+  text-align: center;
+}
+
+.gatewayIcon {
+  max-width: 7rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  place-items: center;
+}
+
+.tile {
+  max-width: 14rem;
+  margin: 0 auto;
+  font-size: $font-size-sm;
+
+  h4 {
+    color: $primary;
+    font-size: $font-size-base;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    text-align: left;
+    max-width: 500px;
+  }
+}

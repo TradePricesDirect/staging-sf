@@ -1,0 +1,86 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color: $blue-100;
+
+  .inner {
+    padding: 2rem 0;
+  }
+
+  .content {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: $orange-100 url("/images/how-it-works-arrow.svg") left center
+        no-repeat;
+      background-size: contain;
+    }
+
+    h6 {
+      margin-bottom: 0;
+      color: $secondary;
+    }
+
+    h3 {
+      color: $primary;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.75;
+    }
+  }
+
+  .navPills {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      display: flex;
+      align-items: center;
+      position: static;
+
+      &::before {
+        width: 33.33%;
+      }
+
+      .inner {
+        width: 100%;
+        max-width: 20rem;
+      }
+    }
+
+    .navPills {
+      text-align: right;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .inner {
+      padding: 4rem 0;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .content::before {
+      width: calc(50vw - 240px);
+    }
+  }
+}
+
+.tab {
+  position: relative;
+}

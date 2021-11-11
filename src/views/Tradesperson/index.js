@@ -31,6 +31,7 @@ const TradespersonPage = () => {
           </>
         }
         image={<HeroImage />}
+        imageAlignEnd
       />
 
       <IconGrid />
