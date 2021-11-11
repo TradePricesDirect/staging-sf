@@ -1,0 +1,114 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  background-color: $gray-150;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: -1;
+    opacity: 1;
+    background: url("/images/page-hero-arrow.svg") left center no-repeat;
+    background-size: contain;
+  }
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  min-height: 40vw;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.content {
+  width: 100%;
+  text-align: center;
+
+  h3 {
+    color: $secondary;
+    font-size: $font-size-sm;
+  }
+
+  h1 {
+    color: $primary;
+    @include font-size(2.5rem);
+    line-height: 1.1;
+
+    strong {
+      color: $secondary;
+      font-weight: inherit;
+    }
+  }
+}
+
+.image {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .content {
+    margin: 0;
+    text-align: left;
+  }
+
+  .image {
+    display: block;
+    max-width: 44rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .body {
+    min-height: 500px;
+  }
+}
+
+// Trade Hero
+.image {
+  :global {
+    .trade-hero_svg__circle {
+      & :local {
+        animation: circleFloat 1.2s ease-in-out infinite;
+      }
+    }
+    .trade-hero_svg__circle-2 {
+      & :local {
+        animation-delay: 0.1s;
+      }
+    }
+    .trade-hero_svg__circle-3 {
+      & :local {
+        animation-delay: 0.2s;
+      }
+    }
+    .trade-hero_svg__circle-4 {
+      & :local {
+        animation-delay: 0.3s;
+      }
+    }
+    .trade-hero_svg__circle-5 {
+      & :local {
+        animation-delay: 0.4s;
+      }
+    }
+  }
+}
+
+@keyframes circleFloat {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,27 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  margin-bottom: 1rem;
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+.heading {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding: 1rem 1.5rem;
+  color: $primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+}
+
+.body {
+  padding: 0 1.5rem;
+}

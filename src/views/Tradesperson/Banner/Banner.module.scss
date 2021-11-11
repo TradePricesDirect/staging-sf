@@ -1,0 +1,69 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  color: $black;
+  background-color: $yellow;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.title {
+  margin: 0 auto;
+  color: inherit;
+  font-size: $font-size-lg;
+
+  a {
+    color: inherit;
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  display: none;
+  width: 18%;
+
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
+
+  > span {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 3rem 0;
+    padding: 4vw 0;
+  }
+
+  .title {
+    font-size: 2.4vw;
+  }
+
+  .image {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 3rem 0;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
