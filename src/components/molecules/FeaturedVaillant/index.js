@@ -20,7 +20,7 @@ const FeaturedVaillant = () => {
       subtitle="Featured Product"
       title="Market Leaders in Heating Since 1874"
       image={{
-        src: "/images/featured-vaillant.jpg",
+        src: "/images/featured/featured-vaillant.jpg",
         width: 1200,
         height: 1092,
       }}

@@ -1,6 +1,6 @@
 import Welcome from "./Welcome";
 import CategoryList from "components/organisms/CategoryList";
-import CategoryCarousel from "components/organisms/CategoryCarousel";
+import CategoryCarouselEndless from "components/organisms/CategoryCarouselEndless";
 
 const NewUserPage = ({ categories }) => {
   const level0 = categories?.level0?.edges.map((e) => e.node) || [];
@@ -10,7 +10,7 @@ const NewUserPage = ({ categories }) => {
     <>
       <Welcome />
       <CategoryList categories={level0} />
-      <CategoryCarousel categories={level1} />
+      <CategoryCarouselEndless categories={level1} />
     </>
   );
 };

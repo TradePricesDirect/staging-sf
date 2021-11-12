@@ -2,7 +2,7 @@ import HomeHero from "./HomeHero";
 import Tiles from "./Tiles";
 import BrandsList from "components/molecules/BrandsList";
 import CategoryList from "components/organisms/CategoryList";
-import CategoryCarousel from "components/organisms/CategoryCarousel";
+import CategoryCarouselEndless from "components/organisms/CategoryCarouselEndless";
 import FeaturedCarousel from "components/organisms/FeaturedCarousel";
 import FeefoReviews from "components/molecules/FeefoReviews";
 import FeaturedQuooker from "components/molecules/FeaturedQuooker";
@@ -27,7 +27,7 @@ const HomePage = ({ categories, totalCounts }) => {
       <Tiles />
       <BrandsList totalCounts={totalCounts} />
       <CategoryList categories={level0} />
-      <CategoryCarousel categories={level1} />
+      <CategoryCarouselEndless categories={level1} />
       <FeaturedCarousel
         slides={[
           <FeaturedQuooker />,

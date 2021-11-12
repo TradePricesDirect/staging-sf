@@ -2,4 +2,8 @@
   display: block;
   position: relative;
   padding-top: 100%;
+
+  &.tall {
+    padding-top: 133.33%;
+  }
 }

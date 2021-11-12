@@ -1,5 +1,6 @@
 import Link from "next/link";
 import paths from "core/paths";
+import MetaTags from "components/atoms/MetaTags";
 import PageHero from "components/molecules/PageHero";
 import HeroImage from "./trade-hero.svg";
 import IconGrid from "./IconGrid";
@@ -10,6 +11,11 @@ import Banner from "./Banner";
 const TradespersonPage = () => {
   return (
     <>
+      <MetaTags
+        title="Trade Account"
+        description="Register for free and get connected with tens of thousands of customers across the UK looking for reliable tradespeople. Not to mention access to over a million products at trade prices."
+      />
+
       <PageHero
         content={
           <>

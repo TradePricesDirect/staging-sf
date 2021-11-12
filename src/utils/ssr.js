@@ -5,6 +5,7 @@ import kitchenRangeConfig from "core/kitchen-ranges";
 import {
   shopAttributesQuery,
   categoryLevelsQuery,
+  categoriesByMetadataQuery,
   shopMenusQuery,
   shopFooterMenusQuery,
   productDetailsQuery,
@@ -80,8 +81,8 @@ export const getTotalProducts = async () => {
 
   // For now, we'll estimate these values...
   const data = {
-    all: { totalCount: 69265 },
-    inStock: { totalCount: 69265 },
+    all: { totalCount: 69319 },
+    inStock: { totalCount: 69319 },
   };
 
   return data;
@@ -90,15 +91,31 @@ export const getTotalProducts = async () => {
 export const getCategoryLevels = async (level0Limit = 10, level1Limit = 20) => {
   const { apolloClient } = await getSaleorApi();
 
+  const { data } = await apolloClient
+    .query({
+      query: categoryLevelsQuery,
+      variables: {
+        level0: level0Limit,
+        level1: level1Limit,
+      },
+    })
+    .then(({ data }) => data?.categories);
+
+  return data;
+};
+
+export const getCategoriesByMetadata = async (key, value, limit = 50) => {
+  const { apolloClient } = await getSaleorApi();
+
   const { data } = await apolloClient.query({
-    query: categoryLevelsQuery,
+    query: categoriesByMetadataQuery,
     variables: {
-      level0: level0Limit,
-      level1: level1Limit,
+      first: limit,
+      filter: { metadata: [{ key, value }] },
     },
   });
 
-  return data;
+  return data.categories.edges.map((e) => e.node) || [];
 };
 
 export const getShopConfig = async () => {

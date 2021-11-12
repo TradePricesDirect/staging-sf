@@ -20,7 +20,7 @@ const FeaturedMultipanel = () => {
       subtitle="Featured Product"
       title="Meet the Modern Alternative to Tiles"
       image={{
-        src: "/images/featured-multipanel.jpg",
+        src: "/images/featured/featured-multipanel.jpg",
         width: 1200,
         height: 970,
       }}

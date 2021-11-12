@@ -20,7 +20,7 @@ const FeaturedFernox = () => {
       subtitle="Featured Supplier"
       title="Award Winning Filters and Plumbling Consumables"
       image={{
-        src: "/images/featured-fernox.jpg",
+        src: "/images/featured/featured-fernox.jpg",
         width: 1200,
         height: 1184,
       }}

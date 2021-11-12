@@ -19,7 +19,11 @@ const FeaturedQuooker = () => {
     <FeaturedTile
       subtitle="Featured Product"
       title="Pure Convenience at Unbeatable Prices"
-      image={{ src: "/images/featured-quooker.jpg", width: 1200, height: 968 }}
+      image={{
+        src: "/images/featured/featured-quooker.jpg",
+        width: 1200,
+        height: 968,
+      }}
       icons={ICONS}
       button={{
         name: "Shop Quooker",

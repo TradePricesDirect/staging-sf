@@ -1,0 +1,29 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  background-color: $gray-100;
+}
+
+.list {
+  @include list-unstyled;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    flex: 0 0 100%;
+  }
+}
+
+.brand {
+  display: block;
+  position: relative;
+  padding-top: 75%;
+}
+
+@media (min-width: 576px) {
+  .list li {
+    flex-basis: 33.33%;
+  }
+}

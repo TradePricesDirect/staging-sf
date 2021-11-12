@@ -20,7 +20,7 @@ const FeaturedXLJoinery = () => {
       subtitle="Featured Supplier"
       title="Swing Open Savings on British Built Doors"
       image={{
-        src: "/images/featured-xl-joinery.jpg",
+        src: "/images/featured/featured-xl-joinery.jpg",
         width: 1200,
         height: 997,
       }}

@@ -19,7 +19,11 @@ const FeaturedTado = () => {
     <FeaturedTile
       subtitle="Featured Product"
       title="Save Energy & Stay Comfortable"
-      image={{ src: "/images/featured-tado.jpg", width: 1200, height: 770 }}
+      image={{
+        src: "/images/featured/featured-tado.jpg",
+        width: 1200,
+        height: 770,
+      }}
       icons={ICONS}
       button={{
         name: "Shop Tado",

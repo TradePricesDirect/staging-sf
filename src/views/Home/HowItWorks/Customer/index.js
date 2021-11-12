@@ -7,7 +7,7 @@ const Customer = () => {
     <ul className={styles.steps}>
       <li>
         <Image
-          src="/images/process-customer-register.svg"
+          src="/icons/process/customer-register.svg"
           alt="Register For Free"
           width={140}
           height={160}
@@ -16,7 +16,7 @@ const Customer = () => {
       </li>
       <li>
         <Image
-          src="/images/process-customer-shop.svg"
+          src="/icons/process/customer-shop.svg"
           alt="Shop Top Brands"
           width={140}
           height={160}
@@ -25,7 +25,7 @@ const Customer = () => {
       </li>
       <li>
         <Image
-          src="/images/process-customer-pay.svg"
+          src="/icons/process/customer-pay.svg"
           alt="Pay Online or Finance"
           width={140}
           height={160}
@@ -34,7 +34,7 @@ const Customer = () => {
       </li>
       <li>
         <Image
-          src="/images/process-customer-delivery.svg"
+          src="/icons/process/customer-delivery.svg"
           alt="Express Delivery"
           width={140}
           height={160}

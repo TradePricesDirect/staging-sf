@@ -57,7 +57,7 @@ const ProductAdditionalInformation = ({
                   <tr key={id}>
                     <th className={styles.th}>{key}</th>
                     <td className={styles.td}>
-                      {values.map((value) => {
+                      {values.map((value, index) => {
                         const fileUrl = value?.file?.url;
 
                         if (fileUrl) {
@@ -73,7 +73,12 @@ const ProductAdditionalInformation = ({
                           );
                         }
 
-                        return <span key={value.id}>{value.name}</span>;
+                        return (
+                          <span key={value.id}>
+                            {index > 0 && ", "}
+                            {value.name}
+                          </span>
+                        );
                       })}
                     </td>
                   </tr>
@@ -103,7 +108,7 @@ const ProductAdditionalInformation = ({
 export default ProductAdditionalInformation;
 
 const combineDataLists = (attributes, metadata) => {
-  const list = [
+  let list = [
     ...metadata.map(({ key, value }) => ({
       id: uuid(),
       key,
@@ -115,6 +120,9 @@ const combineDataLists = (attributes, metadata) => {
       values: values,
     })),
   ];
+
+  // Strip empty attributes
+  list = _.filter(list, ({ values }) => values.length > 0);
 
   return sortBy(list, ["key"]);
 };

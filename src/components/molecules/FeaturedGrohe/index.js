@@ -18,7 +18,7 @@ const FeaturedGrohe = () => {
       subtitle="Featured Product"
       title="Bring the Rainforest into your home"
       image={{
-        src: "/images/featured-grohe.jpg",
+        src: "/images/featured/featured-grohe.jpg",
         width: 1200,
         height: 1125,
       }}

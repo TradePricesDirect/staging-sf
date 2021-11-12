@@ -42,7 +42,7 @@ const HomeHero = () => {
       </div>
       <div className={styles.image}>
         <Image
-          src="/images/kitchens-hero.jpg"
+          src="/images/home-hero.jpg"
           alt=""
           layout="fill"
           objectFit="cover"

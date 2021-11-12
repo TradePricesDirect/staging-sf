@@ -7,7 +7,7 @@ const FeaturedSynergy = () => {
       subtitle="Featured Supplier"
       title="Soak in Trade Price Savings"
       image={{
-        src: "/images/featured-synergy.jpg",
+        src: "/images/featured/featured-synergy.jpg",
         width: 1200,
         height: 1118,
       }}

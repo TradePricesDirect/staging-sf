@@ -20,7 +20,7 @@ const FeaturedAeg = () => {
       subtitle="Featured Supplier"
       title="Guarantee Perfect Results this Festive Season"
       image={{
-        src: "/images/featured-aeg.jpg",
+        src: "/images/featured/featured-aeg.jpg",
         width: 1200,
         height: 1071,
       }}

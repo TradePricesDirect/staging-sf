@@ -3,12 +3,12 @@ import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
-import CategoryTile from "components/molecules/CategoryTile";
 import paths from "core/paths";
+import CategoryTile from "components/molecules/CategoryTile";
 
-import styles from "./CategoryCarousel.module.scss";
+import styles from "./CategoryCarouselEndless.module.scss";
 
-const CategoryCarousel = ({ categories, viewAllButton = true }) => {
+const CategoryCarouselEndless = ({ categories, viewAllButton = true }) => {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: false,
     align: "start",
@@ -67,9 +67,13 @@ const CategoryCarousel = ({ categories, viewAllButton = true }) => {
       <div className="container">
         <div ref={viewportRef} className={styles.carouselWrap}>
           <div className={styles.carousel}>
-            {categories?.map((category) => (
-              <div className={styles.slide} key={category.id}>
-                <CategoryTile category={category} />
+            {categories?.map(({ id, name, slug, backgroundImage }) => (
+              <div key={`category-carousel-${id}`} className={styles.slide}>
+                <CategoryTile
+                  name={name}
+                  href={paths.category.replace("[slug]", slug)}
+                  backgroundImage={backgroundImage}
+                />
               </div>
             ))}
           </div>
@@ -79,4 +83,4 @@ const CategoryCarousel = ({ categories, viewAllButton = true }) => {
   );
 };
 
-export default CategoryCarousel;
+export default CategoryCarouselEndless;

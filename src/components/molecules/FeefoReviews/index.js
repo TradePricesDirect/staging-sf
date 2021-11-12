@@ -34,7 +34,7 @@ const FeefoReviews = () => {
 
           <div className={styles.image}>
             <Image
-              src="/images/reviews-icon.svg"
+              src="/icons/reviews-icon.svg"
               alt=""
               width={180}
               height={165}

@@ -74,7 +74,13 @@ const KitchenRangeFilters = ({ filters, onFiltersChange }) => {
                       !selected && hasFilters && styles.faded
                     )}
                   >
-                    <Image src={image} alt={title} layout="fill" />
+                    <Image
+                      src={image}
+                      alt={title}
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="center"
+                    />
                     <h3 className={styles.label}>{title}</h3>
                     {selected && (
                       <span className={styles.closeIcon}>
@@ -94,7 +100,7 @@ const KitchenRangeFilters = ({ filters, onFiltersChange }) => {
                   )}
                 >
                   <Image
-                    src="/images/kitchen-consultation-thumbnail.jpg"
+                    src="/images/consultation-thumbnail.jpg"
                     alt=""
                     layout="fill"
                   />

@@ -11,6 +11,7 @@ const Thumb = ({ image, selected, onClick }) => {
           alt={image.alt}
           layout="fill"
           objectFit="contain"
+          objectPosition="center"
         />
       </button>
     </div>

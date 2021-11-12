@@ -9,7 +9,7 @@ const ConsultationCallToAction = () => {
     <div className={styles.wrap}>
       <div className={styles.image}>
         <Image
-          src="/images/kitchen-wireframe.jpg"
+          src="/images/kitchens/kitchen-wireframe.jpg"
           alt=""
           layout="fill"
           objectFit="cover"

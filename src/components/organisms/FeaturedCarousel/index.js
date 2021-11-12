@@ -44,44 +44,55 @@ const FeaturedCarousel = ({ slides }) => {
 
   return (
     <section className={styles.wrap}>
-      <h3 className="vertical-text">
-        <span>Featured Products</span>
-      </h3>
+      <div className="container">
+        <header className={styles.header}>
+          <Link href={paths.shop}>
+            <a className="btn btn-sm btn-circle">View All</a>
+          </Link>
 
-      <header className={styles.header}>
-        <Link href={paths.shop}>
-          <a className="btn btn-sm btn-circle">View All</a>
-        </Link>
+          <div className={styles.nav}>
+            <button
+              type="button"
+              className="btn btn-sm"
+              onClick={handlePrevious}
+            >
+              <span className="visually-hidden">Previous</span>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
 
-        <div className={styles.nav}>
-          <button type="button" className="btn btn-sm" onClick={handlePrevious}>
-            <span className="visually-hidden">Previous</span>
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
+            <button type="button" className="btn btn-sm" onClick={handleNext}>
+              <span className="visually-hidden">Next</span>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
+          </div>
+        </header>
 
-          <button type="button" className="btn btn-sm" onClick={handleNext}>
-            <span className="visually-hidden">Next</span>
-            <FontAwesomeIcon icon={faArrowRight} />
-          </button>
-        </div>
-      </header>
+        <div className={styles.container}>
+          <h3 className="vertical-text">
+            <span>Featured Products</span>
+          </h3>
 
-      <div ref={viewportRef} className={styles.carouselWrap}>
-        <div className={styles.carousel}>
-          {slides.map((slide, index) => (
-            <div key={`featured-carousel-${index}`} className={styles.slide}>
-              {slide}
+          <div ref={viewportRef} className={styles.carouselWrap}>
+            <div className={styles.carousel}>
+              {slides.map((slide, index) => (
+                <div
+                  key={`featured-carousel-${index}`}
+                  className={styles.slide}
+                >
+                  {slide}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      </div>
 
-      <div className={styles.navPills}>
-        <NavPills
-          values={thumbnails}
-          activeIndex={activeIndex}
-          onValueClick={handleGoTo}
-        />
+        <div className={styles.navPills}>
+          <NavPills
+            values={thumbnails}
+            activeIndex={activeIndex}
+            onValueClick={handleGoTo}
+          />
+        </div>
       </div>
     </section>
   );

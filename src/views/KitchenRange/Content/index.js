@@ -26,7 +26,7 @@ const Content = ({ content, stats, colors }) => {
 
                   <img
                     className={styles.image}
-                    src="/images/personalised-quote.svg"
+                    src="/icons/personalised-quote.svg"
                   />
                 </div>
               </div>
@@ -40,7 +40,7 @@ const Content = ({ content, stats, colors }) => {
 
                   <img
                     className={styles.image}
-                    src="/images/instant-finance.svg"
+                    src="/icons/instant-finance.svg"
                   />
                 </div>
               </div>

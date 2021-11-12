@@ -3,9 +3,7 @@
 
 .wrap {
   position: relative;
-  padding: 1rem;
-  max-width: 1232px;
-  margin: 0 auto;
+  padding: 1rem 0;
 
   .header {
     position: relative;
@@ -18,6 +16,12 @@
     display: inline-flex;
     vertical-align: middle;
     gap: 0.5rem;
+  }
+
+  .container {
+    position: relative;
+    max-width: 1232px;
+    margin: 0 auto;
   }
 
   .carouselWrap {

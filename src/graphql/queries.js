@@ -182,6 +182,19 @@ export const categoryLevelsQuery = gql`
   }
 `;
 
+export const categoriesByMetadataQuery = gql`
+  ${baseCategoryFragment}
+  query CategoryByMetadata($first: Int!, $filter: CategoryFilterInput!) {
+    categories(first: $first, filter: $filter) {
+      edges {
+        node {
+          ...BaseCategory
+        }
+      }
+    }
+  }
+`;
+
 export const productDetailsQuery = gql`
   ${baseProductFragment}
   ${selectedAttributeFragment}

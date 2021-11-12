@@ -1,0 +1,73 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: 52vw;
+  @include padding(4rem 1rem);
+  text-align: center;
+  color: $white;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+
+.title {
+  @include font-size(2.5rem);
+}
+
+.description {
+  line-height: 1.75;
+}
+
+.background {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background-color: rgba($primary, 0.45);
+  }
+}
+
+.ribbon {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 5vw;
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    min-height: 400px;
+  }
+
+  .ribbon {
+    display: block;
+  }
+}

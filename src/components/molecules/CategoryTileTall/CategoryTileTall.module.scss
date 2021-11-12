@@ -1,0 +1,48 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.card {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background-color: $gray-100;
+  box-shadow: none;
+  transition: box-shadow 0.2s ease;
+
+  .image {
+    position: relative;
+    inset: 0;
+    z-index: 1;
+    transform: scale(1);
+    transition: transform 0.2s ease-in;
+  }
+
+  .content {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .title {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: $font-size-sm;
+    color: $black;
+    background-color: $white;
+  }
+
+  &:hover .image {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    box-shadow: $box-shadow-sm;
+  }
+}

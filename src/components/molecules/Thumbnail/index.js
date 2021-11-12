@@ -1,8 +1,9 @@
 import Image from "next/image";
+import clsx from "clsx";
 
 import styles from "./Thumbnail.module.scss";
 
-const Thumbnail = ({ thumbnail }) => {
+const Thumbnail = ({ thumbnail, tall }) => {
   if (!thumbnail) {
     thumbnail = {
       url: "/images/placeholder-thumbnail.png",
@@ -11,7 +12,7 @@ const Thumbnail = ({ thumbnail }) => {
   }
 
   return (
-    <div className={styles.image}>
+    <div className={clsx(styles.image, tall && styles.tall)}>
       <Image
         src={thumbnail.url}
         alt={thumbnail.alt}

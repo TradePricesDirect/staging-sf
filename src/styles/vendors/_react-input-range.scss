@@ -18,7 +18,7 @@
     outline: none;
     border-radius: 100%;
     border: 6px solid $primary;
-    background-color: $gray-150;
+    background-color: $blue-100;
     box-shadow: none;
     transition: transform 0.1s ease, box-shadow 0.2s ease;
 
@@ -84,7 +84,7 @@
     display: block;
     height: 0.5rem;
     border-radius: 2rem;
-    background-color: $gray-150;
+    background-color: $blue-100;
     cursor: pointer;
 
     &--background {

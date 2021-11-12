@@ -10,8 +10,8 @@
   color: $body-color;
   background-color: $white;
   border-radius: $border-radius-lg;
-  box-shadow: $box-shadow-sm;
   text-align: left;
+  box-shadow: $box-shadow-sm;
   transition: box-shadow 0.2s ease;
 
   &.isCentered {

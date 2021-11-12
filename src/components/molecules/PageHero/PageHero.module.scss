@@ -4,7 +4,7 @@
 .wrap {
   position: relative;
   z-index: 1;
-  background-color: $gray-150;
+  background-color: $blue-100;
 
   &::before {
     content: "";
@@ -13,7 +13,7 @@
     display: block;
     z-index: -1;
     opacity: 1;
-    background: url("/images/page-hero-arrow.svg") left center no-repeat;
+    background: url("/icons/page-hero-arrow.svg") left center no-repeat;
     background-size: contain;
   }
 }

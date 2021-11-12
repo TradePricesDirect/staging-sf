@@ -1,0 +1,92 @@
+import { v4 as uuid } from "uuid";
+import paths from "core/paths";
+import MetaTags from "components/atoms/MetaTags";
+import CategoryHero from "components/molecules/CategoryHero";
+import CategoryStyles from "components/molecules/CategoryStyles";
+import CategoryPopular from "components/molecules/CategoryPopular";
+import CategoryCarousel from "components/molecules/CategoryCarousel";
+import FeaturedCarousel from "components/organisms/FeaturedCarousel";
+import FeaturedQuooker from "components/molecules/FeaturedQuooker";
+import FeaturedAeg from "components/molecules/FeaturedAeg";
+import TopBrands from "components/molecules/TopBrands";
+import LuxuryGrid from "components/molecules/LuxuryGrid";
+import ConsultationCallToAction from "components/organisms/ConsultationCallToAction";
+import FeaturedBrands from "components/molecules/FeaturedBrands";
+import FAQs from "./FAQs";
+
+import * as config from "./utils";
+
+const KitchensPage = ({ ranges, appliances, finishingTouches }) => {
+  return (
+    <>
+      <MetaTags
+        title="Kitchens at Trade Prices"
+        description="From stylish contemporary looks to warm, welcoming classics, you can choose from over 30 kitchen door styles in over 100 colours. And only we'll give you trade prices while high street names charge big mark-ups. All backed by our commitment to quality, great pricing, and simple finance options."
+      />
+
+      <CategoryHero
+        title="Fitted Kitchens & Appliances"
+        description="From stylish contemporary looks to warm, welcoming classics, you can choose from over 30 kitchen door styles in over 100 colours. And only we'll give you trade prices while high street names charge big mark-ups. All backed by our commitment to quality, great pricing, and simple finance options."
+        backgroundImage="/images/kitchens/category-hero.jpg"
+      />
+
+      <CategoryStyles
+        title="Kitchens By Style"
+        viewAll={paths.kitchenRanges}
+        slides={config.categoryStyles}
+      />
+
+      <CategoryPopular
+        title="Browse Most Popular Kitchens"
+        description="From stylish contemporary looks to warm, welcoming classics, you can choose from over 30 kitchen door styles in over 100 colours. And only we'll give you trade prices."
+        viewAll={paths.kitchenRanges}
+        ranges={ranges}
+      />
+
+      <CategoryCarousel
+        title="Shop Appliances"
+        viewAll={paths.category.replace("[slug]", "appliances")}
+        categories={[
+          { id: uuid(), name: "Shop All", slug: "appliances" },
+          ...appliances,
+        ]}
+      />
+
+      <FeaturedCarousel slides={[<FeaturedQuooker />, <FeaturedAeg />]} />
+
+      <CategoryCarousel
+        title="Shop Finishing Touches"
+        viewAll={paths.category.replace("[slug]", "kitchens")}
+        categories={finishingTouches}
+      />
+
+      <TopBrands
+        title="Top Brands at Low Prices"
+        subtitle="Shop brands you know, at prices you'll love..."
+        logos={config.logos}
+      />
+
+      <LuxuryGrid
+        title="Indulge in Luxury at Trade Prices"
+        subtitle="When you're buying at trade prices you don't have to compromise..."
+        content={{
+          subtitle: "Affordable Options",
+          title: "Kitchens on Finance",
+          text: "Luxury doesn’t have to cost an arm and a leg. With trade pricing, no deposit finance options and Buy Now Pay Later, you can get the kitchen of your dreams at a price that won’t keep you up at night.",
+          button: {
+            href: paths.finance,
+            text: "Kitchen Finance",
+          },
+        }}
+      />
+
+      <ConsultationCallToAction />
+
+      <FAQs />
+
+      <FeaturedBrands brands={config.brands} />
+    </>
+  );
+};
+
+export default KitchensPage;

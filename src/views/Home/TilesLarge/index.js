@@ -13,7 +13,7 @@ const TilesLarge = () => {
             subtitle="Financing Options"
             title="Spread The Cost & Finance"
             text="Your renovation doesn’t need to break the bank. Spread the cost of your purchase and get up to 5 years credit."
-            image="/images/icon-finance.svg"
+            image="/icons/icon-finance.svg"
             buttonText="Learn More"
             path={paths.finance}
           />
@@ -23,7 +23,7 @@ const TilesLarge = () => {
             subtitle="100% Free, No Strings"
             title="Register Today & Save"
             text="There are no catches, just good business. We cut out the fancy showrooms & pass the savings onto you."
-            image="/images/icon-no-strings.svg"
+            image="/icons/icon-no-strings.svg"
             buttonText="Register Now"
             path={paths.register}
           />

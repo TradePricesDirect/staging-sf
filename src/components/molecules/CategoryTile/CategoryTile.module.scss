@@ -9,20 +9,7 @@
   overflow: hidden;
   padding-top: 100%;
   background-color: $gray-100;
-
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    display: block;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba($primary, 0.1) 80%,
-      rgba($primary, 0.5) 100%
-    );
-  }
+  transition: box-shadow 0.2s ease;
 
   .image {
     position: absolute;
@@ -32,18 +19,30 @@
     transition: transform 0.4s ease-in;
   }
 
-  .title {
+  .content {
     position: absolute;
     z-index: 2;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .title {
     margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: $font-size-sm;
     color: $black;
     background-color: $white;
   }
 
   &:hover .image {
     transform: scale(1.1);
+  }
+
+  &:active {
+    box-shadow: $box-shadow-lg;
   }
 }

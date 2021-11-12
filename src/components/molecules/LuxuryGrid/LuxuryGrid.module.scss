@@ -1,0 +1,111 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  overflow: hidden;
+  @include padding(4rem 0);
+  background-color: $gray-100;
+}
+
+.header {
+  margin-bottom: 1rem;
+  text-align: center;
+
+  .title {
+    color: $primary;
+    @include font-size(1.5rem);
+  }
+
+  .subtitle {
+    margin: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.gridItem {
+  position: relative;
+  padding-top: 100%;
+
+  &.body {
+    padding-top: 0;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 1rem;
+  color: $black;
+  background-color: $blue-300;
+
+  .inner {
+    width: 100%;
+  }
+
+  h4 {
+    margin: 0;
+    color: $primary;
+    font-size: $font-size-sm;
+  }
+
+  h3 {
+    color: $primary;
+    @include font-size(1.75rem);
+  }
+}
+
+@media (min-width: 576px) {
+  .header {
+    margin-bottom: 2rem;
+    text-align: left;
+
+    .title {
+      margin: 0;
+    }
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 992px) {
+  .header .subtitle {
+    font-size: 1.125rem;
+  }
+
+  .grid {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .gridItem {
+    &.large {
+      grid-row-end: span 2;
+      grid-column-end: span 2;
+    }
+
+    &.body {
+      grid-column-end: span 2;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .gridItem {
+    &.tall {
+      grid-row-end: span 2;
+    }
+
+    &.body {
+      grid-column-end: auto;
+    }
+  }
+}

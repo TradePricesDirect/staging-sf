@@ -21,7 +21,7 @@ const BrandsList = ({ totalCounts }) => {
               <li>
                 <div className={styles.image}>
                   <Image
-                    src="/images/bosch-logo.png"
+                    src="/images/logos/bosch-logo.png"
                     alt="Bosch"
                     width={400}
                     height={89}
@@ -36,7 +36,7 @@ const BrandsList = ({ totalCounts }) => {
               <li>
                 <div className={styles.image}>
                   <Image
-                    src="/images/siemens-logo.svg"
+                    src="/images/logos/siemens-logo.svg"
                     alt="Siemens"
                     width={400}
                     height={89}
@@ -51,7 +51,7 @@ const BrandsList = ({ totalCounts }) => {
               <li>
                 <div className={styles.image}>
                   <Image
-                    src="/images/quooker-logo.svg"
+                    src="/images/logos/quooker-logo.svg"
                     alt="Quooker"
                     width={400}
                     height={89}

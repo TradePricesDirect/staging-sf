@@ -1,19 +1,20 @@
 import Link from "next/link";
 import clsx from "clsx";
-import paths from "core/paths";
 import Thumbnail from "components/molecules/Thumbnail";
 
 import styles from "./CategoryTile.module.scss";
 
-const CategoryTile = ({ category }) => {
+const CategoryTile = ({ name, href, backgroundImage }) => {
   return (
-    <Link href={paths.category.replace("[slug]", category.slug)}>
+    <Link href={href}>
       <a className={styles.card}>
         <div className={styles.image}>
-          <Thumbnail thumbnail={category.backgroundImage} />
+          <Thumbnail thumbnail={backgroundImage} />
         </div>
 
-        <h2 className={clsx("btn", styles.title)}>{category.name}</h2>
+        <div className={styles.content}>
+          <h2 className={clsx("btn", styles.title)}>{name}</h2>
+        </div>
       </a>
     </Link>
   );
