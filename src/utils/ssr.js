@@ -91,15 +91,13 @@ export const getTotalProducts = async () => {
 export const getCategoryLevels = async (level0Limit = 10, level1Limit = 20) => {
   const { apolloClient } = await getSaleorApi();
 
-  const { data } = await apolloClient
-    .query({
-      query: categoryLevelsQuery,
-      variables: {
-        level0: level0Limit,
-        level1: level1Limit,
-      },
-    })
-    .then(({ data }) => data?.categories);
+  const { data } = await apolloClient.query({
+    query: categoryLevelsQuery,
+    variables: {
+      level0: level0Limit,
+      level1: level1Limit,
+    },
+  });
 
   return data;
 };
