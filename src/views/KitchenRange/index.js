@@ -27,7 +27,12 @@ const KitchenRangePage = ({ range, products }) => {
         cabinetColors={range.cabinet_colors}
       />
 
-      <ConsultationCallToAction />
+      <ConsultationCallToAction
+        subtitle="Talk to the experts in incredible kitchens"
+        title="Book a Free Virtual Consultation"
+        text="Whether you're considering your options or ready to get started, our design team is here to help. Start with a free consultation with no commitment or obligation."
+        backgroundImage="/images/kitchens/kitchen-wireframe.jpg"
+      />
     </>
   );
 };

@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { getKitchenRanges, getCategoriesByMetadata } from "utils/ssr";
 import { incrementalStaticRegenerationRevalidate } from "core/constants";
 import KitchensPage from "views/Kitchens";

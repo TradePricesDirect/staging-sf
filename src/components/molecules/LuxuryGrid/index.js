@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 import styles from "./LuxuryGrid.module.scss";
 
-const LuxuryGrid = ({ title, subtitle, content }) => {
+const LuxuryGrid = ({ title, subtitle, content, images }) => {
   return (
     <section className={styles.wrap}>
       <div className="container">
@@ -23,7 +23,7 @@ const LuxuryGrid = ({ title, subtitle, content }) => {
           <div className={clsx(styles.gridItem, styles.large)}>
             <div className={styles.image}>
               <Image
-                src="/images/kitchens/luxury-quooker.jpg"
+                src={images[0]}
                 alt=""
                 layout="fill"
                 objectFit="cover"
@@ -35,7 +35,7 @@ const LuxuryGrid = ({ title, subtitle, content }) => {
           <div className={clsx(styles.gridItem, styles.tall)}>
             <div className={styles.image}>
               <Image
-                src="/images/kitchens/luxury-wine-cooler.jpg"
+                src={images[1]}
                 alt=""
                 layout="fill"
                 objectFit="cover"
@@ -47,7 +47,7 @@ const LuxuryGrid = ({ title, subtitle, content }) => {
           <div className={styles.gridItem}>
             <div className={styles.image}>
               <Image
-                src="/images/kitchens/luxury-coffee.jpg"
+                src={images[2]}
                 alt=""
                 layout="fill"
                 objectFit="cover"

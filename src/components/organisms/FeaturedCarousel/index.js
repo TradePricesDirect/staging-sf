@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
-import paths from "core/paths";
 import NavPills from "components/atoms/NavPills";
 
 import styles from "./FeaturedCarousel.module.scss";
 
-const FeaturedCarousel = ({ slides }) => {
+const FeaturedCarousel = ({ slides, viewAll }) => {
   const thumbnails = useMemo(() => {
     return slides.map((s) => ({
       id: uuidv4(),
@@ -46,9 +45,11 @@ const FeaturedCarousel = ({ slides }) => {
     <section className={styles.wrap}>
       <div className="container">
         <header className={styles.header}>
-          <Link href={paths.shop}>
-            <a className="btn btn-sm btn-circle">View All</a>
-          </Link>
+          {viewAll && (
+            <Link href={viewAll}>
+              <a className="btn btn-sm btn-circle">View All</a>
+            </Link>
+          )}
 
           <div className={styles.nav}>
             <button

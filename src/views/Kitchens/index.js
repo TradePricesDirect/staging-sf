@@ -3,7 +3,7 @@ import paths from "core/paths";
 import MetaTags from "components/atoms/MetaTags";
 import CategoryHero from "components/molecules/CategoryHero";
 import CategoryStyles from "components/molecules/CategoryStyles";
-import CategoryPopular from "components/molecules/CategoryPopular";
+import KitchenRangesPopular from "components/molecules/KitchenRangesPopular";
 import CategoryCarousel from "components/molecules/CategoryCarousel";
 import FeaturedCarousel from "components/organisms/FeaturedCarousel";
 import FeaturedQuooker from "components/molecules/FeaturedQuooker";
@@ -36,7 +36,7 @@ const KitchensPage = ({ ranges, appliances, finishingTouches }) => {
         slides={config.categoryStyles}
       />
 
-      <CategoryPopular
+      <KitchenRangesPopular
         title="Browse Most Popular Kitchens"
         description="From stylish contemporary looks to warm, welcoming classics, you can choose from over 30 kitchen door styles in over 100 colours. And only we'll give you trade prices."
         viewAll={paths.kitchenRanges}
@@ -69,6 +69,11 @@ const KitchensPage = ({ ranges, appliances, finishingTouches }) => {
       <LuxuryGrid
         title="Indulge in Luxury at Trade Prices"
         subtitle="When you're buying at trade prices you don't have to compromise..."
+        images={[
+          "/images/kitchens/luxury-quooker.jpg",
+          "/images/kitchens/luxury-wine-cooler.jpg",
+          "/images/kitchens/luxury-coffee.jpg",
+        ]}
         content={{
           subtitle: "Affordable Options",
           title: "Kitchens on Finance",
@@ -80,7 +85,12 @@ const KitchensPage = ({ ranges, appliances, finishingTouches }) => {
         }}
       />
 
-      <ConsultationCallToAction />
+      <ConsultationCallToAction
+        subtitle="Talk to the experts in incredible kitchens"
+        title="Book a Free Virtual Consultation"
+        text="Whether you're considering your options or ready to get started, our design team is here to help. Start with a free consultation with no commitment or obligation."
+        backgroundImage="/images/kitchens/kitchen-wireframe.jpg"
+      />
 
       <FAQs />
 

@@ -7,9 +7,9 @@ const FAQs = () => {
   return (
     <div className={styles.wrap}>
       <div className={clsx("container", styles.container)}>
-        <h2 className={styles.title}>Confused? Check out our FAQs</h2>
+        <h2 className={styles.title}>Bathrooms Buyers Guide</h2>
 
-        <Accordion title="How do I make monthly Payments?" open>
+        <Accordion title="How do you offer such cheap prices?" open>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
             aperiam excepturi, magni optio tenetur sapiente ea mollitia eaque
@@ -19,7 +19,7 @@ const FAQs = () => {
           </p>
         </Accordion>
 
-        <Accordion title="Are there any limits on how much I can spend?">
+        <Accordion title="How much value would a new bathroom add to my home?">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
             aperiam excepturi, magni optio tenetur sapiente ea mollitia eaque
@@ -29,7 +29,7 @@ const FAQs = () => {
           </p>
         </Accordion>
 
-        <Accordion title="Can I request delivery to an address other than my home address?">
+        <Accordion title="Where do I start when buying a new bathroom?">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
             aperiam excepturi, magni optio tenetur sapiente ea mollitia eaque
@@ -39,7 +39,7 @@ const FAQs = () => {
           </p>
         </Accordion>
 
-        <Accordion title="What happens to my loan if I want to return my order?">
+        <Accordion title="How much does it cost to put in a new bathroom?">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
             aperiam excepturi, magni optio tenetur sapiente ea mollitia eaque
@@ -49,7 +49,7 @@ const FAQs = () => {
           </p>
         </Accordion>
 
-        <Accordion title="What happens if I only use my new kitchen to cook pizza?">
+        <Accordion title="What should I look for when buying a bathroom?">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
             aperiam excepturi, magni optio tenetur sapiente ea mollitia eaque

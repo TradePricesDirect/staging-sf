@@ -16,6 +16,7 @@ import FeaturedVaillant from "components/molecules/FeaturedVaillant";
 import FeaturedGrohe from "components/molecules/FeaturedGrohe";
 import HowItWorks from "./HowItWorks";
 import TilesLarge from "./TilesLarge";
+import paths from "core/paths";
 
 const HomePage = ({ categories, totalCounts }) => {
   const level0 = categories?.level0?.edges.map((e) => e.node) || [];
@@ -29,6 +30,7 @@ const HomePage = ({ categories, totalCounts }) => {
       <CategoryList categories={level0} />
       <CategoryCarouselEndless categories={level1} />
       <FeaturedCarousel
+        viewAll={paths.shop}
         slides={[
           <FeaturedQuooker />,
           <FeaturedTado />,

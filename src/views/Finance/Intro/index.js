@@ -53,7 +53,7 @@ const Intro = () => {
             <div className={styles.grid}>
               <Tile
                 image="/icons/finance/apply-online.svg"
-                title="Apple Online in Minutes"
+                title="Apply Online in Minutes"
                 text="The process is quick and simple, and most applications are improved within hours."
               />
               <Tile

@@ -1,0 +1,103 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  overflow: hidden;
+  @include padding(4rem 0);
+  background-color: $gray-100;
+}
+
+.header {
+  margin-bottom: 1rem;
+  text-align: center;
+
+  .title {
+    color: $primary;
+    @include font-size(1.5rem);
+  }
+
+  .description {
+    max-width: 44rem;
+    line-height: 1.75;
+  }
+
+  .nav {
+    display: inline-flex;
+    vertical-align: middle;
+    gap: 0.5rem;
+  }
+}
+
+.carouselWrap {
+  position: relative;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  margin-right: -1rem;
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 80%;
+  padding-right: 1rem;
+
+  .inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 75%;
+  }
+
+  .parallax {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .imageWrap {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    max-width: none;
+    transform: translate(-50%, -50%);
+  }
+
+  .image {
+    position: relative;
+    display: block;
+    padding-top: 75%;
+  }
+
+  .loader {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+  }
+}
+
+@media (min-width: 576px) {
+  .header {
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .header .description {
+    font-size: 1.125rem;
+  }
+
+  .slide {
+    flex-basis: 50%;
+  }
+}

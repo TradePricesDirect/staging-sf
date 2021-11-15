@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import paths from "core/paths";
 
-import styles from "./CategoryPopular.module.scss";
+import styles from "./KitchenRangesPopular.module.scss";
 
-const CategoryPopular = ({ title, description, viewAll, images }) => {
+const KitchenRangesPopular = ({ title, description, viewAll, ranges }) => {
   const [emblaRef, embla] = useEmblaCarousel({
     loop: false,
     dragFree: true,
@@ -28,6 +28,13 @@ const CategoryPopular = ({ title, description, viewAll, images }) => {
   const handleNext = useCallback(() => {
     return embla && embla.scrollNext();
   }, [embla]);
+
+  const slides = useMemo(() => {
+    return _.shuffle(ranges).map((range) => ({
+      ...range,
+      image: _.sample(range.images),
+    }));
+  }, []);
 
   const onScroll = useCallback(() => {
     if (!embla) return;
@@ -49,7 +56,7 @@ const CategoryPopular = ({ title, description, viewAll, images }) => {
           }
         });
       }
-      return diffToTarget * -1 * 100;
+      return diffToTarget * -10 * 100;
     });
     setParallaxValues(styles);
   }, [embla, setParallaxValues]);
@@ -103,36 +110,38 @@ const CategoryPopular = ({ title, description, viewAll, images }) => {
 
       <div ref={emblaRef} className={styles.carouselWrap}>
         <div className={styles.carousel}>
-          {images.map((image, index) => (
-            <div key={image} className={styles.slide}>
-              <div className={styles.inner}>
-                <div
-                  className={styles.parallax}
-                  style={{
-                    transform: `translateX(${parallaxValues[index]}%)`,
-                  }}
-                >
-                  <div className={styles.imageWrap}>
-                    <div className={styles.image}>
-                      <Image
-                        src={image}
-                        alt=""
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="center"
-                        loading={index < 5 ? "eager" : "lazy"}
-                      />
+          {slides.map(({ id, title, slug, image }, index) => (
+            <div key={`popular-range-${id}`} className={styles.slide}>
+              <Link href={paths.kitchenRange.replace("[slug]", slug)}>
+                <a className={styles.inner}>
+                  <div
+                    className={styles.parallax}
+                    style={{
+                      transform: `translateX(${parallaxValues[index]}%)`,
+                    }}
+                  >
+                    <div className={styles.imageWrap}>
+                      <div className={styles.image}>
+                        <Image
+                          src={image}
+                          alt={title}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="center"
+                          loading={index < 5 ? "eager" : "lazy"}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <Skeleton
-                  height="100%"
-                  baseColor="#e9ecef"
-                  highlightColor="#ced4da"
-                  className={styles.loader}
-                />
-              </div>
+                  <Skeleton
+                    height="100%"
+                    baseColor="#e9ecef"
+                    highlightColor="#ced4da"
+                    className={styles.loader}
+                  />
+                </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -141,4 +150,4 @@ const CategoryPopular = ({ title, description, viewAll, images }) => {
   );
 };
 
-export default CategoryPopular;
+export default KitchenRangesPopular;
