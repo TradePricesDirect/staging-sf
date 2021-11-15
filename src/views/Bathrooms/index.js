@@ -40,7 +40,7 @@ const BathroomsPage = ({ featured, finishingTouches }) => {
         title="Inspirational Bathroom Suites"
         description="From stylish contemporary looks to warm, welcoming classics, you can choose from endless options. And only we'll give you trade prices."
         viewAll={config.bathroomsUrl}
-        images={config.inspirationalImages}
+        slides={config.suites}
       />
 
       <CategoryCarousel
@@ -73,9 +73,9 @@ const BathroomsPage = ({ featured, finishingTouches }) => {
         title="Indulge in Luxury at Trade Prices"
         subtitle="When you're buying at trade prices you don't have to compromise..."
         images={[
-          "/images/bathrooms/luxury-1.jpg",
-          "/images/bathrooms/luxury-2.jpg",
-          "/images/bathrooms/luxury-3.jpg",
+          "/images/bathrooms/luxury-bath.jpg",
+          "/images/bathrooms/luxury-shower.jpg",
+          "/images/bathrooms/luxury-grohe.jpg",
         ]}
         content={{
           subtitle: "Affordable Options",

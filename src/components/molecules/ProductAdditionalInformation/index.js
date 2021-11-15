@@ -117,7 +117,7 @@ const combineDataLists = (attributes, metadata) => {
     ...attributes.map(({ attribute, values }) => ({
       id: attribute.id,
       key: attribute.name,
-      values: values,
+      values: values.filter((value) => value.name !== "" && value),
     })),
   ];
 

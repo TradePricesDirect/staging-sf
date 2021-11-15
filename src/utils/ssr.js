@@ -81,8 +81,8 @@ export const getTotalProducts = async () => {
 
   // For now, we'll estimate these values...
   const data = {
-    all: { totalCount: 69319 },
-    inStock: { totalCount: 69319 },
+    all: { totalCount: 70547 },
+    inStock: { totalCount: 70547 },
   };
 
   return data;
@@ -165,6 +165,8 @@ export const getProductDetails = async (slug) => {
       fetchPolicy: "network-only",
     })
     .then(({ data }) => data);
+
+  if (!product) return null;
 
   // Replace product.attribute[].values[].file.url (Saleor bug)
   product.attributes = fixFileAttributeValueUrl(product.attributes);

@@ -10,7 +10,7 @@ import paths from "core/paths";
 
 import styles from "./CategoryPopular.module.scss";
 
-const CategoryPopular = ({ title, description, viewAll, images }) => {
+const CategoryPopular = ({ title, description, viewAll, slides }) => {
   const [emblaRef, embla] = useEmblaCarousel({
     loop: false,
     dragFree: true,
@@ -103,36 +103,38 @@ const CategoryPopular = ({ title, description, viewAll, images }) => {
 
       <div ref={emblaRef} className={styles.carouselWrap}>
         <div className={styles.carousel}>
-          {images.map((image, index) => (
-            <div key={image} className={styles.slide}>
-              <div className={styles.inner}>
-                <div
-                  className={styles.parallax}
-                  style={{
-                    transform: `translateX(${parallaxValues[index]}%)`,
-                  }}
-                >
-                  <div className={styles.imageWrap}>
-                    <div className={styles.image}>
-                      <Image
-                        src={image}
-                        alt=""
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="center"
-                        loading={index < 5 ? "eager" : "lazy"}
-                      />
+          {slides.map(({ id, name, href, image }, index) => (
+            <div key={`popular-${id}`} className={styles.slide}>
+              <Link href={href}>
+                <a className={styles.inner}>
+                  <div
+                    className={styles.parallax}
+                    style={{
+                      transform: `translateX(${parallaxValues[index]}%)`,
+                    }}
+                  >
+                    <div className={styles.imageWrap}>
+                      <div className={styles.image}>
+                        <Image
+                          src={image}
+                          alt={name}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="center"
+                          loading={index < 5 ? "eager" : "lazy"}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <Skeleton
-                  height="100%"
-                  baseColor="#e9ecef"
-                  highlightColor="#ced4da"
-                  className={styles.loader}
-                />
-              </div>
+                  <Skeleton
+                    height="100%"
+                    baseColor="#e9ecef"
+                    highlightColor="#ced4da"
+                    className={styles.loader}
+                  />
+                </a>
+              </Link>
             </div>
           ))}
         </div>

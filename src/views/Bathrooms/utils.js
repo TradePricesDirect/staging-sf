@@ -42,10 +42,85 @@ export const categoryStyles = [
   },
 ];
 
-export const inspirationalImages = [
-  "/images/bathrooms/inspirational-1.jpg",
-  "/images/bathrooms/inspirational-2.jpg",
-  "/images/bathrooms/inspirational-3.jpg",
+export const suites = [
+  {
+    id: uuid(),
+    name: "Alba Graphite",
+    href: { pathname: bathroomsUrl, query: { filters: "range_alba" } },
+    image: "/images/bathrooms/alba-graphite.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Alba Grey",
+    href: { pathname: bathroomsUrl, query: { filters: "range_alba" } },
+    image: "/images/bathrooms/alba-grey.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Alba Nebraska",
+    href: { pathname: bathroomsUrl, query: { filters: "range_alba" } },
+    image: "/images/bathrooms/alba-nebraska.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Alba White",
+    href: { pathname: bathroomsUrl, query: { filters: "range_alba" } },
+    image: "/images/bathrooms/alba-white.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Benita",
+    href: { pathname: bathroomsUrl, query: { filters: "range_benita" } },
+    image: "/images/bathrooms/benita-white.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Morina Grey",
+    href: { pathname: bathroomsUrl, query: { filters: "range_morina" } },
+    image: "/images/bathrooms/morina-grey.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Morina Urban Grey",
+    href: { pathname: bathroomsUrl, query: { filters: "range_morina" } },
+    image: "/images/bathrooms/morina-urban-grey.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Perla Marble",
+    href: { pathname: bathroomsUrl, query: { filters: "range_perla" } },
+    image: "/images/bathrooms/perla-marble.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Statement White",
+    href: { pathname: bathroomsUrl, query: { filters: "range_statement" } },
+    image: "/images/bathrooms/statement-white.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Valesso Onyx Grey",
+    href: { pathname: bathroomsUrl, query: { filters: "range_valesso" } },
+    image: "/images/bathrooms/valesso-onyx-grey.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Valesso White Gloss",
+    href: { pathname: bathroomsUrl, query: { filters: "range_valesso" } },
+    image: "/images/bathrooms/valesso-whitegloss.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Volta Anthracite",
+    href: { pathname: bathroomsUrl, query: { filters: "range_volta" } },
+    image: "/images/bathrooms/volta-anthracite.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Volta Grey",
+    href: { pathname: bathroomsUrl, query: { filters: "range_volta" } },
+    image: "/images/bathrooms/volta-grey.jpg",
+  },
 ];
 
 export const logos = [
@@ -60,18 +135,18 @@ export const logos = [
 
 export const brands = [
   {
-    name: "Gessi",
+    name: "Grohe",
     href: paths.category.replace("[slug]", "bathrooms"),
-    backgroundImage: "/images/bathrooms/featured-gressi.jpg",
+    backgroundImage: "/images/bathrooms/featured-grohe1.jpg",
   },
   {
-    name: "Multipanel",
+    name: "Kaldewei",
     href: paths.category.replace("[slug]", "bathrooms"),
-    backgroundImage: "/images/bathrooms/featured-multipanel.jpg",
+    backgroundImage: "/images/bathrooms/featured-kaldewei.jpg",
   },
   {
     name: "Grohe",
     href: paths.category.replace("[slug]", "bathrooms"),
-    backgroundImage: "/images/bathrooms/featured-grohe.jpg",
+    backgroundImage: "/images/bathrooms/featured-grohe2.jpg",
   },
 ];

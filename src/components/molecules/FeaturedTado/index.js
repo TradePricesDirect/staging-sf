@@ -27,7 +27,10 @@ const FeaturedTado = () => {
       icons={ICONS}
       button={{
         name: "Shop Tado",
-        href: paths.category.replace("[slug]", "radiators"),
+        href: {
+          pathname: paths.category.replace("[slug]", "thermostats"),
+          query: { filters: "brand_tado" },
+        },
       }}
     >
       <p>
