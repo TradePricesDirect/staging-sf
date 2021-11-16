@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 import paths from "core/paths";
 
 import styles from "./AboutSteps.module.scss";
+import clsx from "clsx";
 
 const steps = [
   {
@@ -77,16 +79,7 @@ const AboutSteps = () => {
             <ul className={styles.list}>
               {steps.map(({ title, text, image }, index) => (
                 <li key={`step-${index}`}>
-                  <div className={styles.step}>
-                    <div className={styles.content}>
-                      <h3>{title}</h3>
-                      <p>{text}</p>
-                    </div>
-
-                    <div className={styles.image}>
-                      <Image src={image} alt="" width={270} height={220} />
-                    </div>
-                  </div>
+                  <Step title={title} text={text} image={image} />
                 </li>
               ))}
             </ul>
@@ -101,3 +94,20 @@ const AboutSteps = () => {
 };
 
 export default AboutSteps;
+
+const Step = ({ title, text, image }) => {
+  const { ref, inView } = useInView({ threshold: 1 });
+
+  return (
+    <div ref={ref} className={clsx(styles.step, inView && styles.inView)}>
+      <div className={styles.content}>
+        <h3>{title}</h3>
+        <p>{text}</p>
+      </div>
+
+      <div className={styles.image}>
+        <Image src={image} alt="" width={270} height={220} />
+      </div>
+    </div>
+  );
+};

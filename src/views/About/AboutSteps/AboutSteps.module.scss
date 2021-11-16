@@ -165,6 +165,15 @@
   justify-content: space-between;
   margin-bottom: 2rem;
 
+  .content {
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &.inView .content {
+    opacity: 1;
+  }
+
   h3 {
     display: flex;
     flex-wrap: nowrap;
