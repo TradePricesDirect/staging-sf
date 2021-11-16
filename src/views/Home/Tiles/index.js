@@ -5,7 +5,7 @@ import paths from "core/paths";
 
 import bgCustomer from "./tile-customer.png";
 import bgTrade from "./tile-tradesperson.png";
-import bgCommercial from "./tile-commercial.png";
+import bgAbout from "./tile-about.png";
 
 import styles from "./Tiles.module.scss";
 
@@ -39,12 +39,12 @@ const Tiles = () => {
           </div>
           <div className="col-12 col-sm-6 col-lg-4">
             <Tile
-              path={paths.commercial}
-              subtitle="Supply & Delivery"
-              title="I'm a Commercial Buyer"
+              path={paths.about}
+              subtitle="Who Are We"
+              title="Who Are We?"
               text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, dignissimos."
               label="Learn More"
-              background={bgCommercial}
+              background={bgAbout}
               colour="secondary"
             />
           </div>

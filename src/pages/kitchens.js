@@ -7,7 +7,10 @@ export default KitchensPage;
 export async function getStaticProps() {
   const ranges = await getKitchenRanges();
 
-  const appliances = await getCategoriesByMetadata("appliance", "true");
+  const appliances = await getCategoriesByMetadata(
+    "kitchens.appliances",
+    "true"
+  );
 
   const finishingTouches = await getCategoriesByMetadata(
     "kitchens.finishing.touches",

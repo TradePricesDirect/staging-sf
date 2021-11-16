@@ -30,6 +30,7 @@
 .gridItem {
   position: relative;
   padding-top: 100%;
+  box-shadow: $box-shadow-sm;
 
   &.body {
     padding-top: 0;

@@ -42,7 +42,7 @@ const paths = {
   wishlist: "/lists/[id]",
   // Landing Pages
   trade: "/trade",
-  commercial: "/commercial",
+  about: "/about",
   finance: "/finance",
   requestQuote: "/request-quote",
   requestQuoteThankYou: "/request-quote/thank-you",

@@ -81,8 +81,8 @@ export const getTotalProducts = async () => {
 
   // For now, we'll estimate these values...
   const data = {
-    all: { totalCount: 70547 },
-    inStock: { totalCount: 70547 },
+    all: { totalCount: 71876 },
+    inStock: { totalCount: 71876 },
   };
 
   return data;
