@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from "./PageHero.module.scss";
 
-const PageHero = ({ content, image, imageAlignEnd }) => {
+const PageHero = ({ content, image, imageAlignEnd, imageSmall }) => {
   return (
     <section className={styles.wrap}>
       <div className="container">
@@ -17,7 +17,9 @@ const PageHero = ({ content, image, imageAlignEnd }) => {
               imageAlignEnd && "align-self-end"
             )}
           >
-            <div className={styles.image}>{image}</div>
+            <div className={clsx(styles.image, imageSmall && styles.small)}>
+              {image}
+            </div>
           </div>
         </div>
       </div>

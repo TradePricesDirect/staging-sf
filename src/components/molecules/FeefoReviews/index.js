@@ -5,7 +5,7 @@ import FeefoBadge from "components/atoms/FeefoBadge";
 
 import styles from "./FeefoReviews.module.scss";
 
-const FeefoReviews = () => {
+export const FeefoReviewsWidget = () => {
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -19,6 +19,17 @@ const FeefoReviews = () => {
     };
   }, []);
 
+  return (
+    <div className="container">
+      <div
+        id="feefo-service-review-carousel-widgetId"
+        className={styles.widget}
+      />
+    </div>
+  );
+};
+
+const FeefoReviews = () => {
   return (
     <section className={styles.wrap}>
       <header className={styles.header}>
@@ -43,12 +54,7 @@ const FeefoReviews = () => {
         </div>
       </header>
 
-      <div className="container">
-        <div
-          id="feefo-service-review-carousel-widgetId"
-          className={styles.widget}
-        />
-      </div>
+      <FeefoReviewsWidget />
     </section>
   );
 };

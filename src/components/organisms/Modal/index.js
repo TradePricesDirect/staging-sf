@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import ClientOnlyPortal from "components/organisms/ClientOnlyPortal";
 
 import styles from "./Modal.module.scss";
@@ -13,6 +12,7 @@ const Modal = ({
   title,
   size,
   target = "#overlay-root",
+  video,
 }) => {
   // Lock scroll on open
   useEffect(() => {
@@ -31,7 +31,11 @@ const Modal = ({
         {isOpen && (
           <div className={styles.wrap}>
             <motion.section
-              className={clsx(styles.modal, size && styles[size])}
+              className={clsx(
+                styles.modal,
+                size && styles[size],
+                video && styles.video
+              )}
               role="dialog"
               aria-modal="true"
               tabIndex="-1"

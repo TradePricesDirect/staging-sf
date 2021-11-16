@@ -1,0 +1,261 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  padding: 40px 0 80px;
+  color: $white;
+  background-color: $primary;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 50%;
+  margin-bottom: 1.5rem;
+
+  .line {
+    position: relative;
+    flex: 1 1 auto;
+    height: 4px;
+    background-color: $secondary;
+    margin: 0 30px 0 -4px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: -32px;
+      top: 0;
+      display: block;
+      width: 32px;
+      height: 26px;
+      border: 4px solid $secondary;
+      border-style: solid solid none none;
+      border-top-right-radius: 50rem;
+    }
+
+    &::before {
+      content: "";
+      z-index: 3;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      margin-top: 26px;
+      margin-right: -52px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 16px 22px 0 22px;
+      border-color: $secondary transparent transparent transparent;
+    }
+  }
+}
+
+.middleLine {
+  position: absolute;
+  z-index: 1;
+  top: 49px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  display: none;
+  width: 4px;
+  background-color: $white;
+
+  &::after {
+    content: " ";
+    position: sticky;
+    top: 7rem;
+    left: 50%;
+    display: block;
+    height: 100px;
+    width: 4px;
+    background-color: $secondary;
+  }
+}
+
+.bottomLine {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  right: 10%;
+  margin: 0 30px;
+  height: 4px;
+  background-color: $secondary;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -32px;
+    bottom: 0;
+    display: block;
+    width: 32px;
+    height: 54px;
+    border: 4px solid $secondary;
+    border-style: none none solid solid;
+    border-bottom-left-radius: 50rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    top: 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 4px solid $secondary;
+    border-style: solid solid none none;
+    border-top-right-radius: 50rem;
+  }
+
+  span {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: -66px;
+    margin-left: -52px;
+    border-style: solid;
+    border-width: 0 22px 16px 22px;
+    border-color: transparent transparent $secondary transparent;
+  }
+}
+
+.stickyContent {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: $secondary;
+    font-size: $font-size-sm;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    max-width: 20rem;
+    line-height: 1.1;
+    color: inherit;
+    @include font-size(1.75rem);
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+}
+
+.list {
+  position: relative;
+  z-index: 5;
+  @include list-unstyled;
+  margin: 0;
+  counter-reset: list;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+
+  h3 {
+    display: flex;
+    flex-wrap: nowrap;
+
+    &::before {
+      counter-increment: list;
+      content: "0" counter(list);
+      display: block;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.content {
+  flex: 0 1 25rem;
+  max-width: 25rem;
+
+  h3 {
+    color: $secondary;
+    font-size: $font-size-lg;
+  }
+
+  p {
+    line-height: 2;
+  }
+}
+
+.image {
+  display: none;
+  flex: 0 1 15rem;
+  max-width: 15rem;
+}
+
+@media (min-width: 480px) {
+  .image {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo .line::before {
+    display: none;
+  }
+
+  .middleLine {
+    display: block;
+  }
+
+  .bottomLine span {
+    display: none;
+  }
+
+  .stickyContent {
+    position: sticky;
+    top: 9.5rem;
+    max-width: 26rem;
+    padding-right: 1rem;
+    margin-bottom: 0;
+  }
+
+  .list {
+    margin-top: 16rem;
+  }
+
+  .step {
+    margin-bottom: 8rem;
+    padding-left: 3rem;
+
+    h3 {
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &::before {
+      counter-increment: list;
+      content: "0" counter(list);
+      position: absolute;
+      left: 0;
+      margin-left: -3rem;
+      display: block;
+      width: 4rem;
+      height: 5.75rem;
+      color: $secondary;
+      background-color: $primary;
+      font-size: 50px;
+      font-weight: $font-weight-semibold;
+      line-height: 1.75;
+      text-align: center;
+    }
+  }
+}

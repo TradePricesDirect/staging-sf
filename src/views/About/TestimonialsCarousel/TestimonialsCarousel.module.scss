@@ -1,0 +1,124 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color: $gray-100;
+
+  &::after {
+    content: "";
+    z-index: 3;
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    display: block;
+    width: 0;
+    height: 0;
+    margin-right: -20px;
+    border-style: solid;
+    border-width: 0 22px 16px 22px;
+    border-color: transparent transparent $secondary transparent;
+  }
+}
+
+.nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  @include padding(10rem 0);
+}
+
+.ribbon {
+  position: absolute;
+  right: 10%;
+  top: 0;
+
+  span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: $font-size-sm;
+    line-height: 2;
+    font-weight: $font-weight-semibold;
+    color: $white;
+    background-color: $secondary;
+    white-space: nowrap;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -12px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 22px 12px 22px 0;
+      border-color: transparent $secondary transparent transparent;
+    }
+  }
+}
+
+.slideContent {
+  position: relative;
+  z-index: 2;
+  max-width: 35rem;
+  padding: 3rem;
+  padding-top: 1rem;
+  background-color: $white;
+  border-left: 4px solid $secondary;
+  box-shadow: $box-shadow-sm;
+
+  blockquote {
+    position: relative;
+    margin: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: -1.5rem;
+      left: 0;
+      display: block;
+      width: 25%;
+      height: 100%;
+      background: url("/images/about/quote-bg.svg") left top no-repeat;
+      background-size: contain;
+      opacity: 0.13;
+    }
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+    line-height: 2;
+  }
+
+  .purchaser {
+    color: $primary;
+    font-style: normal;
+    font-weight: $font-weight-semibold;
+  }
+
+  .purchase {
+    color: $primary;
+    font-style: normal;
+    font-size: $font-size-sm;
+  }
+}
+
+@media (min-width: 768px) {
+  .ribbon {
+    margin-right: 22px;
+    transform-origin: top right;
+    transform: rotate(-90deg);
+  }
+}

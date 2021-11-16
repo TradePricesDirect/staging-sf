@@ -33,6 +33,16 @@
     max-width: 768px;
   }
 
+  &.lg {
+    max-width: 992px;
+  }
+
+  &.video {
+    .content {
+      padding: 0;
+    }
+  }
+
   .header {
     flex: 0 1 0%;
     padding: 1rem 1.5rem;

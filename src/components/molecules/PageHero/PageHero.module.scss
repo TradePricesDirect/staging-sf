@@ -65,7 +65,12 @@
 
   .image {
     display: block;
+    margin: 0 auto;
     max-width: 44rem;
+
+    &.small {
+      max-width: 30rem;
+    }
   }
 }
 

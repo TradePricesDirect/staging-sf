@@ -1,0 +1,40 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.button {
+  display: inline-flex;
+  vertical-align: middle;
+  flex-wrap: nowrap;
+  align-items: center;
+  color: $primary;
+  font-weight: $font-weight-semibold;
+  line-height: 1.5;
+
+  &:hover .icon,
+  &:focus .icon {
+    color: $white;
+    background-color: $primary;
+  }
+
+  &:focus .icon {
+    box-shadow: $btn-focus-box-shadow;
+  }
+}
+
+.icon {
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid $primary;
+  box-shadow: none;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+
+  svg {
+    margin-left: 0.125rem;
+  }
+}
