@@ -225,6 +225,14 @@ export const productDetailsQuery = gql`
                 name
                 slug
               }
+              variants {
+                id
+              }
+              defaultVariant {
+                id
+                name
+                quantityAvailable
+              }
             }
           }
         }

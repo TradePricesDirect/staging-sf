@@ -1,18 +1,25 @@
 import Link from "next/link";
+import { useAuth } from "@saleor/sdk";
+import { get } from "lodash";
+import paths from "core/paths";
 import Thumbnail from "components/molecules/Thumbnail";
 import TaxedMoneyProduct from "components/molecules/TaxedMoneyProduct";
-
-import paths from "core/paths";
+import AddToCartButton from "components/molecules/AddToCartButton";
 
 import styles from "./ProductTile.module.scss";
-import { get } from "lodash";
 
 const ProductTile = ({ product }) => {
+  const { user } = useAuth();
+
   const price = get(product, "pricing.priceRange.start");
+
+  const url = paths.product.replace("[slug]", product.slug);
+
+  const hasVariants = product.variants?.length > 1;
 
   return (
     <div className={styles.wrap}>
-      <Link href={paths.product.replace("[slug]", product.slug)}>
+      <Link href={url}>
         <a className={styles.link}>
           <div className={styles.image}>
             <Thumbnail thumbnail={product.thumbnail2x} />
@@ -25,6 +32,19 @@ const ProductTile = ({ product }) => {
           </div>
         </a>
       </Link>
+
+      {user && !hasVariants ? (
+        <AddToCartButton
+          variant={product.defaultVariant}
+          quantity={1}
+          isAvailableForPurchase={product.isAvailableForPurchase}
+          availableForPurchase={product.availableForPurchase}
+        />
+      ) : (
+        <Link href={url}>
+          <a className="btn btn-primary">View Product</a>
+        </Link>
+      )}
     </div>
   );
 };

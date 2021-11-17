@@ -23,12 +23,12 @@ const ProductTileSkeleton = () => {
       <motion.div
         animate={animate}
         transition={transition}
-        style={{ height: 32, width: "25%", marginBottom: 4 }}
+        style={{ height: 32, width: "25%", marginBottom: 8 }}
       />
       <motion.div
         animate={animate}
         transition={transition}
-        style={{ height: 24, width: "35%" }}
+        style={{ height: 50, width: "100%" }}
       />
     </div>
   );

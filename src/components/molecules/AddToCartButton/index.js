@@ -1,50 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth, useCart } from "@saleor/sdk";
-import clsx from "clsx";
 import { useOverlay } from "contexts/OverlayContext";
 import { formatDate } from "utils/date";
 import { getAvailableQuantity } from "utils/productStock";
-import QuantitySelector from "components/molecules/QuantitySelector";
 import SubmitButton from "components/atoms/SubmitButton";
 
-import styles from "./AddToCartSection.module.scss";
-
-const AddToCartSection = ({
+const AddToCartButton = ({
   variant,
+  quantity = 1,
   isAvailableForPurchase,
   availableForPurchase,
-  onAdd = null,
 }) => {
   const { user } = useAuth();
   const { addItem, items } = useCart();
   const overlay = useOverlay();
 
   const [loading, setLoading] = useState(false);
-  const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => {
-    setQuantity(1);
-  }, [variant]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleAddToCart = async () => {
-    try {
-      if (loading) return;
+    if (loading) return;
 
-      setLoading(true);
+    setLoading(true);
 
-      await addItem(variant.id, quantity);
+    await addItem(variant.id, quantity);
 
-      overlay.show("cart");
+    overlay.show("cart");
 
-      setLoading(false);
-
-      setQuantity(1);
-
-      if (onAdd) onAdd();
-    } catch (error) {
-      console.error(error);
-      location.reload();
-    }
+    setLoading(false);
   };
 
   // Max available quantitiy
@@ -53,7 +37,7 @@ const AddToCartSection = ({
   // Out of stock
   const isOutOfStock = variant.quantityAvailable === 0;
 
-  // Product available
+  // Product not available
   const canPurchase = isAvailableForPurchase && availableForPurchase;
 
   // Product available soon
@@ -85,23 +69,10 @@ const AddToCartSection = ({
   }
 
   return (
-    <div className={styles.wrap}>
-      <QuantitySelector
-        quantity={quantity}
-        onUpdate={setQuantity}
-        debounce={false}
-      />
-
-      <SubmitButton
-        type="button"
-        loading={loading}
-        onClick={handleAddToCart}
-        className={clsx("btn btn-primary", styles.button)}
-      >
-        Add To Basket
-      </SubmitButton>
-    </div>
+    <SubmitButton type="button" loading={loading} onClick={handleSubmit}>
+      Add To Basket
+    </SubmitButton>
   );
 };
 
-export default AddToCartSection;
+export default AddToCartButton;
