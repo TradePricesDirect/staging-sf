@@ -18,7 +18,7 @@ import TaxedMoney from "components/molecules/TaxedMoney";
 
 import styles from "./CartRangeRow.module.scss";
 
-const CartRangeRow = ({ range, onRemove }) => {
+const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   const [metadata] = useLocalStorage("data_checkout_metadata");
@@ -42,6 +42,13 @@ const CartRangeRow = ({ range, onRemove }) => {
   if (range.door.slug === "paint-to-order" && custom) {
     doorName += ` - ${custom}`;
   }
+
+  const items = _.sortBy(range.items, ["variant.product.name"]);
+
+  const handleRemoveAll = () => {
+    const ids = _.map(range.items, "variant.id");
+    onRemoveAll(ids);
+  };
 
   return (
     <div className={styles.wrap}>
@@ -104,6 +111,15 @@ const CartRangeRow = ({ range, onRemove }) => {
                       <span className="visually-hidden">Edit this item</span>
                     </a>
                   </Link>
+
+                  <button
+                    onClick={handleRemoveAll}
+                    type="button"
+                    className="btn btn-sm text-danger"
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                    <span className="visually-hidden">Remove this item</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -128,7 +144,7 @@ const CartRangeRow = ({ range, onRemove }) => {
                 )}
               >
                 <tbody>
-                  {range.items.map((item) => (
+                  {items.map((item) => (
                     <tr key={item.variant.id}>
                       <td className={styles.shrink}>
                         <div className={styles.quantity}>{item.quantity}</div>

@@ -1,0 +1,45 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.header {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+}
+
+.info {
+  @include list-unstyled;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  color: $gray-600;
+}
+
+.list {
+  @include list-unstyled;
+  margin: 2rem 0;
+  display: grid;
+  gap: $grid-gutter-width;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+  @media (min-width: 992px) {
+    gap: 2.5rem;
+  }
+}
+
+.ranges {
+  @include list-unstyled;
+  margin: 2rem 0;
+}
+
+@media (min-width: 576px) {
+  .header {
+    text-align: left;
+  }
+
+  .info {
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+}

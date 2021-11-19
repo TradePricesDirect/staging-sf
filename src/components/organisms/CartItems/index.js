@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import { useCart } from "@saleor/sdk";
 import { groupCartItems } from "utils/cart";
 import Loader from "components/atoms/Loader";
@@ -8,7 +8,18 @@ import CartItem from "components/molecules/CartItem";
 import styles from "./CartItems.module.scss";
 
 const CartItems = ({ isCheckout }) => {
-  const { loaded, items: cartItems, removeItem, updateItem } = useCart();
+  const {
+    loaded,
+    items: cartItems,
+    removeItem,
+    removeItems,
+    updateItem,
+  } = useCart();
+
+  const { items, ranges } = useMemo(
+    () => groupCartItems(cartItems),
+    [cartItems]
+  );
 
   if (!loaded) return <Loader />;
 
@@ -20,11 +31,6 @@ const CartItems = ({ isCheckout }) => {
     );
   }
 
-  const { items, ranges } = useMemo(
-    () => groupCartItems(cartItems),
-    [cartItems]
-  );
-
   return (
     <ul className={styles.list}>
       {ranges.map((range, index) => (
@@ -32,6 +38,7 @@ const CartItems = ({ isCheckout }) => {
           <CartRangeItem
             range={range}
             onRemove={removeItem}
+            onRemoveAll={removeItems}
             isCheckout={isCheckout}
           />
         </li>
@@ -54,3 +61,11 @@ const CartItems = ({ isCheckout }) => {
 };
 
 export default CartItems;
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}

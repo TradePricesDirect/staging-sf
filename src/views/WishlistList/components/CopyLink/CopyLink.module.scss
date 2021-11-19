@@ -1,0 +1,42 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+}
+
+.input {
+  &:read-only {
+    background-color: $white;
+  }
+
+  &:disabled {
+    background-color: $gray-200;
+    pointer-events: none;
+  }
+
+  @media (min-width: 576px) {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.button {
+  @media (min-width: 576px) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

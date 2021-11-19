@@ -124,7 +124,6 @@ export const suites = [
 ];
 
 export const logos = [
-  "/images/logos/brand-gressi.png",
   "/images/logos/brand-ideal-standard.png",
   "/images/logos/brand-kaldewei.png",
   "/images/logos/brand-multipanel.png",

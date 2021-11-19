@@ -37,7 +37,7 @@ const AddToCartButton = ({
   // Out of stock
   const isOutOfStock = variant.quantityAvailable === 0;
 
-  // Product not available
+  // Product available
   const canPurchase = isAvailableForPurchase && availableForPurchase;
 
   // Product available soon

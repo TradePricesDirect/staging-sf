@@ -109,7 +109,7 @@
   }
 }
 
-.wrap:hover .quantitySelector {
+.wrap:not(.loading):hover .quantitySelector {
   .minus,
   .plus {
     width: 28px;

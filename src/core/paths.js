@@ -40,6 +40,7 @@ const paths = {
   },
   wishlists: "/lists",
   wishlist: "/lists/[id]",
+  wishlistsManage: "/lists/manage",
   // Landing Pages
   trade: "/trade",
   about: "/about",

@@ -1,0 +1,7 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.shrink {
+  width: 0;
+  white-space: nowrap;
+}

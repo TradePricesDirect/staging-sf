@@ -77,7 +77,7 @@ const ProductsTable = ({
         </nav>
       )}
 
-      <div className="py-4 p-md-4">
+      <div className="py-4 p-xxl-4">
         {text && <p className={styles.lead}>{text}</p>}
 
         {!products.length ? (

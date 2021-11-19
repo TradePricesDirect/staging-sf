@@ -481,3 +481,19 @@ export const useCheckoutMetadata = () => {
     loading,
   };
 };
+
+export const customerSearchQuery = gql`
+  query CustomerSearch($search: String!) {
+    customers(first: 100, filter: { search: $search }) {
+      totalCount
+      edges {
+        node {
+          id
+          firstName
+          lastName
+          email
+        }
+      }
+    }
+  }
+`;

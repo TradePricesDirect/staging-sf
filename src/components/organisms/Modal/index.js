@@ -25,6 +25,12 @@ const Modal = ({
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return (
     <ClientOnlyPortal selector={target}>
       <AnimatePresence>

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import clsx from "clsx";
 import { useDebouncedCallback } from "use-debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/pro-light-svg-icons";
 import paths from "core/paths";
 import TaxedMoney from "components/molecules/TaxedMoney";
 import Thumbnail from "components/molecules/Thumbnail";
+import AddToWishlist from "components/molecules/AddToWishlist";
 
 import styles from "./CartItem.module.scss";
 
@@ -67,14 +69,23 @@ const CartItem = ({
           </div>
 
           {!isCheckout && (
-            <button
-              onClick={onRemove}
-              type="button"
-              className="btn btn-sm text-danger"
-            >
-              <FontAwesomeIcon icon={faTrash} />
-              <span className="visually-hidden">Remove this item</span>
-            </button>
+            <div>
+              <AddToWishlist
+                name={variant.product.name}
+                variant={variant}
+                product={variant.product}
+                className="btn btn-sm text-primary"
+              />
+
+              <button
+                onClick={onRemove}
+                type="button"
+                className="btn btn-sm text-danger"
+              >
+                <FontAwesomeIcon icon={faTrash} />
+                <span className="visually-hidden">Remove this item</span>
+              </button>
+            </div>
           )}
         </div>
       </div>

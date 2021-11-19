@@ -1,0 +1,85 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.card {
+  display: block;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: none;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: $box-shadow;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1px;
+
+  .item {
+    position: relative;
+    background-color: $gray-100;
+
+    &:first-of-type {
+      grid-column-end: span 2;
+      grid-row-end: span 2;
+    }
+
+    &:empty::before {
+      content: "";
+      display: block;
+      height: 0;
+      padding-top: 100%;
+    }
+  }
+}
+
+.content {
+  padding: 0.5rem;
+  color: $body-color;
+
+  .name {
+    margin: 0;
+    font-size: $font-size-base;
+  }
+
+  .count {
+    margin: 0;
+    color: $gray-700;
+  }
+}
+
+.delete {
+  position: absolute;
+  z-index: 2;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: $white;
+  border-radius: $border-radius-pill;
+  box-shadow: $box-shadow;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: $transition-base;
+
+  &:hover {
+    color: $white;
+    background-color: $primary;
+  }
+}
+
+.wrap:hover .delete {
+  opacity: 1;
+  transform: translateY(0);
+}

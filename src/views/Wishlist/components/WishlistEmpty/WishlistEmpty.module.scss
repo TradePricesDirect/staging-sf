@@ -1,0 +1,14 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  padding: 2rem 1rem;
+  margin: 0 auto;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 1rem;
+  @include font-size(2rem);
+}

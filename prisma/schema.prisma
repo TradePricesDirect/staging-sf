@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum WishlistPrivacy {
+  PUBLIC
+  PRIVATE
+}
+
+model Wishlist {
+  id         Int             @id @default(autoincrement())
+  user_id    String
+  name       String
+  type       WishlistPrivacy @default(PRIVATE)
+  lines      WishlistLine[]
+  created_at DateTime        @default(now())
+  updated_at DateTime        @updatedAt
+
+  @@map("tpd_wishlist")
+}
+
+model WishlistLine {
+  id          Int      @id @default(autoincrement())
+  wishlist_id Int
+  wishlist    Wishlist @relation(fields: [wishlist_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  product_id  String
+  variant_id  String?
+  created_at  DateTime @default(now())
+
+  @@map("tpd_wishlist_wishlistline")
+}

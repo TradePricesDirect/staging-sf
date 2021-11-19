@@ -1,21 +1,24 @@
 import Link from "next/link";
 import { useAuth } from "@saleor/sdk";
-import { get } from "lodash";
+import _ from "lodash";
 import paths from "core/paths";
 import Thumbnail from "components/molecules/Thumbnail";
 import TaxedMoneyProduct from "components/molecules/TaxedMoneyProduct";
 import AddToCartButton from "components/molecules/AddToCartButton";
+import AddToWishlist from "components/molecules/AddToWishlist";
 
 import styles from "./ProductTile.module.scss";
 
-const ProductTile = ({ product }) => {
+const ProductTile = ({ product, variant = null }) => {
   const { user } = useAuth();
 
-  const price = get(product, "pricing.priceRange.start");
+  const price = _.get(product, "pricing.priceRange.start");
 
   const url = paths.product.replace("[slug]", product.slug);
 
-  const hasVariants = product.variants?.length > 1;
+  const hasVariants = !variant && product.variants?.length > 1;
+
+  const selectedVariant = variant || product.defaultVariant;
 
   return (
     <div className={styles.wrap}>
@@ -35,7 +38,7 @@ const ProductTile = ({ product }) => {
 
       {user && !hasVariants ? (
         <AddToCartButton
-          variant={product.defaultVariant}
+          variant={selectedVariant}
           quantity={1}
           isAvailableForPurchase={product.isAvailableForPurchase}
           availableForPurchase={product.availableForPurchase}
@@ -45,6 +48,12 @@ const ProductTile = ({ product }) => {
           <a className="btn btn-primary">View Product</a>
         </Link>
       )}
+
+      <AddToWishlist
+        name={product.name}
+        product={product}
+        variant={selectedVariant}
+      />
     </div>
   );
 };

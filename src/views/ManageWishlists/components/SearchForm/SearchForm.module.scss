@@ -1,0 +1,32 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.form {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  .label {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    display: block;
+    padding: 1rem;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .input {
+    padding-left: 3rem;
+    color: $primary;
+    border-radius: $border-radius-lg;
+
+    &:focus {
+      color: inherit;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px $blue-100 inset;
+    }
+  }
+}

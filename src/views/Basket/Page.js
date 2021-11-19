@@ -9,7 +9,7 @@ import CartFinanceBanner from "components/molecules/CartFinanceBanner";
 import styles from "./BasketPage.module.scss";
 
 const Page = () => {
-  const { items: cartItems, removeItem, updateItem } = useCart();
+  const { items: cartItems, removeItem, removeItems, updateItem } = useCart();
 
   const { items, ranges } = useMemo(
     () => groupCartItems(cartItems),
@@ -24,6 +24,7 @@ const Page = () => {
             key={`cart-row-${index}-${range.id}`}
             range={range}
             onRemove={removeItem}
+            onRemoveAll={removeItems}
           />
         ))}
 

@@ -15,14 +15,20 @@ import useLocalStorage from "hooks/useLocalStorage";
 import Thumbnail from "components/molecules/Thumbnail";
 import Money from "components/atoms/Money";
 import TaxedMoney from "components/molecules/TaxedMoney";
+import AddRangeToWishlist from "components/molecules/AddRangeToWishlist";
 
 import styles from "./CartRangeItem.module.scss";
 
-const CartRangeItem = ({ range, onRemove, isCheckout }) => {
+const CartRangeItem = ({ range, onRemove, onRemoveAll, isCheckout }) => {
   const [metadata] = useLocalStorage("data_checkout_metadata");
   const custom = metadata?.[`${range.name} Paint to Order Colour`];
 
   const { isOpen, onToggle } = useDisclosure();
+
+  const handleRemoveAll = () => {
+    const ids = _.map(range.items, "variant.id");
+    onRemoveAll(ids);
+  };
 
   const path = {
     pathname: paths.kitchenRange.replace("[slug]", range.slug),
@@ -42,6 +48,8 @@ const CartRangeItem = ({ range, onRemove, isCheckout }) => {
   if (range.door.slug === "paint-to-order" && custom) {
     doorName += ` - ${custom}`;
   }
+
+  const items = _.sortBy(range.items, ["variant.product.name"]);
 
   return (
     <div className={styles.wrap}>
@@ -83,12 +91,28 @@ const CartRangeItem = ({ range, onRemove, isCheckout }) => {
             </div>
 
             {!isCheckout && (
-              <Link href={path}>
-                <a className="btn btn-sm">
-                  <FontAwesomeIcon icon={faEdit} />
-                  <span className="visually-hidden">Edit this item</span>
-                </a>
-              </Link>
+              <div>
+                <Link href={path}>
+                  <a className="btn btn-sm">
+                    <FontAwesomeIcon icon={faEdit} />
+                    <span className="visually-hidden">Edit this item</span>
+                  </a>
+                </Link>
+
+                <AddRangeToWishlist
+                  range={range}
+                  className="btn btn-sm text-primary"
+                />
+
+                <button
+                  onClick={handleRemoveAll}
+                  type="button"
+                  className="btn btn-sm text-danger"
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                  <span className="visually-hidden">Remove this item</span>
+                </button>
+              </div>
             )}
           </div>
         </div>
@@ -111,7 +135,7 @@ const CartRangeItem = ({ range, onRemove, isCheckout }) => {
                 )}
               >
                 <tbody>
-                  {range.items.map((item) => (
+                  {items.map((item) => (
                     <tr key={`item-${item.variant.id}`}>
                       <td className={styles.shrink}>
                         <div className={styles.quantity}>{item.quantity}</div>
