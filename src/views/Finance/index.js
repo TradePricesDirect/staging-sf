@@ -1,3 +1,5 @@
+import Link from "next/link";
+import paths from "core/paths";
 import MetaTags from "components/atoms/MetaTags";
 import PageHero from "components/molecules/PageHero";
 import HeroImage from "./finance-hero.svg";
@@ -26,6 +28,10 @@ const FinancePage = () => {
               Spread the cost of your dream home with affordable financing from
               Propensio or Klarna.
             </p>
+
+            <Link href={paths.register}>
+              <a className="btn btn-primary">Register & Shop</a>
+            </Link>
           </>
         }
         image={<HeroImage />}

@@ -69,7 +69,12 @@ const AddToCartButton = ({
   }
 
   return (
-    <SubmitButton type="button" loading={loading} onClick={handleSubmit}>
+    <SubmitButton
+      type="button"
+      loading={loading}
+      onClick={handleSubmit}
+      className="btn btn-outline-primary"
+    >
       Add To Basket
     </SubmitButton>
   );

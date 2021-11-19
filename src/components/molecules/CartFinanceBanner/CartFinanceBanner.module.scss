@@ -3,18 +3,35 @@
 
 .banner {
   padding: 1rem;
-  margin-bottom: 1.25rem;
-  border-radius: $border-radius;
+  margin-bottom: 1rem;
+  border-radius: $border-radius-lg;
   box-shadow: $box-shadow;
   text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.logo {
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .klarna {
-  background-color: #fff999;
+  background-color: #ffb3c7;
   color: #000;
+
+  .logo {
+    max-width: 8rem;
+  }
 }
 
 .propensio {
   background-color: #393c5a;
   color: #fff;
+
+  .logo {
+    max-width: 12rem;
+  }
 }

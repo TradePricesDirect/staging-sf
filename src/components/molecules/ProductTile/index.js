@@ -36,18 +36,20 @@ const ProductTile = ({ product, variant = null }) => {
         </a>
       </Link>
 
-      {user && !hasVariants ? (
-        <AddToCartButton
-          variant={selectedVariant}
-          quantity={1}
-          isAvailableForPurchase={product.isAvailableForPurchase}
-          availableForPurchase={product.availableForPurchase}
-        />
-      ) : (
-        <Link href={url}>
-          <a className="btn btn-primary">View Product</a>
-        </Link>
-      )}
+      <div className="text-center">
+        {user && !hasVariants ? (
+          <AddToCartButton
+            variant={selectedVariant}
+            quantity={1}
+            isAvailableForPurchase={product.isAvailableForPurchase}
+            availableForPurchase={product.availableForPurchase}
+          />
+        ) : (
+          <Link href={url}>
+            <a className="btn btn-outline-primary">View Product</a>
+          </Link>
+        )}
+      </div>
 
       <AddToWishlist
         name={product.name}

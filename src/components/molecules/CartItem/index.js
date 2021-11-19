@@ -74,13 +74,13 @@ const CartItem = ({
                 name={variant.product.name}
                 variant={variant}
                 product={variant.product}
-                className="btn btn-sm text-primary"
+                className="btn btn-sm text-primary me-2"
               />
 
               <button
                 onClick={onRemove}
                 type="button"
-                className="btn btn-sm text-danger"
+                className="btn btn-sm btn-outline-danger"
               >
                 <FontAwesomeIcon icon={faTrash} />
                 <span className="visually-hidden">Remove this item</span>
