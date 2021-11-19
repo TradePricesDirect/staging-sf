@@ -42,6 +42,9 @@ const paths = {
   wishlist: "/lists/[id]",
   wishlistsManage: "/lists/manage",
   // Landing Pages
+  kitchens: "/kitchens",
+  bathrooms: "/bathrooms",
+  boilers: "/boilers",
   trade: "/trade",
   about: "/about",
   finance: "/finance",

@@ -1,10 +1,20 @@
-import { getKitchenRanges, getCategoriesByMetadata } from "utils/ssr";
+import {
+  getSaleorApi,
+  getKitchenRanges,
+  getCategoriesByMetadata,
+} from "utils/ssr";
 import { incrementalStaticRegenerationRevalidate } from "core/constants";
 import KitchensPage from "views/Kitchens";
 
 export default KitchensPage;
 
 export async function getStaticProps() {
+  const { api } = await getSaleorApi();
+
+  const { data: kitchens } = await api.categories.getDetails({
+    slug: "kitchens",
+  });
+
   const ranges = await getKitchenRanges();
 
   const appliances = await getCategoriesByMetadata(
@@ -21,6 +31,7 @@ export async function getStaticProps() {
     revalidate: incrementalStaticRegenerationRevalidate,
     props: {
       ranges,
+      kitchens,
       appliances,
       finishingTouches,
     },

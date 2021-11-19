@@ -1,10 +1,16 @@
-import { getCategoriesByMetadata } from "utils/ssr";
+import { getSaleorApi, getCategoriesByMetadata } from "utils/ssr";
 import { incrementalStaticRegenerationRevalidate } from "core/constants";
 import BoilersPage from "views/Boilers";
 
 export default BoilersPage;
 
 export async function getStaticProps() {
+  const { api } = await getSaleorApi();
+
+  const { data: boilers } = await api.categories.getDetails({
+    slug: "boilers",
+  });
+
   const boilerTypes = await getCategoriesByMetadata("boilers.type", "true");
 
   const heating = await getCategoriesByMetadata("boilers.heating", "true");
@@ -17,6 +23,7 @@ export async function getStaticProps() {
   return {
     revalidate: incrementalStaticRegenerationRevalidate,
     props: {
+      boilers,
       boilerTypes,
       heating,
       consumables,

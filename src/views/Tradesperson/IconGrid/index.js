@@ -57,7 +57,7 @@ const IconGrid = () => {
           <Tile
             image="/icons/tradesperson/membership-rewards.svg"
             title="Membership Rewards"
-            text="Get Amazon gift cards for every purchase you make with Trade Prices Direct."
+            text="Get cashback for every purchase you make with Trade Prices Direct."
           />
 
           <Tile

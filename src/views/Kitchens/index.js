@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import paths from "core/paths";
+import { convertRichTextToPlainText } from "core/utils";
 import MetaTags from "components/atoms/MetaTags";
 import CategoryHero from "components/molecules/CategoryHero";
 import CategoryStyles from "components/molecules/CategoryStyles";
@@ -16,18 +17,21 @@ import FAQs from "./FAQs";
 
 import * as config from "./utils";
 
-const KitchensPage = ({ ranges, appliances, finishingTouches }) => {
+const KitchensPage = ({ ranges, kitchens, appliances, finishingTouches }) => {
   return (
     <>
       <MetaTags
         title="Kitchens at Trade Prices"
-        description="From stylish contemporary looks to warm, welcoming classics, you can choose from over 30 kitchen door styles in over 100 colours. And only we'll give you trade prices while high street names charge big mark-ups. All backed by our commitment to quality, great pricing, and simple finance options."
+        description={
+          kitchens.seoDescription ||
+          convertRichTextToPlainText(kitchens.description)
+        }
       />
 
       <CategoryHero
         title="Fitted Kitchens & Appliances"
-        description="From stylish contemporary looks to warm, welcoming classics, you can choose from over 30 kitchen door styles in over 100 colours. And only we'll give you trade prices while high street names charge big mark-ups. All backed by our commitment to quality, great pricing, and simple finance options."
-        backgroundImage="/images/kitchens/category-hero.jpg"
+        description={kitchens.description}
+        backgroundImage={kitchens.backgroundImage}
       />
 
       <CategoryStyles
@@ -47,7 +51,12 @@ const KitchensPage = ({ ranges, appliances, finishingTouches }) => {
         title="Shop Appliances"
         viewAll={paths.category.replace("[slug]", "appliances")}
         categories={[
-          { id: uuid(), name: "Shop All", slug: "appliances" },
+          {
+            id: uuid(),
+            name: "Shop All",
+            slug: "appliances",
+            backgroundImage: kitchens.backgroundImage,
+          },
           ...appliances,
         ]}
       />

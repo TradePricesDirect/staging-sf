@@ -4,6 +4,9 @@ import ProductListHero from "components/molecules/ProductListHero";
 import ProductListHeader from "components/molecules/ProductListHeader";
 import ProductList from "components/organisms/ProductList";
 import FilterSidebar from "components/organisms/FilterSidebar";
+import * as SEOContent from "./SEOContent";
+
+console.log(SEOContent);
 
 const Page = ({
   displayLoader,
@@ -70,6 +73,8 @@ const Page = ({
           </div>
         </div>
       </div>
+
+      {SEOContent.hasOwnProperty(details.slug) && SEOContent[details.slug]()}
     </>
   );
 };

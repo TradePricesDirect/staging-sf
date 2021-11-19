@@ -51,21 +51,23 @@ const FeaturedCarousel = ({ slides, viewAll }) => {
             </Link>
           )}
 
-          <div className={styles.nav}>
-            <button
-              type="button"
-              className="btn btn-sm"
-              onClick={handlePrevious}
-            >
-              <span className="visually-hidden">Previous</span>
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </button>
+          {slides.length > 1 && (
+            <div className={styles.nav}>
+              <button
+                type="button"
+                className="btn btn-sm"
+                onClick={handlePrevious}
+              >
+                <span className="visually-hidden">Previous</span>
+                <FontAwesomeIcon icon={faArrowLeft} />
+              </button>
 
-            <button type="button" className="btn btn-sm" onClick={handleNext}>
-              <span className="visually-hidden">Next</span>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </button>
-          </div>
+              <button type="button" className="btn btn-sm" onClick={handleNext}>
+                <span className="visually-hidden">Next</span>
+                <FontAwesomeIcon icon={faArrowRight} />
+              </button>
+            </div>
+          )}
         </header>
 
         <div className={styles.container}>
@@ -87,13 +89,15 @@ const FeaturedCarousel = ({ slides, viewAll }) => {
           </div>
         </div>
 
-        <div className={styles.navPills}>
-          <NavPills
-            values={thumbnails}
-            activeIndex={activeIndex}
-            onValueClick={handleGoTo}
-          />
-        </div>
+        {slides.length > 1 && (
+          <div className={styles.navPills}>
+            <NavPills
+              values={thumbnails}
+              activeIndex={activeIndex}
+              onValueClick={handleGoTo}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

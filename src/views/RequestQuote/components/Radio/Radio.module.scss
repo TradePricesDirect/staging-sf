@@ -11,12 +11,8 @@
   background-color: #f1f6f8;
   border: 2px solid $white;
   border-radius: $border-radius;
-  transition: $transition-base;
+  transition: border-color 0.2s ease-in-out;
   cursor: pointer;
-
-  @media (min-width: 576px) {
-    padding: 2rem;
-  }
 }
 
 .title {
@@ -40,6 +36,8 @@
   z-index: 2;
   padding-right: 4rem;
   font-size: $font-size-sm;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .icon {
@@ -68,13 +66,16 @@
   }
 }
 
-@media (hover: hover) {
-  .inner {
-    opacity: 0;
-    transition: $transition-fade;
-  }
+.content:hover {
+  border-color: $primary;
 
-  .tile:hover .inner {
+  .inner {
     opacity: 1;
+  }
+}
+
+@media (min-width: 576px) {
+  .content {
+    padding: 2rem;
   }
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLockAlt, faTimes } from "@fortawesome/pro-light-svg-icons";
+import { faLockAlt, faTimes, faTruck } from "@fortawesome/pro-light-svg-icons";
 import paths from "core/paths";
 import { useOverlay } from "contexts/OverlayContext";
 import { useShop } from "contexts/ShopContext";
@@ -48,6 +48,10 @@ const CartHeader = () => {
             </div>
           </div>
         </div>
+
+        <p className={styles.lead}>
+          <FontAwesomeIcon icon={faTruck} /> Free UK Delivery & Returns
+        </p>
 
         <p className={styles.lead}>
           <FontAwesomeIcon icon={faLockAlt} /> Secure payment with SSL data

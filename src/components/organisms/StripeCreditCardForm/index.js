@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import {
   useStripe,
   useElements,
@@ -53,7 +54,17 @@ const StripeCreditCardForm = ({ onSubmitPaymentSuccess }) => {
       <form onSubmit={handleSubmit} className="mb-4">
         <PaymentElement className="mb-4" />
 
-        <SubmitButton loading={loading}>Place Order</SubmitButton>
+        <div className="row">
+          <div className="col-auto">
+            <Link href="/checkout/payment">
+              <a className="btn btn-outline-primary">Back</a>
+            </Link>
+          </div>
+
+          <div className="col-auto">
+            <SubmitButton loading={loading}>Place Order</SubmitButton>
+          </div>
+        </div>
       </form>
 
       <CheckoutErrors errors={errors} />

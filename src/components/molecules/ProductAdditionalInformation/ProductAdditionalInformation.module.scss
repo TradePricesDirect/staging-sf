@@ -84,6 +84,10 @@
   padding: 0.5rem 1rem 1rem;
 }
 
+.addToCart {
+  margin: 0 -1rem;
+}
+
 @media (min-width: 400px) {
   .wrap {
     padding: 1rem;
@@ -95,5 +99,9 @@
 
   .footer {
     padding: 1rem 1rem 0;
+  }
+
+  .addToCart {
+    margin: 0 -1.5rem;
   }
 }

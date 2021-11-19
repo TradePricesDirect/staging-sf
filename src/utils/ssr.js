@@ -33,7 +33,7 @@ export const getSaleorApi = async () => {
   return CONNECTION;
 };
 
-export const exhaustList = async (listApi, tries) => {
+export const exhaustList = async (listApi, tries = 100) => {
   return new Promise((resolve, reject) => {
     (async function fetch(listApi, triesLeft) {
       const result = await listApi;

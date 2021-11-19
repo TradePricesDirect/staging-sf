@@ -189,6 +189,10 @@ export const categoriesByMetadataQuery = gql`
       edges {
         node {
           ...BaseCategory
+          backgroundImage {
+            url
+            alt
+          }
         }
       }
     }

@@ -1,12 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useInView } from "react-intersection-observer";
+import Embed from "components/organisms/Embed";
 
 import styles from "./FeaturedTile.module.scss";
 
-const FeaturedTile = ({ image, subtitle, title, children, icons, button }) => {
+const FeaturedTile = ({
+  image,
+  video,
+  subtitle,
+  title,
+  children,
+  icons,
+  button,
+}) => {
+  const { ref, inView } = useInView({ threshold: 0.5 });
+
   return (
-    <section className={styles.wrap}>
+    <section ref={ref} className={styles.wrap}>
       <div className="row align-items-center">
         <div className="col-md order-md-1">
           <div className={styles.content}>
@@ -35,7 +47,9 @@ const FeaturedTile = ({ image, subtitle, title, children, icons, button }) => {
           </div>
         </div>
         <div className="col-md order-md-0">
-          <Image alt={title} {...image} />
+          {video && inView && <Embed>{video}</Embed>}
+
+          {image && <Image alt={title} {...image} />}
         </div>
       </div>
     </section>

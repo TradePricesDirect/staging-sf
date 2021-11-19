@@ -20,7 +20,7 @@ const Radio = ({ title, text, image, ...other }) => {
           <span className="btn btn-sm btn-circle">Select</span>
         </div>
 
-        <img className={styles.icon} src={image} alt="" />
+        <img className={styles.icon} src={image} alt="" loading="lazy" />
       </label>
     </div>
   );

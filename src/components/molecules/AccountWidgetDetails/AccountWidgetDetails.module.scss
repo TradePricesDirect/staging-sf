@@ -2,6 +2,8 @@
 @import "styles/mixins";
 
 .table {
+  color: $primary;
+
   .th {
     margin: 0;
     font-size: $font-size-base;

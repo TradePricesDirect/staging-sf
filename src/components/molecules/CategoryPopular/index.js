@@ -49,7 +49,7 @@ const CategoryPopular = ({ title, description, viewAll, slides }) => {
           }
         });
       }
-      return diffToTarget * -1 * 100;
+      return diffToTarget * -5 * 100;
     });
     setParallaxValues(styles);
   }, [embla, setParallaxValues]);

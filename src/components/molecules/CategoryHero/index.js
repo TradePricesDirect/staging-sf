@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FinanceRibbon from "components/atoms/FinanceRibbon";
+import RichTextEditorContent from "components/atoms/RichTextEditorContent";
 
 import styles from "./CategoryHero.module.scss";
 
@@ -11,7 +12,7 @@ const CategoryHero = ({ title, description, backgroundImage }) => {
 
         {description && (
           <div className={styles.description}>
-            <p>{description}</p>
+            <RichTextEditorContent jsonData={description} />
           </div>
         )}
       </div>
@@ -19,8 +20,8 @@ const CategoryHero = ({ title, description, backgroundImage }) => {
       {backgroundImage && (
         <div className={styles.background}>
           <Image
-            src={backgroundImage}
-            alt=""
+            src={backgroundImage.url}
+            alt={backgroundImage.alt}
             layout="fill"
             loading="eager"
             objectFit="cover"

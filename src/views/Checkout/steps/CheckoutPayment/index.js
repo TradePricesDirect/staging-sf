@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { useCart, useCheckout } from "@saleor/sdk";
 import {
   PaymentGatewayEnum,
@@ -82,7 +83,19 @@ export const CheckoutPayment = ({ onSubmitSuccess }) => {
           </div>
         </fieldset>
 
-        {canSubmit && <SubmitButton loading={loading}>Continue</SubmitButton>}
+        <div className="row">
+          <div className="col-auto">
+            <Link href="/checkout/shipping">
+              <a className="btn btn-outline-primary">Back</a>
+            </Link>
+          </div>
+
+          {canSubmit && (
+            <div className="col-auto">
+              <SubmitButton loading={loading}>Continue</SubmitButton>
+            </div>
+          )}
+        </div>
       </form>
     </>
   );

@@ -1,15 +1,22 @@
+import Image from "next/image";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt } from "@fortawesome/pro-light-svg-icons";
 import { SUPPORT_PHONE } from "core/config";
-import Icon from "./cta-call.svg";
 
 import styles from "./GetHelpCallToAction.module.scss";
 
 const GetHelpCallToAction = () => {
   return (
     <div className={styles.wrap}>
-      <Icon className={styles.icon} />
+      <div className={styles.icon}>
+        <Image
+          src="/icons/get-help.svg"
+          alt="Get Help"
+          width={100}
+          height={100}
+        />
+      </div>
 
       <h4>Get Help</h4>
       <p>Speak to our customer support team</p>

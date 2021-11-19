@@ -94,7 +94,7 @@ const KitchenRangeTile = ({ range }) => {
           </div>
           <div className="col-auto">
             <Link href={url}>
-              <a className="btn btn-primary">View Range</a>
+              <a className="btn btn-outline-primary">View Range</a>
             </Link>
           </div>
         </div>

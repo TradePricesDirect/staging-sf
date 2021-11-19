@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { useCheckout } from "@saleor/sdk";
 import { useOrderAddNoteMutation } from "graphql/mutations";
 import { CheckoutStepEnum } from "views/Checkout/utils";
@@ -50,7 +51,17 @@ const FinancePaymentGateway = ({ onSubmitSuccess }) => {
           be in touch within 24 hours to go through finance options with you.
         </p>
 
-        <SubmitButton loading={loading}>Place Order</SubmitButton>
+        <div className="row">
+          <div className="col-auto">
+            <Link href="/checkout/payment">
+              <a className="btn btn-outline-primary">Back</a>
+            </Link>
+          </div>
+
+          <div className="col-auto">
+            <SubmitButton loading={loading}>Place Order</SubmitButton>
+          </div>
+        </div>
       </form>
     </>
   );

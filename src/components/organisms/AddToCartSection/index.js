@@ -5,11 +5,13 @@ import { useOverlay } from "contexts/OverlayContext";
 import { formatDate } from "utils/date";
 import { getAvailableQuantity } from "utils/productStock";
 import QuantitySelector from "components/molecules/QuantitySelector";
+import AddToWishlist from "components/molecules/AddToWishlist";
 import SubmitButton from "components/atoms/SubmitButton";
 
 import styles from "./AddToCartSection.module.scss";
 
 const AddToCartSection = ({
+  product,
   variant,
   isAvailableForPurchase,
   availableForPurchase,
@@ -100,6 +102,13 @@ const AddToCartSection = ({
       >
         Add To Basket
       </SubmitButton>
+
+      <AddToWishlist
+        name={product.name}
+        product={product}
+        variant={variant}
+        className={clsx("btn btn-sm text-primary", styles.wishlistButton)}
+      />
     </div>
   );
 };

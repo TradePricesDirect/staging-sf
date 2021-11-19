@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import paths from "core/paths";
+import { convertRichTextToPlainText } from "core/utils";
 import MetaTags from "components/atoms/MetaTags";
 import CategoryHero from "components/molecules/CategoryHero";
 import CategoryStyles from "components/molecules/CategoryStyles";
@@ -17,18 +18,21 @@ import Intro from "./Intro";
 
 import * as config from "./utils";
 
-const BoilersPage = ({ boilerTypes, heating, consumables }) => {
+const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
   return (
     <>
       <MetaTags
         title="Boilers at Trade Prices"
-        description="Boilers at Trade Prices"
+        description={
+          boilers.seoDescription ||
+          convertRichTextToPlainText(boilers.description)
+        }
       />
 
       <CategoryHero
-        title="Boilers"
-        description="Boilers at Trade Prices"
-        // backgroundImage="/images/boilers/category-hero.jpg"
+        title="Boilers at Trade Prices"
+        description={boilers.description}
+        backgroundImage={boilers.backgroundImage}
       />
 
       <CategoryStyles

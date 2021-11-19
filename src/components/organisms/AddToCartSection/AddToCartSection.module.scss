@@ -6,7 +6,7 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .message {
@@ -17,4 +17,14 @@
   flex: 1 1 auto;
   max-width: 13rem;
   border-radius: $border-radius-pill;
+}
+
+.wishlistButton {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 400px) {
+  .wrap {
+    gap: 1rem;
+  }
 }

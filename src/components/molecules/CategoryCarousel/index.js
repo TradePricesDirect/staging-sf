@@ -4,7 +4,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import paths from "core/paths";
-import { getCategoryThumbnail } from "core/categories";
 import CategoryTileTall from "components/molecules/CategoryTileTall";
 
 import styles from "./CategoryCarousel.module.scss";
@@ -63,12 +62,12 @@ const CategoryCarousel = ({ title, viewAll, categories }) => {
 
         <div ref={emblaRef} className={styles.carouselWrap}>
           <div className={styles.carousel}>
-            {categories.map(({ id, name, slug }) => (
+            {categories.map(({ id, name, slug, backgroundImage }) => (
               <div key={id} className={styles.slide}>
                 <CategoryTileTall
                   name={name}
                   href={paths.category.replace("[slug]", slug)}
-                  backgroundImage={getCategoryThumbnail(slug)}
+                  backgroundImage={backgroundImage}
                 />
               </div>
             ))}

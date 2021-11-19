@@ -21,6 +21,9 @@
   padding: 1rem;
   padding-right: 6.5rem;
   margin-bottom: 1rem;
+  border-radius: 1rem;
+  box-shadow: $box-shadow-sm;
+  transition: box-shadow 0.2s ease;
 
   h3 {
     color: $primary;

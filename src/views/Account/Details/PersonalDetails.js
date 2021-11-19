@@ -42,7 +42,7 @@ const PersonalDetails = () => {
 
         <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-outline-primary"
           disabled={isSubmitting}
         >
           {isSubmitting ? (

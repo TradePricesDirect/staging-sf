@@ -73,6 +73,7 @@ const Page = ({ product }) => {
 
               {variant && (
                 <AddToCartSection
+                  product={product}
                   variant={variant}
                   isAvailableForPurchase={product.isAvailableForPurchase}
                   availableForPurchase={product.availableForPurchase}

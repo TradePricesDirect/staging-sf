@@ -19,11 +19,16 @@ const FeaturedQuooker = () => {
     <FeaturedTile
       subtitle="Featured Product"
       title="Pure Convenience at Unbeatable Prices"
-      image={{
-        src: "/images/featured/featured-quooker.jpg",
-        width: 1200,
-        height: 968,
-      }}
+      video={
+        <iframe
+          src="https://player.vimeo.com/video/493772224?h=8de8752009&color=8f132c&title=0&byline=0&portrait=0"
+          width="640"
+          height="360"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        />
+      }
       icons={ICONS}
       button={{
         name: "Shop Quooker",

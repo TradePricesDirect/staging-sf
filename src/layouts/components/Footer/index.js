@@ -42,6 +42,18 @@ const Footer = ({ menus }) => {
 
             <div className="col-12 col-sm-4 col-md-3 col-lg-2">
               <ContactDetails />
+
+              <a
+                href="https://www.bmf.org.uk/"
+                target="_blank"
+                rel="nofollow noopener"
+              >
+                <img
+                  src="/images/bmf-logo.png"
+                  alt="BMF"
+                  className={styles.bmfLogo}
+                />
+              </a>
             </div>
           </div>
 

@@ -11,7 +11,11 @@ const CategoryList = ({ categories }) => {
           <li key={`category-list-${id}`}>
             <CategoryTile
               name={name}
-              href={paths.category.replace("[slug]", slug)}
+              href={
+                paths.hasOwnProperty(slug)
+                  ? paths[slug]
+                  : paths.category.replace("[slug]", slug)
+              }
               backgroundImage={backgroundImage}
             />
           </li>

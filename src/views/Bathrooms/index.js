@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import paths from "core/paths";
+import { convertRichTextToPlainText } from "core/utils";
 import MetaTags from "components/atoms/MetaTags";
 import CategoryHero from "components/molecules/CategoryHero";
 import CategoryStyles from "components/molecules/CategoryStyles";
@@ -16,18 +17,21 @@ import FAQs from "./FAQs";
 
 import * as config from "./utils";
 
-const BathroomsPage = ({ featured, finishingTouches }) => {
+const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
   return (
     <>
       <MetaTags
         title="Bathrooms at Trade Prices"
-        description="Indulge in luxury and bring the rainforest into your home with high quality bathrooms sold at Trade Prices."
+        description={
+          bathrooms.seoDescription ||
+          convertRichTextToPlainText(bathrooms.description)
+        }
       />
 
       <CategoryHero
         title="Bathrooms"
-        description="Indulge in luxury and bring the rainforest into your home with high quality bathrooms sold at Trade Prices."
-        backgroundImage="/images/bathrooms/category-hero.jpg"
+        description={bathrooms.description}
+        backgroundImage={bathrooms.backgroundImage}
       />
 
       <CategoryStyles
@@ -47,7 +51,12 @@ const BathroomsPage = ({ featured, finishingTouches }) => {
         title="Shop Bathroom"
         viewAll={config.bathroomsUrl}
         categories={[
-          { id: uuid(), name: "Shop All", slug: "bathrooms" },
+          {
+            id: uuid(),
+            name: "Shop All",
+            slug: "bathrooms",
+            backgroundImage: bathrooms.backgroundImage,
+          },
           ...featured,
         ]}
       />

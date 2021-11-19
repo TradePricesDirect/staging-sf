@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useCheckout } from "@saleor/sdk";
 import SubmitButton from "components/atoms/SubmitButton";
 import CheckoutErrors from "components/organisms/CheckoutErrors";
@@ -70,7 +71,19 @@ export const CheckoutShipping = ({ onSubmitSuccess }) => {
           </div>
         </fieldset>
 
-        {canSubmit && <SubmitButton loading={loading}>Continue</SubmitButton>}
+        <div className="row">
+          <div className="col-auto">
+            <Link href="/checkout/address">
+              <a className="btn btn-outline-primary">Back</a>
+            </Link>
+          </div>
+
+          {canSubmit && (
+            <div className="col-auto">
+              <SubmitButton loading={loading}>Continue</SubmitButton>
+            </div>
+          )}
+        </div>
       </form>
     </>
   );

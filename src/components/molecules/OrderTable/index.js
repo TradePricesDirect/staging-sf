@@ -19,7 +19,7 @@ const OrderTable = ({ orders }) => {
 
   return (
     <div className="table-responsive">
-      <table className="table table-borderless table-striped align-middle">
+      <table className="table table-borderless table-striped align-middle text-primary">
         <thead>
           <tr>
             <th scope="col">Order No.</th>

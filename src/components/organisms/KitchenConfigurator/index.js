@@ -74,7 +74,7 @@ const KitchenConfigurator = ({
   return (
     <div className={styles.wrap}>
       <div className="container py-8">
-        <h2 className={styles.title}>Buy Your Complete Kitchen</h2>
+        <h2 className={styles.title}>Build Your Dream Kitchen</h2>
 
         <div className="row">
           <div className="col-12 col-lg-8">

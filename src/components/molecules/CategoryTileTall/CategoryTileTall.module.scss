@@ -8,7 +8,8 @@
   width: 100%;
   overflow: hidden;
   background-color: $gray-100;
-  box-shadow: none;
+  border-radius: 2rem;
+  box-shadow: $box-shadow-sm;
   transition: box-shadow 0.2s ease;
 
   .image {
@@ -34,7 +35,7 @@
     margin: 0;
     padding: 0.5rem 1rem;
     font-size: $font-size-sm;
-    color: $black;
+    color: $primary;
     background-color: $white;
   }
 
@@ -42,7 +43,11 @@
     transform: scale(1.05);
   }
 
+  &:hover {
+    box-shadow: $box-shadow;
+  }
+
   &:active {
-    box-shadow: $box-shadow-sm;
+    box-shadow: $box-shadow-lg;
   }
 }

@@ -89,12 +89,15 @@ const ProductAdditionalInformation = ({
 
           <footer className={styles.footer}>
             {variant && (
-              <AddToCartSection
-                variant={variant}
-                isAvailableForPurchase={product.isAvailableForPurchase}
-                availableForPurchase={product.availableForPurchase}
-                onAdd={onClose}
-              />
+              <div className={styles.addToCart}>
+                <AddToCartSection
+                  product={product}
+                  variant={variant}
+                  isAvailableForPurchase={product.isAvailableForPurchase}
+                  availableForPurchase={product.availableForPurchase}
+                  onAdd={onClose}
+                />
+              </div>
             )}
 
             <GetHelpCallToAction />

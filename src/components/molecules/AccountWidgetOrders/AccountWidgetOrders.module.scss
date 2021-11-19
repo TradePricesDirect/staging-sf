@@ -4,11 +4,12 @@
 .text {
   margin: 0 0 1rem;
   font-size: $font-size-sm;
-  color: $text-muted;
+  color: $primary;
 }
 
 .table {
   font-size: $font-size-sm;
+  color: $primary;
 
   th {
     font-weight: $font-weight-semibold;

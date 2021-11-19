@@ -14,6 +14,7 @@ import FeaturedAeg from "components/molecules/FeaturedAeg";
 import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
 import FeaturedVaillant from "components/molecules/FeaturedVaillant";
 import FeaturedGrohe from "components/molecules/FeaturedGrohe";
+import FeaturedPalio from "components/molecules/FeaturedPalio";
 import HowItWorks from "./HowItWorks";
 import TilesLarge from "./TilesLarge";
 import paths from "core/paths";
@@ -41,6 +42,7 @@ const HomePage = ({ categories, totalCounts }) => {
           <FeaturedXLJoinery />,
           <FeaturedVaillant />,
           <FeaturedGrohe />,
+          <FeaturedPalio />,
         ]}
       />
       <HowItWorks />

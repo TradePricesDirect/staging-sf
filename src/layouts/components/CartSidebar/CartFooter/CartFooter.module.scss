@@ -37,4 +37,14 @@
       margin-right: 0.5rem;
     }
   }
+
+  .icon {
+    display: none;
+  }
+
+  @media (min-width: 400px) {
+    .icon {
+      display: block;
+    }
+  }
 }
