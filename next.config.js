@@ -32,6 +32,8 @@ const moduleExports = {
   },
 };
 
+module.exports = moduleExports;
+
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
@@ -44,4 +46,4 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+// module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
