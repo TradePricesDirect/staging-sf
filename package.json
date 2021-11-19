@@ -20,6 +20,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@prisma/client": "^3.5.0",
     "@saleor/sdk": "github:TradePricesDirect/saleor-sdk#main",
+    "@sentry/nextjs": "^6.15.0",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.1",
     "body-scroll-lock": "^4.0.0-beta.0",

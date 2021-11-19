@@ -50,7 +50,10 @@ const WishlistTile = ({ wishlist }) => {
 export default WishlistTile;
 
 function getProductImages(lines) {
-  let images = _.map(lines, ({ product }) => product?.thumbnail || null);
+  let images = lines.reduce((acc, curr) => {
+    const thumbnail = curr.product?.thumbnail || null;
+    return thumbnail ? [...acc, thumbnail] : acc;
+  }, []);
 
   for (let i = 0; i < 5; i++) {
     if (!images[i]) images[i] = null;

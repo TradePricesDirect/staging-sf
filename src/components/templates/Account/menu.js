@@ -34,12 +34,12 @@ const routes = [
     name: "Addresses",
     icon: faAddressBook,
   },
-  {
-    id: uuid(),
-    href: paths.account.paymentMethods,
-    name: "Payment Methods",
-    icon: faCreditCard,
-  },
+  // {
+  //   id: uuid(),
+  //   href: paths.account.paymentMethods,
+  //   name: "Payment Methods",
+  //   icon: faCreditCard,
+  // },
   {
     id: uuid(),
     href: paths.wishlists,
