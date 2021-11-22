@@ -9,7 +9,7 @@
   padding: 1rem;
   color: $body-color;
   background-color: $white;
-  border-radius: 2rem;
+  border-radius: $border-radius-xl;
   text-align: left;
   box-shadow: $box-shadow-sm;
   transition: box-shadow 0.2s ease;

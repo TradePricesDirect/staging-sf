@@ -9,7 +9,7 @@
   overflow: hidden;
   padding-top: 100%;
   background-color: $gray-100;
-  border-radius: 2rem;
+  border-radius: $border-radius-xl;
   box-shadow: $box-shadow-sm;
   transition: box-shadow 0.2s ease;
 
@@ -38,7 +38,7 @@
     font-size: $font-size-sm;
     color: $primary;
     background-color: $white;
-    border-radius: 2rem;
+    border-radius: $border-radius-xl;
   }
 
   &:hover .image {

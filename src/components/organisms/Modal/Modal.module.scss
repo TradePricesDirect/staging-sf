@@ -22,7 +22,7 @@
   max-width: 400px;
   @include margin(3rem 0);
   background-color: $white;
-  border-radius: 2rem;
+  border-radius: $border-radius-xl;
   box-shadow: $box-shadow;
   overflow: hidden;
 

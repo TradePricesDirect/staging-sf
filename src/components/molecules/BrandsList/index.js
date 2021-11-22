@@ -1,10 +1,11 @@
 import Image from "next/image";
+import { formatNumber } from "utils/number";
 
 import styles from "./BrandsList.module.scss";
 
 const BrandsList = ({ totalCounts }) => {
-  const all = totalCounts?.all?.totalCount || "...";
-  const inStock = totalCounts?.inStock?.totalCount || "...";
+  const all = formatNumber(totalCounts.all.totalCount);
+  const inStock = formatNumber(totalCounts.inStock.totalCount);
 
   return (
     <section className={styles.wrap}>

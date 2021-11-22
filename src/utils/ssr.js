@@ -15,6 +15,7 @@ import {
   kitchenRangesQuery,
   kitchenRangeDetailsQuery,
   kitchenRangeComponentsQuery,
+  productTotalCountQuery,
 } from "graphql/queries";
 import { formatKitchenRangeData } from "utils/kitchen-ranges";
 
@@ -74,16 +75,8 @@ export const getShopAttributes = async ({
 };
 
 export const getTotalProducts = async () => {
-  // TODO: Saleor doesn't give us totalCount for products that aren't "Show in product listings"
-
-  // const { apolloClient } = await getSaleorApi();
-  // const { data } = await apolloClient.query({ query: productTotalCountQuery });
-
-  // For now, we'll estimate these values...
-  const data = {
-    all: { totalCount: 71876 },
-    inStock: { totalCount: 71876 },
-  };
+  const { apolloClient } = await getSaleorApi();
+  const { data } = await apolloClient.query({ query: productTotalCountQuery });
 
   return data;
 };

@@ -8,7 +8,7 @@
   width: 100%;
   overflow: hidden;
   background-color: $gray-100;
-  border-radius: 2rem;
+  border-radius: $border-radius-xl;
   box-shadow: $box-shadow-sm;
   transition: box-shadow 0.2s ease;
 

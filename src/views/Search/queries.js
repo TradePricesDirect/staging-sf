@@ -30,6 +30,19 @@ const searchProductsQuery = gql`
         node {
           ...BaseProduct
           ...ProductPricingField
+          category {
+            id
+            name
+            slug
+          }
+          variants {
+            id
+          }
+          defaultVariant {
+            id
+            name
+            quantityAvailable
+          }
         }
       }
       totalCount

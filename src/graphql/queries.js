@@ -60,10 +60,10 @@ export const shopAttributesQuery = gql`
 
 export const productTotalCountQuery = gql`
   query ProductTotalCountQuery {
-    all: products {
+    all: productVariants {
       totalCount
     }
-    inStock: products(filter: { stockAvailability: IN_STOCK }) {
+    inStock: productVariants {
       totalCount
     }
   }
