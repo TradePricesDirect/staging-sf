@@ -4,7 +4,7 @@ import Content from "./Content";
 import KitchenConfigurator from "components/organisms/KitchenConfigurator";
 import ConsultationCallToAction from "components/organisms/ConsultationCallToAction";
 
-const KitchenRangePage = ({ range }) => {
+const KitchenRangePage = ({ range, products }) => {
   return (
     <>
       <div className="position-relative">
@@ -20,6 +20,7 @@ const KitchenRangePage = ({ range }) => {
       />
 
       <KitchenConfigurator
+        data={products}
         title={range.title}
         slug={range.slug}
         doorColors={range.door_colors}
