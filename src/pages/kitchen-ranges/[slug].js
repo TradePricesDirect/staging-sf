@@ -19,9 +19,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const range = await getKitchenRangeDetails(slug);
 
-  // const products = await getKitchenRangeComponents(slug);
-
-  const products = [];
+  const products = await getKitchenRangeComponents(slug);
 
   return {
     revalidate: incrementalStaticRegenerationRevalidate,
