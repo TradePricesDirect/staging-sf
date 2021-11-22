@@ -259,7 +259,7 @@ export const getKitchenRangeComponents = async (slug) => {
       variables: {
         slug: slug,
         channel: channelSlug,
-        first: 20,
+        first: 100,
         sortBy: { field: "NAME", direction: "ASC" },
         after: cursor,
       },

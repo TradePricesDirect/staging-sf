@@ -4,9 +4,7 @@ import ProductListHero from "components/molecules/ProductListHero";
 import ProductListHeader from "components/molecules/ProductListHeader";
 import ProductList from "components/organisms/ProductList";
 import FilterSidebar from "components/organisms/FilterSidebar";
-import * as SEOContent from "./SEOContent";
-
-console.log(SEOContent);
+import QuookerContent from "./SEOContent/Quooker";
 
 const Page = ({
   displayLoader,
@@ -74,7 +72,7 @@ const Page = ({
         </div>
       </div>
 
-      {SEOContent.hasOwnProperty(details.slug) && SEOContent[details.slug]()}
+      {details.slug === 'quooker' && <QuookerContent />}
     </>
   );
 };
