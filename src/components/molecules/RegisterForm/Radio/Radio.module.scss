@@ -1,0 +1,47 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.input {
+  @include visually-hidden;
+
+  &:checked + .label {
+    border-color: $primary;
+    color: $primary;
+
+    &::before {
+      border: 5px solid $primary;
+    }
+  }
+
+  &.error + .label {
+    border-color: $danger;
+  }
+}
+
+.label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: $font-weight-semibold;
+  text-align: center;
+  color: $gray-500;
+  background-color: $white;
+  border: 1px solid $gray-400;
+  border-radius: $border-radius;
+  cursor: pointer;
+  user-select: none;
+
+  &::before {
+    content: " ";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    border: 1px solid $border-color;
+  }
+}

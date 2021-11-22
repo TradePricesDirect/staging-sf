@@ -13,9 +13,8 @@ const Checkbox = ({ label, name, register, validation, error, ...other }) => {
         className="form-check-label"
         style={error && { color: "red" }}
         htmlFor={`${name}_${other.value}_checkbox`}
-      >
-        {label}
-      </label>
+        dangerouslySetInnerHTML={{ __html: label }}
+      />
     </div>
   );
 };
