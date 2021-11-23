@@ -38,10 +38,11 @@ const HowItWorks = () => {
               <h3>How Financing Your Purchase Works</h3>
 
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Financing your purchase is now easier than ever with affordable
+                options from Klarna and Propensio. Get approval online within
+                minutes, with pay in 3 from Klarna for anything under £1,000.
+                For larger purchases of up to £25,000.00, opt to spread the cost
+                up to 10 years with Propensio.
               </p>
             </div>
           </div>

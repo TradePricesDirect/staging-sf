@@ -18,10 +18,9 @@ const Intro = () => {
               <h2>Don't sacrifice...Spread the cost with flexible payments</h2>
 
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Transforming your home doesn't have to mean breaking the bank or
+                spending a fortune. There's a better way. You can get the look
+                you want, when you want with unbeatable financing options.
               </p>
 
               <ul className={styles.options}>
@@ -59,7 +58,7 @@ const Intro = () => {
               <Tile
                 image="/icons/finance/affordable.svg"
                 title="Affordable Payments"
-                text="We offer extremely competitive rates that certainly won’t break the bank."
+                text="We offer extremely competitive rates that certainly won't break the bank."
               />
               <Tile
                 image="/icons/finance/zero-deposit.svg"

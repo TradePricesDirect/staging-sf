@@ -41,7 +41,7 @@ const Tiles = () => {
               path={paths.about}
               subtitle="Who Are We"
               title="Who Are We?"
-              text="Find out how Trade Prices Direct is revolutionising the trade industry."
+              text="Discover how we revolutionised home improvements."
               label="Learn More"
               background={bgAbout}
               colour="secondary"

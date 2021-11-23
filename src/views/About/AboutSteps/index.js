@@ -64,10 +64,11 @@ const AboutSteps = () => {
               <h2>How we revolutionised home improvements</h2>
 
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                We've tipped the scales back in favour of the consumer, offering
+                them the choice of 1000's of products from major kitchen,
+                bathroom and boiler manufacturers at trade prices. All packaged
+                into an intuitive digital platform set to bring about a new age
+                of home improvement shopping.
               </p>
 
               <Link href={paths.register}>
