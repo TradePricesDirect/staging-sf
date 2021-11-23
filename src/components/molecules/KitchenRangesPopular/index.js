@@ -39,7 +39,7 @@ const KitchenRangesPopular = ({ title, description, viewAll, ranges }) => {
   const onScroll = useCallback(() => {
     if (!embla) return;
 
-    const engine = embla.dangerouslyGetEngine();
+    const engine = embla.internalEngine();
     const scrollProgress = embla.scrollProgress();
 
     const styles = embla.scrollSnapList().map((scrollSnap, index) => {

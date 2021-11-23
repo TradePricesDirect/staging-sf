@@ -3,6 +3,8 @@ const { withSentryConfig } = require("@sentry/nextjs");
 const moduleExports = {
   reactStrictMode: true,
 
+  staticPageGenerationTimeout: 120,
+
   async redirects() {
     return [
       {

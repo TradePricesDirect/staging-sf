@@ -55,8 +55,8 @@ export default function Newsletter() {
       )}
 
       <small className={styles.disclaimer}>
-        By subscribing you agree to be contacted inline with our {privacyPolicy}
-        .
+        By subscribing you agree to be contacted in line with our{" "}
+        {privacyPolicy}.
       </small>
     </div>
   );

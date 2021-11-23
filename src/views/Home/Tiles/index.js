@@ -19,8 +19,7 @@ const Tiles = () => {
               path={paths.shop}
               subtitle="Supply & Installation"
               title="I'm a Customer"
-              text="Looking to get discounted prices to complete a home renovation
-          project."
+              text="Looking to get discounted prices to complete a home renovation project."
               label="Shop Home"
               background={bgCustomer}
               colour="secondary"
@@ -42,7 +41,7 @@ const Tiles = () => {
               path={paths.about}
               subtitle="Who Are We"
               title="Who Are We?"
-              text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, dignissimos."
+              text="Find out how Trade Prices Direct is revolutionising the trade industry."
               label="Learn More"
               background={bgAbout}
               colour="secondary"
