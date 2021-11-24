@@ -2,10 +2,7 @@ import ProductListHero from "components/molecules/ProductListHero";
 import CategoryList from "components/organisms/CategoryList";
 import CategoryCarouselEndless from "components/organisms/CategoryCarouselEndless";
 
-const ShopPage = ({ categories }) => {
-  const level0 = categories?.level0?.edges.map((e) => e.node) || [];
-  const level1 = categories?.level1?.edges.map((e) => e.node) || [];
-
+const ShopPage = ({ categoriesLevel0, categoriesLevel1 }) => {
   return (
     <>
       <ProductListHero
@@ -24,8 +21,11 @@ const ShopPage = ({ categories }) => {
         }}
       />
 
-      <CategoryList categories={level0} />
-      <CategoryCarouselEndless categories={level1} viewAllButton={false} />
+      <CategoryList categories={categoriesLevel0} />
+      <CategoryCarouselEndless
+        categories={categoriesLevel1}
+        viewAllButton={false}
+      />
     </>
   );
 };

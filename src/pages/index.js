@@ -1,16 +1,18 @@
-import { getTotalProducts, getCategoryLevels } from "utils/ssr";
+import { getTotalProducts, getCategoriesByLevel } from "utils/ssr";
 import HomePage from "views/Home";
 
 export default HomePage;
 
 export async function getStaticProps() {
-  const totalCounts = await getTotalProducts();
+  const categoriesLevel0 = await getCategoriesByLevel(0, 3);
+  const categoriesLevel1 = await getCategoriesByLevel(1, 50);
 
-  const categories = await getCategoryLevels(3, 50);
+  const totalCounts = await getTotalProducts();
 
   return {
     props: {
-      categories,
+      categoriesLevel0,
+      categoriesLevel1,
       totalCounts,
     },
   };

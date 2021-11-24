@@ -19,17 +19,14 @@ import HowItWorks from "./HowItWorks";
 import TilesLarge from "./TilesLarge";
 import paths from "core/paths";
 
-const HomePage = ({ categories, totalCounts }) => {
-  const level0 = categories?.level0?.edges.map((e) => e.node) || [];
-  const level1 = categories?.level1?.edges.map((e) => e.node) || [];
-
+const HomePage = ({ categoriesLevel0, categoriesLevel1, totalCounts }) => {
   return (
     <>
       <HomeHero />
       <Tiles />
       <BrandsList totalCounts={totalCounts} />
-      <CategoryList categories={level0} />
-      <CategoryCarouselEndless categories={level1} />
+      <CategoryList categories={categoriesLevel0} />
+      <CategoryCarouselEndless categories={categoriesLevel1} />
       <FeaturedCarousel
         viewAll={paths.shop}
         slides={[

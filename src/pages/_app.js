@@ -1,7 +1,7 @@
 import NextApp from "next/app";
 import { SaleorProvider } from "@saleor/sdk";
 import { apiUrl, channelSlug } from "core/constants";
-import { getShopConfig } from "utils/ssr";
+import { getCategoryTree, getFooterMenus, getShopConfig } from "utils/ssr";
 import { NextQueryParamProvider } from "contexts/NextQueryParamProvider";
 import StorefrontApp from "../app";
 
@@ -11,14 +11,20 @@ import "styles/global.scss";
 
 const saleorConfig = { apiUrl, channel: channelSlug };
 
-const App = ({ Component, pageProps, shopConfig, menus, footerMenus }) => {
+const App = ({
+  Component,
+  pageProps,
+  shopConfig,
+  categoryTree,
+  footerMenus,
+}) => {
   return (
     <NextQueryParamProvider>
       <SaleorProvider config={saleorConfig}>
         <StorefrontApp
           layout={Component.getLayout}
           shopConfig={shopConfig}
-          menus={menus}
+          categoryTree={categoryTree}
           footerMenus={footerMenus}
         >
           <Component {...pageProps} />
@@ -33,8 +39,10 @@ App.getInitialProps = async (appContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
 
   const shopConfig = await getShopConfig();
+  const footerMenus = await getFooterMenus();
+  const categoryTree = await getCategoryTree();
 
-  return { ...appProps, ...shopConfig };
+  return { ...appProps, shopConfig, footerMenus, categoryTree };
 };
 
 export default App;

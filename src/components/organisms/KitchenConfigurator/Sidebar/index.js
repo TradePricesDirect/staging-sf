@@ -92,7 +92,7 @@ const Sidebar = ({ slug, colors, onColorToggle }) => {
         </div>
       ))}
 
-      {items.length > 0 && (
+      {items?.length > 0 && (
         <footer>
           <Link href={paths.checkout}>
             <a className="btn btn-primary">Proceed To Checkout</a>

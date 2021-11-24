@@ -154,10 +154,10 @@ export const shopFooterMenusQuery = gql`
   }
 `;
 
-export const categoryLevelsQuery = gql`
+export const categoriesByLevelQuery = gql`
   ${baseCategoryFragment}
-  query CategoryLevels($level0: Int!, $level1: Int!) {
-    level0: categories(first: $level0, level: 0) {
+  query CategoriesByLevel($level: Int!, $limit: Int!) {
+    categories(level: $level, first: $limit) {
       edges {
         node {
           ...BaseCategory
@@ -168,13 +168,36 @@ export const categoryLevelsQuery = gql`
         }
       }
     }
-    level1: categories(first: $level1, level: 1) {
+  }
+`;
+
+export const categoryTreeQuery = gql`
+  ${baseCategoryFragment}
+  query CategoryTree {
+    categories(first: 100, level: 0) {
       edges {
         node {
           ...BaseCategory
-          backgroundImage {
-            url
-            alt
+          children(first: 100) {
+            edges {
+              node {
+                ...BaseCategory
+                children(first: 100) {
+                  edges {
+                    node {
+                      ...BaseCategory
+                      children(first: 100) {
+                        edges {
+                          node {
+                            ...BaseCategory
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

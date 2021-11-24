@@ -7,11 +7,8 @@ import CategoryCarouselEndless from "components/organisms/CategoryCarouselEndles
 
 import styles from "./RequestQuoteThankYou.module.scss";
 
-const RequestQuoteThankYouPage = ({ categories }) => {
+const RequestQuoteThankYouPage = ({ categoriesLevel0, categoriesLevel1 }) => {
   const { user } = useAuth();
-
-  const level0 = categories?.level0?.edges.map((e) => e.node) || [];
-  const level1 = categories?.level1?.edges.map((e) => e.node) || [];
 
   return (
     <>
@@ -58,8 +55,8 @@ const RequestQuoteThankYouPage = ({ categories }) => {
         )}
       </div>
 
-      <CategoryList categories={level0} />
-      <CategoryCarouselEndless categories={level1} />
+      <CategoryList categories={categoriesLevel0} />
+      <CategoryCarouselEndless categories={categoriesLevel1} />
     </>
   );
 };

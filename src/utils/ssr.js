@@ -4,9 +4,9 @@ import { apiUrl, channelSlug } from "core/constants";
 import kitchenRangeConfig from "core/kitchen-ranges";
 import {
   shopAttributesQuery,
-  categoryLevelsQuery,
+  categoriesByLevelQuery,
   categoriesByMetadataQuery,
-  shopMenusQuery,
+  categoryTreeQuery,
   shopFooterMenusQuery,
   productDetailsQuery,
   orderDetailsByTokenQuery,
@@ -17,6 +17,7 @@ import {
   kitchenRangeComponentsQuery,
   productTotalCountQuery,
 } from "graphql/queries";
+import _ from "lodash";
 import { formatKitchenRangeData } from "utils/kitchen-ranges";
 
 let CONNECTION = null;
@@ -81,18 +82,37 @@ export const getTotalProducts = async () => {
   return data;
 };
 
-export const getCategoryLevels = async (level0Limit = 10, level1Limit = 20) => {
+export const getCategoriesByLevel = async (level, limit = 50) => {
   const { apolloClient } = await getSaleorApi();
 
   const { data } = await apolloClient.query({
-    query: categoryLevelsQuery,
+    query: categoriesByLevelQuery,
     variables: {
-      level0: level0Limit,
-      level1: level1Limit,
+      level: level,
+      limit: limit,
     },
   });
 
-  return data;
+  return data.categories.edges.map((e) => e.node) || [];
+};
+
+export const getCategoryTree = async () => {
+  const { apolloClient } = await getSaleorApi();
+
+  const { data } = await apolloClient.query({
+    query: categoryTreeQuery,
+  });
+
+  const flattenEdges = ({ edges }) => {
+    return _.chain(edges)
+      .map((e) => ({
+        ...e.node,
+        children: e.node.children ? flattenEdges(e.node.children) : null,
+      }))
+      .sortBy("name");
+  };
+
+  return flattenEdges(data.categories);
 };
 
 export const getCategoriesByMetadata = async (key, value, limit = 50) => {
@@ -112,24 +132,15 @@ export const getCategoriesByMetadata = async (key, value, limit = 50) => {
 export const getShopConfig = async () => {
   const { apolloClient } = await getSaleorApi();
 
-  const shopConfig = await apolloClient
-    .query({ query: getShop })
-    .then(({ data }) => data?.shop);
+  const { data } = await apolloClient.query({ query: getShop });
+
+  return data?.shop;
+};
+
+export const getFooterMenus = async () => {
+  const { apolloClient } = await getSaleorApi();
 
   const menus = await apolloClient
-    .query({
-      query: shopMenusQuery,
-      variables: {
-        channel: channelSlug,
-        main: "main",
-        kitchens: "main-kitchens",
-        bathrooms: "main-bathrooms",
-        boilers: "main-boilers",
-      },
-    })
-    .then(({ data }) => data);
-
-  const footerMenus = await apolloClient
     .query({
       query: shopFooterMenusQuery,
       variables: {
@@ -141,7 +152,7 @@ export const getShopConfig = async () => {
     })
     .then(({ data }) => data);
 
-  return { shopConfig, menus, footerMenus };
+  return menus;
 };
 
 export const getProductDetails = async (slug) => {

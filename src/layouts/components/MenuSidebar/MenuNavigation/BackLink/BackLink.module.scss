@@ -1,0 +1,16 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.backLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+
+  @media (min-width: 400px) {
+    margin-left: -2.5rem;
+  }
+}

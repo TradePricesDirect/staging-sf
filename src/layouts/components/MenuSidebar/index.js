@@ -1,13 +1,13 @@
 import { useOverlay } from "contexts/OverlayContext";
 import Drawer from "components/organisms/Drawer";
 import MenuHeader from "./MenuHeader";
-import MenuItems from "./MenuItems";
+import MenuNavigation from "./MenuNavigation";
 import MenuContactDetails from "./MenuContactDetails";
 import MenuAccount from "./MenuAccount";
 
 import styles from "./MenuSidebar.module.scss";
 
-const MenuSidebar = ({ menus }) => {
+const MenuSidebar = ({ categoryTree }) => {
   const overlay = useOverlay();
 
   const isOpen = ["menu", "kitchens", "bathrooms", "boilers"].includes(
@@ -20,7 +20,7 @@ const MenuSidebar = ({ menus }) => {
         <MenuHeader />
 
         <div className={styles.body}>
-          <MenuItems menus={menus} />
+          <MenuNavigation categories={categoryTree} />
 
           <MenuContactDetails />
 

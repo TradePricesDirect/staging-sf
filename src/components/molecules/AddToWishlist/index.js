@@ -19,8 +19,6 @@ const AddToWishlist = ({
   variant,
   className = clsx("btn btn-sm", styles.button),
 }) => {
-  console.log({ name, product, variant });
-
   const { user } = useAuth();
   const { wishlists, loading, addItem, removeItem } = useWishlists();
 
