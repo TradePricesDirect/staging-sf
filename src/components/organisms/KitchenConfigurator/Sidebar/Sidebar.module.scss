@@ -2,30 +2,59 @@
 @import "styles/mixins";
 
 .wrap {
+  position: relative;
   margin-bottom: 1rem;
-  padding: 1rem;
   background-color: $white;
   border: 1px solid $border-color;
   border-radius: $border-radius-lg;
+  overflow: hidden;
+}
 
-  @media (min-width: 1200px) {
-    padding: 1.5rem 2rem;
+.heading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding: 1rem;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.inner {
+  padding: 0 1rem 1rem;
+}
+
+.group {
+  border-bottom: 1px solid $border-color;
+
+  &:last-of-type {
+    margin-bottom: 1rem;
   }
 }
 
-.title {
-  margin-bottom: 1rem;
+.subtitle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding: 0.75rem 0.25rem;
+  color: $primary;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
 
-  @media (min-width: 576px) {
-    font-size: $font-size-lg;
+  .icon {
+    font-size: 1.25rem;
   }
 }
 
 .tableWrap {
   margin-bottom: 1rem;
-  border-bottom: 1px solid $border-color;
 
   .table {
     font-weight: $font-weight-normal;
@@ -54,6 +83,7 @@
   box-shadow: none;
   transition: box-shadow 0.15s ease-in-out;
 
+  &[data-color="ivory"],
   &[data-color="white"] {
     border: 1px solid $border-color;
   }
@@ -78,4 +108,20 @@
   line-height: 1.2;
   color: $primary;
   background-color: $blue-300;
+}
+
+@media (min-width: 576px) {
+  .heading {
+    font-size: $font-size-lg;
+  }
+}
+
+@media (min-width: 768px) {
+  .heading {
+    padding: 1.5rem 2rem;
+  }
+
+  .inner {
+    padding: 0 2rem 1rem;
+  }
 }

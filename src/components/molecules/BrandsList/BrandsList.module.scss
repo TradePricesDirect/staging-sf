@@ -11,10 +11,11 @@
   color: $primary;
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
+}
 
-  br {
-    display: none;
-  }
+.titleIcon {
+  display: none;
+  width: 190px;
 }
 
 .list {
@@ -70,38 +71,16 @@
 
 @media (min-width: 768px) {
   .title {
-    position: relative;
-    margin: 0;
-    max-width: 14.5rem;
-    padding: 0.5rem 2rem 0.5rem 1rem;
-    font-size: $font-size-base;
-    font-weight: $font-weight-bold;
-    text-align: left;
-    color: $white;
-    background-color: $primary;
-    clip-path: polygon(
-      0% 0%,
-      calc(100% - 1.25rem) 0%,
-      100% 50%,
-      calc(100% - 1.25rem) 100%,
-      0% 100%
-    );
+    display: none;
+  }
 
-    br {
-      display: inline;
-    }
+  .titleIcon {
+    display: block;
+  }
+}
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0.875rem;
-      right: 2.5rem;
-      display: block;
-      width: 17px;
-      height: 15px;
-      background: url("/icons/brandslist-title-arrow.svg") center center
-        no-repeat;
-      background-size: 100% auto;
-    }
+@media (min-width: 1200px) {
+  .titleIcon {
+    width: 235px;
   }
 }

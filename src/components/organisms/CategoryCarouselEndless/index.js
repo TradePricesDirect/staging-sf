@@ -1,14 +1,16 @@
 import { useCallback } from "react";
-import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import paths from "core/paths";
+import useMenuLink from "hooks/useMenuLink";
 import CategoryTile from "components/molecules/CategoryTile";
 
 import styles from "./CategoryCarouselEndless.module.scss";
 
 const CategoryCarouselEndless = ({ categories, viewAllButton = true }) => {
+  const openMenu = useMenuLink();
+
   const [viewportRef, embla] = useEmblaCarousel({
     loop: false,
     align: "start",
@@ -35,9 +37,13 @@ const CategoryCarouselEndless = ({ categories, viewAllButton = true }) => {
 
             <div className="col-sm-auto">
               {viewAllButton && (
-                <Link href={paths.shop}>
-                  <a className="btn btn-sm btn-circle">View All</a>
-                </Link>
+                <button
+                  type="button"
+                  onClick={openMenu}
+                  className="btn btn-sm btn-circle"
+                >
+                  View All
+                </button>
               )}
 
               <div className={styles.nav}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth, useCheckout } from "@saleor/sdk";
 import useDisclosure from "hooks/useDisclosure";
 import SubmitButton from "components/atoms/SubmitButton";

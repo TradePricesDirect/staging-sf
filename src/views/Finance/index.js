@@ -2,6 +2,7 @@ import Link from "next/link";
 import paths from "core/paths";
 import MetaTags from "components/atoms/MetaTags";
 import PageHero from "components/molecules/PageHero";
+import VideoModal from "components/molecules/VideoModal";
 import HeroImage from "./finance-hero.svg";
 import Intro from "./Intro";
 import HowItWorks from "./HowItWorks";
@@ -30,8 +31,14 @@ const FinancePage = () => {
             </p>
 
             <Link href={paths.register}>
-              <a className="btn btn-primary">Register & Shop</a>
+              <a className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
+                Register & Shop
+              </a>
             </Link>
+
+            <br className="d-block d-sm-none" />
+
+            <VideoModal />
           </>
         }
         image={<HeroImage />}

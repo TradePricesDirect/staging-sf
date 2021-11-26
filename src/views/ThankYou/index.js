@@ -30,7 +30,7 @@ const ThankYouPage = ({ order, token }) => {
             <a className="btn btn-circle">Order Details</a>
           </Link>
 
-          <Link href={paths.shop}>
+          <Link href={paths.home}>
             <a className="btn btn-circle">Continue Shopping</a>
           </Link>
         </div>

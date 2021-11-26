@@ -2,6 +2,7 @@ import Link from "next/link";
 import paths from "core/paths";
 import MetaTags from "components/atoms/MetaTags";
 import PageHero from "components/molecules/PageHero";
+import VideoModal from "components/molecules/VideoModal";
 import HeroImage from "./trade-hero.svg";
 import IconGrid from "./IconGrid";
 import GetStarted from "./GetStarted";
@@ -32,8 +33,14 @@ const TradespersonPage = () => {
             </p>
 
             <Link href={paths.register}>
-              <a className="btn btn-primary">Register For Free</a>
+              <a className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
+                Register For Free
+              </a>
             </Link>
+
+            <br className="d-block d-sm-none" />
+
+            <VideoModal />
           </>
         }
         image={<HeroImage />}

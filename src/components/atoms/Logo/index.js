@@ -6,7 +6,7 @@ import styles from "./Logo.module.scss";
 export default function Logo(props) {
   return (
     <Link href="/">
-      <a>
+      <a className={styles.link}>
         <img
           src="/branding/tpd-site-logo.svg"
           alt="Trade Prices Direct"

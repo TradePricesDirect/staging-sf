@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "@saleor/sdk";
+import useMenuLink from "hooks/useMenuLink";
+import paths from "core/paths";
 import FeefoBadge from "components/atoms/FeefoBadge";
 import FinanceRibbon from "components/atoms/FinanceRibbon";
-import paths from "core/paths";
 
 import styles from "./HomeHero.module.scss";
 
 const HomeHero = () => {
   const { user } = useAuth();
+  const openMenu = useMenuLink();
 
   return (
     <section className={styles.wrap}>
@@ -26,11 +28,19 @@ const HomeHero = () => {
           </p>
 
           <div className={styles.buttons}>
-            <Link href={user ? paths.shop : paths.register}>
-              <a className="btn btn-secondary">
-                {user ? "Shop Now" : "Register & Shop"}
-              </a>
-            </Link>
+            {user ? (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={openMenu}
+              >
+                Shop Now
+              </button>
+            ) : (
+              <Link href={paths.register}>
+                <a className="btn btn-secondary">Register & Shop</a>
+              </Link>
+            )}
 
             <Link href={paths.requestQuote}>
               <a className="btn btn-outline-white">Request a Quote</a>

@@ -159,7 +159,6 @@ const LINEAR_ANTHRACITE_MOUNTAIN_LARCH_FOR_VERO_SYSTEM = {
   cabinet_colors: [
     ColorsEnum.Ivory,
     ColorsEnum.LightGrey,
-    ColorsEnum.Oak,
     ColorsEnum.StoneGrey,
     ColorsEnum.White,
   ],

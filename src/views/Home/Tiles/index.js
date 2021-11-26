@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 import paths from "core/paths";
+import useMenuLink from "hooks/useMenuLink";
 
 import bgCustomer from "./tile-customer.png";
 import bgTrade from "./tile-tradesperson.png";
@@ -10,13 +11,15 @@ import bgAbout from "./tile-about.png";
 import styles from "./Tiles.module.scss";
 
 const Tiles = () => {
+  const openMenu = useMenuLink();
+
   return (
     <div className={styles.wrap}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-6 col-lg-4">
             <Tile
-              path={paths.shop}
+              path={openMenu}
               subtitle="Supply & Installation"
               title="I'm a Customer"
               text="Looking to get discounted prices to complete a home renovation project."
@@ -40,7 +43,7 @@ const Tiles = () => {
             <Tile
               path={paths.about}
               subtitle="Who Are We"
-              title="Who Are We?"
+              title="About Us"
               text="Discover how we revolutionised home improvements."
               label="Learn More"
               background={bgAbout}
@@ -56,6 +59,33 @@ const Tiles = () => {
 export default Tiles;
 
 const Tile = ({ path, subtitle, title, text, label, background, colour }) => {
+  if (typeof path === "function") {
+    return (
+      <button
+        type="button"
+        onClick={path}
+        className={styles.tile}
+        data-color={colour}
+      >
+        <div className={styles.content}>
+          <h6 className={styles.subtitle}>{subtitle}</h6>
+          <h5 className={styles.title}>{title}</h5>
+          <p>{text}</p>
+          <span className={clsx("btn btn-sm btn-circle", styles.button)}>
+            {label}
+          </span>
+        </div>
+
+        <Image
+          src={background}
+          className={styles.image}
+          layout="fill"
+          objectFit="cover"
+        />
+      </button>
+    );
+  }
+
   return (
     <Link href={path}>
       <a className={styles.tile} data-color={colour}>
@@ -63,7 +93,9 @@ const Tile = ({ path, subtitle, title, text, label, background, colour }) => {
           <h6 className={styles.subtitle}>{subtitle}</h6>
           <h5 className={styles.title}>{title}</h5>
           <p>{text}</p>
-          <span className={clsx("btn btn-sm", styles.button)}>{label}</span>
+          <span className={clsx("btn btn-sm btn-circle", styles.button)}>
+            {label}
+          </span>
         </div>
 
         <Image

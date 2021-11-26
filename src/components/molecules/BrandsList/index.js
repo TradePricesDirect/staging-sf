@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { formatNumber } from "utils/number";
+import TitleIcon from "./shop-brands-title.svg";
 
 import styles from "./BrandsList.module.scss";
 
@@ -12,20 +13,20 @@ const BrandsList = ({ totalCounts }) => {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-auto">
-            <div className={styles.title}>
-              Shop 1000's of <br />
-              Brands Under One Roof
-            </div>
+            <h3 className={styles.title}>
+              Shop 100's of Brands Under One Roof
+            </h3>
+            <TitleIcon className={styles.titleIcon} />
           </div>
           <div className="col-md">
             <ul className={styles.list}>
               <li>
                 <div className={styles.image}>
                   <Image
-                    src="/images/logos/bosch-logo.png"
-                    alt="Bosch"
-                    width={400}
-                    height={89}
+                    src="/images/logos/brand-quooker.png"
+                    alt="Quooker"
+                    width={420}
+                    height={150}
                   />
                 </div>
               </li>
@@ -37,10 +38,10 @@ const BrandsList = ({ totalCounts }) => {
               <li>
                 <div className={styles.image}>
                   <Image
-                    src="/images/logos/siemens-logo.svg"
-                    alt="Siemens"
-                    width={400}
-                    height={89}
+                    src="/images/logos/brand-synergy.png"
+                    alt="Synergy"
+                    width={420}
+                    height={150}
                   />
                 </div>
               </li>
@@ -52,10 +53,10 @@ const BrandsList = ({ totalCounts }) => {
               <li>
                 <div className={styles.image}>
                   <Image
-                    src="/images/logos/quooker-logo.svg"
-                    alt="Quooker"
-                    width={400}
-                    height={89}
+                    src="/images/logos/brand-vaillant.png"
+                    alt="Vaillant"
+                    width={420}
+                    height={150}
                   />
                 </div>
               </li>

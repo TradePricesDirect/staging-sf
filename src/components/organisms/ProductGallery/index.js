@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import Image from "./Image";
 import Thumb from "./Thumb";
 
@@ -13,7 +15,7 @@ const ProductGallery = ({ images }) => {
   });
 
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
-    containScroll: "keepSnaps",
+    containScroll: "trimSnaps",
     selectedClass: "",
     dragFree: true,
   });
@@ -25,6 +27,14 @@ const ProductGallery = ({ images }) => {
     },
     [embla, emblaThumbs]
   );
+
+  const handlePrevious = useCallback(() => {
+    if (emblaThumbs) emblaThumbs.scrollPrev();
+  }, [emblaThumbs]);
+
+  const handleNext = useCallback(() => {
+    if (emblaThumbs) emblaThumbs.scrollNext();
+  }, [emblaThumbs]);
 
   const onSelect = useCallback(() => {
     if (!embla || !emblaThumbs) return;
@@ -52,17 +62,29 @@ const ProductGallery = ({ images }) => {
         </div>
       </div>
 
-      <div ref={thumbViewportRef} className={styles.thumbsWrap}>
-        <div className={styles.thumbs}>
-          {images.map((image, index) => (
-            <Thumb
-              key={`thumb-${image.id}`}
-              image={image}
-              selected={index === selectedIndex}
-              onClick={() => onThumbClick(index)}
-            />
-          ))}
+      <div className={styles.thumbs}>
+        <button type="button" className="btn btn-sm" onClick={handlePrevious}>
+          <span className="visually-hidden">Previous</span>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+
+        <div ref={thumbViewportRef} className={styles.thumbsWrap}>
+          <div className={styles.thumbsCarousel}>
+            {images.map((image, index) => (
+              <Thumb
+                key={`thumb-${image.id}`}
+                image={image}
+                selected={index === selectedIndex}
+                onClick={() => onThumbClick(index)}
+              />
+            ))}
+          </div>
         </div>
+
+        <button type="button" className="btn btn-sm" onClick={handleNext}>
+          <span className="visually-hidden">Next</span>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
       </div>
     </div>
   );

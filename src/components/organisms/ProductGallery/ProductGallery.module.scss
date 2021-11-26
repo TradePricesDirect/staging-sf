@@ -50,13 +50,21 @@
   }
 }
 
+.thumbs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .thumbsWrap {
+  flex: 1 1 auto;
   position: relative;
   outline: none;
   overflow: hidden;
 }
 
-.thumbs {
+.thumbsCarousel {
   display: flex;
   margin-left: -0.5rem;
 }

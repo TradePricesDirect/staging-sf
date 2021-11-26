@@ -1,7 +1,6 @@
 const paths = {
   // Shop
   home: "/",
-  shop: "/shop",
   category: "/category/[slug]",
   collection: "/collection/[slug]",
   search: "/search",

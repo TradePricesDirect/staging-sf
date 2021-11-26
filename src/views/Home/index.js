@@ -17,7 +17,6 @@ import FeaturedGrohe from "components/molecules/FeaturedGrohe";
 import FeaturedPalio from "components/molecules/FeaturedPalio";
 import HowItWorks from "./HowItWorks";
 import TilesLarge from "./TilesLarge";
-import paths from "core/paths";
 
 const HomePage = ({ categoriesLevel0, categoriesLevel1, totalCounts }) => {
   return (
@@ -28,7 +27,7 @@ const HomePage = ({ categoriesLevel0, categoriesLevel1, totalCounts }) => {
       <CategoryList categories={categoriesLevel0} />
       <CategoryCarouselEndless categories={categoriesLevel1} />
       <FeaturedCarousel
-        viewAll={paths.shop}
+        viewAll="menu"
         slides={[
           <FeaturedQuooker />,
           <FeaturedTado />,

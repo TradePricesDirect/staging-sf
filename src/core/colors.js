@@ -4,7 +4,7 @@ export const ColorHexEnum = {
   Cream: "#FFFDD0",
   DustGrey: "#929390",
   Indigo: "#3f51b5",
-  Ivory: "#191e28",
+  Ivory: "#fffff0",
   LightGrey: "#E3E3DF",
   Mussel: "#e2e2d6",
   Oak: "#ceb089",

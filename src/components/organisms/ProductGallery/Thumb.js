@@ -12,6 +12,7 @@ const Thumb = ({ image, selected, onClick }) => {
           layout="fill"
           objectFit="contain"
           objectPosition="center"
+          loading="eager"
         />
       </button>
     </div>

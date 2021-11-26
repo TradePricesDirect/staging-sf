@@ -18,6 +18,7 @@ const Thumbnail = ({ thumbnail, tall }) => {
         alt={thumbnail.alt}
         layout="fill"
         objectFit="cover"
+        loading="eager"
       />
     </div>
   );

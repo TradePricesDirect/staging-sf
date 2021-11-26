@@ -8,9 +8,9 @@ import DropdownSelect from "components/atoms/DropdownSelect";
 import { useAPRCalculator } from "./utils";
 
 import styles from "./Calculator.module.scss";
-import { useDebouncedCallback } from "use-debounce";
 
 const options = [
+  { value: 6, label: "6 Months deferred at 14.9% APR" },
   { value: 12, label: "12 Months at 0% APR" },
   { value: 24, label: "24 Months at 0% APR" },
   { value: 36, label: "36 Months at 0% APR" },

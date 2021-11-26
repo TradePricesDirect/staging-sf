@@ -4,7 +4,9 @@ import { formatMoney } from "utils/money";
 export const useAPRCalculator = ({ amount, months, depositPercent }) => {
   const value = _.inRange(amount, 1000, 25001) ? amount : 0;
 
-  const apr = months < 60 ? 0 : 11.9;
+  let apr = 11.9;
+  if (months === 6) apr = 14.9;
+  else if (months < 60) apr = 0;
 
   const deposit = _.ceil((value / 100) * depositPercent, 2);
 

@@ -21,7 +21,7 @@
   padding: 1rem;
   padding-right: 6.5rem;
   margin-bottom: 1rem;
-  border-radius: 1rem;
+  border-radius: $border-radius;
   box-shadow: $box-shadow-sm;
   transition: box-shadow 0.2s ease;
 
@@ -80,6 +80,7 @@
   height: 2.75rem;
   border-radius: $border-radius;
 
+  &[data-color="ivory"],
   &[data-color="white"] {
     border: 1px solid $border-color;
   }

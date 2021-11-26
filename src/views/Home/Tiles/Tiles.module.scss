@@ -17,6 +17,7 @@
   border: 1px solid $white;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
+  text-align: left;
 
   .image {
     z-index: 0;
@@ -64,22 +65,12 @@
     p {
       opacity: 1;
     }
-
-    .button {
-      border-color: $white;
-      background-color: $white;
-    }
   }
 }
 
 // Colour Variants
 .tile[data-color="primary"] {
   background-color: $blue-100;
-
-  .button {
-    color: $primary;
-    border-color: $primary;
-  }
 
   &:hover,
   &:focus {
@@ -88,16 +79,20 @@
     .image {
       opacity: 0;
     }
+
+    .button {
+      color: $white;
+
+      &:hover {
+        transition: color 0.2s ease;
+        color: $primary;
+      }
+    }
   }
 }
 
 .tile[data-color="secondary"] {
   background-color: $orange-100;
-
-  .button {
-    color: $secondary;
-    border-color: $secondary;
-  }
 
   &:hover,
   &:focus {

@@ -8,6 +8,7 @@
   background-color: $white;
   border: $border-width solid $border-color;
   border-radius: $border-radius-lg;
+  box-shadow: $box-shadow-sm;
 
   @media (min-width: 992px) {
     position: sticky;

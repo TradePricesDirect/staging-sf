@@ -16,7 +16,7 @@ const moduleExports = {
   },
 
   images: {
-    domains: ["tradepricesdirect.s3.amazonaws.com"],
+    domains: ["s3.amazonaws.com"],
   },
 
   webpack(config) {

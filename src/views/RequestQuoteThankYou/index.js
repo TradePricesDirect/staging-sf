@@ -27,7 +27,7 @@ const RequestQuoteThankYouPage = ({ categoriesLevel0, categoriesLevel1 }) => {
               <a className="btn btn-circle">Manage Account</a>
             </Link>
 
-            <Link href={paths.shop}>
+            <Link href={paths.home}>
               <a className="btn btn-circle">Browse Shop</a>
             </Link>
 

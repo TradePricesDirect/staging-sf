@@ -1,9 +1,12 @@
 import Link from "next/link";
 import paths from "core/paths";
+import useMenuLink from "hooks/useMenuLink";
 
 import styles from "./Welcome.module.scss";
 
 const Welcome = () => {
+  const openMenu = useMenuLink();
+
   return (
     <section className={styles.wrap}>
       <div className="container">
@@ -21,9 +24,9 @@ const Welcome = () => {
             <a className="btn btn-circle">Manage Account</a>
           </Link>
 
-          <Link href={paths.shop}>
-            <a className="btn btn-circle">Browse Shop</a>
-          </Link>
+          <button type="button" onClick={openMenu} className="btn btn-circle">
+            Browse Shop
+          </button>
 
           <Link href={paths.wishlists}>
             <a className="btn btn-circle">Start a Wishlist</a>
