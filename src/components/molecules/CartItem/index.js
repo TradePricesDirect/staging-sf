@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import clsx from "clsx";
 import { useDebouncedCallback } from "use-debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/pro-light-svg-icons";
@@ -80,7 +79,7 @@ const CartItem = ({
               <button
                 onClick={onRemove}
                 type="button"
-                className="btn btn-sm btn-outline-danger"
+                className="btn btn-sm text-danger"
               >
                 <FontAwesomeIcon icon={faTrash} />
                 <span className="visually-hidden">Remove this item</span>

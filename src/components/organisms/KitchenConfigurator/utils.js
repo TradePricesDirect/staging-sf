@@ -71,7 +71,7 @@ export const filterProductsByVariants = (products, { door, cabinet }) => {
   }, []);
 };
 
-export const filterCartByVariants = (cartItems, slug, { door, cabinet }) => {
+export const filterCartByRange = (cartItems, slug, { door, cabinet }) => {
   if (!cartItems) return [];
 
   // Get all items in the collection `slug`
@@ -94,6 +94,10 @@ export const filterCartByVariants = (cartItems, slug, { door, cabinet }) => {
     );
   });
 
+  return items;
+};
+
+export const groupItemsByCategory = (items) => {
   // Group into categories
   const categories = items.reduce((acc, curr) => {
     const product = curr.variant.product;

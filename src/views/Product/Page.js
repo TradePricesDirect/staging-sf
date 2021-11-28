@@ -85,8 +85,6 @@ const Page = ({ product }) => {
               <ProductAdditionalInformation
                 product={product}
                 variant={variant}
-                attributes={product.attributes}
-                metadata={product.metadata}
               />
             </article>
           </div>

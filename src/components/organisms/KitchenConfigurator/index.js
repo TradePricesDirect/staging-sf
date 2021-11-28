@@ -114,6 +114,7 @@ const KitchenConfigurator = ({
           <div className="col-12 col-lg-4">
             <div className={styles.sidebar}>
               <Sidebar
+                title={title}
                 slug={slug}
                 colors={colors}
                 onColorToggle={() => handleToggle(StepsEnum.Color)}

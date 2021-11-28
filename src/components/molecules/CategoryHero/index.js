@@ -1,4 +1,6 @@
+import Link from "next/link";
 import Image from "next/image";
+import paths from "core/paths";
 import FinanceRibbon from "components/atoms/FinanceRibbon";
 import RichTextEditorContent from "components/atoms/RichTextEditorContent";
 
@@ -15,6 +17,10 @@ const CategoryHero = ({ title, description, backgroundImage }) => {
             <RichTextEditorContent jsonData={description} />
           </div>
         )}
+
+        <Link href={paths.requestQuote}>
+          <a className="btn btn-secondary">Request a Quote</a>
+        </Link>
       </div>
 
       {backgroundImage && (

@@ -53,7 +53,7 @@ const EditWishlist = ({ wishlist }) => {
 
             <DeleteWishlistButton
               id={wishlist.id}
-              className="btn btn-outline-danger"
+              className="btn text-danger"
               onDelete={() => router.push(paths.wishlists)}
             />
           </div>

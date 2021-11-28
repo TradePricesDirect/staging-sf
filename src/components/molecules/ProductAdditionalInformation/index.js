@@ -10,17 +10,12 @@ import GetHelpCallToAction from "components/molecules/GetHelpCallToAction";
 
 import styles from "./ProductAdditionalInformation.module.scss";
 
-const ProductAdditionalInformation = ({
-  product,
-  variant,
-  attributes,
-  metadata,
-}) => {
+const ProductAdditionalInformation = ({ product, variant }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const list = useMemo(
-    () => combineDataLists(attributes, metadata),
-    [attributes, metadata]
+    () => combineDataLists(product, variant),
+    [product, variant]
   );
 
   return (
@@ -110,12 +105,18 @@ const ProductAdditionalInformation = ({
 
 export default ProductAdditionalInformation;
 
-const combineDataLists = (attributes, metadata) => {
+const combineDataLists = (product, variant) => {
+  let attributes = product?.attributes || [];
+  if (variant?.attributes) attributes = [...attributes, ...variant.attributes];
+
+  let metadata = product?.metadata || [];
+  if (variant?.metadata) metadata = [...metadata, ...variant.metadata];
+
   let list = [
     ...metadata.map(({ key, value }) => ({
       id: uuid(),
       key,
-      values: [{ name: value }],
+      values: [{ id: uuid(), name: value }],
     })),
     ...attributes.map(({ attribute, values }) => ({
       id: attribute.id,

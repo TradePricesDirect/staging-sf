@@ -281,6 +281,10 @@ export const productDetailsQuery = gql`
       variants {
         ...ProductVariantFields
         trackInventory
+        metadata {
+          key
+          value
+        }
       }
       isAvailable
     }

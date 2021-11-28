@@ -50,7 +50,7 @@ const AddressTile = ({ address, onEdit, onRemove }) => {
             Edit Address
           </button>
 
-          <button onClick={onRemove} className="btn btn-sm btn-outline-danger">
+          <button onClick={onRemove} className="btn btn-sm text-danger">
             <FontAwesomeIcon icon={faTrash} fixedWidth />
           </button>
         </footer>

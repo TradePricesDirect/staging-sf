@@ -11,22 +11,32 @@ import {
   faAngleDown,
 } from "@fortawesome/pro-light-svg-icons";
 import paths from "core/paths";
+import useDisclosure from "hooks/useDisclosure";
 import TaxedMoney from "components/molecules/TaxedMoney";
-import { filterCartByVariants, getColorBySlug } from "../utils";
+import AddRangeToWishlist from "components/molecules/AddRangeToWishlist";
+import {
+  filterCartByRange,
+  groupItemsByCategory,
+  getColorBySlug,
+} from "../utils";
 
 import styles from "./Sidebar.module.scss";
-import useDisclosure from "hooks/useDisclosure";
 
-const Sidebar = ({ slug, colors, onColorToggle }) => {
+const Sidebar = ({ title, slug, colors, onColorToggle }) => {
   const { items } = useCart();
   const { isOpen, onToggle } = useDisclosure(true);
 
   const doorColor = getColorBySlug(colors.door);
   const cabinetColor = getColorBySlug(colors.cabinet);
 
-  const categories = useMemo(
-    () => filterCartByVariants(items, slug, colors),
+  const cartItems = useMemo(
+    () => filterCartByRange(items, slug, colors),
     [items, colors]
+  );
+
+  const categories = useMemo(
+    () => groupItemsByCategory(cartItems),
+    [cartItems]
   );
 
   if (!doorColor || !cabinetColor) return null;
@@ -95,8 +105,16 @@ const Sidebar = ({ slug, colors, onColorToggle }) => {
               {items?.length > 0 && (
                 <footer>
                   <Link href={paths.checkout}>
-                    <a className="btn btn-primary">Continue Shopping</a>
+                    <a className="btn btn-primary me-4">Continue Shopping</a>
                   </Link>
+
+                  <AddRangeToWishlist
+                    range={{ name: title, items: cartItems }}
+                    className={clsx(
+                      "btn btn-sm text-primary",
+                      styles.wishlistButton
+                    )}
+                  />
                 </footer>
               )}
             </div>
