@@ -35,22 +35,22 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
         backgroundImage={boilers.backgroundImage}
       />
 
-      <CategoryStyles
+      {/* <CategoryStyles
         title="Boilers By Fuel Type"
         viewAll={config.boilersUrl}
         slides={config.boilerTypes}
-      />
+      /> */}
 
       <Intro />
 
-      <CategoryCarousel
+      {/* <CategoryCarousel
         title="Shop by Boiler Type"
         viewAll={config.boilersUrl}
         categories={[
           { id: uuid(), name: "Shop All", slug: "boilers" },
           ...boilerTypes,
         ]}
-      />
+      /> */}
 
       <CategoryCarousel
         title="Shop Heating & Controls"
@@ -62,11 +62,11 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
         slides={[<FeaturedVaillant />, <FeaturedTado />, <FeaturedFernox />]}
       />
 
-      <CategoryCarousel
+      {/* <CategoryCarousel
         title="Shop Boiler Consumables"
         viewAll={config.boilersUrl}
         categories={consumables}
-      />
+      /> */}
 
       <TopBrands
         title="Top Brands at Low Prices"

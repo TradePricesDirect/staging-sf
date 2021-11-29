@@ -4,7 +4,7 @@ import useSWR, { useSWRConfig } from "swr";
 import rangeConfig from "core/kitchen-ranges";
 
 const fetcher = (token) => async (url) => {
-  const res = await fetch(url, {
+  const res = await fetch(window.location.origin + url, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `JWT ${token}`,
