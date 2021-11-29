@@ -29,12 +29,12 @@ const ProductGallery = ({ images }) => {
   );
 
   const handlePrevious = useCallback(() => {
-    if (emblaThumbs) emblaThumbs.scrollPrev();
-  }, [emblaThumbs]);
+    if (embla) embla.scrollPrev();
+  }, [embla]);
 
   const handleNext = useCallback(() => {
-    if (emblaThumbs) emblaThumbs.scrollNext();
-  }, [emblaThumbs]);
+    if (embla) embla.scrollNext();
+  }, [embla]);
 
   const onSelect = useCallback(() => {
     if (!embla || !emblaThumbs) return;
@@ -63,10 +63,12 @@ const ProductGallery = ({ images }) => {
       </div>
 
       <div className={styles.thumbs}>
-        <button type="button" className="btn btn-sm" onClick={handlePrevious}>
-          <span className="visually-hidden">Previous</span>
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </button>
+        {images.length > 1 && (
+          <button type="button" className="btn btn-sm" onClick={handlePrevious}>
+            <span className="visually-hidden">Previous</span>
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        )}
 
         <div ref={thumbViewportRef} className={styles.thumbsWrap}>
           <div className={styles.thumbsCarousel}>
@@ -81,10 +83,12 @@ const ProductGallery = ({ images }) => {
           </div>
         </div>
 
-        <button type="button" className="btn btn-sm" onClick={handleNext}>
-          <span className="visually-hidden">Next</span>
-          <FontAwesomeIcon icon={faArrowRight} />
-        </button>
+        {images.length > 1 && (
+          <button type="button" className="btn btn-sm" onClick={handleNext}>
+            <span className="visually-hidden">Next</span>
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        )}
       </div>
     </div>
   );

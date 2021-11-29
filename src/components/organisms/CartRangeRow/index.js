@@ -106,7 +106,7 @@ const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
                 </div>
                 <div className="col-auto">
                   <Link href={path}>
-                    <a className="btn btn-sm">
+                    <a className="btn btn-sm text-primary">
                       <FontAwesomeIcon icon={faEdit} />
                       <span className="visually-hidden">Edit this item</span>
                     </a>

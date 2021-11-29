@@ -9,6 +9,7 @@ import CategoryCarousel from "components/molecules/CategoryCarousel";
 import FeaturedCarousel from "components/organisms/FeaturedCarousel";
 import FeaturedMultipanel from "components/molecules/FeaturedMultipanel";
 import FeaturedGrohe from "components/molecules/FeaturedGrohe";
+import FeaturedSynergy from "components/molecules/FeaturedSynergy";
 import TopBrands from "components/molecules/TopBrands";
 import LuxuryGrid from "components/molecules/LuxuryGrid";
 import ConsultationCallToAction from "components/organisms/ConsultationCallToAction";
@@ -63,7 +64,11 @@ const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
 
       <FeaturedCarousel
         viewAll={config.bathroomsUrl}
-        slides={[<FeaturedMultipanel />, <FeaturedGrohe />]}
+        slides={[
+          <FeaturedMultipanel />,
+          <FeaturedGrohe />,
+          <FeaturedSynergy />,
+        ]}
       />
 
       <CategoryCarousel

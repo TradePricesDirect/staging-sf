@@ -97,7 +97,10 @@ const getParentMenuItems = (categories) => {
 };
 
 const getMenuItems = (categories, slug) => {
-  const { children } = _.find(categories, ["slug", slug]);
+  const category = _.find(categories, ["slug", slug]);
 
-  return [...(menuConfig[slug] || []), ...children];
+  const config = menuConfig[slug] || [];
+  const children = category?.children || [];
+
+  return [...config, ...children];
 };

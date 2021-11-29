@@ -47,17 +47,23 @@ const KitchenRangeTile = ({ range }) => {
           </div>
         </div>
 
-        <div className={styles.carouselNav}>
-          <button type="button" className="btn btn-sm" onClick={handlePrevious}>
-            <span className="visually-hidden">Previous</span>
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
+        {range.images.length > 1 && (
+          <div className={styles.carouselNav}>
+            <button
+              type="button"
+              className="btn btn-sm"
+              onClick={handlePrevious}
+            >
+              <span className="visually-hidden">Previous</span>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
 
-          <button type="button" className="btn btn-sm" onClick={handleNext}>
-            <span className="visually-hidden">Next</span>
-            <FontAwesomeIcon icon={faArrowRight} />
-          </button>
-        </div>
+            <button type="button" className="btn btn-sm" onClick={handleNext}>
+              <span className="visually-hidden">Next</span>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
+          </div>
+        )}
       </div>
 
       <div className={styles.colorsWrap}>
