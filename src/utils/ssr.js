@@ -104,12 +104,16 @@ export const getCategoryTree = async () => {
   });
 
   const flattenEdges = ({ edges }) => {
-    return _.chain(edges)
-      .map((e) => ({
-        ...e.node,
-        children: e.node.children ? flattenEdges(e.node.children) : null,
-      }))
-      .sortBy("name");
+    const items = _.sortBy(edges, "node.name");
+
+    return items.map(({ node }) => {
+      const children = node.children ? node.children : null;
+
+      return {
+        ...node,
+        children: children ? flattenEdges(children) : null,
+      };
+    });
   };
 
   return flattenEdges(data.categories);

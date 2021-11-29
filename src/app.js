@@ -16,6 +16,8 @@ const StorefrontApp = ({
   footerMenus,
   children,
 }) => {
+  console.log("categoryTree", categoryTree);
+
   const getLayout = layout || DEFAULT_LAYOUT;
 
   return (

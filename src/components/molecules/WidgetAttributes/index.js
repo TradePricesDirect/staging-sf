@@ -1,15 +1,18 @@
 import clsx from "clsx";
 import Widget from "components/molecules/Widget";
+import _ from "lodash";
 
 import styles from "./WidgetAttributes.module.scss";
 
 const WidgetAttributes = ({ title, name, values, onValueClick }) => {
   if (!values.length) return null;
 
+  const list = _.sortBy(values, "name");
+
   return (
     <Widget title={title} isOpen>
       <ul className={styles.list}>
-        {values.map((value) => (
+        {list.map((value) => (
           <li key={value.id}>
             <div className={clsx("form-check", styles.option)}>
               <input
