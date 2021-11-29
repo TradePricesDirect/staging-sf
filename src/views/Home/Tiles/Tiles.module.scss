@@ -19,7 +19,15 @@
   box-shadow: $box-shadow;
   text-align: left;
 
-  .image {
+  &[data-color="primary"] {
+    background-color: $blue-100;
+  }
+
+  &[data-color="secondary"] {
+    background-color: $orange-100;
+  }
+
+  .icon {
     z-index: 0;
   }
 
@@ -43,7 +51,9 @@
 
   p {
     min-height: 42px;
+    max-width: 66%;
     opacity: 0;
+    // background-color: red;
     font-size: $font-size-sm;
   }
 
@@ -75,10 +85,6 @@
   &:hover,
   &:focus {
     background-color: $primary;
-
-    .image {
-      opacity: 0;
-    }
 
     .button {
       color: $white;

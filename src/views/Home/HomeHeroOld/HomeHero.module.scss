@@ -1,16 +1,12 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.wrap {
-  background-color: red;
-}
-
 .content {
   position: relative;
   z-index: 1;
   padding: 2rem 1rem;
-  background-color: $blue-300;
-  color: $primary;
+  background-color: $primary;
+  color: $white;
 
   &::before {
     content: "";
@@ -22,40 +18,40 @@
     background: url("/icons/home-hero-arrow.svg") left center no-repeat;
     background-size: contain;
   }
+}
 
-  .body {
-    width: 100%;
-    max-width: 32rem;
-    margin: 0 auto;
+.inner {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
 
-    h6 {
-      margin: 0;
-      font-size: $font-size-sm;
-      color: $secondary;
-    }
+  h6 {
+    margin: 0;
+    font-size: $font-size-sm;
+  }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+  h1 strong {
+    color: $secondary;
+  }
 
-    .badge {
-      margin: 0;
-    }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .badge {
+    margin: 0;
   }
 }
 
-.imageWrap {
+.image {
   position: relative;
-  overflow: hidden;
-  background-color: $blue-100;
+  min-height: 50vw;
 
-  .image {
-    display: block;
-    max-width: 24rem;
-    width: 100%;
-    margin: 0 auto;
+  img {
+    pointer-events: none;
   }
 }
 
@@ -91,14 +87,10 @@
     padding-bottom: 8vw;
   }
 
-  .imageWrap {
+  .image {
     flex: 0 1 40%;
     max-width: 40%;
-
-    .image {
-      max-width: 28rem;
-      width: 135%;
-    }
+    min-height: 0;
   }
 }
 
@@ -108,17 +100,10 @@
     max-width: 50%;
     display: flex;
     align-items: center;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
   }
 
-  .imageWrap {
+  .image {
     flex: 0 1 50%;
     max-width: 50%;
-
-    .image {
-      max-width: 32rem;
-      width: 100%;
-    }
   }
 }

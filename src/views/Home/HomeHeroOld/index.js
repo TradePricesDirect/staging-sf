@@ -1,10 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "@saleor/sdk";
 import useMenuLink from "hooks/useMenuLink";
 import paths from "core/paths";
+import FeefoBadge from "components/atoms/FeefoBadge";
 import FinanceRibbon from "components/atoms/FinanceRibbon";
-import VideoModal from "components/molecules/VideoModal";
-import HeroImage from "./image.svg";
 
 import styles from "./HomeHero.module.scss";
 
@@ -15,42 +15,48 @@ const HomeHero = () => {
   return (
     <section className={styles.wrap}>
       <div className={styles.content}>
-        <div className={styles.body}>
-          <h6>The Wait is Finally Over</h6>
+        <div className={styles.inner}>
+          <h6>Get Your Hands On</h6>
 
-          <h1>Welcome to The Future of Home Improvement</h1>
-
-          <p>
-            We're the nation's first online, consumer-focused home improvement
-            retailer and builders merchant.
-          </p>
+          <h1>
+            <strong>Kitchens</strong> at Trade Prices
+          </h1>
 
           <p>
-            Revolutionising the industry and passing the savings onto you -
-            let's build it together.
+            Buy kitchens, bathrooms, boilers, & more at trade prices direct from
+            the manufacturer.
           </p>
 
           <div className={styles.buttons}>
             {user ? (
               <button
                 type="button"
-                className="btn btn-primary me-sm-4"
+                className="btn btn-secondary"
                 onClick={openMenu}
               >
-                Register & Shop
+                Shop Now
               </button>
             ) : (
               <Link href={paths.register}>
-                <a className="btn btn-primary me-sm-4">Register & Shop</a>
+                <a className="btn btn-secondary">Register & Shop</a>
               </Link>
             )}
 
-            <VideoModal />
+            <Link href={paths.requestQuote}>
+              <a className="btn btn-outline-white">Request a Quote</a>
+            </Link>
           </div>
+
+          <FeefoBadge className={styles.badge} />
         </div>
       </div>
-      <div className={styles.imageWrap}>
-        <HeroImage className={styles.image} />
+      <div className={styles.image}>
+        <Image
+          src="/images/home-hero.jpg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+        />
 
         <FinanceRibbon className={styles.ribbon} />
       </div>
