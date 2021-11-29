@@ -4,7 +4,7 @@
 .wrap {
   position: relative;
   z-index: 2;
-  margin-top: -3rem;
+  margin-top: -1.5rem;
 }
 
 .tile {
@@ -18,22 +18,114 @@
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   text-align: left;
+  transition: background-color 0.2s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 1.75rem;
+    left: 0;
+    display: block;
+    width: 20px;
+    height: 36px;
+    opacity: 0.1;
+    background: left center no-repeat;
+    background-size: 100% 100%;
+  }
+
+  &:hover,
+  &:focus {
+    .background {
+      opacity: 0;
+    }
+  }
 
   &[data-color="primary"] {
     background-color: $blue-100;
+
+    &::before {
+      background-image: url("/icons/title-arrow-primary.svg");
+    }
+
+    .subtitle {
+      color: $primary;
+    }
+
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $primary;
+
+      .subtitle {
+        color: inherit;
+      }
+
+      .button {
+        color: $white;
+
+        &::before {
+          transition: width 0.2s ease;
+          background-color: rgba($white, 0.5);
+        }
+      }
+    }
   }
 
   &[data-color="secondary"] {
     background-color: $orange-100;
+
+    &::before {
+      background-image: url("/icons/title-arrow-secondary.svg");
+    }
+
+    .subtitle {
+      color: $secondary;
+    }
+
+    .button::before {
+      transition: width 0.2s ease;
+      background-color: rgba($secondary, 0.5);
+    }
+
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $secondary;
+
+      .subtitle {
+        color: inherit;
+      }
+
+      .button {
+        color: inherit;
+      }
+
+      .button::before {
+        background-color: rgba($white, 0.5);
+      }
+    }
+  }
+
+  .background,
+  .icon {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  .background {
+    z-index: 1;
+    opacity: 1;
   }
 
   .icon {
-    z-index: 0;
+    z-index: 3;
   }
 
   .content {
     position: relative;
-    z-index: 1;
+    z-index: 4;
   }
 
   .subtitle {
@@ -53,8 +145,8 @@
     min-height: 42px;
     max-width: 66%;
     opacity: 0;
-    // background-color: red;
     font-size: $font-size-sm;
+    transition: opacity 0.2s ease;
   }
 
   .button {
@@ -78,34 +170,34 @@
   }
 }
 
-// Colour Variants
-.tile[data-color="primary"] {
-  background-color: $blue-100;
+// // Colour Variants
+// .tile[data-color="primary"] {
+//   background-color: $blue-100;
 
-  &:hover,
-  &:focus {
-    background-color: $primary;
+//   &:hover,
+//   &:focus {
+//     background-color: $primary;
 
-    .button {
-      color: $white;
+//     .button {
+//       color: $white;
 
-      &:hover {
-        transition: color 0.2s ease;
-        color: $primary;
-      }
-    }
-  }
-}
+//       &:hover {
+//         transition: color 0.2s ease;
+//         color: $primary;
+//       }
+//     }
+//   }
+// }
 
-.tile[data-color="secondary"] {
-  background-color: $orange-100;
+// .tile[data-color="secondary"] {
+//   background-color: $orange-100;
 
-  &:hover,
-  &:focus {
-    background-color: $secondary;
+//   &:hover,
+//   &:focus {
+//     background-color: $secondary;
 
-    .image {
-      opacity: 0;
-    }
-  }
-}
+//     .image {
+//       opacity: 0;
+//     }
+//   }
+// }

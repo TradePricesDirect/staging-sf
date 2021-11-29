@@ -4,10 +4,6 @@ import Image from "next/image";
 import paths from "core/paths";
 import useMenuLink from "hooks/useMenuLink";
 
-import bgCustomer from "./tile-customer.png";
-import bgTrade from "./tile-tradesperson.png";
-import bgAbout from "./tile-about.png";
-
 import styles from "./Tiles.module.scss";
 
 const Tiles = () => {
@@ -24,6 +20,7 @@ const Tiles = () => {
               text="Looking to get discounted prices to complete a home renovation project."
               label="Shop Home"
               path={openMenu}
+              background="/icons/home/tile-customer-bg.svg"
               icon="/icons/home/tile-customer.svg"
               colour="secondary"
             />
@@ -35,6 +32,7 @@ const Tiles = () => {
               text="Looking for trades prices on over 500,000 products from top brands."
               label="Shop Trade"
               path={paths.trade}
+              background="/icons/home/tile-about-bg.svg"
               icon="/icons/home/tile-trade.svg"
               colour="primary"
             />
@@ -46,6 +44,7 @@ const Tiles = () => {
               text="Discover how we revolutionised home improvements."
               label="Learn More"
               path={paths.about}
+              background="/icons/home/tile-about-bg.svg"
               icon="/icons/home/tile-about.svg"
               colour="secondary"
             />
@@ -58,7 +57,16 @@ const Tiles = () => {
 
 export default Tiles;
 
-const Tile = ({ path, subtitle, title, text, label, icon, colour }) => {
+const Tile = ({
+  path,
+  subtitle,
+  title,
+  text,
+  label,
+  background,
+  icon,
+  colour,
+}) => {
   const TileContent = () => (
     <>
       <div className={styles.content}>
@@ -71,10 +79,21 @@ const Tile = ({ path, subtitle, title, text, label, icon, colour }) => {
       </div>
 
       <Image
+        src={background}
+        className={styles.background}
+        layout="fill"
+        objectFit="contain"
+        loading="eager"
+        priority
+      />
+
+      <Image
         src={icon}
         className={styles.icon}
         layout="fill"
         objectFit="contain"
+        loading="eager"
+        priority
       />
     </>
   );

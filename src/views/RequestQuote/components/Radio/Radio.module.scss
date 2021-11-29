@@ -13,6 +13,20 @@
   border-radius: $border-radius;
   transition: border-color 0.2s ease-in-out;
   cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 1.75rem;
+    left: 0;
+    display: block;
+    width: 20px;
+    height: 36px;
+    opacity: 0.1;
+    background: url("/icons/title-arrow-primary.svg") left center no-repeat;
+    background-size: 100% 100%;
+  }
 }
 
 .title {
