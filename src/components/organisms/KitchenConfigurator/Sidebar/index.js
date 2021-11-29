@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 import paths from "core/paths";
 import useDisclosure from "hooks/useDisclosure";
+import useMenuLink from "hooks/useMenuLink";
 import TaxedMoney from "components/molecules/TaxedMoney";
 import AddRangeToWishlist from "components/molecules/AddRangeToWishlist";
 import {
@@ -25,6 +26,7 @@ import styles from "./Sidebar.module.scss";
 const Sidebar = ({ title, slug, colors, onColorToggle }) => {
   const { items } = useCart();
   const { isOpen, onToggle } = useDisclosure(true);
+  const openMenu = useMenuLink();
 
   const doorColor = getColorBySlug(colors.door);
   const cabinetColor = getColorBySlug(colors.cabinet);
@@ -104,9 +106,13 @@ const Sidebar = ({ title, slug, colors, onColorToggle }) => {
 
               {items?.length > 0 && (
                 <footer>
-                  <Link href={paths.checkout}>
-                    <a className="btn btn-primary me-4">Continue Shopping</a>
-                  </Link>
+                  <button
+                    type="button"
+                    onClick={openMenu}
+                    className="btn btn-primary me-4"
+                  >
+                    Continue Shopping
+                  </button>
 
                   <AddRangeToWishlist
                     range={{ name: title, items: cartItems }}
