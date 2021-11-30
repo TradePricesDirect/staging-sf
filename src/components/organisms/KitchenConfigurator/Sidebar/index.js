@@ -104,7 +104,7 @@ const Sidebar = ({ title, slug, colors, onColorToggle }) => {
                 <CategoryGroup key={category.id} category={category} />
               ))}
 
-              {items?.length > 0 && (
+              {cartItems?.length > 0 && (
                 <footer>
                   <button
                     type="button"
@@ -155,6 +155,8 @@ const ColorRow = ({ color, suffix, onClick }) => {
 };
 
 const CategoryGroup = ({ category }) => {
+  const { removeItem } = useCart();
+
   const { isOpen, onToggle } = useDisclosure(true);
 
   return (

@@ -1,4 +1,5 @@
 import AppLayout from "layouts/App";
+import ThirdPartyTags from "components/atoms/ThirdPartyTags";
 import ShopProvider from "contexts/ShopContext";
 import OverlayProvider from "contexts/OverlayContext";
 import NProgressBar from "components/atoms/NProgressBar";
@@ -22,6 +23,8 @@ const StorefrontApp = ({
     <ShopProvider shopConfig={shopConfig}>
       <OverlayProvider>
         <NProgressBar />
+
+        <ThirdPartyTags />
 
         {getLayout(children, categoryTree, footerMenus)}
       </OverlayProvider>

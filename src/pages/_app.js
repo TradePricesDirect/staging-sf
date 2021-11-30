@@ -4,6 +4,7 @@ import { SaleorProvider } from "@saleor/sdk";
 import { apiUrl, channelSlug } from "core/constants";
 import Bugsnag from "utils/bugsnag";
 import { getCategoryTree, getFooterMenus, getShopConfig } from "utils/ssr";
+import { usePageViewTracking } from "utils/gtm";
 import { NextQueryParamProvider } from "contexts/NextQueryParamProvider";
 import StorefrontApp from "../app";
 
@@ -21,6 +22,8 @@ const App = ({
   categoryTree,
   footerMenus,
 }) => {
+  usePageViewTracking();
+
   return (
     <ErrorBoundary>
       <NextQueryParamProvider>
