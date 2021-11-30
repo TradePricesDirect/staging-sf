@@ -87,8 +87,6 @@ export const removeWishlistProduct = async (id, products) => {
 };
 
 const mergeProductData = async (wishlists) => {
-  const { apolloClient } = await getSaleorApi();
-
   // Get product ids
   const ids = wishlists.reduce((acc, curr) => {
     const ids = _.map(curr.lines, "product_id");
@@ -97,62 +95,7 @@ const mergeProductData = async (wishlists) => {
 
   if (!ids.length) return wishlists;
 
-  const { data } = await apolloClient.query({
-    query: gql`
-      ${baseProductFragment}
-      ${productPricingFragment}
-      query ProductsById($ids: [ID!], $channel: String!) {
-        products(first: 100, filter: { ids: $ids }, channel: $channel) {
-          edges {
-            node {
-              ...BaseProduct
-              ...ProductPricingField
-              collections {
-                id
-                slug
-                name
-              }
-              variants {
-                id
-                pricing {
-                  onSale
-                  price {
-                    gross {
-                      currency
-                      amount
-                    }
-                    net {
-                      currency
-                      amount
-                    }
-                  }
-                }
-                attributes {
-                  attribute {
-                    id
-                    slug
-                    name
-                  }
-                  values {
-                    id
-                    slug
-                    name
-                  }
-                }
-              }
-              productType {
-                id
-                slug
-              }
-            }
-          }
-        }
-      }
-    `,
-    variables: { ids, channel: channelSlug },
-  });
-
-  const products = data.products?.edges.map((e) => e.node) || [];
+  const products = await fetchProductsById(ids);
 
   return wishlists.map((wishlist) => ({
     ...wishlist,
@@ -168,3 +111,77 @@ const mergeProductData = async (wishlists) => {
     }),
   }));
 };
+
+const fetchProductsById = async (array) => {
+  const { apolloClient } = await getSaleorApi();
+
+  const chunks = _.chunk(array, 100);
+
+  let products = [];
+
+  for (const ids of chunks) {
+    const { data } = await apolloClient.query({
+      query: productsByIdQuery,
+      variables: { ids, channel: channelSlug },
+    });
+
+    products = [
+      ...products,
+      ...(data.products?.edges.map((e) => e.node) || []),
+    ];
+  }
+
+  return products;
+};
+
+const productsByIdQuery = gql`
+  ${baseProductFragment}
+  ${productPricingFragment}
+  query ProductsById($ids: [ID!], $channel: String!) {
+    products(first: 100, filter: { ids: $ids }, channel: $channel) {
+      edges {
+        node {
+          ...BaseProduct
+          ...ProductPricingField
+          collections {
+            id
+            slug
+            name
+          }
+          variants {
+            id
+            pricing {
+              onSale
+              price {
+                gross {
+                  currency
+                  amount
+                }
+                net {
+                  currency
+                  amount
+                }
+              }
+            }
+            attributes {
+              attribute {
+                id
+                slug
+                name
+              }
+              values {
+                id
+                slug
+                name
+              }
+            }
+          }
+          productType {
+            id
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
