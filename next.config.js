@@ -1,6 +1,4 @@
-// const { withSentryConfig } = require("@sentry/nextjs");
-
-const moduleExports = {
+module.exports = {
   reactStrictMode: true,
 
   staticPageGenerationTimeout: 120,
@@ -36,13 +34,3 @@ const moduleExports = {
     return config;
   },
 };
-
-module.exports = moduleExports;
-
-const sentryWebpackPluginOptions = {
-  silent: true, // Suppresses all logs
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
-
-// module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
