@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.5",
+    "@bugsnag/js": "^7.14.1",
+    "@bugsnag/plugin-react": "^7.14.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/pro-duotone-svg-icons": "^5.15.4",
@@ -47,6 +49,7 @@
     "react-paginate": "^8.0.1",
     "react-responsive": "^9.0.0-beta.5",
     "react-select": "^5.2.1",
+    "sharp": "^0.29.3",
     "stripe": "^8.191.0",
     "swr": "^1.0.1",
     "use-debounce": "^7.0.1",

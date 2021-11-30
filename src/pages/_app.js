@@ -1,6 +1,8 @@
+import React from "react";
 import NextApp from "next/app";
 import { SaleorProvider } from "@saleor/sdk";
 import { apiUrl, channelSlug } from "core/constants";
+import Bugsnag from "utils/bugsnag";
 import { getCategoryTree, getFooterMenus, getShopConfig } from "utils/ssr";
 import { NextQueryParamProvider } from "contexts/NextQueryParamProvider";
 import StorefrontApp from "../app";
@@ -11,6 +13,7 @@ import "styles/global.scss";
 
 const saleorConfig = { apiUrl, channel: channelSlug };
 
+const ErrorBoundary = Bugsnag.getPlugin("react").createErrorBoundary(React);
 const App = ({
   Component,
   pageProps,
@@ -19,18 +22,20 @@ const App = ({
   footerMenus,
 }) => {
   return (
-    <NextQueryParamProvider>
-      <SaleorProvider config={saleorConfig}>
-        <StorefrontApp
-          layout={Component.getLayout}
-          shopConfig={shopConfig}
-          categoryTree={categoryTree}
-          footerMenus={footerMenus}
-        >
-          <Component {...pageProps} />
-        </StorefrontApp>
-      </SaleorProvider>
-    </NextQueryParamProvider>
+    <ErrorBoundary>
+      <NextQueryParamProvider>
+        <SaleorProvider config={saleorConfig}>
+          <StorefrontApp
+            layout={Component.getLayout}
+            shopConfig={shopConfig}
+            categoryTree={categoryTree}
+            footerMenus={footerMenus}
+          >
+            <Component {...pageProps} />
+          </StorefrontApp>
+        </SaleorProvider>
+      </NextQueryParamProvider>
+    </ErrorBoundary>
   );
 };
 
