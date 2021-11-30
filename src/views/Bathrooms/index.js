@@ -17,6 +17,8 @@ import FeaturedBrands from "components/molecules/FeaturedBrands";
 import FAQs from "./FAQs";
 
 import * as config from "./utils";
+import FeaturedPalio from "components/molecules/FeaturedPalio";
+import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
 
 const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
   return (
@@ -65,9 +67,11 @@ const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
       <FeaturedCarousel
         viewAll={config.bathroomsUrl}
         slides={[
+          <FeaturedSynergy />,
           <FeaturedMultipanel />,
           <FeaturedGrohe />,
-          <FeaturedSynergy />,
+          <FeaturedPalio />,
+          <FeaturedXLJoinery />,
         ]}
       />
 

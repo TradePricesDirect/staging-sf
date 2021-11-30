@@ -45,18 +45,18 @@ const CartItems = ({ isCheckout }) => {
       ))}
 
       {items.map(({ variant, quantity, totalPrice }, index) => {
-        if (!variant) return null;
-
         return (
           <li key={`cart-item-${index}-${variant.id}`}>
-            <CartItem
-              variant={variant}
-              quantity={quantity}
-              totalPrice={totalPrice}
-              onRemove={() => removeItem(variant.id)}
-              onUpdate={(quantity) => updateItem(variant.id, quantity)}
-              isCheckout={isCheckout}
-            />
+            {variant?.product && (
+              <CartItem
+                variant={variant}
+                quantity={quantity}
+                totalPrice={totalPrice}
+                onRemove={() => removeItem(variant.id)}
+                onUpdate={(quantity) => updateItem(variant.id, quantity)}
+                isCheckout={isCheckout}
+              />
+            )}
           </li>
         );
       })}

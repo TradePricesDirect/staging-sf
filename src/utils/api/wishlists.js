@@ -158,7 +158,7 @@ const mergeProductData = async (wishlists) => {
     ...wishlist,
     lines: wishlist.lines.map((line) => {
       const product = _.find(products, ["id", line.product_id]);
-      const variant = _.find(product.variants, ["id", line.variant_id]);
+      const variant = _.find(product?.variants, ["id", line.variant_id]);
 
       return {
         ...line,

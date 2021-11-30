@@ -58,7 +58,7 @@ export const logos = [
   "/images/logos/brand-vaillant.png",
   "/images/logos/brand-tado.png",
   "/images/logos/brand-glow-worm.png",
-  "/images/logos/brand-zanussi.png",
+  "/images/logos/brand-ideal-heating.png",
   "/images/logos/brand-viessmann.png",
   "/images/logos/brand-fernox.png",
   "/images/logos/brand-warmhaus.png",

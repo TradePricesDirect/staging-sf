@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { SUPPORT_PHONE } from "core/config";
+import paths from "core/paths";
 
 import styles from "./FooterIcons.module.scss";
 
@@ -40,41 +43,31 @@ const FooterIcons = () => {
         >
           <ul className={styles.list}>
             <motion.li variants={item}>
-              <a
-                className={styles.link}
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className={styles.image}
-                  src="/images/request-quote/cta-faqs.svg"
-                />
+              <Link href={paths.about}>
+                <a className={styles.link}>
+                  <img
+                    className={styles.image}
+                    src="/images/request-quote/cta-faqs.svg"
+                  />
 
-                <h4 className={styles.title}>FAQ's</h4>
-              </a>
+                  <h4 className={styles.title}>FAQ's</h4>
+                </a>
+              </Link>
             </motion.li>
             <motion.li variants={item}>
-              <a
-                className={styles.link}
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <span className={styles.link}>
                 <img
                   className={styles.image}
                   src="/images/request-quote/cta-chat.svg"
                 />
 
                 <h4 className={styles.title}>Start Live Chat</h4>
-              </a>
+              </span>
             </motion.li>
             <motion.li variants={item}>
               <a
                 className={styles.link}
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`tel:${SUPPORT_PHONE.replace(/ /g, "")}`}
               >
                 <img
                   className={styles.image}

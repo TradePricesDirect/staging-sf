@@ -16,6 +16,8 @@ import FeaturedBrands from "components/molecules/FeaturedBrands";
 import FAQs from "./FAQs";
 
 import * as config from "./utils";
+import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
+import FeaturedPalio from "components/molecules/FeaturedPalio";
 
 const KitchensPage = ({ ranges, kitchens, appliances, finishingTouches }) => {
   return (
@@ -61,7 +63,14 @@ const KitchensPage = ({ ranges, kitchens, appliances, finishingTouches }) => {
         ]}
       />
 
-      <FeaturedCarousel slides={[<FeaturedQuooker />, <FeaturedAeg />]} />
+      <FeaturedCarousel
+        slides={[
+          <FeaturedQuooker />,
+          <FeaturedAeg />,
+          <FeaturedXLJoinery />,
+          <FeaturedPalio />,
+        ]}
+      />
 
       <CategoryCarousel
         title="Shop Finishing Touches"

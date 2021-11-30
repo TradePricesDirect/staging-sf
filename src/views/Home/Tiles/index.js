@@ -32,7 +32,7 @@ const Tiles = () => {
               text="Looking for trades prices on over 500,000 products from top brands."
               label="Shop Trade"
               path={paths.trade}
-              background="/icons/home/tile-about-bg.svg"
+              background="/icons/home/tile-trade-bg.svg"
               icon="/icons/home/tile-trade.svg"
               colour="primary"
             />
@@ -83,6 +83,7 @@ const Tile = ({
         className={styles.background}
         layout="fill"
         objectFit="contain"
+        objectPosition="right"
         loading="eager"
         priority
       />

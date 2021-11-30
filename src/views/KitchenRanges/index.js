@@ -13,6 +13,8 @@ const KitchenRanges = ({ ranges: data }) => {
 
   const ranges = useMemo(() => {
     return data.filter((range) => {
+      if (!Object.keys(filters).length) return true;
+
       const matches = Object.entries(filters).filter(([slug, values]) => {
         return range.attributes.find(
           (attribute) =>
@@ -21,7 +23,11 @@ const KitchenRanges = ({ ranges: data }) => {
         );
       });
 
-      return matches.length === Object.keys(filters).length;
+      // OR Operator
+      return matches.length > 0;
+
+      // Below would do an AND Operator
+      // return matches.length  == Object.keys(filter).length;
     });
   }, [data, filters]);
 

@@ -23,8 +23,8 @@ export default function StepDetails({ onSubmit }) {
   return (
     <fieldset>
       <legend className={styles.title}>
-        You're at the finish line, send your quote &{" "}
-        <strong>start saving</strong>...
+        You're at the finish line, register now & <strong>start saving</strong>
+        ...
       </legend>
 
       <p className={styles.lead}>
