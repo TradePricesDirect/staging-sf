@@ -35,7 +35,7 @@ const FinancePaymentGateway = ({ onSubmitSuccess }) => {
         },
       });
 
-      onSubmitSuccess(data.order.token, CheckoutStepEnum.Review);
+      onSubmitSuccess(CheckoutStepEnum.Review, data?.order);
     }
   };
 
