@@ -6,7 +6,9 @@ import styles from "./BrandsList.module.scss";
 
 const BrandsList = ({ totalCounts }) => {
   const all = formatNumber(totalCounts.all.totalCount);
-  const inStock = formatNumber(totalCounts.inStock.totalCount);
+  const nextDayProducts = formatNumber(20872);
+
+  // const inStock = formatNumber(totalCounts.inStock.totalCount);
 
   return (
     <section className={styles.wrap}>
@@ -47,7 +49,7 @@ const BrandsList = ({ totalCounts }) => {
               </li>
               <li>
                 <div className={styles.stat}>
-                  <strong>{inStock}</strong> Products in Stock
+                  <strong>{nextDayProducts}</strong> Next Day Products
                 </div>
               </li>
               <li>
