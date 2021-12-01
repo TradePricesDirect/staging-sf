@@ -18,7 +18,7 @@ const FeaturedFernox = () => {
   return (
     <FeaturedTile
       subtitle="Featured Supplier"
-      title="Award Winning Filters and Plumbling Consumables"
+      title="Award Winning Filters and Plumbing Consumables"
       image={{
         src: "/images/featured/featured-fernox.jpg",
         width: 1200,
