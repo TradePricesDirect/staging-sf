@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Link from "next/link";
+import { useAuth } from "@saleor/sdk";
 import paths from "core/paths";
 import { productStructuredData } from "core/SEO/structuredData";
 import { getActiveVariant, getImages, getRelatedProducts } from "./utils";
@@ -29,6 +31,8 @@ const populateBreadcrumbs = (product) => [
 ];
 
 const Page = ({ product }) => {
+  const { user } = useAuth();
+
   const [variantId, setVariantId] = useState(product.defaultVariant?.id);
 
   const variant = getActiveVariant(product, variantId);
@@ -61,6 +65,12 @@ const Page = ({ product }) => {
                   productPricing={product?.pricing}
                   variantPricing={variant?.pricing}
                 />
+
+                {!user && (
+                  <Link href={paths.login}>
+                    <a className="btn btn-outline-primary">Login</a>
+                  </Link>
+                )}
               </div>
 
               <CallToActions />

@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { useAuth } from "@saleor/sdk";
 import Money from "components/atoms/Money";
 import { useShop } from "contexts/ShopContext";
+import paths from "core/paths";
 
 import styles from "./TaxedMoneyProduct.module.scss";
 
@@ -9,7 +11,10 @@ const TaxedMoneyProduct = ({ taxedMoney }) => {
 
   const { displayGrossPrices } = useShop();
 
-  if (!user) return <p className={styles.muted}>Please login to view prices</p>;
+  if (!user)
+    return (
+      <p className="text-danger">Please login or register to view prices</p>
+    );
 
   return (
     <div className={styles.wrap}>
