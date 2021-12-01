@@ -43,12 +43,12 @@ const ThirdPartyTags = () => {
       <div className="elfsight-app-54ab0dcf-b66f-433d-b97e-f25328a55d59"></div>
 
       {/* Feefo Floating Widget */}
-      <Script
+      {/* <Script
         strategy="afterInteractive"
         src="https://api.feefo.com/api/javascript/tradepricesdirect-com"
       />
 
-      <div id="feefo-service-review-floating-widgetId"></div>
+      <div id="feefo-service-review-floating-widgetId"></div> */}
     </>
   );
 };
