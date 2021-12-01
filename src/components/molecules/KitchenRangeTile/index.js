@@ -90,13 +90,13 @@ const KitchenRangeTile = ({ range }) => {
             <Link href={url}>
               <a className={styles.title}>{range.title}</a>
             </Link>
-            <div className={styles.price}>
+            {/* <div className={styles.price}>
               <Money
                 prefix="From"
                 money={range.price}
                 maximumFractionDigits={0}
               />
-            </div>
+            </div> */}
           </div>
           <div className="col-auto">
             <Link href={url}>
