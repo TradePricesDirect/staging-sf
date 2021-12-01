@@ -39,7 +39,7 @@ const IconGrid = () => {
           <Tile
             image="/icons/tradesperson/great-pricing.svg"
             title="Great Pricing on Materials"
-            text="Get access to trades prices on hundreds of thousands of products from leading brands."
+            text="Get access to trade prices on hundreds of thousands of products from leading brands."
           />
 
           <Tile

@@ -34,7 +34,7 @@ const steps = [
   },
   {
     title: "Our Customers Couldn't be Happier.",
-    text: "We've got thousands of customers singing our praises - perhaps even in their new showers! So join the home improvement revolution and start using Trades Prices Direct today.",
+    text: "We've got thousands of customers singing our praises - perhaps even in their new showers! So join the home improvement revolution and start using Trade Prices Direct today.",
     image: "/images/about/happy-customers.svg",
   },
 ];

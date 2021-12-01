@@ -1,6 +1,6 @@
 import FeefoBadge from "components/atoms/FeefoBadge";
 import PaymentIcons from "./PaymentIcons";
-import SocialIcons from "./SocialIcons";
+// import SocialIcons from "./SocialIcons";
 
 import styles from "./Subfooter.module.scss";
 
@@ -16,9 +16,11 @@ const Subfooter = () => {
           </div>
 
           <div className="col-12 col-md-4 col-lg-3 order-md-0">
+            {/*
             <h3 className={styles.title}>Keep Social</h3>
 
             <SocialIcons />
+            */}
           </div>
 
           <div className="col-12 col-md-4 col-lg-3 order-md-2">

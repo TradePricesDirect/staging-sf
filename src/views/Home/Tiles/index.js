@@ -29,7 +29,7 @@ const Tiles = () => {
             <Tile
               subtitle="Supply & Delivery"
               title="I'm a Tradesperson"
-              text="Looking for trades prices on over 500,000 products from top brands."
+              text="Looking for trade prices on over 100,000 products from top brands."
               label="Shop Trade"
               path={paths.trade}
               background="/icons/home/tile-trade-bg.svg"
