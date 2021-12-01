@@ -18,13 +18,13 @@ const VideoModal = () => {
         How it Works
       </button>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="lg" video>
+      <Modal isOpen={isOpen} onClose={onClose} size="xl" video>
         <Embed>
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/xcJtL7QggTI"
-            title="YouTube video player"
+            src="https://www.youtube.com/embed/R_CxXV_Kg-A"
+            title="Trade Prices Direct Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

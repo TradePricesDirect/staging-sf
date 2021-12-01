@@ -16,7 +16,7 @@ const Welcome = () => {
 
         <p className={styles.intro}>
           Welcome to the future of home improvements! You're now registered with
-          Trade Prices Direct and can start browsing 1000's of top brands.
+          Trade Prices Direct and can start browsing 100's of top brands.
         </p>
 
         <div className={styles.buttons}>

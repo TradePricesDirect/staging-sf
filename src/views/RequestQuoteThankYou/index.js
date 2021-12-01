@@ -39,7 +39,7 @@ const RequestQuoteThankYouPage = ({ categoriesLevel0, categoriesLevel1 }) => {
           <>
             <p className={styles.lead}>
               In the meantime, create an account and browse our huge range of
-              products from 1000's of top brands.
+              products from 100's of top brands.
             </p>
 
             <div className={styles.buttons}>

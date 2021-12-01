@@ -1,4 +1,5 @@
 import CheckoutCartSummary from "components/molecules/CheckoutCartSummary";
+import CartFinanceBanner from "components/molecules/CartFinanceBanner";
 
 import styles from "./Checkout.module.scss";
 
@@ -9,7 +10,11 @@ const Checkout = ({ children }) => {
         <div className="row">
           <div className="col-12 col-lg-8">{children}</div>
           <div className="col-12 col-lg-4">
-            <CheckoutCartSummary />
+            <div className={styles.sidebar}>
+              <CheckoutCartSummary />
+
+              <CartFinanceBanner />
+            </div>
           </div>
         </div>
       </div>

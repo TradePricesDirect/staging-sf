@@ -89,12 +89,12 @@ const Page = ({ product }) => {
             </article>
           </div>
         </div>
-
-        <RelatedProducts
-          title="Other products you may be interested in..."
-          products={getRelatedProducts(product.category, product.id)}
-        />
       </div>
+
+      <RelatedProducts
+        title="Other products you may be interested in..."
+        products={getRelatedProducts(product.category, product.id)}
+      />
 
       <FeefoReviews />
     </>

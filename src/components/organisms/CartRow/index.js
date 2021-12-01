@@ -9,6 +9,8 @@ import TaxedMoney from "components/molecules/TaxedMoney";
 import styles from "./CartRow.module.scss";
 
 const CartRow = ({ variant, quantity, totalPrice, onRemove, onUpdate }) => {
+  if (!variant.product) return null;
+
   return (
     <div className={styles.wrap}>
       <div className="col-auto">

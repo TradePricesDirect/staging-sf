@@ -1,12 +1,18 @@
 import { useMemo } from "react";
+import Link from "next/link";
 import { useAuth } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as faHeartEmpty } from "@fortawesome/pro-light-svg-icons";
+import {
+  faHeart as faHeartEmpty,
+  faTimes,
+} from "@fortawesome/pro-light-svg-icons";
 import { faHeart as faHeartFull } from "@fortawesome/pro-solid-svg-icons";
+import paths from "core/paths";
 import { useWishlists } from "utils/wishlists";
 import useDisclosure from "hooks/useDisclosure";
 import Modal from "components/organisms/Modal";
+import Thumbnail from "components/molecules/Thumbnail";
 import Guest from "./Guest";
 import Empty from "./Empty";
 import Wishlists from "./Wishlists";
@@ -51,15 +57,41 @@ const AddToWishlist = ({
 
   const renderModal = () => {
     if (!user) return <Guest />;
-    if (!wishlists.length) return <Empty />;
+
+    if (!wishlists?.length) return <Empty />;
 
     return (
-      <Wishlists
-        product={product}
-        wishlists={wishlists}
-        onAdd={handleAdd}
-        onRemove={handleRemove}
-      />
+      <div className={styles.content}>
+        <button
+          type="button"
+          onClick={onClose}
+          className={clsx("btn btn-sm text-secondary", styles.closeButton)}
+          aria-label="Close"
+        >
+          <FontAwesomeIcon icon={faTimes} />
+          <span className="visually-hidden">Close</span>
+        </button>
+
+        <div className={styles.image}>
+          <Thumbnail thumbnail={product.thumbnail} />
+        </div>
+        <div className={styles.body}>
+          <div className={styles.header}>
+            <h4 className={styles.title}>Save to List</h4>
+
+            <Link href={paths.wishlists}>
+              <a className="btn btn-sm btn-link text-secondary">Create List</a>
+            </Link>
+          </div>
+
+          <Wishlists
+            product={product}
+            wishlists={wishlists}
+            onAdd={handleAdd}
+            onRemove={handleRemove}
+          />
+        </div>
+      </div>
     );
   };
 
@@ -76,7 +108,7 @@ const AddToWishlist = ({
         <FontAwesomeIcon icon={inWishlist ? faHeartFull : faHeartEmpty} />
       </button>
 
-      <Modal title="Save to List" isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size="sm">
         {renderModal()}
       </Modal>
     </>

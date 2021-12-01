@@ -22,7 +22,7 @@ const Footer = ({ menus }) => {
                 <Link href={paths.login}>
                   <a>Register with TPD</a>
                 </Link>{" "}
-                and get access to 1000's of top brands at trade prices.
+                and get access to 100's of top brands at trade prices.
               </p>
 
               <Newsletter />

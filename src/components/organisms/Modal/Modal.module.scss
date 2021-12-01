@@ -22,7 +22,7 @@
   max-width: 400px;
   @include margin(3rem 0);
   background-color: $white;
-  border-radius: $border-radius-xl;
+  border-radius: $border-radius;
   box-shadow: $box-shadow;
   overflow: hidden;
 
@@ -36,6 +36,10 @@
 
   &.lg {
     max-width: 992px;
+  }
+
+  &.xl {
+    max-width: 1200px;
   }
 
   &.video {
