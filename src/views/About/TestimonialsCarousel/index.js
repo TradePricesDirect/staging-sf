@@ -1,32 +1,80 @@
 import { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
+import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 
 import styles from "./TestimonialsCarousel.module.scss";
-import { AnimatePresence, motion } from "framer-motion";
 
 const slides = [
   {
-    backgroundImage: "/images/about/testimonial-bg.jpg",
-    saved: "Saved £3,850",
-    text: "We got the kitchen we’ve always wanted and saved almost £4000 off the price we were quoted by one of the highstreet companies. The whole process was slick from start to finish and we couldn’t be happier with Trade Prices Direct.",
-    purchaser: "Jane & John Smith From Leeds",
-    purchase: "Kitchen Renovation",
+    backgroundImage: "/images/about/testimonial-1-bg.jpg",
+    saved: "Saved £1,450",
+    title: "We Recommend Trade Prices Direct - Unbeatable Prices",
+    text: (
+      <>
+        <p>
+          We received quotes from Wren for our kitchen and Victorian plumbing
+          for the bathroom and after looking at various companies came across
+          Trade Prices Direct and spoke to a lovely chap called Jason who was
+          excellent every step of the way. He provided us with a quote that was
+          a fraction of the price.
+        </p>
+        <p>
+          I'm overwhelmed at the level of service I received and would
+          definitely be recommending this company. Thanks for all your help! We
+          will finally have the kitchen and bathroom sorted in time for
+          Christmas.
+        </p>
+        <p>
+          Impeccable service from all at TradePricesDirect, from initial contact
+          with myself and my customers to discussing products and ensuring
+          correct items are purchased at an affordable price.
+        </p>
+      </>
+    ),
+    purchaser: "Peter - Online Customer",
+    purchase: "Bathroom Renovation",
+    class: styles.large,
   },
   {
-    backgroundImage: "/images/bathrooms/alba-graphite.jpg",
-    saved: "Saved £4,850",
-    text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque id alias labore deserunt natus, cupiditate facilis odio! Quisquam, nihil dolor.",
-    purchaser: "Jane & John Smith From Leeds",
-    purchase: "Kitchen Renovation",
+    backgroundImage: "/images/about/testimonial-3-bg.jpg",
+    saved: "Saved £595",
+    title: "Brand New Boiler from Trade Prices Direct",
+    text: (
+      <>
+        <p>
+          Had our Worcester Bosch boiler installed Feb 2020. Craig from Trades
+          Prices Direct talked through the options and advised us on the best
+          boiler for our property. The installation was arranged quickly and the
+          whole process from start to finish was smooth and stress free.
+        </p>
+
+        <p>
+          Would highly recommend Trade Prices Direct and thank Craig for his
+          fantastic customer service.
+        </p>
+      </>
+    ),
+    purchaser: "Kerry - Online Customer",
+    purchase: "New Boiler",
   },
   {
-    backgroundImage: "/images/bathrooms/alba-white.jpg",
-    saved: "Saved £5,850",
-    text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque id alias labore deserunt natus, cupiditate facilis odio! Quisquam, nihil dolor.",
-    purchaser: "Jane & John Smith From Leeds",
-    purchase: "Kitchen Renovation",
+    backgroundImage: "/images/about/testimonial-2-bg.jpg",
+    saved: "Saved £1,799",
+    title: "Over the Moon with Trade Prices Direct",
+    text: (
+      <>
+        <p>
+          Ordered my bathroom suite Friday and was delivered Tuesday as
+          promised. Can't fault the service at all.
+        </p>
+        <p>Loving my new bathroom suite.</p>
+      </>
+    ),
+    purchaser: "Kim - Online Customer",
+    purchase: "Bathroom Renovation",
   },
 ];
 
@@ -68,7 +116,7 @@ const TestimonialsCarousel = () => {
           </div>
 
           <div className="container">
-            <div className={styles.slideContent}>
+            <div className={clsx(styles.slideContent, slide?.class)}>
               <div className={styles.nav}>
                 <button
                   type="button"
@@ -90,7 +138,9 @@ const TestimonialsCarousel = () => {
               </div>
 
               <blockquote>
-                <p>{slide.text}</p>
+                {slide.title && <h5>{slide.title}</h5>}
+
+                {slide.text}
                 <cite>
                   <div className={styles.purchaser}>{slide.purchaser}</div>
                   <div className={styles.purchase}>{slide.purchase}</div>
