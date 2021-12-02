@@ -7,7 +7,11 @@ export const getServerSideProps = async (ctx) => {
   const fields = products.map(({ slug }) => ({
     loc: `https://tradepricesdirect.com/product/${slug}`,
     lastmod: new Date().toISOString(),
+    priority: 0.7,
+    changefreq: "daily",
   }));
+
+  ctx.res.setHeader("Cache-Control", "s-maxage=30, stale-while-revalidate");
 
   return getServerSideSitemap(ctx, fields);
 };
