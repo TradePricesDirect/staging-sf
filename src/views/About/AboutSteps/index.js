@@ -9,7 +9,7 @@ import clsx from "clsx";
 const steps = [
   {
     title: "Solving Soaring Home Rennovation Costs",
-    text: "Be it a kitchen, bathroom or boiler at every stage of production & distrubition a margin is added and costs pile up. Making home rennovations pricey & unaffordable.",
+    text: "Be it a kitchen, bathroom or boiler at every stage of production & distribution a margin is added and costs pile up. Making home rennovations pricey & unaffordable.",
     image: "/images/about/soaring-costs.svg",
   },
   {
