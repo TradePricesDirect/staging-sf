@@ -306,3 +306,13 @@ const fixFileAttributeValueUrl = (attributes) => {
     };
   });
 };
+
+export const getAllProducts = async () => {
+  const { api } = await getSaleorApi();
+
+  const { data } = await exhaustList(api.products.getList({ first: 100 }), 500);
+
+  return data.filter(
+    (product) => product.productType.slug !== "kitchen-range-component"
+  );
+};

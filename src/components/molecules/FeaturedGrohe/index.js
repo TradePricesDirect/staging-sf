@@ -25,7 +25,10 @@ const FeaturedGrohe = () => {
       icons={ICONS}
       button={{
         name: "Shop GROHE",
-        href: paths.category.replace("[slug]", "showers"),
+        href: {
+          pathname: paths.category.replace("[slug]", "bathrooms"),
+          query: { filters: "brand_grohe" },
+        },
       }}
     >
       <p>

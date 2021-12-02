@@ -27,7 +27,10 @@ const FeaturedXLJoinery = () => {
       icons={ICONS}
       button={{
         name: "Shop XL Joinery",
-        href: paths.category.replace("[slug]", "doors"),
+        href: {
+          pathname: paths.category.replace("[slug]", "doors"),
+          query: { filters: "brand_xl-joinery" },
+        },
       }}
     >
       <p>

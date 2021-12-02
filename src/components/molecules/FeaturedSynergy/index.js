@@ -13,7 +13,10 @@ const FeaturedSynergy = () => {
       }}
       button={{
         name: "Shop Synergy",
-        href: paths.category.replace("[slug]", "bathrooms"),
+        href: {
+          pathname: paths.category.replace("[slug]", "bathrooms"),
+          query: { filters: "brand_synergy" },
+        },
       }}
     >
       <p>

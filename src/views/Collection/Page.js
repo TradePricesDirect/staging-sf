@@ -31,7 +31,7 @@ const Page = ({
 
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg order-lg-2">
+          <div className="col-12">
             <ProductListHeader
               numberOfProducts={numberOfProducts}
               renderBreadcrumb={
@@ -57,13 +57,13 @@ const Page = ({
             />
           </div>
 
-          <div className="col-lg-auto order-lg-1">
+          {/* <div className="col-lg-auto order-lg-1">
             <FilterSidebar
               attributes={attributes}
               filters={filters}
               onAttributeFiltersChange={onAttributeFiltersChange}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

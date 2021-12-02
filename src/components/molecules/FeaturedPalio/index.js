@@ -27,7 +27,10 @@ const FeaturedPalio = () => {
       icons={ICONS}
       button={{
         name: "Shop Palio",
-        href: paths.category.replace("[slug]", "flooring"),
+        href: {
+          pathname: paths.category.replace("[slug]", "flooring"),
+          query: { filters: "brand_palio-trade" },
+        },
       }}
     >
       <p>

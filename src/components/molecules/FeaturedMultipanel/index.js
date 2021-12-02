@@ -27,7 +27,10 @@ const FeaturedMultipanel = () => {
       icons={ICONS}
       button={{
         name: "Shop Multipanel",
-        href: paths.category.replace("[slug]", "bathrooms"),
+        href: {
+          pathname: paths.category.replace("[slug]", "flooring"),
+          query: { filters: "brand_multipanel" },
+        },
       }}
     >
       <p>

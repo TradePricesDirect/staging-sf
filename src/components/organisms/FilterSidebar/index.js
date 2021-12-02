@@ -1,3 +1,4 @@
+import WidgetActiveFilters from "components/molecules/WidgetActiveFilters";
 import WidgetCategory from "components/molecules/WidgetCategory";
 import WidgetAttributes from "components/molecules/WidgetAttributes";
 
@@ -7,10 +8,19 @@ const FilterSidebar = ({
   categories = [],
   attributes,
   filters,
+  activeFilters,
   onAttributeFiltersChange,
 }) => {
   return (
     <div className={styles.wrap} role="complementary">
+      {activeFilters > 0 && (
+        <WidgetActiveFilters
+          attributes={attributes}
+          filters={filters}
+          onRemove={onAttributeFiltersChange}
+        />
+      )}
+
       <WidgetCategory categories={categories} />
 
       {attributes.map(({ id, name, slug, choices }) => {

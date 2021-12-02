@@ -27,7 +27,10 @@ const FeaturedAeg = () => {
       icons={ICONS}
       button={{
         name: "Shop AEG",
-        href: paths.category.replace("[slug]", "ovens"),
+        href: {
+          pathname: paths.category.replace("[slug]", "kitchens"),
+          query: { filters: "brand_aeg" },
+        },
       }}
     >
       <p>

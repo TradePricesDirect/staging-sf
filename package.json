@@ -6,6 +6,7 @@
     "clean": "rm -rf .next",
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -60,6 +61,7 @@
     "@svgr/webpack": "^6.0.0",
     "mjml": "^4.11.0",
     "mjml-loader": "^1.0.1",
+    "next-sitemap": "^1.6.203",
     "prisma": "^3.5.0",
     "sass": "^1.44.0"
   }

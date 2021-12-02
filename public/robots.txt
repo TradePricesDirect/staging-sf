@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tradepricesdirect.com
+
+# Sitemaps
+Sitemap: https://tradepricesdirect.com/sitemap.xml
+Sitemap: https://tradepricesdirect.com/server-sitemap.xml

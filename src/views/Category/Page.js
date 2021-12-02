@@ -66,13 +66,14 @@ const Page = ({
               categories={children}
               attributes={attributes}
               filters={filters}
+              activeFilters={activeFilters}
               onAttributeFiltersChange={onAttributeFiltersChange}
             />
           </div>
         </div>
       </div>
 
-      {details.slug === 'quooker' && <QuookerContent />}
+      {details.slug === "quooker" && <QuookerContent />}
     </>
   );
 };

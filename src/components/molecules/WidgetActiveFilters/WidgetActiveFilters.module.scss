@@ -1,0 +1,16 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.list {
+  @include list-unstyled;
+  margin: 0 0 1rem;
+  padding: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: $font-size-sm;
+
+  .button {
+    font-size: inherit;
+  }
+}

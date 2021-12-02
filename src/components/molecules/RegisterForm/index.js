@@ -4,7 +4,6 @@ import Checkbox from "components/atoms/Checkbox";
 import Radio from "./Radio";
 import SubmitButton from "components/atoms/SubmitButton";
 import { useRegisterAccount } from "./queries";
-import paths from "core/paths";
 
 const RegisterForm = () => {
   const { registerAccount, errorMessage } = useRegisterAccount();
@@ -53,6 +52,15 @@ const RegisterForm = () => {
         register={register}
         validation={{ required: true }}
         error={errors.email}
+      />
+
+      <Input
+        type="tel"
+        label="Phone Number"
+        name="phone"
+        register={register}
+        validation={{ required: true }}
+        error={errors.phone}
       />
 
       <Input

@@ -27,7 +27,7 @@ const FeaturedFernox = () => {
       icons={ICONS}
       button={{
         name: "Shop Fernox",
-        href: paths.category.replace("[slug]", "bathrooms"),
+        href: paths.category.replace("[slug]", "boilers"),
       }}
     >
       <p>

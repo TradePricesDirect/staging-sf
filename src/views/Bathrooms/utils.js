@@ -135,17 +135,23 @@ export const logos = [
 export const brands = [
   {
     name: "Grohe",
-    href: paths.category.replace("[slug]", "bathrooms"),
     backgroundImage: "/images/bathrooms/featured-grohe1.jpg",
+    href: {
+      pathname: paths.category.replace("[slug]", "bathrooms"),
+      query: { filters: "brand_grohe" },
+    },
   },
   {
     name: "Kaldewei",
-    href: paths.category.replace("[slug]", "bathrooms"),
     backgroundImage: "/images/bathrooms/featured-kaldewei.jpg",
+    href: paths.category.replace("[slug]", "bathrooms"),
   },
   {
     name: "Grohe",
-    href: paths.category.replace("[slug]", "bathrooms"),
     backgroundImage: "/images/bathrooms/featured-grohe2.jpg",
+    href: {
+      pathname: paths.category.replace("[slug]", "bathrooms"),
+      query: { filters: "brand_grohe" },
+    },
   },
 ];
