@@ -41,7 +41,7 @@ const FAQs = () => {
         <Accordion title="How much does it cost to put in a new Boiler?">
           <p>
             The old saying is true: you get what you pay for. But that doesn't
-            mean you need to pay big retail mark-ups. At Trade Price Direct, we
+            mean you need to pay big retail mark-ups. At Trade Prices Direct, we
             make it easier to get a luxurious fitted kitchen with exclusive
             trade pricing and great finance. That's why our customers love us.
             And why our competitors don't.
