@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import paths from "core/paths";
+import { useCreateAccount } from "components/molecules/RegisterForm/queries";
 
 export const QuoteStepEnum = {
   Type: 1,
@@ -17,6 +18,7 @@ const initialState = {
 
 export default function useQuoteForm() {
   const { push } = useRouter();
+  const { createAccount } = useCreateAccount();
 
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(QuoteStepEnum.Type);
@@ -39,6 +41,25 @@ export default function useQuoteForm() {
 
       setLoading(true);
 
+      // Send Quote Email
+      await sendQuoteEmail({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+      });
+
+      // Create Account
+      await createAccount(data);
+
+      push(paths.requestQuoteThankYou);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const sendQuoteEmail = async (data) => {
+    try {
       const res = await fetch("/api/request-quote", {
         method: "POST",
         headers: {
@@ -49,8 +70,6 @@ export default function useQuoteForm() {
       });
 
       if (!res.ok) throw res;
-
-      push(paths.requestQuoteThankYou);
     } catch (error) {
       console.error(error);
     }

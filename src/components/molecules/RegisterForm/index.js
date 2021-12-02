@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import Input from "components/atoms/Input";
 import Checkbox from "components/atoms/Checkbox";
-import Radio from "./Radio";
+import RadioInput from "components/atoms/RadioInput";
 import SubmitButton from "components/atoms/SubmitButton";
 import { useRegisterAccount } from "./queries";
 
@@ -81,7 +81,7 @@ const RegisterForm = () => {
 
       <div className="row gx-4">
         <div className="col-sm">
-          <Radio
+          <RadioInput
             name="type"
             defaultChecked={true}
             register={register}
@@ -90,7 +90,7 @@ const RegisterForm = () => {
           />
         </div>
         <div className="col-sm">
-          <Radio
+          <RadioInput
             name="type"
             register={register}
             label="I'm a Tradesperson"

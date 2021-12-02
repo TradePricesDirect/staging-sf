@@ -6,43 +6,13 @@ import { useUpdateMetadataMutation } from "graphql/mutations";
 
 export const useRegisterAccount = () => {
   const router = useRouter();
-  const auth = useAuth();
-  const [setAccountUpdate] = useAccountUpdate();
-  const [setMetadata] = useUpdateMetadataMutation();
+  const { createAccount } = useCreateAccount();
 
   const [errorMessage, setErrorMessage] = useState(null);
 
   const registerAccount = async (formData) => {
     try {
-      // Register Account
-      const { email, password, firstName, lastName, ...data } = formData;
-
-      const redirectUrl = `${location.origin}${paths.accountConfirm}`;
-
-      const { dataError: registerError } = await auth.registerAccount(
-        email,
-        password,
-        redirectUrl
-      );
-      if (registerError?.error) throw registerError.error[0];
-
-      // Sign in
-      const { dataError: signInError } = await auth.signIn(email, password);
-      if (signInError?.error) throw signInError.error[0];
-
-      // Update Account Details
-      setAccountUpdate({ input: { firstName, lastName } });
-
-      // Update Account Metadata
-      await setMetadata({
-        variables: {
-          id: auth.user.id,
-          input: Object.keys(data).map((key) => ({
-            key,
-            value: data[key],
-          })),
-        },
-      });
+      await createAccount(formData);
 
       router.push(paths.registerNewUser);
     } catch (error) {
@@ -51,4 +21,44 @@ export const useRegisterAccount = () => {
   };
 
   return { registerAccount, errorMessage };
+};
+
+export const useCreateAccount = () => {
+  const auth = useAuth();
+  const [setAccountUpdate] = useAccountUpdate();
+  const [setMetadata] = useUpdateMetadataMutation();
+
+  const createAccount = async (formData) => {
+    // Register Account
+    const { email, password, firstName, lastName, ...data } = formData;
+
+    const redirectUrl = `${location.origin}${paths.accountConfirm}`;
+
+    const { dataError: registerError } = await auth.registerAccount(
+      email,
+      password,
+      redirectUrl
+    );
+    if (registerError?.error) throw registerError.error[0];
+
+    // Sign in
+    const { dataError: signInError } = await auth.signIn(email, password);
+    if (signInError?.error) throw signInError.error[0];
+
+    // Update Account Details
+    setAccountUpdate({ input: { firstName, lastName } });
+
+    // Update Account Metadata
+    await setMetadata({
+      variables: {
+        id: auth.user.id,
+        input: Object.keys(data).map((key) => ({
+          key,
+          value: data[key],
+        })),
+      },
+    });
+  };
+
+  return { createAccount };
 };

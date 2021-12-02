@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import styles from "./Radio.module.scss";
+import styles from "./RadioInput.module.scss";
 
-const Radio = ({ label, name, register, validation, error, ...other }) => {
+const RadioInput = ({ label, name, register, validation, error, ...other }) => {
   return (
     <div className="mb-4">
       <input
@@ -19,4 +19,4 @@ const Radio = ({ label, name, register, validation, error, ...other }) => {
   );
 };
 
-export default Radio;
+export default RadioInput;

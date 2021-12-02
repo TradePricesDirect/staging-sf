@@ -2,6 +2,7 @@ import { useAuth } from "@saleor/sdk";
 import { useForm } from "react-hook-form";
 import Input from "components/atoms/Input";
 import Checkbox from "components/atoms/Checkbox";
+import RadioInput from "components/atoms/RadioInput";
 import SubmitButton from "components/atoms/SubmitButton";
 
 import styles from "../Steps.module.scss";
@@ -9,7 +10,7 @@ import styles from "../Steps.module.scss";
 export default function StepDetails({ onSubmit }) {
   const { user } = useAuth();
 
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, watch, formState } = useForm({
     defaultValues: {
       firstName: user?.firstName || "",
       lastName: user?.lastName || "",
@@ -19,6 +20,8 @@ export default function StepDetails({ onSubmit }) {
     },
   });
   const { errors, isSubmitting, isSubmitSuccessful } = formState;
+
+  const isTrade = watch("type") === "trade";
 
   return (
     <fieldset>
@@ -73,6 +76,42 @@ export default function StepDetails({ onSubmit }) {
           error={errors.phone}
         />
 
+        <Input
+          label="Password"
+          name="password"
+          type="password"
+          autoComplete="password"
+          register={register}
+          validation={{
+            required: true,
+            minLength: {
+              value: 8,
+              message: "Password must have at least 8 characters",
+            },
+          }}
+          error={errors.password}
+        />
+
+        <div className="row gx-4">
+          <div className="col-sm">
+            <RadioInput
+              name="type"
+              defaultChecked={true}
+              register={register}
+              label="I'm a Customer"
+              value="customer"
+            />
+          </div>
+          <div className="col-sm">
+            <RadioInput
+              name="type"
+              register={register}
+              label="I'm a Tradesperson"
+              value="trade"
+            />
+          </div>
+        </div>
+
         <Checkbox
           label="I'm happy to be contacted regarding my enquiry & receive future
               offers from Trade Prices Direct."
@@ -81,6 +120,24 @@ export default function StepDetails({ onSubmit }) {
           validation={{ required: true }}
           error={errors.consent}
         />
+
+        {isTrade ? (
+          <Checkbox
+            label={`I agree to the Trade Prices Direct <a href="/trade-account-terms-conditions" target="_blank">trade account terms & conditions</a>.`}
+            name="terms"
+            register={register}
+            validation={{ required: true }}
+            error={errors.terms}
+          />
+        ) : (
+          <Checkbox
+            label={`I agree to the Trade Prices Direct <a href="/customer-account-terms-conditions" target="_blank">customer account terms & conditions</a>.`}
+            name="terms"
+            register={register}
+            validation={{ required: true }}
+            error={errors.terms}
+          />
+        )}
 
         <div className="d-grid">
           <SubmitButton loading={isSubmitting || isSubmitSuccessful}>
