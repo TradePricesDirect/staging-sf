@@ -31,7 +31,7 @@ export default function StepDetails({ onSubmit }) {
       </legend>
 
       <p className={styles.lead}>
-        This is it - one more step and you'll get access to 1000's of top brands
+        This is it - one more step and you'll get access to 100's of top brands
         at rock bottom prices.
       </p>
 
