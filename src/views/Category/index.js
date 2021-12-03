@@ -60,6 +60,8 @@ const CategoryView = ({ data: category }) => {
     );
   };
 
+  const parentCategory = getLevel0Category(category);
+
   return (
     <>
       <MetaTags
@@ -71,6 +73,7 @@ const CategoryView = ({ data: category }) => {
       <Page
         displayLoader={loading}
         category={category}
+        parentCategory={parentCategory}
         products={products}
         numberOfProducts={numberOfProducts}
         hasNextPage={!!pageInfo?.hasNextPage}
@@ -89,3 +92,9 @@ const CategoryView = ({ data: category }) => {
 };
 
 export default CategoryView;
+
+const getLevel0Category = (category) => {
+  if (!category.ancestors.length) return category.details;
+
+  return category.ancestors[0];
+};

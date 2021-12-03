@@ -9,6 +9,7 @@ import QuookerContent from "./SEOContent/Quooker";
 const Page = ({
   displayLoader,
   category: { attributes, details, ancestors, children },
+  parentCategory,
   products,
   numberOfProducts,
   hasNextPage,
@@ -68,6 +69,7 @@ const Page = ({
               filters={filters}
               activeFilters={activeFilters}
               onAttributeFiltersChange={onAttributeFiltersChange}
+              parentCategory={parentCategory}
             />
           </div>
         </div>

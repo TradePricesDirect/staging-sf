@@ -10,6 +10,7 @@ const FilterSidebar = ({
   filters,
   activeFilters,
   onAttributeFiltersChange,
+  parentCategory,
 }) => {
   return (
     <div className={styles.wrap} role="complementary">
@@ -36,6 +37,7 @@ const FilterSidebar = ({
               selected: checkIfAttributeIsChecked(filters, value, slug),
             }))}
             onValueClick={(value) => onAttributeFiltersChange(slug, value.slug)}
+            parentCategory={parentCategory}
           />
         );
       })}

@@ -1,13 +1,26 @@
 import clsx from "clsx";
 import Widget from "components/molecules/Widget";
 import _ from "lodash";
+import { filterBrandsByCategory } from "utils/brands";
 
 import styles from "./WidgetAttributes.module.scss";
 
-const WidgetAttributes = ({ title, name, values, onValueClick }) => {
+const WidgetAttributes = ({
+  title,
+  name,
+  values,
+  onValueClick,
+  parentCategory,
+}) => {
   if (!values.length) return null;
 
-  const list = _.sortBy(values, "name");
+  let list = _.sortBy(values, "name");
+
+  if (name === "brand") {
+    list = filterBrandsByCategory(list, parentCategory.slug);
+  }
+
+  if (!list.length) return null;
 
   return (
     <Widget title={title} isOpen>
