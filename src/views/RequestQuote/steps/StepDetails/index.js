@@ -76,21 +76,23 @@ export default function StepDetails({ onSubmit }) {
           error={errors.phone}
         />
 
-        <Input
-          label="Password"
-          name="password"
-          type="password"
-          autoComplete="password"
-          register={register}
-          validation={{
-            required: true,
-            minLength: {
-              value: 8,
-              message: "Password must have at least 8 characters",
-            },
-          }}
-          error={errors.password}
-        />
+        {!user && (
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            autoComplete="password"
+            register={register}
+            validation={{
+              required: true,
+              minLength: {
+                value: 8,
+                message: "Password must have at least 8 characters",
+              },
+            }}
+            error={errors.password}
+          />
+        )}
 
         <div className="row gx-4">
           <div className="col-sm">

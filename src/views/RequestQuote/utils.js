@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useAuth } from "@saleor/sdk";
 import paths from "core/paths";
 import { useCreateAccount } from "components/molecules/RegisterForm/queries";
 
@@ -17,6 +18,8 @@ const initialState = {
 };
 
 export default function useQuoteForm() {
+  const { user } = useAuth();
+
   const { push } = useRouter();
   const { createAccount } = useCreateAccount();
 
@@ -50,7 +53,7 @@ export default function useQuoteForm() {
       });
 
       // Create Account
-      await createAccount(data);
+      if (!user) await createAccount(data);
 
       push(paths.requestQuoteThankYou);
     } catch (error) {

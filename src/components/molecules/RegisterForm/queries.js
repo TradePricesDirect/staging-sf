@@ -12,6 +12,15 @@ export const useRegisterAccount = () => {
 
   const registerAccount = async (formData) => {
     try {
+      // Send Quote Email
+      await sendAdminEmail({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        type: formData.type,
+      });
+
       await createAccount(formData);
 
       router.push(paths.registerNewUser);
@@ -22,6 +31,23 @@ export const useRegisterAccount = () => {
 
   return { registerAccount, errorMessage };
 };
+
+  const sendAdminEmail = async (data) => {
+    try {
+      const res = await fetch("/api/new-user", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw res;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 export const useCreateAccount = () => {
   const auth = useAuth();
