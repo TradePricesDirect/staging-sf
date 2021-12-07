@@ -19,7 +19,7 @@ export const categoryStyles = [
     name: "Shaker",
     href: {
       pathname: paths.kitchenRanges,
-      query: { filters: "style_shaker" },
+      query: { filters: "type_shaker" },
     },
     backgroundImage: {
       url: "/images/kitchens/shaker-thumbnail.jpg",
@@ -43,7 +43,7 @@ export const categoryStyles = [
     name: "Handleless",
     href: {
       pathname: paths.kitchenRanges,
-      query: { filters: "style_handleless" },
+      query: { filters: "features_handleless" },
     },
     backgroundImage: {
       url: "/images/kitchens/handleless-thumbnail.jpg",
