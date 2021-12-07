@@ -40,6 +40,14 @@ const getSelectedFilters = (filters, attributes) => {
   return Object.entries(filters).map(([key, values]) => {
     const attr = attributes.find(({ slug }) => slug === key);
 
+    if (!attr) {
+      return {
+        name: _.capitalize(key),
+        slug: key,
+        values: values.map((v) => ({ slug: v, name: _.capitalize(v) })),
+      };
+    }
+
     return {
       name: attr.name,
       slug: attr.slug,
