@@ -22,7 +22,7 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
   return (
     <>
       <MetaTags
-        title="Boilers at Trade Prices"
+        title="Heaters at Trade Prices"
         description={
           boilers.seoDescription ||
           convertRichTextToPlainText(boilers.description)
@@ -30,7 +30,7 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
       />
 
       <CategoryHero
-        title="Boilers at Trade Prices"
+        title="Heaters at Trade Prices"
         description={boilers.description}
         backgroundImage={boilers.backgroundImage}
       />
@@ -95,7 +95,7 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
 
       <ConsultationCallToAction
         subtitle="All Day Everyday"
-        title="24/7 Emergency Boiler Repair"
+        title="24/7 Emergency Heating Repair"
         text="Our certified engingeers have the skills to handle any emergency boiler repair. If it can't be fixed we offer next day shipping on a huge selection of boilers. So you'll never be left in the cold."
         backgroundImage="/images/boilers/boiler-repair-bg.jpg"
       />

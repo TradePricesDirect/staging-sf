@@ -1,6 +1,6 @@
 import { getSaleorApi, getCategoriesByMetadata } from "utils/ssr";
 import { incrementalStaticRegenerationRevalidate } from "core/constants";
-import BoilersPage from "views/Boilers";
+import BoilersPage from "views/Heating";
 
 export default BoilersPage;
 

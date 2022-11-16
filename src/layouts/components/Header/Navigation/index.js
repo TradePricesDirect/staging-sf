@@ -29,9 +29,9 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          <Link href="/category/boilers">
-            <a className="btn btn-sm" onClick={handleMenuClick("boilers")}>
-              Boilers
+          <Link href="/category/heating">
+            <a className="btn btn-sm" onClick={handleMenuClick("heating")}>
+              Heating
             </a>
           </Link>
         </li>

@@ -65,9 +65,9 @@ const MenuNavigation = ({ categories }) => {
               />
 
               <SubMenuLink
-                name="Boilers"
-                slug="boilers"
-                onClick={() => overlay.show("boilers")}
+                name="Heating"
+                slug="heating"
+                onClick={() => overlay.show("heating")}
               />
             </>
           )}
@@ -85,7 +85,7 @@ const getParentMenuItems = (categories) => {
   const EXCLUDE_CATEGORIES = [
     "kitchens",
     "bathrooms",
-    "boilers",
+    "heating",
     "kitchen-ranges",
   ];
 
