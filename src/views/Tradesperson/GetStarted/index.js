@@ -12,7 +12,7 @@ const GetStarted = () => {
         <div className="row align-items-center">
           <div className="col-12 col-md-6 order-md-2">
             <div className={styles.content}>
-              <h2 className={styles.title}>To get started you'll need</h2>
+              <h2 className={styles.title}>{"To get started you'll need"}</h2>
 
               <p>
                 Please ensure you have the following information available
@@ -45,8 +45,8 @@ const GetStarted = () => {
               </p>
 
               <div className="text-center text-md-start">
-                <Link href={paths.register}>
-                  <a className="btn btn-primary">Register For Free</a>
+                <Link href={paths.register} className="btn btn-primary">
+                  Register For Free
                 </Link>
               </div>
             </div>

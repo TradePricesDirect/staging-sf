@@ -28,15 +28,13 @@ const AboutPage = () => {
             </h1>
 
             <p>
-              With prices so low, we wouldn’t blame you for thinking, 'it's too
+              {`With prices so low, we wouldn’t blame you for thinking, 'it's too
               good to be true.' So let us explain how we cut out the middleman
-              and pass the savings onto you!
+              and pass the savings onto you!`}
             </p>
 
-            <Link href={paths.register}>
-              <a className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
-                Register Now
-              </a>
+            <Link href={paths.register} className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
+              Register Now
             </Link>
 
             <br className="d-block d-sm-none" />

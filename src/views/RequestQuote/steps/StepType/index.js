@@ -6,13 +6,13 @@ export default function StepType({ selected, onChange }) {
   return (
     <fieldset>
       <legend className={styles.title}>
-        I'm looking for <strong>Just Materials</strong> or{" "}
-        <strong>Materials & Labour</strong>...
+        {"I'm looking for "}<strong>{"Just Materials"}</strong>{" or"}
+        <strong>{"Materials & Labour"}</strong>...
       </legend>
 
       <p className={styles.lead}>
-        Choose whether you want materials only or a local tradesperson to do the
-        job for you too.
+        {`Choose whether you want materials only or a local tradesperson to do the
+        job for you too.`}
       </p>
 
       <div className={styles.grid}>

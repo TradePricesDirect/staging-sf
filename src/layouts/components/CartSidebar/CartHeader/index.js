@@ -60,21 +60,16 @@ const CartHeader = () => {
 
         {items?.length > 0 && (
           <div className={styles.buttons}>
-            <Link href={paths.checkout}>
-              <a className={clsx("btn btn-primary", styles.checkoutButton)}>
-                Proceed To Checkout
-              </a>
+            <Link href={paths.checkout} className={clsx("btn btn-primary", styles.checkoutButton)}>
+              Proceed To Checkout
+
             </Link>
 
-            <Link href={paths.basket}>
-              <a
-                className={clsx(
-                  "btn btn-outline-secondary",
-                  styles.basketButton
-                )}
-              >
-                Review Basket
-              </a>
+            <Link href={paths.basket} className={clsx(
+              "btn btn-outline-secondary",
+              styles.basketButton
+            )}>
+              Review Basket
             </Link>
           </div>
         )}

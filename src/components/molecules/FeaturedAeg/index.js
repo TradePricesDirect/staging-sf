@@ -34,16 +34,16 @@ const FeaturedAeg = () => {
       }}
     >
       <p>
-        Indulge in incredible baking, grilling, and roasting with a
+        {`Indulge in incredible baking, grilling, and roasting with a
         multifunction oven from AEG. Whether you're a novice cook or an
         accomplished chef, the built-in probe and superior temperature control
-        provide absolute precision.
+        provide absolute precision.`}
       </p>
 
       <p>
-        Wow family and friends this festive season with a succulent selection of
+        {`Wow family and friends this festive season with a succulent selection of
         roasts, and desserts - perfect for dinner party banquets and the big day
-        itself.
+        itself.`}
       </p>
     </FeaturedTile>
   );

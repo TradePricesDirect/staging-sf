@@ -54,8 +54,8 @@ const Tile = ({ subtitle, title, text, image, buttonText, path }) => {
         <h5>{title}</h5>
         <p>{text}</p>
 
-        <Link href={path}>
-          <a className="btn btn-sm btn-outline-primary">{buttonText}</a>
+        <Link href={path} className="btn btn-sm btn-outline-primary">
+          {buttonText}
         </Link>
       </div>
     </div>

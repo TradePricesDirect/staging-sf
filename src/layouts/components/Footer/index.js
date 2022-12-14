@@ -19,10 +19,7 @@ const Footer = ({ menus }) => {
               <Logo className={styles.logo} />
 
               <p className={styles.strapline}>
-                <Link href={paths.login}>
-                  <a>Register with TPD</a>
-                </Link>{" "}
-                and get access to 100's of top brands at trade prices.
+                <Link href={paths.login}>{"Register with TPD"}</Link>{" and get access to 100's of top brands at trade prices."}
               </p>
 
               <Newsletter />

@@ -27,7 +27,7 @@ export default function Newsletter() {
 
   const privacyPolicy = (
     <Link href={paths.privacy}>
-      <a>Privacy Policy</a>
+      Privacy Policy
     </Link>
   );
 

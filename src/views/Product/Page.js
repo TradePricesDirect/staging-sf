@@ -67,8 +67,8 @@ const Page = ({ product }) => {
                 />
 
                 {!user && (
-                  <Link href={paths.login}>
-                    <a className="btn btn-outline-primary">Login</a>
+                  <Link href={paths.login} className="btn btn-outline-primary">
+                    Login
                   </Link>
                 )}
               </div>

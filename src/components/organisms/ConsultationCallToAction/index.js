@@ -29,8 +29,8 @@ const ConsultationCallToAction = ({
 
           <p>{text}</p>
 
-          <Link href={paths.requestQuote}>
-            <a className="btn btn-outline-primary">Book Now</a>
+          <Link href={paths.requestQuote} className="btn btn-outline-primary">
+            Book Now
           </Link>
         </div>
       </div>

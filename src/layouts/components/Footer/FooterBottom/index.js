@@ -18,12 +18,12 @@ const FooterBottom = () => {
             <ul className={styles.menu}>
               <li>
                 <Link href={paths.privacy}>
-                  <a>Privacy Policy</a>
+                  Privacy Policy
                 </Link>
               </li>
               <li>
                 <Link href={paths.terms}>
-                  <a>Terms & Conditions</a>
+                  Terms & Conditions
                 </Link>
               </li>
             </ul>

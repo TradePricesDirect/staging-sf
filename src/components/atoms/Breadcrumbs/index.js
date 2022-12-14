@@ -17,12 +17,7 @@ const Breadcrumbs = ({ breadcrumbs }) => {
           itemProp="itemListElement"
           itemType="https://schema.org/ListItem"
         >
-          <Link href={paths.home}>
-            <a itemProp="item">
-              <span itemProp="name">Home</span>
-            </a>
-          </Link>
-
+          <Link href={paths.home}>{"Home"}</Link>
           <meta itemProp="position" content="1" />
         </li>
 
@@ -34,17 +29,7 @@ const Breadcrumbs = ({ breadcrumbs }) => {
             itemType="https://schema.org/ListItem"
             className={clsx(index === breadcrumbs.length - 1 && styles.active)}
           >
-            <Link href={breadcrumb.href}>
-              <a
-                itemScope
-                itemType="https://schema.org/WebPage"
-                itemProp="item"
-                itemID={breadcrumb.href}
-              >
-                <span itemProp="name">{breadcrumb.name}</span>
-              </a>
-            </Link>
-
+            <Link href={breadcrumb.href}>${breadcrumb.name}</Link>
             <meta itemProp="position" content={index + 2} />
           </li>
         ))}

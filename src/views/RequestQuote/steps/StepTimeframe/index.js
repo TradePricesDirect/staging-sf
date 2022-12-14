@@ -6,12 +6,12 @@ const StepTimeframe = ({ selected, onChange }) => {
   return (
     <fieldset>
       <legend className={styles.title}>
-        My <strong>timeframe</strong> for starting is...
+        {"My "}<strong>{"timeframe"}</strong>{" for starting is..."}
       </legend>
 
       <p className={styles.lead}>
-        Let us know roughly when you're looking to start your project, or if
-        you're just browsing.
+        {`Let us know roughly when you're looking to start your project, or if
+        you're just browsing.`}
       </p>
 
       <div className={styles.grid}>

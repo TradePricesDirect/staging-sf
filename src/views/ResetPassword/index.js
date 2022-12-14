@@ -64,8 +64,8 @@ const ResetPasswordSuccess = () => {
     <Auth title="Password Updated">
       <p>Your password has been updated.</p>
 
-      <Link href={paths.home}>
-        <a className="btn btn-primary w-50">Back to Home</a>
+      <Link href={paths.home} className="btn btn-primary w-50">
+        Back to Home
       </Link>
     </Auth>
   );
@@ -78,8 +78,8 @@ const ResetPasswordExpired = () => {
         This password reset link has expired. Please request it again.
       </div>
 
-      <Link href={paths.forgotPassword}>
-        <a className="btn btn-primary w-50">Forgot Password</a>
+      <Link href={paths.forgotPassword} className="btn btn-primary w-50">
+        Forgot Password
       </Link>
     </Auth>
   );

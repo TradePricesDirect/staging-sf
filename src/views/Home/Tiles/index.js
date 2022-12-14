@@ -109,10 +109,8 @@ const Tile = ({
       <TileContent />
     </button>
   ) : (
-    <Link href={path}>
-      <a className={styles.tile} data-color={colour}>
-        <TileContent />
-      </a>
+    <Link href={path} className={styles.tile} data-color={colour}>
+      <TileContent />
     </Link>
   );
 };

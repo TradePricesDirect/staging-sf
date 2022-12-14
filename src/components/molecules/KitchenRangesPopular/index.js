@@ -80,7 +80,7 @@ const KitchenRangesPopular = ({ title, description, viewAll, ranges }) => {
             <div className="col-12 col-sm-auto">
               {viewAll && (
                 <Link href={viewAll}>
-                  <a className="btn btn-sm btn-circle me-4">View All</a>
+                  {"View All"}
                 </Link>
               )}
 
@@ -112,8 +112,8 @@ const KitchenRangesPopular = ({ title, description, viewAll, ranges }) => {
         <div className={styles.carousel}>
           {slides.map(({ id, title, slug, image }, index) => (
             <div key={`popular-range-${id}`} className={styles.slide}>
-              <Link href={paths.kitchenRange.replace("[slug]", slug)}>
-                <a className={styles.inner}>
+              <Link href={paths.kitchenRange.replace("[slug]", slug)} className={styles.inner}>
+                <>
                   <div
                     className={styles.parallax}
                     style={{
@@ -140,7 +140,8 @@ const KitchenRangesPopular = ({ title, description, viewAll, ranges }) => {
                     highlightColor="#ced4da"
                     className={styles.loader}
                   />
-                </a>
+                </>
+
               </Link>
             </div>
           ))}

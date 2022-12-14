@@ -79,8 +79,8 @@ const AddToWishlist = ({
           <div className={styles.header}>
             <h4 className={styles.title}>Save to List</h4>
 
-            <Link href={paths.wishlists}>
-              <a className="btn btn-sm btn-link text-secondary">Create List</a>
+            <Link href={paths.wishlists} className="btn btn-sm btn-link text-secondary">
+              Create List
             </Link>
           </div>
 

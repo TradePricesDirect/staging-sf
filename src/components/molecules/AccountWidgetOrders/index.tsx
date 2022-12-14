@@ -49,7 +49,7 @@ const AccountWidgetOrders = () => {
                 <Link
                   href={{ pathname: paths.account.order, query: { token } }}
                 >
-                  <a>View</a>
+                  {"View"}
                 </Link>
               </td>
             </tr>

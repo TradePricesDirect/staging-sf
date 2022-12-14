@@ -62,10 +62,8 @@ const LuxuryGrid = ({ title, subtitle, content, images }) => {
                 <h4>{content.subtitle}</h4>
                 <h3>{content.title}</h3>
                 <p>{content.text}</p>
-                <Link href={content.button.href}>
-                  <a className="btn btn-outline-primary">
-                    {content.button.text}
-                  </a>
+                <Link href={content.button.href} className="btn btn-outline-primary">
+                  {content.button.text}
                 </Link>
               </div>
             </div>

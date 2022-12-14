@@ -16,7 +16,7 @@ const WidgetCategory = ({ categories }) => {
         {categoryList.map((category) => (
           <li key={category.id}>
             <Link href={paths.category.replace("[slug]", category.slug)}>
-              <a>{category.name}</a>
+              {category.name}
             </Link>
           </li>
         ))}

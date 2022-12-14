@@ -20,26 +20,24 @@ const WishlistTile = ({ wishlist }) => {
 
   return (
     <div className={styles.wrap}>
-      <Link href={url}>
-        <a className={styles.card}>
-          <div className={styles.gallery}>
-            {images.map((image, index) => {
-              return (
-                <div
-                  key={`image-${wishlist.id}-${index}`}
-                  className={styles.item}
-                >
-                  {image && <Thumbnail thumbnail={image} />}
-                </div>
-              );
-            })}
-          </div>
+      <Link href={url} className={styles.card}>
+        <div className={styles.gallery}>
+          {images.map((image, index) => {
+            return (
+              <div
+                key={`image-${wishlist.id}-${index}`}
+                className={styles.item}
+              >
+                {image && <Thumbnail thumbnail={image} />}
+              </div>
+            );
+          })}
+        </div>
 
-          <div className={styles.content}>
-            <h4 className={styles.name}>{wishlist.name}</h4>
-            <p className={styles.count}>{pluralize(lineCount, "item")}</p>
-          </div>
-        </a>
+        <div className={styles.content}>
+          <h4 className={styles.name}>{wishlist.name}</h4>
+          <p className={styles.count}>{pluralize(lineCount, "item")}</p>
+        </div>
       </Link>
 
       <DeleteWishlistButton id={wishlist.id} className={styles.delete} />

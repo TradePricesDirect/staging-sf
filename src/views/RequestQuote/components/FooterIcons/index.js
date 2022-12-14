@@ -43,15 +43,12 @@ const FooterIcons = () => {
         >
           <ul className={styles.list}>
             <motion.li variants={item}>
-              <Link href={paths.about}>
-                <a className={styles.link}>
-                  <img
-                    className={styles.image}
-                    src="/images/request-quote/cta-faqs.svg"
-                  />
-
-                  <h4 className={styles.title}>FAQ's</h4>
-                </a>
+              <Link href={paths.about} className={styles.link}>
+                <img
+                  className={styles.image}
+                  src="/images/request-quote/cta-faqs.svg"
+                />
+                <h4 className={styles.title}>{"FAQ's"}</h4>
               </Link>
             </motion.li>
             <motion.li variants={item}>
@@ -60,12 +57,11 @@ const FooterIcons = () => {
                   className={styles.image}
                   src="/images/request-quote/cta-chat.svg"
                 />
-
-                <h4 className={styles.title}>Start Live Chat</h4>
+                <h4 className={styles.title}>{"Start Live Chat"}</h4>
               </span>
             </motion.li>
             <motion.li variants={item}>
-              <a
+              <Link
                 className={styles.link}
                 href={`tel:${SUPPORT_PHONE.replace(/ /g, "")}`}
               >
@@ -74,8 +70,8 @@ const FooterIcons = () => {
                   src="/images/request-quote/cta-call.svg"
                 />
 
-                <h4 className={styles.title}>Call Us</h4>
-              </a>
+                <h4 className={styles.title}>{"Call Us"}</h4>
+              </Link>
             </motion.li>
           </ul>
         </motion.div>

@@ -25,10 +25,8 @@ const CheckoutHeader = () => {
               </li>
               <li>
                 <Link href={paths.basket}>
-                  <a>
-                    <FontAwesomeIcon icon={faShoppingBasket} />
-                    Back to Basket
-                  </a>
+                  <FontAwesomeIcon icon={faShoppingBasket} />
+                  Back to Basket
                 </Link>
               </li>
             </ul>

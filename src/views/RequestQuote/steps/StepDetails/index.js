@@ -26,13 +26,13 @@ export default function StepDetails({ onSubmit }) {
   return (
     <fieldset>
       <legend className={styles.title}>
-        You're at the finish line, register now & <strong>start saving</strong>
-        ...
+        {"You're at the finish line, register now & "}<strong>{"start saving"}</strong>
+        {"..."}
       </legend>
 
       <p className={styles.lead}>
-        This is it - one more step and you'll get access to 100's of top brands
-        at rock bottom prices.
+        {` This is it - one more step and you'll get access to 100's of top brands
+        at rock bottom prices.`}
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

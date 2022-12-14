@@ -32,8 +32,8 @@ const CategoryCarousel = ({ title, viewAll, categories }) => {
             </div>
             <div className="col-12 col-sm-auto">
               {viewAll && (
-                <Link href={viewAll}>
-                  <a className="btn btn-sm btn-circle me-4">View All</a>
+                <Link href={viewAll} className="btn btn-sm btn-circle me-4">
+                  View All
                 </Link>
               )}
 

@@ -10,8 +10,8 @@ const ForgotPasswordSuccessPage = () => {
         reset your password.
       </p>
 
-      <Link href={paths.login}>
-        <a className="btn btn-primary w-100">Back to Sign In</a>
+      <Link href={paths.login} className="btn btn-primary w-100">
+        Back to Sign In
       </Link>
     </Auth>
   );

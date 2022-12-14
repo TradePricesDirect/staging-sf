@@ -20,18 +20,18 @@ const ThankYouPage = ({ order, token }) => {
           </p>
         ) : (
           <p>
-            We've emailed you an order confirmation, and we'll notify you when
-            the order has been shipped.
+            {`We've emailed you an order confirmation, and we'll notify you when
+            the order has been shipped.`}
           </p>
         )}
 
         <div className={styles.buttons}>
-          <Link href={{ pathname: paths.account.order, query: { token } }}>
-            <a className="btn btn-circle">Order Details</a>
+          <Link href={{ pathname: paths.account.order, query: { token } }} className="btn btn-circle">
+            Order Details
           </Link>
 
-          <Link href={paths.home}>
-            <a className="btn btn-circle">Continue Shopping</a>
+          <Link href={paths.home} className="btn btn-circle">
+            Continue Shopping
           </Link>
         </div>
       </div>

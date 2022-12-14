@@ -67,11 +67,11 @@ const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
       <FeaturedCarousel
         viewAll={config.bathroomsUrl}
         slides={[
-          <FeaturedSynergy />,
-          <FeaturedMultipanel />,
-          <FeaturedGrohe />,
-          <FeaturedPalio />,
-          <FeaturedXLJoinery />,
+          <FeaturedSynergy key="bathrooms-featured-carousel-synergy" />,
+          <FeaturedMultipanel key="bathrooms-featured-carousel-multipanel" />,
+          <FeaturedGrohe key="bathrooms-featured-carousel-grohe" />,
+          <FeaturedPalio key="bathrooms-featured-carousel-palio" />,
+          <FeaturedXLJoinery key="bathrooms-featured-carousel-xljoinery" />,
         ]}
       />
 

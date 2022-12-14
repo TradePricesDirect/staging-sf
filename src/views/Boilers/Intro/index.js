@@ -20,9 +20,9 @@ const Intro = () => {
               <h2>No Cold Shocks, Just Affordable Boilers on Finance</h2>
 
               <p>
-                At Trade Prices Direct, we've reinvented the way people get gas,
+                {`At Trade Prices Direct, we've reinvented the way people get gas,
                 oil, LPG and electric boilers. We make it easy to compare your
-                options, understand costs, and finance your boiler.
+                options, understand costs, and finance your boiler.`}
               </p>
 
               <p>
@@ -30,8 +30,8 @@ const Intro = () => {
                 Get approved within minutes.
               </p>
 
-              <Link href={paths.finance}>
-                <a className="btn btn-outline-primary">Boiler Finance</a>
+              <Link href={paths.finance} className="btn btn-outline-primary">
+                Boiler Finance
               </Link>
             </div>
           </div>

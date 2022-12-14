@@ -42,12 +42,9 @@ const OrderTable = ({ orders }) => {
                   <OrderStatus status={statusDisplay} />
                 </td>
                 <td className={styles.actionColumn}>
-                  <Link
-                    href={{ pathname: paths.account.order, query: { token } }}
-                  >
-                    <a className="btn btn-sm btn-outline-primary">
-                      <FontAwesomeIcon icon={faEye} />
-                    </a>
+                  <Link href={{ pathname: paths.account.order, query: { token } }}
+                    className="btn btn-sm btn-outline-primary">
+                    <FontAwesomeIcon icon={faEye} />
                   </Link>
                 </td>
               </tr>

@@ -32,10 +32,8 @@ const TradespersonPage = () => {
               mention access to over a million products at trade prices.
             </p>
 
-            <Link href={paths.register}>
-              <a className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
-                Register For Free
-              </a>
+            <Link href={paths.register} className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
+              Register For Free
             </Link>
 
             <br className="d-block d-sm-none" />

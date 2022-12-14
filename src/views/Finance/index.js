@@ -30,10 +30,8 @@ const FinancePage = () => {
               Propensio or Klarna.
             </p>
 
-            <Link href={paths.register}>
-              <a className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
-                Register & Shop
-              </a>
+            <Link href={paths.register} className="btn btn-primary mb-4 me-sm-8 mb-sm-0">
+              {"Register & Shop"}
             </Link>
 
             <br className="d-block d-sm-none" />

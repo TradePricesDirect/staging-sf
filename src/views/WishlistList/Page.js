@@ -59,11 +59,9 @@ const Page = ({ wishlist }) => {
       <header className={styles.header}>
         <div className="row align-items-end justify-content-between">
           <div className="col-12 col-sm-auto">
-            <Link href="/lists">
-              <a className="btn btn-sm btn-link mb-4">
-                <FontAwesomeIcon icon={faArrowLeft} className="me-2" />
-                Back to lists
-              </a>
+            <Link href="/lists" className="btn btn-sm btn-link mb-4">
+              <FontAwesomeIcon icon={faArrowLeft} className="me-2" />
+              Back to lists
             </Link>
 
             <h2>{wishlist.name}</h2>

@@ -14,13 +14,13 @@ const Intro = () => {
         <div className="row align-items-center">
           <div className="col-12 col-md-6 order-md-2">
             <div className={styles.content}>
-              <h3>Get Affordable Finance</h3>
-              <h2>Don't sacrifice...Spread the cost with flexible payments</h2>
+              <h3>{"Get Affordable Finance"}</h3>
+              <h2>{"Don't sacrifice...Spread the cost with flexible payments"}</h2>
 
               <p>
-                Transforming your home doesn't have to mean breaking the bank or
+                {`Transforming your home doesn't have to mean breaking the bank or
                 spending a fortune. There's a better way. You can get the look
-                you want, when you want with unbeatable financing options.
+                you want, when you want with unbeatable financing options.`}
               </p>
 
               <ul className={styles.options}>
@@ -32,7 +32,7 @@ const Intro = () => {
                       height={85}
                     />
                   </div>
-                  <span>Over £1,000</span>
+                  <span>{"Over £1,000"}</span>
                 </li>
 
                 <li className={styles.option}>

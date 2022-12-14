@@ -21,14 +21,14 @@ const LoginPage = () => {
       <p className="mt-4 text-muted">
         Forgotten your password?{" "}
         <Link href={paths.forgotPassword}>
-          <a>Click Here</a>
+          Click Here
         </Link>
       </p>
 
       <Separator />
 
-      <Link href={paths.register}>
-        <a className="btn btn-outline-primary w-100">Create an account</a>
+      <Link href={paths.register} className="btn btn-outline-primary w-100">
+        Create an account
       </Link>
     </Auth>
   );

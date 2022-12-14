@@ -36,8 +36,8 @@ const CartItem = ({
         {isCheckout ? (
           <span className={styles.name}>{variant.product.name}</span>
         ) : (
-          <Link href={paths.product.replace("[slug]", variant.product.slug)}>
-            <a className={styles.name}>{variant.product.name}</a>
+          <Link href={paths.product.replace("[slug]", variant.product.slug)} className={styles.name}>
+            {variant.product.name}
           </Link>
         )}
 

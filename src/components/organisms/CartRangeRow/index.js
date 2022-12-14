@@ -54,10 +54,8 @@ const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
     <div className={styles.wrap}>
       <div className={styles.row}>
         <div className="col-auto">
-          <Link href={path}>
-            <a className={styles.thumbnail}>
-              <Thumbnail thumbnail={range.thumbnail} />
-            </a>
+          <Link href={path} className={styles.thumbnail}>
+            <Thumbnail thumbnail={range.thumbnail} />
           </Link>
         </div>
 
@@ -66,8 +64,8 @@ const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
             <div className={styles.body}>
               <div className="row justify-content-between gx-4">
                 <div className="col-12 col-sm">
-                  <Link href={path}>
-                    <a className={styles.name}>{range.name}</a>
+                  <Link href={path} className={styles.name}>
+                    {range.name}
                   </Link>
 
                   <ul className={styles.variants}>
@@ -105,11 +103,11 @@ const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
                   </button>
                 </div>
                 <div className="col-auto">
-                  <Link href={path}>
-                    <a className="btn btn-sm text-primary">
+                  <Link href={path} className="btn btn-sm text-primary">
+                    <>
                       <FontAwesomeIcon icon={faEdit} />
                       <span className="visually-hidden">Edit this item</span>
-                    </a>
+                    </>
                   </Link>
 
                   <button

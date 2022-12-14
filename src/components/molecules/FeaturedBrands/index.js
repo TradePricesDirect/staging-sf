@@ -9,12 +9,9 @@ const FeaturedBrands = ({ brands }) => {
       <ul className={styles.list}>
         {brands.map(({ name, href, backgroundImage }) => (
           <li key={backgroundImage}>
-            <Link href={href}>
-              <a className={styles.brand}>
-                <Image src={backgroundImage} alt="name" layout="fill" />
-
-                <span className="visually-hidden">{name}</span>
-              </a>
+            <Link href={href} className={styles.brand}>
+              <Image src={backgroundImage} alt="name" layout="fill" />
+              <span className="visually-hidden">{name}</span>
             </Link>
           </li>
         ))}

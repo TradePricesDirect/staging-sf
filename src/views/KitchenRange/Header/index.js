@@ -14,8 +14,8 @@ const Header = ({ title, subtitle }) => {
               <p className={styles.subtitle}>{subtitle}</p>
             </div>
             <div className="col-12 col-md-auto">
-              <Link href={paths.requestQuote}>
-                <a className="btn btn-primary">Get Quote</a>
+              <Link href={paths.requestQuote} className="btn btn-primary">
+                Get Quote
               </Link>
             </div>
           </div>

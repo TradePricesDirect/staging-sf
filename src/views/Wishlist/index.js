@@ -15,8 +15,8 @@ const WishlistView = () => {
         <>
           <hr />
 
-          <Link href={paths.wishlistsManage}>
-            <a className="btn btn-outline-primary">Search Wishlists</a>
+          <Link href={paths.wishlistsManage} className="btn btn-outline-primary">
+            Search Wishlists
           </Link>
         </>
       )}

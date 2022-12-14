@@ -17,10 +17,8 @@ const OrderLine = ({
       <td scope="row">
         <div className={styles.content}>
           {variant && (
-            <Link href={paths.product.replace("[slug]", variant.product.slug)}>
-              <a className={styles.thumbnail}>
-                <Thumbnail thumbnail={variant.product.thumbnail} />
-              </a>
+            <Link href={paths.product.replace("[slug]", variant.product.slug)} className={styles.thumbnail}>
+              <Thumbnail thumbnail={variant.product.thumbnail} />
             </Link>
           )}
 
@@ -28,9 +26,9 @@ const OrderLine = ({
             {variant ? (
               <>
                 <Link
-                  href={paths.product.replace("[slug]", variant.product.slug)}
+                  href={paths.product.replace("[slug]", variant.product.slug)} className={styles.name}
                 >
-                  <a className={styles.name}>{variant.product.name}</a>
+                  {variant.product.name}
                 </Link>
 
                 <p className={styles.sku}>{variant.sku}</p>

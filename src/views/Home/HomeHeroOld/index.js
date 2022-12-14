@@ -37,13 +37,13 @@ const HomeHero = () => {
                 Shop Now
               </button>
             ) : (
-              <Link href={paths.register}>
-                <a className="btn btn-secondary">Register & Shop</a>
+              <Link href={paths.register} className="btn btn-secondary">
+                Register & Shop
               </Link>
             )}
 
-            <Link href={paths.requestQuote}>
-              <a className="btn btn-outline-white">Request a Quote</a>
+            <Link href={paths.requestQuote} className="btn btn-outline-white">
+              Request a Quote
             </Link>
           </div>
 

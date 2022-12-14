@@ -46,10 +46,8 @@ const WishlistRangeItem = ({ range }) => {
     <div className={styles.wrap}>
       <div className={styles.row}>
         <div className="col-auto col-md-3 col-lg-2">
-          <Link href={path}>
-            <a className={styles.thumbnail}>
-              <Thumbnail thumbnail={range.thumbnail} />
-            </a>
+          <Link href={path} className={styles.thumbnail}>
+            <Thumbnail thumbnail={range.thumbnail} />
           </Link>
         </div>
 
@@ -58,8 +56,8 @@ const WishlistRangeItem = ({ range }) => {
             <div className={styles.body}>
               <div className="row justify-content-between gx-4">
                 <div className="col-12 col-sm">
-                  <Link href={path}>
-                    <a className={styles.name}>{range.name}</a>
+                  <Link href={path} className={styles.name}>
+                    {range.name}
                   </Link>
 
                   <ul className={styles.variants}>
@@ -97,11 +95,10 @@ const WishlistRangeItem = ({ range }) => {
                   </button>
                 </div>
                 <div className="col-auto">
-                  <Link href={path}>
-                    <a className="btn btn-sm">
-                      <FontAwesomeIcon icon={faEdit} />
-                      <span className="visually-hidden">Edit this item</span>
-                    </a>
+                  <Link href={path} className="btn btn-sm">
+                    <FontAwesomeIcon icon={faEdit} />
+                    <span className="visually-hidden">Edit this item</span>
+
                   </Link>
 
                   <AddRangeToWishlist

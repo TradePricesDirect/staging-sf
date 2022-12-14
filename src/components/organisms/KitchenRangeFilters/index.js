@@ -41,10 +41,8 @@ const KitchenRangeFilters = ({ filters, onFiltersChange }) => {
           </button>
         </div>
         <div className="col-auto">
-          <Link href={paths.requestQuote}>
-            <a className="btn btn-sm btn-outline-secondary">
-              Book Free Consultation
-            </a>
+          <Link href={paths.requestQuote} className="btn btn-sm btn-outline-secondary">
+            Book Free Consultation
           </Link>
         </div>
       </div>
@@ -91,21 +89,20 @@ const KitchenRangeFilters = ({ filters, onFiltersChange }) => {
                 );
               })}
 
-              <Link href={paths.requestQuote}>
-                <a
-                  className={clsx(
-                    styles.tile,
-                    hasFilters && styles.faded,
-                    "d-none d-xl-block"
-                  )}
-                >
+              <Link href={paths.requestQuote} className={clsx(
+                styles.tile,
+                hasFilters && styles.faded,
+                "d-none d-xl-block"
+              )}>
+                <>
                   <Image
                     src="/images/consultation-thumbnail.jpg"
                     alt=""
                     layout="fill"
                   />
                   <h3 className={styles.label}>Book Free Consultation</h3>
-                </a>
+                </>
+
               </Link>
             </div>
           </motion.div>

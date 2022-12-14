@@ -7,7 +7,7 @@ import styles from "./Banner.module.scss";
 
 const registerLink = (
   <Link href={paths.register}>
-    <a>Register now!</a>
+    Register now!
   </Link>
 );
 

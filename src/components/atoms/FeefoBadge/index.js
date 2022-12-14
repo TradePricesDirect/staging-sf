@@ -9,7 +9,7 @@ const FeefoBadge = ({
 }) => {
   return (
     <div className={clsx(styles.badge, className)}>
-      <a href={url} target="_blank">
+      <a href={url} target="_blank" rel="noreferrer">
         <img alt="Feefo logo" src={src} title={title} />
       </a>
     </div>

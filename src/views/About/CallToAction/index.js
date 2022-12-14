@@ -21,8 +21,8 @@ const CallToAction = () => {
               costs.
             </p>
 
-            <Link href={paths.register}>
-              <a className="btn btn-primary">Register & Shop</a>
+            <Link href={paths.register} className="btn btn-primary">
+              Register & Shop
             </Link>
           </div>
         </div>

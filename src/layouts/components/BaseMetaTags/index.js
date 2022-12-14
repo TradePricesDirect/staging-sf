@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { META_DEFAULTS } from "core/config";
 import { apiUrl } from "core/constants";
+import Link from "next/link";
 
 const BaseMetaTags = () => {
   return (
     <Head>
-      <link rel="preconnect" href={apiUrl} />
+      <Link rel="preconnect" href={apiUrl} />
 
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +15,7 @@ const BaseMetaTags = () => {
       <meta name="description" content={META_DEFAULTS.description} />
 
       {/* Custom Font */}
-      <link rel="stylesheet" href="https://use.typekit.net/vlg3ild.css" />
+      <Link rel="stylesheet" href="https://use.typekit.net/vlg3ild.css" />
 
       {/* Open Graph Tags */}
       <meta key="og:title" property="og:title" content={META_DEFAULTS.title} />
@@ -45,13 +46,13 @@ const BaseMetaTags = () => {
         sizes="16x16"
         href="/favicons/favicon-16x16.png"
       />
-      <link rel="manifest" href="/favicons/site.webmanifest" />
+      <Link rel="manifest" href="/favicons/site.webmanifest" />
       <link
         rel="mask-icon"
         href="/favicons/safari-pinned-tab.svg"
         color="#03284c"
       />
-      <link rel="shortcut icon" href="/favicons/favicon.ico" />
+      <Link rel="shortcut icon" href="/favicons/favicon.ico" />
       <meta name="msapplication-TileColor" content="#fc902b" />
       <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
       <meta name="theme-color" content="#ffffff" />

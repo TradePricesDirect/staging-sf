@@ -67,8 +67,8 @@ const IconGrid = () => {
           />
         </div>
 
-        <Link href={paths.register}>
-          <a className="btn btn-primary">Register For Free</a>
+        <Link href={paths.register} className="btn btn-primary">
+          Register For Free
         </Link>
       </div>
     </div>

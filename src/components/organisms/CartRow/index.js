@@ -14,10 +14,8 @@ const CartRow = ({ variant, quantity, totalPrice, onRemove, onUpdate }) => {
   return (
     <div className={styles.wrap}>
       <div className="col-auto">
-        <Link href={paths.product.replace("[slug]", variant.product.slug)}>
-          <a className={styles.thumbnail}>
-            <Thumbnail thumbnail={variant.product.thumbnail} />
-          </a>
+        <Link href={paths.product.replace("[slug]", variant.product.slug)} className={styles.thumbnail}>
+          <Thumbnail thumbnail={variant.product.thumbnail} />
         </Link>
       </div>
 
@@ -27,9 +25,9 @@ const CartRow = ({ variant, quantity, totalPrice, onRemove, onUpdate }) => {
             <div className="row justify-content-between gx-4">
               <div className="col-12 col-sm">
                 <Link
-                  href={paths.product.replace("[slug]", variant.product.slug)}
+                  href={paths.product.replace("[slug]", variant.product.slug)} className={styles.name}
                 >
-                  <a className={styles.name}>{variant.product.name}</a>
+                  {variant.product.name}
                 </Link>
 
                 <p className={styles.sku}>{variant.sku}</p>

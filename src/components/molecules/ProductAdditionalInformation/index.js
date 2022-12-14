@@ -61,6 +61,7 @@ const ProductAdditionalInformation = ({ product, variant }) => {
                               key={value.id}
                               href={fileUrl}
                               target="_blank"
+                              rel="noreferrer"
                               download
                             >
                               {value.name}

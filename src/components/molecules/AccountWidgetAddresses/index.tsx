@@ -6,8 +6,8 @@ import styles from "./AccountWidgetAddresses.module.scss";
 const AccountWidgetAddresses = () => {
   const { user } = useAuth();
 
-  const shippingAddress = formatAddress(user.defaultShippingAddress, ", ");
-  const billingAddress = formatAddress(user.defaultBillingAddress, ", ");
+  const shippingAddress = formatAddress(user?.defaultShippingAddress, ", ");
+  const billingAddress = formatAddress(user?.defaultBillingAddress, ", ");
 
   return (
     <>

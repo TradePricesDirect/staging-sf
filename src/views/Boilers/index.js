@@ -59,7 +59,11 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
       />
 
       <FeaturedCarousel
-        slides={[<FeaturedVaillant />, <FeaturedTado />, <FeaturedFernox />]}
+        slides={[
+          <FeaturedVaillant key="boilers-featured-carousel-vaillant" />,
+          <FeaturedTado key="boilers-featured-carousel-tado" />,
+          <FeaturedFernox key="boilers-featured-carousel-fernox" />
+        ]}
       />
 
       {/* <CategoryCarousel

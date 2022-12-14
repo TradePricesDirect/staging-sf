@@ -14,7 +14,7 @@ const RequestQuoteThankYouPage = ({ categoriesLevel0, categoriesLevel1 }) => {
     <>
       <div className="container py-8 text-center">
         <h1 className={styles.title}>
-          <strong>Congratulations</strong> you're all set...
+          <strong>Congratulations</strong>{" you're all set..."}
         </h1>
 
         <p className={styles.intro}>
@@ -23,32 +23,32 @@ const RequestQuoteThankYouPage = ({ categoriesLevel0, categoriesLevel1 }) => {
 
         {user ? (
           <div className={styles.buttons}>
-            <Link href={paths.account.dashboard}>
-              <a className="btn btn-circle">Manage Account</a>
+            <Link href={paths.account.dashboard} className="btn btn-circle">
+              Manage Account
             </Link>
 
-            <Link href={paths.home}>
-              <a className="btn btn-circle">Browse Shop</a>
+            <Link href={paths.home} className="btn btn-circle">
+              Browse Shop
             </Link>
 
-            <Link href={paths.wishlists}>
-              <a className="btn btn-circle">Start a Wishlist</a>
+            <Link href={paths.wishlists} className="btn btn-circle">
+              Start a Wishlist
             </Link>
           </div>
         ) : (
           <>
             <p className={styles.lead}>
-              In the meantime, create an account and browse our huge range of
-              products from 100's of top brands.
+              {`In the meantime, create an account and browse our huge range of
+              products from 100's of top brands.`}
             </p>
 
             <div className={styles.buttons}>
-              <Link href={paths.register}>
-                <a className="btn btn-primary">Create an Account</a>
+              <Link href={paths.register} className="btn btn-primary">
+                Create an Account
               </Link>
 
-              <Link href={paths.home}>
-                <a className="btn btn-outline-primary">Back to Home</a>
+              <Link href={paths.home} className="btn btn-outline-primary">
+                Back to Home
               </Link>
             </div>
           </>

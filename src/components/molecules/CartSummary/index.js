@@ -68,8 +68,8 @@ const CartSummary = () => {
       </table>
 
       <div className="d-grid">
-        <Link href={paths.checkout}>
-          <a className="btn btn-secondary">Proceed to Checkout</a>
+        <Link href={paths.checkout} className="btn btn-secondary">
+          Proceed to Checkout
         </Link>
       </div>
     </div>

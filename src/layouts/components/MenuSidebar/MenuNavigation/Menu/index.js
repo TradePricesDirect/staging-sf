@@ -45,16 +45,12 @@ const CategoryLink = ({ item }) => {
   if (hasChildren) {
     return (
       <>
-        <Link href={url}>
-          <a
-            className={clsx(styles.link, styles.hasChildren)}
-            onClick={handleClick}
-          >
-            <div className={styles.icon}>
-              <FontAwesomeIcon icon={isOpen ? faMinus : faPlus} fixedWidth />
-            </div>
-            {item.name}
-          </a>
+        <Link href={url} className={clsx(styles.link, styles.hasChildren)}
+          onClick={handleClick}>
+          <div className={styles.icon}>
+            <FontAwesomeIcon icon={isOpen ? faMinus : faPlus} fixedWidth />
+          </div>
+          {item.name}
         </Link>
 
         <AnimatePresence>
@@ -67,10 +63,9 @@ const CategoryLink = ({ item }) => {
               exit={{ height: 0 }}
             >
               <>
-                <Link href={url}>
-                  <a className={styles.link}>Shop All {item.name}</a>
+                <Link href={url} className={styles.link}>
+                  {"Shop All "}{item.name}
                 </Link>
-
                 {item.children.map((child) => (
                   <CategoryLink key={child.id} item={child} />
                 ))}
@@ -83,16 +78,16 @@ const CategoryLink = ({ item }) => {
   }
 
   return (
-    <Link href={url}>
-      <a className={styles.link}>{item.name}</a>
+    <Link href={url} className={styles.link}>
+      {item.name}
     </Link>
   );
 };
 
 const MenuLink = ({ item: { name, href } }) => {
   return (
-    <Link href={href}>
-      <a className={styles.link}>{name}</a>
+    <Link href={href} className={styles.link}>
+      {name}
     </Link>
   );
 };

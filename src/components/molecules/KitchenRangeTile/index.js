@@ -87,8 +87,8 @@ const KitchenRangeTile = ({ range }) => {
       <div className={styles.content}>
         <div className="row align-items-center justify-content-between gx-4 gy-2">
           <div className="col-auto">
-            <Link href={url}>
-              <a className={styles.title}>{range.title}</a>
+            <Link href={url} className={styles.title}>
+              {range.title}
             </Link>
             {/* <div className={styles.price}>
               <Money
@@ -99,8 +99,8 @@ const KitchenRangeTile = ({ range }) => {
             </div> */}
           </div>
           <div className="col-auto">
-            <Link href={url}>
-              <a className="btn btn-outline-primary">View Range</a>
+            <Link href={url} className="btn btn-outline-primary">
+              View Range
             </Link>
           </div>
         </div>

@@ -65,10 +65,10 @@ const KitchensPage = ({ ranges, kitchens, appliances, finishingTouches }) => {
 
       <FeaturedCarousel
         slides={[
-          <FeaturedQuooker />,
-          <FeaturedAeg />,
-          <FeaturedXLJoinery />,
-          <FeaturedPalio />,
+          <FeaturedQuooker key="featured-quooker" />,
+          <FeaturedAeg key="featured-aeg" />,
+          <FeaturedXLJoinery key="featured-xl-joinery" />,
+          <FeaturedPalio key="featured-palio" />,
         ]}
       />
 

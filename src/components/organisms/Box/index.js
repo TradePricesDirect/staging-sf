@@ -16,10 +16,8 @@ const Box = ({ className, button, href, center, children, ...props }) => {
 
   if (href) {
     return (
-      <Link href={href}>
-        <a className={classes}>
-          <div>{children}</div>
-        </a>
+      <Link href={href} className={classes}>
+        <div>{children}</div>
       </Link>
     );
   }

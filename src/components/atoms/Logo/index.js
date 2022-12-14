@@ -5,14 +5,12 @@ import styles from "./Logo.module.scss";
 
 export default function Logo(props) {
   return (
-    <Link href="/">
-      <a className={styles.link}>
-        <img
-          src="/branding/tpd-site-logo.svg"
-          alt="Trade Prices Direct"
-          className={clsx(styles.logo, props.className)}
-        />
-      </a>
+    <Link href="/" className={styles.link}>
+      <img
+        src="/branding/tpd-site-logo.svg"
+        alt="Trade Prices Direct"
+        className={clsx(styles.logo, props.className)}
+      />
     </Link>
   );
 }

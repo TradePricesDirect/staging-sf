@@ -41,8 +41,8 @@ const FeaturedTile = ({
               <br />
             )}
 
-            <Link href={button.href}>
-              <a className="btn btn-outline-primary">{button.name}</a>
+            <Link href={button.href} className="btn btn-outline-primary">
+              {button.name}
             </Link>
           </div>
         </div>

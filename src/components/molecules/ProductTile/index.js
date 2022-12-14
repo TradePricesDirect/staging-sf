@@ -22,18 +22,16 @@ const ProductTile = ({ product, variant = null }) => {
 
   return (
     <div className={styles.wrap}>
-      <Link href={url}>
-        <a className={styles.link}>
-          <div className={styles.image}>
-            <Thumbnail thumbnail={product.thumbnail2x} />
-          </div>
+      <Link href={url} className={styles.link}>
+        <div className={styles.image}>
+          <Thumbnail thumbnail={product.thumbnail2x} />
+        </div>
 
-          <h2 className={styles.title}>{product.name}</h2>
+        <h2 className={styles.title}>{product.name}</h2>
 
-          <div className={styles.price}>
-            <TaxedMoneyProduct taxedMoney={price} />
-          </div>
-        </a>
+        <div className={styles.price}>
+          <TaxedMoneyProduct taxedMoney={price} />
+        </div>
       </Link>
 
       <div className="text-center">
@@ -45,8 +43,8 @@ const ProductTile = ({ product, variant = null }) => {
             availableForPurchase={product.availableForPurchase}
           />
         ) : (
-          <Link href={url}>
-            <a className="btn btn-outline-primary">View Product</a>
+          <Link href={url} className="btn btn-outline-primary">
+            View Product
           </Link>
         )}
       </div>

@@ -56,8 +56,8 @@ const StripeCreditCardForm = ({ onSubmitPaymentSuccess }) => {
 
         <div className="row">
           <div className="col-auto">
-            <Link href="/checkout/payment">
-              <a className="btn btn-outline-primary">Back</a>
+            <Link href="/checkout/payment" className="btn btn-outline-primary">
+              Back
             </Link>
           </div>
 

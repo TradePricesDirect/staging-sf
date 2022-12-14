@@ -57,15 +57,13 @@ const Step = ({ step, activeStepIndex, maxPossibleStep, numberOfSteps }) => {
   }
 
   return (
-    <Link href={step.link}>
-      <a className={clsx(styles.link, isActive && styles.active)}>
-        0{step.index}
-        <Label
-          stepIndex={step.index}
-          name={step.name}
-          numberOfSteps={numberOfSteps}
-        />
-      </a>
+    <Link href={step.link} className={clsx(styles.link, isActive && styles.active)}>
+      {0}{step.index}
+      <Label
+        stepIndex={step.index}
+        name={step.name}
+        numberOfSteps={numberOfSteps}
+      />
     </Link>
   );
 
@@ -82,7 +80,7 @@ const Step = ({ step, activeStepIndex, maxPossibleStep, numberOfSteps }) => {
   //         />
   //       </span>
   //     ) : (
-  //       <Link href={step.link}>
+  //       <Link  href={step.link}>
   //         <a className={styles.link}>
   //           <Dot stepIndex={step.index} activeStepIndex={activeStepIndex} />
 

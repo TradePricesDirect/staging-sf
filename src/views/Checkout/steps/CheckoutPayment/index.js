@@ -85,8 +85,8 @@ export const CheckoutPayment = ({ onSubmitSuccess }) => {
 
         <div className="row">
           <div className="col-auto">
-            <Link href="/checkout/shipping">
-              <a className="btn btn-outline-primary">Back</a>
+            <Link href="/checkout/shipping" className="btn btn-outline-primary">
+              Back
             </Link>
           </div>
 

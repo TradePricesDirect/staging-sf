@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "@saleor/sdk";
 import paths from "core/paths";
 import Loader from "components/atoms/Loader";
-
+// eslint-disable-next-line react/display-name
 const withAuth = (WrappedComponent) => (props) => {
   const router = useRouter();
   const { user } = useAuth();

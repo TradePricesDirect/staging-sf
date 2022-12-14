@@ -12,8 +12,8 @@ const WishlistGuest = () => {
         Please sign in or register for an account to begin creating lists.
       </p>
 
-      <Link href={paths.register}>
-        <a className="btn btn-primary">Sign in or Create an Account</a>
+      <Link href={paths.register} className="btn btn-primary">
+        Sign in or Create an Account
       </Link>
     </div>
   );

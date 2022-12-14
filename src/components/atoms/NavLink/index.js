@@ -6,10 +6,8 @@ const NavLink = ({ item, children, ...props }) => {
 
   const link = (url) => (
     <Link passHref href={url}>
-      <a {...props}>
-        {name}
-        {children}
-      </a>
+      {name}
+      {children}
     </Link>
   );
 

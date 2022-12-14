@@ -33,8 +33,8 @@ const UserWishlists = ({ userId, onReset }) => {
                   <td>{formatDateTime(wishlist.created_at)}</td>
                   <td>{wishlist.type}</td>
                   <td>
-                    <Link href={paths.wishlist.replace("[id]", wishlist.id)}>
-                      <a className="btn btn-sm btn-outline-primary">View</a>
+                    <Link href={paths.wishlist.replace("[id]", wishlist.id)} className="btn btn-sm btn-outline-primary">
+                      View
                     </Link>
                   </td>
                 </tr>

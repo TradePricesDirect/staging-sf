@@ -6,8 +6,8 @@ const Empty = () => {
     <div className="d-grid">
       <p>You have not created any lists...</p>
 
-      <Link href={paths.wishlists}>
-        <a className="btn btn-primary">Create a list</a>
+      <Link href={paths.wishlists} className="btn btn-primary">
+        Create a list
       </Link>
     </div>
   );

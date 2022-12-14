@@ -9,9 +9,7 @@ const FinanceRibbon = ({ className }) => {
   return (
     <div className={clsx(styles.ribbon, className)}>
       <Link href={paths.finance}>
-        <a>
-          <Ribbon />
-        </a>
+        <Ribbon />
       </Link>
     </div>
   );

@@ -29,16 +29,16 @@ const HomePage = ({ categoriesLevel0, categoriesLevel1, totalCounts }) => {
       <FeaturedCarousel
         viewAll="menu"
         slides={[
-          <FeaturedQuooker />,
-          <FeaturedTado />,
-          <FeaturedMultipanel />,
-          <FeaturedSynergy />,
-          <FeaturedFernox />,
-          <FeaturedAeg />,
-          <FeaturedXLJoinery />,
-          <FeaturedVaillant />,
-          <FeaturedGrohe />,
-          <FeaturedPalio />,
+          <FeaturedQuooker key="home-featured-slide-quooker" />,
+          <FeaturedTado key="home-featured-slide-tado" />,
+          <FeaturedMultipanel key="home-featured-slide-multipanel" />,
+          <FeaturedSynergy key="home-featured-slide-synergy" />,
+          <FeaturedFernox key="home-featured-slide-fernox" />,
+          <FeaturedAeg key="home-featured-slide-aeg" />,
+          <FeaturedXLJoinery key="home-featured-slide-xljoinery" />,
+          <FeaturedVaillant key="home-featured-slide-vaillant" />,
+          <FeaturedGrohe key="home-featured-slide-grohe" />,
+          <FeaturedPalio key="home-featured-slide-palio" />,
         ]}
       />
       <HowItWorks />

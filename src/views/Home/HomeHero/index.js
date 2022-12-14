@@ -16,18 +16,18 @@ const HomeHero = () => {
     <section className={styles.wrap}>
       <div className={styles.content}>
         <div className={styles.body}>
-          <h6>The Wait is Finally Over</h6>
+          <h6>{"The Wait is Finally Over"}</h6>
 
-          <h1>Welcome to The Future of Home Improvement</h1>
+          <h1>{"Welcome to The Future of Home Improvement"}</h1>
 
           <p>
-            We're the nation's first online, consumer-focused home improvement
-            retailer and builders merchant.
+            {`We're the nation's first online, consumer-focused home improvement
+            retailer and builders merchant.`}
           </p>
 
           <p>
-            Revolutionising the industry and passing the savings onto you -
-            let's build it together.
+            {`Revolutionising the industry and passing the savings onto you -
+            let's build it together.`}
           </p>
 
           <div className={styles.buttons}>
@@ -37,11 +37,11 @@ const HomeHero = () => {
                 className="btn btn-primary me-sm-4"
                 onClick={openMenu}
               >
-                Register & Shop
+                {"Register & Shop"}
               </button>
             ) : (
-              <Link href={paths.register}>
-                <a className="btn btn-primary me-sm-4">Register & Shop</a>
+              <Link href={paths.register} className="btn btn-primary me-sm-4">
+                {"Register & Shop"}
               </Link>
             )}
 

@@ -73,8 +73,8 @@ export const CheckoutShipping = ({ onSubmitSuccess }) => {
 
         <div className="row">
           <div className="col-auto">
-            <Link href="/checkout/address">
-              <a className="btn btn-outline-primary">Back</a>
+            <Link href="/checkout/address" className="btn btn-outline-primary">
+              Back
             </Link>
           </div>
 

@@ -72,8 +72,8 @@ const CategoryPopular = ({ title, description, viewAll, slides }) => {
             </div>
             <div className="col-12 col-sm-auto">
               {viewAll && (
-                <Link href={viewAll}>
-                  <a className="btn btn-sm btn-circle me-4">View All</a>
+                <Link href={viewAll} className="btn btn-sm btn-circle me-4">
+                  View All
                 </Link>
               )}
 
@@ -105,8 +105,8 @@ const CategoryPopular = ({ title, description, viewAll, slides }) => {
         <div className={styles.carousel}>
           {slides.map(({ id, name, href, image }, index) => (
             <div key={`popular-${id}`} className={styles.slide}>
-              <Link href={href}>
-                <a className={styles.inner}>
+              <Link href={href} className={styles.inner}>
+                <>
                   <div
                     className={styles.parallax}
                     style={{
@@ -133,7 +133,8 @@ const CategoryPopular = ({ title, description, viewAll, slides }) => {
                     highlightColor="#ced4da"
                     className={styles.loader}
                   />
-                </a>
+                </>
+
               </Link>
             </div>
           ))}

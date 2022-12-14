@@ -15,24 +15,18 @@ const Navigation = () => {
     <div className={styles.wrap}>
       <ul className={styles.menu}>
         <li>
-          <Link href="/category/kitchens">
-            <a className="btn btn-sm" onClick={handleMenuClick("kitchens")}>
-              Kitchens
-            </a>
+          <Link href="/category/kitchens" className="btn btn-sm" onClick={handleMenuClick("kitchens")}>
+            Kitchens
           </Link>
         </li>
         <li>
-          <Link href="/category/bathrooms">
-            <a className="btn btn-sm" onClick={handleMenuClick("bathrooms")}>
-              Bathrooms
-            </a>
+          <Link href="/category/bathrooms" className="btn btn-sm" onClick={handleMenuClick("bathrooms")}>
+            Bathrooms
           </Link>
         </li>
         <li>
-          <Link href="/category/boilers">
-            <a className="btn btn-sm" onClick={handleMenuClick("boilers")}>
-              Boilers
-            </a>
+          <Link href="/category/boilers" className="btn btn-sm" onClick={handleMenuClick("boilers")}>
+            Boilers
           </Link>
         </li>
       </ul>

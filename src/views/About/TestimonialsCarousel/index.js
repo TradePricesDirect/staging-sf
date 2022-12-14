@@ -15,22 +15,22 @@ const slides = [
     text: (
       <>
         <p>
-          We received quotes from Wren for our kitchen and Victorian plumbing
+          {`We received quotes from Wren for our kitchen and Victorian plumbing
           for the bathroom and after looking at various companies came across
           Trade Prices Direct and spoke to a lovely chap called Jason who was
           excellent every step of the way. He provided us with a quote that was
-          a fraction of the price.
+          a fraction of the price.`}
         </p>
         <p>
-          I'm overwhelmed at the level of service I received and would
+          {`I'm overwhelmed at the level of service I received and would
           definitely be recommending this company. Thanks for all your help! We
           will finally have the kitchen and bathroom sorted in time for
-          Christmas.
+          Christmas.`}
         </p>
         <p>
-          Impeccable service from all at TradePricesDirect, from initial contact
+          {`Impeccable service from all at TradePricesDirect, from initial contact
           with myself and my customers to discussing products and ensuring
-          correct items are purchased at an affordable price.
+          correct items are purchased at an affordable price.`}
         </p>
       </>
     ),
@@ -45,15 +45,15 @@ const slides = [
     text: (
       <>
         <p>
-          Had our Worcester Bosch boiler installed Feb 2020. Craig from Trades
+          {`Had our Worcester Bosch boiler installed Feb 2020. Craig from Trades
           Prices Direct talked through the options and advised us on the best
           boiler for our property. The installation was arranged quickly and the
-          whole process from start to finish was smooth and stress free.
+          whole process from start to finish was smooth and stress free.`}
         </p>
 
         <p>
-          Would highly recommend Trade Prices Direct and thank Craig for his
-          fantastic customer service.
+          {`Would highly recommend Trade Prices Direct and thank Craig for his
+          fantastic customer service.`}
         </p>
       </>
     ),
@@ -67,10 +67,10 @@ const slides = [
     text: (
       <>
         <p>
-          Ordered my bathroom suite Friday and was delivered Tuesday as
-          promised. Can't fault the service at all.
+          {`Ordered my bathroom suite Friday and was delivered Tuesday as
+          promised. Can't fault the service at all.`}
         </p>
-        <p>Loving my new bathroom suite.</p>
+        <p>{"Loving my new bathroom suite."}</p>
       </>
     ),
     purchaser: "Kim - Online Customer",

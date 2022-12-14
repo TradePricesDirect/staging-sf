@@ -58,8 +58,8 @@ const FeaturedCarousel = ({ slides, viewAll }) => {
                 View All
               </button>
             ) : (
-              <Link href={viewAll}>
-                <a className="btn btn-sm btn-circle">View All</a>
+              <Link href={viewAll} className="btn btn-sm btn-circle">
+                View All
               </Link>
             ))}
 

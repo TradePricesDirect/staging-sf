@@ -78,7 +78,9 @@ const QuookerContent = () => {
         </div>
       </div>
 
-      <FeaturedCarousel slides={[<FeaturedQuooker />]} />
+      <FeaturedCarousel slides={
+        [<FeaturedQuooker key="seo-featured-carousel-quooker" />
+        ]} />
     </>
   );
 };

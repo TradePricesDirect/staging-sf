@@ -49,8 +49,8 @@ const HowItWorks = () => {
                 pass this saving onto you the consumer.
               </p>
 
-              <Link href={paths.register}>
-                <a className="btn btn-secondary">Register Now</a>
+              <Link href={paths.register} className="btn btn-secondary">
+                Register Now
               </Link>
             </div>
           </div>

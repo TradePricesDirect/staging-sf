@@ -10,8 +10,8 @@ const RegisterPage = () => {
 
       <Separator />
 
-      <Link href={paths.login}>
-        <a className="btn btn-outline-primary w-100">Sign In</a>
+      <Link href={paths.login} className="btn btn-outline-primary w-100">
+        Sign In
       </Link>
     </Auth>
   );

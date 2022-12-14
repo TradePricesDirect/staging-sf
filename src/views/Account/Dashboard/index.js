@@ -30,8 +30,8 @@ const AccountDashboard = () => {
           title="Recent Orders"
           body={<AccountWidgetOrders />}
           footer={
-            <Link href={paths.account.orders}>
-              <a className="btn btn-outline-primary mt-auto">View All</a>
+            <Link href={paths.account.orders} className="btn btn-outline-primary mt-auto">
+              View All
             </Link>
           }
         />
@@ -41,8 +41,8 @@ const AccountDashboard = () => {
           title="Account Details"
           body={<AccountWidgetDetails />}
           footer={
-            <Link href={paths.account.details}>
-              <a className="btn btn-outline-primary">Edit Details</a>
+            <Link href={paths.account.details} className="btn btn-outline-primary">
+              Edit Details
             </Link>
           }
         />
@@ -52,8 +52,8 @@ const AccountDashboard = () => {
           title="Addresses"
           body={<AccountWidgetAddresses />}
           footer={
-            <Link href={paths.account.addresses}>
-              <a className="btn btn-outline-primary">Manage</a>
+            <Link href={paths.account.addresses} className="btn btn-outline-primary">
+              Manage
             </Link>
           }
         />

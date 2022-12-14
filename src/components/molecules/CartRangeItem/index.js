@@ -62,8 +62,8 @@ const CartRangeItem = ({ range, onRemove, onRemoveAll, isCheckout }) => {
           {isCheckout ? (
             <span className={styles.name}>{range.name}</span>
           ) : (
-            <Link href={path}>
-              <a className={styles.name}>{range.name}</a>
+            <Link href={path} className={styles.name}>
+              {range.name}
             </Link>
           )}
 
@@ -92,11 +92,10 @@ const CartRangeItem = ({ range, onRemove, onRemoveAll, isCheckout }) => {
 
             {!isCheckout && (
               <div>
-                <Link href={path}>
-                  <a className="btn btn-sm">
-                    <FontAwesomeIcon icon={faEdit} />
-                    <span className="visually-hidden">Edit this item</span>
-                  </a>
+                <Link href={path} className="btn btn-sm">
+                  <FontAwesomeIcon icon={faEdit} />
+                  <span className="visually-hidden">Edit this item</span>
+
                 </Link>
 
                 <AddRangeToWishlist

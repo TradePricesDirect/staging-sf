@@ -19,20 +19,15 @@ const MenuLink = ({ name, slug, url }) => {
   };
 
   return (
-    <Link href={url}>
-      <a
-        className={clsx(styles.link, isFeatured && styles.hasChildren)}
-        onClick={handleClick}
-      >
-        {name}
-
-        {isFeatured && (
-          <div className={styles.icon}>
-            <FontAwesomeIcon icon={faArrowRight} />
-          </div>
-        )}
-      </a>
-    </Link>
+    <Link href={url} className={clsx(styles.link, isFeatured && styles.hasChildren)}
+      onClick={handleClick}>
+      {name}
+      {isFeatured && (
+        <div className={styles.icon}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </div>
+      )}
+    </Link >
   );
 };
 

@@ -11,50 +11,50 @@ const FAQs = () => {
 
         <Accordion title="How do you offer such cheap prices?" open>
           <p>
-            Over the past 7 years we've built outstanding relationships with
+            {`Over the past 7 years we've built outstanding relationships with
             leading manufacturers. After negotiating rock bottom prices, we
             opted to keep overheads low by selling exclusively on our intuitive
             digital platform. Bringing the showroom experience to the comfort of
-            your home, and all at trade prices.
+            your home, and all at trade prices.`}
           </p>
         </Accordion>
 
         <Accordion title="How much value would a new bathroom add to my home?">
           <p>
-            Having a gorgeous bathroom – one that works in harmony with your
+            {`Having a gorgeous bathroom – one that works in harmony with your
             space, carefully balancing form and function can really increase the
             value of your home. However, the knowledge that you're getting the
             best price, and connected with reliable, trusted and reviewed
-            installers is priceless.
+            installers is priceless.`}
           </p>
         </Accordion>
 
         <Accordion title="Where do I start when buying a new bathroom?">
           <p>
-            Now you've come across Trade Prices Direct you won't need to shop
+            {`Now you've come across Trade Prices Direct you won't need to shop
             anywhere else. Whether you're considering your options or ready to
             get started, our design team is here to help. Start with a free
-            consultation with no commitment or obligation.
+            consultation with no commitment or obligation.`}
           </p>
         </Accordion>
 
         <Accordion title="How much does it cost to put in a new bathroom?">
           <p>
-            The old saying is true: you get what you pay for. But that doesn't
+            {`The old saying is true: you get what you pay for. But that doesn't
             mean you need to pay big retail mark-ups. At Trade Prices Direct, we
             make it easier to get a luxurious fitted bathroom with exclusive
             trade pricing and great finance. That's why our customers love us.
-            And why our competitors don't.
+            And why our competitors don't.`}
           </p>
         </Accordion>
 
         <Accordion title="What should I look for when buying a bathroom?">
           <p>
-            Finding the right fit for your space, family and style can be
+            {`Finding the right fit for your space, family and style can be
             tricky. Trying to juggle quality, costs and tradespeople will never
             be a problem again now you've found Trade Prices Direct. With so
             many products in stock and affordable financing the only limit is
-            your imagination.
+            your imagination.`}
           </p>
         </Accordion>
       </div>

@@ -61,18 +61,14 @@ function IconLink(props) {
   const [hover, setHover] = useState(false);
 
   return (
-    <Link href={props.href}>
-      <a
-        className={clsx("btn btn-sm", styles.link)}
-        title={props.title}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        <div className={styles.icon}>
-          <FontAwesomeIcon icon={hover ? props.hover : props.icon} fixedWidth />
-          <span className="visually-hidden">{props.title}</span>
-        </div>
-      </a>
+    <Link href={props.href} className={clsx("btn btn-sm", styles.link)}
+      title={props.title}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}>
+      <div className={styles.icon}>
+        <FontAwesomeIcon icon={hover ? props.hover : props.icon} fixedWidth />
+        <span className="visually-hidden">{props.title}</span>
+      </div>
     </Link>
   );
 }
