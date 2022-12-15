@@ -14,10 +14,10 @@ const Thumbnail = ({ thumbnail, tall }) => {
   return (
     <div className={clsx(styles.image, tall && styles.tall)}>
       <Image
+        className={styles.thumbImage}
         src={thumbnail.url}
         alt={thumbnail.alt}
-        layout="fill"
-        objectFit="cover"
+        fill
         loading="eager"
       />
     </div>

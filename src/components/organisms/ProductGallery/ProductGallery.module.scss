@@ -90,6 +90,11 @@
   background-color: transparent;
 }
 
+.thumbImage {
+  object-fit: contain;
+  object-position: center;
+}
+
 @media (min-width: 576px) {
   .thumb {
     min-width: 20%;
