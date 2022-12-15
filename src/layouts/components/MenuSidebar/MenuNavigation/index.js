@@ -20,6 +20,21 @@ const variant = {
   },
 };
 
+const featuredCategories = [
+  {
+    name: "Kitchens",
+    slug: "kitchens"
+  },
+  {
+    name: "Bathrooms",
+    slug: "bathrooms"
+  },
+  {
+    name: "Boilers",
+    slug: "boilers"
+  },
+];
+
 const MenuNavigation = ({ categories }) => {
   const overlay = useOverlay();
 
@@ -50,27 +65,15 @@ const MenuNavigation = ({ categories }) => {
           variants={variant}
           transition={{ ease: "easeOut", duration: 0.2 }}
         >
-          {isParent && (
-            <>
-              <SubMenuLink
-                name="Kitchens"
-                slug="kitchens"
-                onClick={() => overlay.show("kitchens")}
-              />
-
-              <SubMenuLink
-                name="Bathrooms"
-                slug="bathrooms"
-                onClick={() => overlay.show("bathrooms")}
-              />
-
-              <SubMenuLink
-                name="Boilers"
-                slug="boilers"
-                onClick={() => overlay.show("boilers")}
-              />
-            </>
-          )}
+          {isParent && featuredCategories.map(category => {
+            const { name, slug } = category;
+            return <SubMenuLink
+              name={name}
+              slug={slug}
+              onClick={() => overlay.show(slug)}
+              key={`submenu-link-${slug}`}
+            />
+          })}
 
           <Menu items={items} />
         </motion.div>
