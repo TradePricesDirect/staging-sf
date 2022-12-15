@@ -7,11 +7,10 @@ const Thumb = ({ image, selected, onClick }) => {
     <div className={clsx(styles.thumb, selected && styles.selected)}>
       <button className={styles.thumbButton} onClick={onClick}>
         <Image
+          className={styles.thumbImage}
           src={image.url}
           alt={image.alt}
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
+          fill
           loading="eager"
         />
       </button>
