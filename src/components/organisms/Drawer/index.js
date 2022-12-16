@@ -14,7 +14,7 @@ const variant = {
 
 const Drawer = ({
   isOpen = true,
-  onClose,
+  onClose = () => { },
   children,
   position = "left",
   target = "#overlay-root",

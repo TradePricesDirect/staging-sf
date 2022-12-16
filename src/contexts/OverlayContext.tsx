@@ -1,14 +1,23 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+type OverlayType = string | null;
 
-const defaultContext = { type: null };
-
-export const OverlayContext = createContext(defaultContext);
+export const OverlayContext = createContext<{
+  type: OverlayType;
+  show(type: OverlayType): void;
+  hide(): void;
+}>({
+  type: null,
+  show: () => {},
+  hide: () => {},
+});
 
 const Provider = ({ children }) => {
   const router = useRouter();
 
-  const [state, setState] = useState(defaultContext);
+  const [state, setState] = useState<{ type: OverlayType }>({
+    type: null,
+  });
 
   // Close on route change
   useEffect(() => {
@@ -17,9 +26,9 @@ const Provider = ({ children }) => {
     return () => {
       router.events.off("routeChangeStart", hide);
     };
-  }, []);
+  }, [router.events]);
 
-  const show = (type) => {
+  const show = (type: OverlayType) => {
     setState({ type });
     // document.body.style.overflow = "hidden";
   };

@@ -6,6 +6,7 @@ import BackLink from "./BackLink";
 import SubMenuLink from "./SubMenuLink";
 import Menu from "./Menu";
 import menuConfig from "./config";
+import formatSlug from "utils/formatSlug";
 
 const variant = {
   hidden: (isParent) => ({
@@ -20,7 +21,7 @@ const variant = {
   },
 };
 
-const MenuNavigation = ({ categories }) => {
+const MenuNavigation = ({ categories, featuredCategories }) => {
   const overlay = useOverlay();
 
   const isParent = overlay.type === "menu";
@@ -30,11 +31,11 @@ const MenuNavigation = ({ categories }) => {
       case null:
         return [];
       case "menu":
-        return getParentMenuItems(categories);
+        return getParentMenuItems(categories, featuredCategories);
       default:
         return getMenuItems(categories, overlay.type);
     }
-  }, [overlay.type]);
+  }, [overlay.type, categories, featuredCategories]);
 
   return (
     <div className="flex-grow-1">
@@ -50,28 +51,14 @@ const MenuNavigation = ({ categories }) => {
           variants={variant}
           transition={{ ease: "easeOut", duration: 0.2 }}
         >
-          {isParent && (
-            <>
-              <SubMenuLink
-                name="Kitchens"
-                slug="kitchens"
-                onClick={() => overlay.show("kitchens")}
-              />
-
-              <SubMenuLink
-                name="Bathrooms"
-                slug="bathrooms"
-                onClick={() => overlay.show("bathrooms")}
-              />
-
-              <SubMenuLink
-                name="Boilers"
-                slug="boilers"
-                onClick={() => overlay.show("boilers")}
-              />
-            </>
+          {isParent && featuredCategories.map(category =>
+            <SubMenuLink
+              name={formatSlug(category)}
+              slug={category}
+              onClick={() => overlay.show(category)}
+              key={`submenu-link-${category}`}
+            />
           )}
-
           <Menu items={items} />
         </motion.div>
       </AnimatePresence>
@@ -81,11 +68,9 @@ const MenuNavigation = ({ categories }) => {
 
 export default MenuNavigation;
 
-const getParentMenuItems = (categories) => {
+const getParentMenuItems = (categories, featuredCategories) => {
   const EXCLUDE_CATEGORIES = [
-    "kitchens",
-    "bathrooms",
-    "boilers",
+    ...featuredCategories,
     "kitchen-ranges",
   ];
 
@@ -98,6 +83,7 @@ const getParentMenuItems = (categories) => {
 
 const getMenuItems = (categories, slug) => {
   const category = _.find(categories, ["slug", slug]);
+
 
   const config = menuConfig[slug] || [];
   const children = category?.children || [];
