@@ -10,8 +10,16 @@ import styles from "./MenuSidebar.module.scss";
 const MenuSidebar = ({ categoryTree }) => {
   const overlay = useOverlay();
 
-  const isOpen = ["menu", "kitchens", "bathrooms", "boilers"].includes(
-    overlay.type
+  const featuredCategories = [
+    "kitchens",
+    "bathrooms",
+    "plumbing-and-heating",
+    "renewables",
+    "appliances",
+  ];
+
+  const isOpen: boolean = Boolean(
+    overlay.type && ["menu", ...featuredCategories].includes(overlay.type)
   );
 
   return (
@@ -20,7 +28,10 @@ const MenuSidebar = ({ categoryTree }) => {
         <MenuHeader />
 
         <div className={styles.body}>
-          <MenuNavigation categories={categoryTree} />
+          <MenuNavigation
+            categories={categoryTree}
+            featuredCategories={featuredCategories}
+          />
 
           <MenuContactDetails />
 

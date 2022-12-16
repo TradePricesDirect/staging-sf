@@ -20,22 +20,7 @@ const variant = {
   },
 };
 
-const featuredCategories = [
-  {
-    name: "Kitchens",
-    slug: "kitchens"
-  },
-  {
-    name: "Bathrooms",
-    slug: "bathrooms"
-  },
-  {
-    name: "Boilers",
-    slug: "boilers"
-  },
-];
-
-const MenuNavigation = ({ categories }) => {
+const MenuNavigation = ({ categories, featuredCategories }) => {
   const overlay = useOverlay();
 
   const isParent = overlay.type === "menu";
@@ -45,11 +30,11 @@ const MenuNavigation = ({ categories }) => {
       case null:
         return [];
       case "menu":
-        return getParentMenuItems(categories);
+        return getParentMenuItems(categories, featuredCategories);
       default:
         return getMenuItems(categories, overlay.type);
     }
-  }, [overlay.type]);
+  }, [overlay.type, categories, featuredCategories]);
 
   return (
     <div className="flex-grow-1">
@@ -66,12 +51,14 @@ const MenuNavigation = ({ categories }) => {
           transition={{ ease: "easeOut", duration: 0.2 }}
         >
           {isParent && featuredCategories.map(category => {
-            const { name, slug } = category;
+            // const { name, slug } = category;
+            const name = category.replaceAll("-", " ").replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()).replace("And", "&");
+
             return <SubMenuLink
               name={name}
-              slug={slug}
-              onClick={() => overlay.show(slug)}
-              key={`submenu-link-${slug}`}
+              slug={category}
+              onClick={() => overlay.show(category)}
+              key={`submenu-link-${category}`}
             />
           })}
 
@@ -84,11 +71,9 @@ const MenuNavigation = ({ categories }) => {
 
 export default MenuNavigation;
 
-const getParentMenuItems = (categories) => {
+const getParentMenuItems = (categories, featuredCategories) => {
   const EXCLUDE_CATEGORIES = [
-    "kitchens",
-    "bathrooms",
-    "boilers",
+    ...featuredCategories,
     "kitchen-ranges",
   ];
 
@@ -101,6 +86,7 @@ const getParentMenuItems = (categories) => {
 
 const getMenuItems = (categories, slug) => {
   const category = _.find(categories, ["slug", slug]);
+
 
   const config = menuConfig[slug] || [];
   const children = category?.children || [];
