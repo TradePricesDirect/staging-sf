@@ -13,7 +13,7 @@ const MenuSidebar = ({ categoryTree }) => {
   const featuredCategories = [
     "kitchens",
     "bathrooms",
-    "plumbing-and-heating",
+    "plumbing-heating",
     "renewables",
     "appliances",
   ];
