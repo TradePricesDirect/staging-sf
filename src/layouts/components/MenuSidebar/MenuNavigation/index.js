@@ -6,6 +6,7 @@ import BackLink from "./BackLink";
 import SubMenuLink from "./SubMenuLink";
 import Menu from "./Menu";
 import menuConfig from "./config";
+import formatSlug from "utils/formatSlug";
 
 const variant = {
   hidden: (isParent) => ({
@@ -50,18 +51,14 @@ const MenuNavigation = ({ categories, featuredCategories }) => {
           variants={variant}
           transition={{ ease: "easeOut", duration: 0.2 }}
         >
-          {isParent && featuredCategories.map(category => {
-            // const { name, slug } = category;
-            const name = category.replaceAll("-", " ").replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()).replace("And", "&");
-
-            return <SubMenuLink
-              name={name}
+          {isParent && featuredCategories.map(category =>
+            <SubMenuLink
+              name={formatSlug(category)}
               slug={category}
               onClick={() => overlay.show(category)}
               key={`submenu-link-${category}`}
             />
-          })}
-
+          )}
           <Menu items={items} />
         </motion.div>
       </AnimatePresence>
