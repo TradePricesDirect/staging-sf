@@ -8,7 +8,7 @@ import SearchHero from "./SearchHero";
 const populateBreadcrumbs = (term) => [
   {
     href: { pathname: paths.search, query: { term } },
-    label: `You searched for: ${term}`,
+    name: `You searched for: ${term}`,
   },
 ];
 

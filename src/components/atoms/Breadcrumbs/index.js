@@ -29,7 +29,7 @@ const Breadcrumbs = ({ breadcrumbs }) => {
             itemType="https://schema.org/ListItem"
             className={clsx(index === breadcrumbs.length - 1 && styles.active)}
           >
-            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+            <Link href={breadcrumb.href}>{breadcrumb.name}</Link>
             <meta itemProp="position" content={index + 2} />
           </li>
         ))}
