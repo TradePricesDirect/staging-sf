@@ -37,6 +37,10 @@ const MenuNavigation = ({ categories, featuredCategories }) => {
     }
   }, [overlay.type, categories, featuredCategories]);
 
+  const featured = useMemo(() =>
+    getFeaturedCategories(categories, featuredCategories),
+    [categories, featuredCategories]);
+
   return (
     <div className="flex-grow-1">
       {!isParent && <BackLink onClick={() => overlay.show("menu")} />}
@@ -51,12 +55,12 @@ const MenuNavigation = ({ categories, featuredCategories }) => {
           variants={variant}
           transition={{ ease: "easeOut", duration: 0.2 }}
         >
-          {isParent && featuredCategories.map(category =>
+          {isParent && featured.map(category =>
             <SubMenuLink
-              name={formatSlug(category)}
-              slug={category}
-              onClick={() => overlay.show(category)}
-              key={`submenu-link-${category}`}
+              name={category.name}
+              slug={category.slug}
+              onClick={() => overlay.show(category.slug)}
+              key={`submenu-link-${category.slug}`}
             />
           )}
           <Menu items={items} />
@@ -67,6 +71,13 @@ const MenuNavigation = ({ categories, featuredCategories }) => {
 };
 
 export default MenuNavigation;
+
+
+const getFeaturedCategories = (categories, featuredCategories) => {
+  return categories.filter(
+    ({ slug }) => featuredCategories.includes(slug)
+  );
+}
 
 const getParentMenuItems = (categories, featuredCategories) => {
   const EXCLUDE_CATEGORIES = [
