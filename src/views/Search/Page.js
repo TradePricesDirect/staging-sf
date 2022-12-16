@@ -35,12 +35,12 @@ const Page = ({
           renderBreadcrumb={
             <Breadcrumbs breadcrumbs={populateBreadcrumbs(search)} />
           }
-          // activeSortOption={activeSortOption}
-          // sortOptions={SORT_OPTIONS}
-          // onSortChange={onSortChange}
-          // activePerPageOption={activePerPageOption}
-          // perPageOptions={PER_PAGE_OPTIONS}
-          // onPerPageChange={onPerPageChange}
+        // activeSortOption={activeSortOption}
+        // sortOptions={SORT_OPTIONS}
+        // onSortChange={onSortChange}
+        // activePerPageOption={activePerPageOption}
+        // perPageOptions={PER_PAGE_OPTIONS}
+        // onPerPageChange={onPerPageChange}
         />
 
         <ProductList
