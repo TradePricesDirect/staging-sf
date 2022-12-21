@@ -4,8 +4,17 @@ import ShopProvider from "contexts/ShopContext";
 import OverlayProvider from "contexts/OverlayContext";
 import NProgressBar from "components/atoms/NProgressBar";
 
-const DEFAULT_LAYOUT = (page, categoryTree, footerMenus) => (
-  <AppLayout categoryTree={categoryTree} footerMenus={footerMenus}>
+const DEFAULT_LAYOUT = (
+  page,
+  categoryTree,
+  footerMenus,
+  featuredCategories
+) => (
+  <AppLayout
+    categoryTree={categoryTree}
+    footerMenus={footerMenus}
+    featuredCategories={featuredCategories}
+  >
     {page}
   </AppLayout>
 );
@@ -15,6 +24,7 @@ const StorefrontApp = ({
   shopConfig,
   categoryTree,
   footerMenus,
+  featuredCategories,
   children,
 }) => {
   const getLayout = layout || DEFAULT_LAYOUT;
@@ -24,7 +34,7 @@ const StorefrontApp = ({
       <OverlayProvider>
         <NProgressBar />
         <ThirdPartyTags />
-        {getLayout(children, categoryTree, footerMenus)}
+        {getLayout(children, categoryTree, footerMenus, featuredCategories)}
       </OverlayProvider>
     </ShopProvider>
   );

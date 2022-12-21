@@ -69,47 +69,15 @@ export const productTotalCountQuery = gql`
   }
 `;
 
-export const shopMenusQuery = gql`
-  ${menuItemFragment}
-  query ShopMenusQuery(
+export const featuredCategoriesQuery = gql`
+  query FeaturedCategoriesQuery(
     $channel: String!
-    $main: String!
-    $kitchens: String!
-    $bathrooms: String!
-    $boilers: String!
+    $featured: String!
   ) {
-    main: menu(channel: $channel, slug: $main) {
+    featured: menu(channel: $channel, name: $featured) {
       items {
-        ...MenuItem
-        children {
-          ...MenuItem
-        }
-      }
-    }
-    kitchens: menu(channel: $channel, slug: $kitchens) {
-      name
-      items {
-        ...MenuItem
-        children {
-          ...MenuItem
-        }
-      }
-    }
-    bathrooms: menu(channel: $channel, slug: $bathrooms) {
-      name
-      items {
-        ...MenuItem
-        children {
-          ...MenuItem
-        }
-      }
-    }
-    boilers: menu(channel: $channel, slug: $boilers) {
-      name
-      items {
-        ...MenuItem
-        children {
-          ...MenuItem
+        category {
+          slug
         }
       }
     }
@@ -124,7 +92,7 @@ export const shopFooterMenusQuery = gql`
     $support: String!
     $shop: String!
   ) {
-    about: menu(channel: $channel, slug: $about) {
+    about: menu(channel: $channel, name: $about) {
       name
       items {
         ...MenuItem
@@ -133,7 +101,7 @@ export const shopFooterMenusQuery = gql`
         }
       }
     }
-    support: menu(channel: $channel, slug: $support) {
+    support: menu(channel: $channel, name: $support) {
       name
       items {
         ...MenuItem
@@ -142,7 +110,7 @@ export const shopFooterMenusQuery = gql`
         }
       }
     }
-    shop: menu(channel: $channel, slug: $shop) {
+    shop: menu(channel: $channel, name: $shop) {
       name
       items {
         ...MenuItem

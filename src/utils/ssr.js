@@ -16,6 +16,7 @@ import {
   kitchenRangeDetailsQuery,
   kitchenRangeComponentsQuery,
   productTotalCountQuery,
+  featuredCategoriesQuery,
 } from "graphql/queries";
 import _ from "lodash";
 import { formatKitchenRangeData } from "utils/kitchen-ranges";
@@ -149,14 +150,30 @@ export const getFooterMenus = async () => {
       query: shopFooterMenusQuery,
       variables: {
         channel: channelSlug,
-        about: "footer-about",
-        support: "footer-support",
-        shop: "footer-shop",
+        about: "About",
+        support: "Support",
+        shop: "Shop",
       },
     })
     .then(({ data }) => data);
 
   return menus;
+};
+
+export const getFeaturedCategories = async () => {
+  const { apolloClient } = await getSaleorApi();
+
+  const categories = await apolloClient
+    .query({
+      query: featuredCategoriesQuery,
+      variables: {
+        channel: channelSlug,
+        featured: "Featured",
+      },
+    })
+    .then(({ data: { featured: { items } } }) => items.map(item => item.category.slug));
+
+  return categories;
 };
 
 export const getProductDetails = async (slug) => {

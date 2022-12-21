@@ -74,9 +74,8 @@ export default MenuNavigation;
 
 
 const getFeaturedCategories = (categories, featuredCategories) => {
-  return categories.filter(
-    ({ slug }) => featuredCategories.includes(slug)
-  );
+  // backwards way of filtering to preserve the original array order (could probably be improved)
+  return featuredCategories.map(slug => categories.filter(category => category.slug === slug)[0]).filter(index => index);
 }
 
 const getParentMenuItems = (categories, featuredCategories) => {
