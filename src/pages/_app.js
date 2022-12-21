@@ -3,7 +3,7 @@ import NextApp from "next/app";
 import { SaleorProvider } from "@saleor/sdk";
 import { apiUrl, channelSlug } from "core/constants";
 import Bugsnag from "utils/bugsnag";
-import { getCategoryTree, getFooterMenus, getShopConfig } from "utils/ssr";
+import { getCategoryTree, getFeaturedCategories, getFooterMenus, getShopConfig } from "utils/ssr";
 import { usePageViewTracking } from "utils/gtm";
 import { NextQueryParamProvider } from "contexts/NextQueryParamProvider";
 import StorefrontApp from "../app";
@@ -21,6 +21,7 @@ const App = ({
   shopConfig,
   categoryTree,
   footerMenus,
+  featuredCategories
 }) => {
   usePageViewTracking();
 
@@ -33,6 +34,7 @@ const App = ({
             shopConfig={shopConfig}
             categoryTree={categoryTree}
             footerMenus={footerMenus}
+            featuredCategories={featuredCategories}
           >
             <Component {...pageProps} />
           </StorefrontApp>
@@ -49,8 +51,9 @@ App.getInitialProps = async (appContext) => {
   const shopConfig = await getShopConfig();
   const footerMenus = await getFooterMenus();
   const categoryTree = await getCategoryTree();
+  const featuredCategories = await getFeaturedCategories();
 
-  return { ...appProps, shopConfig, footerMenus, categoryTree };
+  return { ...appProps, shopConfig, footerMenus, categoryTree, featuredCategories };
 };
 
 export default App;

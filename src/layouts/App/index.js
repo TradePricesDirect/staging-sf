@@ -6,7 +6,7 @@ import Footer from "layouts/components/Footer";
 import CartSidebar from "layouts/components/CartSidebar";
 import MenuSidebar from "layouts/components/MenuSidebar";
 
-const AppLayout = ({ categoryTree, footerMenus, children }) => {
+const AppLayout = ({ categoryTree, footerMenus, children, featuredCategories }) => {
   return (
     <BaseLayout>
       <HeaderBanner />
@@ -18,7 +18,7 @@ const AppLayout = ({ categoryTree, footerMenus, children }) => {
       <Footer menus={footerMenus} />
 
       <CartSidebar />
-      <MenuSidebar categoryTree={categoryTree} />
+      <MenuSidebar categoryTree={categoryTree} featuredCategories={featuredCategories} />
     </BaseLayout>
   );
 };
