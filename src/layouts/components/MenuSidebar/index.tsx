@@ -10,8 +10,8 @@ import styles from "./MenuSidebar.module.scss";
 const MenuSidebar = ({ categoryTree, featuredCategories }) => {
   const overlay = useOverlay();
 
-  const isOpen: boolean = Boolean(
-    overlay.type && ["menu", ...featuredCategories].includes(overlay.type)
+  const isOpen: boolean = ["menu", ...featuredCategories].includes(
+    overlay.type
   );
 
   return (
