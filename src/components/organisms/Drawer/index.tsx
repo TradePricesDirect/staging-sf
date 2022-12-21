@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FC, MouseEventHandler, useEffect } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
@@ -12,12 +12,18 @@ const variant = {
   visible: { x: 0 },
 };
 
-const Drawer = ({
+const Drawer: FC<{
+  isOpen?: boolean;
+  onClose?: MouseEventHandler<HTMLDivElement>;
+  position?: string;
+  target?: string;
+  children;
+}> = ({
   isOpen = true,
-  onClose = () => { },
-  children,
+  onClose,
   position = "left",
   target = "#overlay-root",
+  children,
 }) => {
   const overlay = useOverlay();
 
@@ -45,7 +51,7 @@ const Drawer = ({
               exit="hidden"
               variants={variant}
               transition={{ duration: 0.2, ease: "easeInOut" }}
-              tabIndex="-1"
+              tabIndex={-1}
             >
               {children}
             </motion.div>
