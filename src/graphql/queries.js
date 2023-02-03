@@ -142,25 +142,18 @@ export const categoriesByLevelQuery = gql`
 export const categoryTreeQuery = gql`
   ${baseCategoryFragment}
   query CategoryTree {
-    categories(first: 100, level: 0) {
+    categories(first: 20, level: 0) {
       edges {
         node {
           ...BaseCategory
-          children(first: 100) {
+          children(first: 20) {
             edges {
               node {
                 ...BaseCategory
-                children(first: 100) {
+                children(first: 20) {
                   edges {
                     node {
                       ...BaseCategory
-                      children(first: 100) {
-                        edges {
-                          node {
-                            ...BaseCategory
-                          }
-                        }
-                      }
                     }
                   }
                 }
