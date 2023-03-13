@@ -1,0 +1,18 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.wrap {
+  @include padding(4rem 0);
+  // background-color: $gray-100;
+}
+
+.container {
+  max-width: 50rem;
+}
+
+.title {
+  @include margin-bottom(2rem);
+  @include font-size(2rem);
+  color: $primary;
+  text-align: center;
+}

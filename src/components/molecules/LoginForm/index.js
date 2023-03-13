@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "@saleor/sdk";
 import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
+import Button from "components/atoms/Button";
 import Input from "components/atoms/Input";
 
 const LoginForm = () => {
@@ -63,17 +63,11 @@ const LoginForm = () => {
         error={errors.password}
       />
 
-      <button
-        type="submit"
-        className="btn btn-primary w-100"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? (
-          <FontAwesomeIcon icon={faSpinner} spin />
-        ) : (
-          <span>Sign In</span>
-        )}
-      </button>
+      <div className="d-flex justify-content-center">
+        <Button submit label="Sign In" color="secondary" loading={isSubmitting} disabled={isSubmitting} icon={icons.faArrowRight} />
+      </div>
+
+
     </form>
   );
 };

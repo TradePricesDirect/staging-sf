@@ -13,9 +13,13 @@
 
   th {
     font-weight: $font-weight-semibold;
+    padding: 5px 0px;
   }
 
   td {
+    margin: 0;
+    font-size: $font-size-base;
+    padding: 5px 0px;
     color: $text-muted;
   }
 

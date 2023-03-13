@@ -1,10 +1,12 @@
 import _ from "lodash";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/pro-light-svg-icons";
+
 import Widget from "components/molecules/Widget";
 
+
 import styles from "./WidgetActiveFilters.module.scss";
+import { icons } from "core/constants";
 
 const WidgetActiveFilters = ({ attributes, filters, onRemove }) => {
   const selected = getSelectedFilters(filters.attributes, attributes);
@@ -24,7 +26,7 @@ const WidgetActiveFilters = ({ attributes, filters, onRemove }) => {
                 )}
               >
                 {attr.name}: {value.name}
-                <FontAwesomeIcon icon={faTimes} className="ms-2" />
+                <FontAwesomeIcon icon={icons.faTimes} className="ms-2" />
               </button>
             </li>
           ));

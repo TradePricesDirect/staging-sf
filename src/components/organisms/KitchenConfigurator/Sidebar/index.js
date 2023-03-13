@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import Link from "next/link";
+import { icons } from "core/constants";
 import { useCart } from "@saleor/sdk";
 import _ from "lodash";
 import clsx from "clsx";
@@ -211,7 +211,7 @@ const CategoryGroup = ({ category }) => {
                           type="button"
                           className="btn btn-sm text-danger py-0 px-1"
                         >
-                          <FontAwesomeIcon icon={faTrash} />
+                          <FontAwesomeIcon icon={icons.faTrash} />
                           <span className="visually-hidden">
                             Remove this item
                           </span>

@@ -1,7 +1,8 @@
-import Link from "next/link";
 import paths from "core/paths";
 import Auth, { Separator } from "components/templates/Auth";
 import RegisterForm from "components/molecules/RegisterForm";
+import Button from "components/atoms/Button";
+import { faArrowRight } from "@fortawesome/pro-light-svg-icons";
 
 const RegisterPage = () => {
   return (
@@ -10,9 +11,7 @@ const RegisterPage = () => {
 
       <Separator />
 
-      <Link href={paths.login} className="btn btn-outline-primary w-100">
-        Sign In
-      </Link>
+      <Button path={paths.login} label="Sign In"/>
     </Auth>
   );
 };

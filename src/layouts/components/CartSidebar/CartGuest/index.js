@@ -1,5 +1,6 @@
-import Link from "next/link";
 import paths from "core/paths";
+import { faArrowRight } from "@fortawesome/pro-regular-svg-icons";
+import Button from "components/atoms/Button";
 
 const CartGuest = () => {
   return (
@@ -8,9 +9,7 @@ const CartGuest = () => {
         Please sign in or register for an account.
       </div>
 
-      <Link href={paths.login} className="btn btn-primary">
-        Sign in or Create an Account
-      </Link>
+      <Button path={paths.login} label="Sign in or Create an Account" color="secondary" icon={faArrowRight} />
     </div>
   );
 };

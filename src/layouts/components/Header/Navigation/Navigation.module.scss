@@ -1,18 +1,16 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.wrap {
-  display: none;
-  margin-left: 2rem;
-
-  @media (min-width: 1200px) {
-    display: block;
-  }
-}
-
 .menu {
   @include list-unstyled;
   margin: 0;
   display: flex;
-  gap: 1rem;
+  gap: 30px;
+  li {
+    .link {
+      padding: 10px 15px;
+      font-weight: 600;
+      color: $gray-900;
+    }
+  }
 }

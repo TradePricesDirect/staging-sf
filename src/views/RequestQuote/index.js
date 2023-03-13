@@ -4,6 +4,7 @@ import useQuoteForm, { QuoteStepEnum } from "./utils";
 import StepProgressBar from "./components/StepProgressBar";
 import FooterBrands from "./components/FooterBrands";
 import FooterIcons from "./components/FooterIcons";
+import StepProducts from "./steps/StepProducts";
 import StepType from "./steps/StepType";
 import StepTimeframe from "./steps/StepTimeframe";
 import StepFinance from "./steps/StepFinance";
@@ -11,23 +12,28 @@ import StepDetails from "./steps/StepDetails";
 
 import styles from "./RequestQuote.module.scss";
 
-const RequestQuotePage = ({ totalCounts }) => {
-  const { step, maxStep, state, actions } = useQuoteForm();
+const RequestQuotePage = ({ totalCounts, categories, featuredCategories }) => {
+  const { step, maxStep, state, actions, selectedProducts } = useQuoteForm();
 
   const CurrentStep = useMemo(() => {
     switch (step) {
+      case QuoteStepEnum.Products:
+        return (
+          <StepProducts
+            featuredCategories={featuredCategories}
+            categories={categories}
+            selectedProducts={selectedProducts}
+            state={state}
+            onChange={actions.handleProductSelection}
+            onContinue={actions.handleStepProgress}
+          />
+        );
       case QuoteStepEnum.Type:
         return (
           <StepType
             selected={state.type}
             onChange={actions.handleInputChange}
-          />
-        );
-      case QuoteStepEnum.Timeframe:
-        return (
-          <StepTimeframe
-            selected={state.timeframe}
-            onChange={actions.handleInputChange}
+            onContinue={actions.handleStepProgress}
           />
         );
       case QuoteStepEnum.Finance:
@@ -35,10 +41,11 @@ const RequestQuotePage = ({ totalCounts }) => {
           <StepFinance
             selected={state.finance}
             onChange={actions.handleInputChange}
+            onContinue={actions.handleStepProgress}
           />
         );
       case QuoteStepEnum.Details:
-        return <StepDetails onSubmit={actions.handleSubmit} />;
+        return <StepDetails onSubmit={actions.handleSubmit} handleBack={actions.handleStepPrevious} />;
     }
   }, [step]);
 
@@ -47,19 +54,11 @@ const RequestQuotePage = ({ totalCounts }) => {
       <div className={styles.body}>
         <StepProgressBar
           step={step}
-          maxStep={maxStep}
           onClick={actions.handleStepChange}
+          onPrevious={actions.handleStepPrevious}
         />
-
-        {CurrentStep}
       </div>
-      <footer className={styles.footer}>
-        {step === 4 ? (
-          <FooterBrands totalCounts={totalCounts} />
-        ) : (
-          <FooterIcons key={`step-${step}`} />
-        )}
-      </footer>
+      {CurrentStep}
     </section>
   );
 };

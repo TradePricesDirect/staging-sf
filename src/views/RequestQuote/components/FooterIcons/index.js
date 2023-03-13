@@ -46,7 +46,7 @@ const FooterIcons = () => {
               <Link href={paths.about} className={styles.link}>
                 <img
                   className={styles.image}
-                  src="/images/request-quote/cta-faqs.svg"
+                  src="/images/request-quote/cta-FAQ.svg"
                 />
                 <h4 className={styles.title}>{"FAQ's"}</h4>
               </Link>

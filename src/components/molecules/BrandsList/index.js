@@ -32,11 +32,11 @@ const BrandsList = ({ totalCounts }) => {
                   />
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <div className={styles.stat}>
                   <strong>{all}</strong>{" "}{"No. of Products"}
                 </div>
-              </li>
+              </li> */}
               <li>
                 <div className={styles.image}>
                   <Image
@@ -47,11 +47,11 @@ const BrandsList = ({ totalCounts }) => {
                   />
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <div className={styles.stat}>
                   <strong>{nextDayProducts}</strong>{" "}{"Next Day Products"}
                 </div>
-              </li>
+              </li> */}
               <li>
                 <div className={styles.image}>
                   <Image

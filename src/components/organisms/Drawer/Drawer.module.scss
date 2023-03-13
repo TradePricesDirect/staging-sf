@@ -6,12 +6,12 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 25rem;
+  width: 450px;
   max-width: 100%;
   display: block;
   background-color: $white;
   background-clip: padding-box;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid $gray-100;
   outline: 0;
   overflow: auto;
 

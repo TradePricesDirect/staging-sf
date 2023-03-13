@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Box from "components/organisms/Box";
+import { icons } from "core/constants";
 import menu from "./menu";
+import Button from "components/atoms/Button";
 
 import styles from "./Account.module.scss";
 
@@ -12,10 +12,13 @@ const Account = ({ children }) => {
           <ul className={styles.navList}>
             {menu.map((item) => (
               <li key={item.id}>
-                <Box className={styles.navItem} href={item.href} center>
-                  <FontAwesomeIcon icon={item.icon} className="me-2" />
-                  {item.name}
-                </Box>
+                <Button
+                  path={item.href}
+                  className={styles.navItem}
+                  submit
+                  label={item.name}
+                  icon={icons.faArrowRight}
+                />
               </li>
             ))}
           </ul>

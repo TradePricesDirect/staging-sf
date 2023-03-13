@@ -2,10 +2,11 @@
 @import "styles/mixins";
 
 .box {
-  border: 2px solid transparent;
+  border: 1px solid $gray-200;
+  padding: 25px;
 
   &.selected {
-    border-color: $primary;
+    border-color: $secondary;
   }
 }
 

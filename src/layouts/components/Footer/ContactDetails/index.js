@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhoneAlt } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import { SUPPORT_PHONE, SUPPORT_EMAIL } from "core/config";
 
 import styles from "./ContactDetails.module.scss";
@@ -15,13 +15,13 @@ const ContactDetails = () => {
             href={`tel:${SUPPORT_PHONE.replace(/ /g, "")}`}
             className="btn btn-sm"
           >
-            <FontAwesomeIcon icon={faPhoneAlt} />
+            <FontAwesomeIcon icon={icons.faPhoneAlt} />
             {SUPPORT_PHONE}
           </a>
         </li>
         <li>
           <a href={`mailto:${SUPPORT_EMAIL}`} className="btn btn-sm">
-            <FontAwesomeIcon icon={faEnvelope} />
+            <FontAwesomeIcon icon={icons.faEnvelope} />
             Email us
           </a>
         </li>

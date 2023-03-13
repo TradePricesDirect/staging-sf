@@ -1,5 +1,5 @@
 import { PER_PAGE_OPTIONS, SORT_OPTIONS } from "utils/collections";
-import Breadcrumbs, { extractBreadcrumbs } from "components/atoms/Breadcrumbs";
+import Breadcrumbs, { getBreadcrumbs } from "components/atoms/Breadcrumbs";
 import ProductListHero from "components/molecules/ProductListHero";
 import ProductListHeader from "components/molecules/ProductListHeader";
 import ProductList from "components/organisms/ProductList";
@@ -35,15 +35,15 @@ const Page = ({
             <ProductListHeader
               numberOfProducts={numberOfProducts}
               renderBreadcrumb={
-                <Breadcrumbs breadcrumbs={extractBreadcrumbs(details)} />
+                <Breadcrumbs breadcrumbs={getBreadcrumbs(details)} />
               }
-              // onClearFilters={onClearFilters}
-              // activeSortOption={activeSortOption}
-              // sortOptions={SORT_OPTIONS}
-              // onSortChange={onSortChange}
-              // activePerPageOption={activePerPageOption}
-              // perPageOptions={PER_PAGE_OPTIONS}
-              // onPerPageChange={onPerPageChange}
+            // onClearFilters={onClearFilters}
+            // activeSortOption={activeSortOption}
+            // sortOptions={SORT_OPTIONS}
+            // onSortChange={onSortChange}
+            // activePerPageOption={activePerPageOption}
+            // perPageOptions={PER_PAGE_OPTIONS}
+            // onPerPageChange={onPerPageChange}
             />
 
             <ProductList

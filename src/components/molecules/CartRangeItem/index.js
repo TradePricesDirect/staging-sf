@@ -3,12 +3,7 @@ import _ from "lodash";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEdit,
-  faMinus,
-  faPlus,
-  faTrash,
-} from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import paths from "core/paths";
 import useDisclosure from "hooks/useDisclosure";
 import useLocalStorage from "hooks/useLocalStorage";
@@ -93,7 +88,7 @@ const CartRangeItem = ({ range, onRemove, onRemoveAll, isCheckout }) => {
             {!isCheckout && (
               <div>
                 <Link href={path} className="btn btn-sm">
-                  <FontAwesomeIcon icon={faEdit} />
+                  <FontAwesomeIcon icon={icons.faEdit} />
                   <span className="visually-hidden">Edit this item</span>
 
                 </Link>
@@ -108,7 +103,7 @@ const CartRangeItem = ({ range, onRemove, onRemoveAll, isCheckout }) => {
                   type="button"
                   className="btn btn-sm text-danger"
                 >
-                  <FontAwesomeIcon icon={faTrash} />
+                  <FontAwesomeIcon icon={icons.faTrash} />
                   <span className="visually-hidden">Remove this item</span>
                 </button>
               </div>
@@ -150,7 +145,7 @@ const CartRangeItem = ({ range, onRemove, onRemoveAll, isCheckout }) => {
                             type="button"
                             className="btn btn-sm text-danger py-0 px-1"
                           >
-                            <FontAwesomeIcon icon={faTrash} />
+                            <FontAwesomeIcon icon={icons.faTrash} />
                             <span className="visually-hidden">
                               Remove this item
                             </span>

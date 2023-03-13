@@ -1,12 +1,12 @@
 import { useSWRConfig } from "swr";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShare } from "@fortawesome/pro-solid-svg-icons";
+import { icons } from "core/constants";
 import { updateWishlist } from "utils/wishlists";
 import useDisclosure from "hooks/useDisclosure";
 import Modal from "components/organisms/Modal";
 import Radio from "components/atoms/Radio";
+import Button from "components/atoms/Button";
 
 const CopyLink = dynamic(() => import("../CopyLink"), { ssr: false });
 
@@ -25,14 +25,11 @@ const ShareWishlist = ({ wishlist }) => {
 
   return (
     <>
-      <button
+      <Button
         onClick={onOpen}
-        type="button"
-        className="btn btn-sm btn-outline-primary me-4"
-      >
-        <FontAwesomeIcon icon={faShare} className="me-2" />
-        Share
-      </button>
+        label={`Share`}
+        icon={icons.faShare}
+      />
 
       <Modal
         title="Share This List"

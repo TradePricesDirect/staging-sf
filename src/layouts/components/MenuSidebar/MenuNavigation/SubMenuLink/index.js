@@ -1,9 +1,10 @@
 import clsx from "clsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
+
 
 import styles from "./SubMenuLink.module.scss";
 import paths from "core/paths";
+import NavIcon from "components/atoms/NavIcon";
+import { icons } from "core/constants";
 
 const SubMenuLink = ({ name, slug, onClick }) => {
   const handleClick = (e) => {
@@ -18,10 +19,7 @@ const SubMenuLink = ({ name, slug, onClick }) => {
       className={clsx(styles.link, styles.hasChildren)}
     >
       {name}
-
-      <div className={styles.icon}>
-        <FontAwesomeIcon icon={faArrowRight} />
-      </div>
+      <NavIcon />
     </a>
   );
 };

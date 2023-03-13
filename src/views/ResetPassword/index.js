@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { setAuthToken, useSetPassword } from "@saleor/sdk";
 import { StringParam, useQueryParams } from "use-query-params";
+import Button from "components/atoms/Button";
 import paths from "core/paths";
 import Auth from "components/templates/Auth";
 import ResetPasswordForm from "components/molecules/ResetPasswordForm";
@@ -63,10 +63,7 @@ const ResetPasswordSuccess = () => {
   return (
     <Auth title="Password Updated">
       <p>Your password has been updated.</p>
-
-      <Link href={paths.home} className="btn btn-primary w-50">
-        Back to Home
-      </Link>
+      <Button path={paths.home} color="secondary" label="Back to Home" />
     </Auth>
   );
 };
@@ -77,10 +74,7 @@ const ResetPasswordExpired = () => {
       <div className="alert alert-danger" role="alert">
         This password reset link has expired. Please request it again.
       </div>
-
-      <Link href={paths.forgotPassword} className="btn btn-primary w-50">
-        Forgot Password
-      </Link>
+      <Button path={paths.forgotPassword} color="secondary" label="Forgot Password" />
     </Auth>
   );
 };

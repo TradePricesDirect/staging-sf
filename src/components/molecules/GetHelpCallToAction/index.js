@@ -1,7 +1,7 @@
 import Image from "next/image";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import { SUPPORT_PHONE } from "core/config";
 
 import styles from "./GetHelpCallToAction.module.scss";
@@ -9,15 +9,15 @@ import styles from "./GetHelpCallToAction.module.scss";
 const GetHelpCallToAction = () => {
   return (
     <div className={styles.wrap}>
-      <div className={styles.icon}>
+      {/* <div className={styles.icon}>
         <Image
           src="/icons/get-help.svg"
           alt="Get Help"
           width={100}
           height={100}
         />
-      </div>
-
+      </div> */}
+      {/* 
       <h4>Get Help</h4>
       <p>Speak to our customer support team</p>
 
@@ -25,9 +25,9 @@ const GetHelpCallToAction = () => {
         href={`tel:${SUPPORT_PHONE.replace(/ /g, "")}`}
         className={clsx("btn btn-sm", styles.phoneButton)}
       >
-        <FontAwesomeIcon icon={faPhoneAlt} />
+        <FontAwesomeIcon icon={icons.faPhoneAlt} />
         {SUPPORT_PHONE}
-      </a>
+      </a> */}
     </div>
   );
 };

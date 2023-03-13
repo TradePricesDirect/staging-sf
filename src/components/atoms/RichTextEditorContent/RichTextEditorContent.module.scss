@@ -1,0 +1,25 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.body {
+}
+
+.list {
+  @include list-unstyled;
+
+  .listItem {
+    // display: flex;
+    // align-items: flex-start;
+    // height: 50px;
+    .bullet {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 26px;
+      color: $hawkes-blue;
+    }
+    .text {
+      // display: inline-block;
+      // padding-left: 10px;
+    }
+  }
+}

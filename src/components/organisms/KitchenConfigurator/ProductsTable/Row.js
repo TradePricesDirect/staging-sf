@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@saleor/sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import TaxedMoney from "components/molecules/TaxedMoney";
 import QuantitySelector from "components/molecules/QuantitySelector";
 
@@ -55,7 +55,7 @@ const Row = ({ product, loading, onAddToCart }) => {
               disabled={isSubmitting || loading}
             >
               {isSubmitting ? (
-                <FontAwesomeIcon icon={faSpinner} spin />
+                <FontAwesomeIcon icon={icons.faSpinner} spin />
               ) : (
                 <span>ADD</span>
               )}

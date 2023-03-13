@@ -2,12 +2,12 @@
 @import "styles/mixins";
 
 .box {
-  border: 2px solid transparent;
+  border: 1px solid $gray-200;
   transition: border-color 0.2s ease;
-
+  padding: 25px;
   &:hover,
   &.selected {
-    border-color: $primary;
+    border-color: $secondary;
   }
 }
 

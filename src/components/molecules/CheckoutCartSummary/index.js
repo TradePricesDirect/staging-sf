@@ -7,9 +7,10 @@ import useDisclosure from "hooks/useDisclosure";
 import pluralize from "utils/pluralize";
 import TaxedMoney from "components/molecules/TaxedMoney";
 import CartItems from "components/organisms/CartItems";
+import Box from "components/organisms/Box";
+import CartFinanceBanner from "../CartFinanceBanner";
 
 import styles from "./CheckoutCartSummary.module.scss";
-import Box from "components/organisms/Box";
 
 const CheckoutCartSummary = () => {
   const { checkout } = useCheckout();
@@ -115,6 +116,8 @@ const CheckoutCartSummary = () => {
           </tr>
         </tbody>
       </table>
+
+      <CartFinanceBanner />
     </Box>
   );
 };

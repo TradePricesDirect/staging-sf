@@ -15,9 +15,14 @@
 }
 
 .thumbnail {
+  position: relative;
   display: block;
-  width: 4rem;
-  width: 20vw;
+  border-radius: 10px;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 .content {
@@ -113,9 +118,9 @@
     margin-bottom: 1.5rem;
   }
 
-  .thumbnail {
-    width: 100%;
-  }
+  // .thumbnail {
+  //   width: 100%;
+  // }
 
   .name,
   .subtotalPrice {

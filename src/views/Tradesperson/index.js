@@ -6,7 +6,7 @@ import VideoModal from "components/molecules/VideoModal";
 import HeroImage from "./trade-hero.svg";
 import IconGrid from "./IconGrid";
 import GetStarted from "./GetStarted";
-import FAQs from "./FAQs";
+import FAQ from "./FAQ";
 import Banner from "./Banner";
 
 const TradespersonPage = () => {
@@ -49,7 +49,7 @@ const TradespersonPage = () => {
 
       <GetStarted />
 
-      <FAQs />
+      <FAQ />
 
       <Banner />
     </>

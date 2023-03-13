@@ -1,0 +1,21 @@
+@import "styles/variables";
+
+.noScroll {
+  overflow: hidden;
+}
+
+.container {
+  padding: 0 
+}
+
+// @media (max-width: 768px) {
+//   .container {
+//     padding: 0;
+//   }
+// }
+
+// @media (max-width: 1200px) {
+//   .container {
+//     padding: 0 $page-margin-lg;
+//   }
+// }

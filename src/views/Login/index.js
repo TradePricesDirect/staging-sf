@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "@saleor/sdk";
 import Auth, { Separator } from "components/templates/Auth";
 import LoginForm from "components/molecules/LoginForm";
+import Button from "components/atoms/Button";
 import paths from "core/paths";
 
 const LoginPage = () => {
@@ -27,9 +28,7 @@ const LoginPage = () => {
 
       <Separator />
 
-      <Link href={paths.register} className="btn btn-outline-primary w-100">
-        Create an account
-      </Link>
+      <Button label="Create an account" path={paths.register} />
     </Auth>
   );
 };

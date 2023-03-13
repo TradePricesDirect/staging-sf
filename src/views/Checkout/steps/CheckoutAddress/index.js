@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useAuth, useCheckout } from "@saleor/sdk";
 import useDisclosure from "hooks/useDisclosure";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button";
+import { icons } from "core/constants";
 import AddAddressButton from "components/molecules/AddAddressButton";
 import AddressFormModal from "components/organisms/AddressFormModal";
 import CheckoutErrors from "components/organisms/CheckoutErrors";
@@ -117,8 +118,8 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
       <CheckoutErrors errors={errors} />
 
       <form onSubmit={handleSubmit}>
-        <fieldset className="mb-4">
-          <legend className={styles.title}>Delivery Address</legend>
+        <fieldset className={styles.container}>
+          <legend className={styles.title}>Shipping Address</legend>
           <p className={styles.lead}>Add or select an address to continue</p>
 
           <div className={styles.grid}>
@@ -135,10 +136,10 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
           </div>
         </fieldset>
 
-        <fieldset className="mb-4">
+        <fieldset className={styles.container}>
           <legend className={styles.title}>Billing Address</legend>
 
-          <div className="form-check mb-4">
+          <div className="form-check mb-5">
             <input
               className="form-check-input"
               type="checkbox"
@@ -168,7 +169,7 @@ export const CheckoutAddress = ({ onSubmitSuccess }) => {
           )}
         </fieldset>
 
-        {canSubmit && <SubmitButton loading={loading}>Continue</SubmitButton>}
+        {canSubmit && <Button submit loading={loading} color='secondary' icon={icons.faArrowRight} label='Continue' />}
       </form>
 
       <AddressFormModal isOpen={isOpen} onClose={onClose} />

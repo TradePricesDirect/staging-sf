@@ -1,0 +1,16 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.container {
+  height: 26px;
+  min-width: 104px;
+  border-radius: 1rem;
+  background-color: $danger;
+  color: $white;
+  font-weight: 600;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}

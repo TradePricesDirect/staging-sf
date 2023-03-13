@@ -1,4 +1,6 @@
 import useMenuLink from "hooks/useMenuLink";
+import Button from "components/atoms/Button";
+import { icons } from "core/constants";
 
 const EmptyWishlist = () => {
   const openMenu = useMenuLink();
@@ -8,9 +10,13 @@ const EmptyWishlist = () => {
       <h3>Start Building Your List!</h3>
       <p>Browse our wide range of products and add items to lists.</p>
 
-      <button type="button" onClick={openMenu} className="btn btn-primary">
-        Continue Shopping
-      </button>
+
+      <Button
+        label={`Continue Shopping`}
+        icon={icons.faArrowRight}
+        onClick={openMenu}
+      />
+
     </div>
   );
 };

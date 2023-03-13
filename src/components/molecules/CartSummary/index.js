@@ -3,8 +3,10 @@ import { useCart, useCheckout } from "@saleor/sdk";
 import clsx from "clsx";
 import paths from "core/paths";
 import TaxedMoney from "components/molecules/TaxedMoney";
+import Button from "components/atoms/Button";
 
 import styles from "./CartSummary.module.scss";
+import { faArrowRight } from "@fortawesome/pro-light-svg-icons";
 
 const CartSummary = () => {
   const { checkout } = useCheckout();
@@ -68,9 +70,7 @@ const CartSummary = () => {
       </table>
 
       <div className="d-grid">
-        <Link href={paths.checkout} className="btn btn-secondary">
-          Proceed to Checkout
-        </Link>
+        <Button label="Proceed to Checkout" color="secondary" icon={faArrowRight} path={paths.checkout}/>
       </div>
     </div>
   );

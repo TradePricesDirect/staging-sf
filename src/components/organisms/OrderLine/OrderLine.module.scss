@@ -15,12 +15,14 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
+  position: relative;
   gap: 1rem;
   min-width: 20rem;
 }
 
 .thumbnail {
-  display: block;
+  position: relative;
+  display: flex;
   flex: 0 0 4rem;
   width: 4rem;
 }
@@ -63,5 +65,12 @@
 
   .body {
     font-size: $font-size-base;
+  }
+}
+
+.image {
+  img {
+    object-fit: contain;
+    object-position: center;
   }
 }

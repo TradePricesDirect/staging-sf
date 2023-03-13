@@ -1,9 +1,9 @@
 import { usePasswordChange } from "@saleor/sdk";
 import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import Alert from "components/atoms/Alert";
 import Input from "components/atoms/Input";
+import Button from "components/atoms/Button";
 
 const PasswordChange = () => {
   const [setPasswordChange, { data, error }] = usePasswordChange();
@@ -52,17 +52,15 @@ const PasswordChange = () => {
           error={errors.newPassword}
         />
 
-        <button
-          type="submit"
-          className="btn btn-outline-primary"
+        <Button
+          submit
+          color={"secondary"}
+          loading={isSubmitting}
           disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <FontAwesomeIcon icon={faSpinner} spin />
-          ) : (
-            <span>Save changes</span>
-          )}
-        </button>
+          label={`Save Changes`}
+          icon={icons.faArrowRight}
+        />
+
       </form>
     </>
   );

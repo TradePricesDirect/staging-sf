@@ -3,18 +3,13 @@ import _ from "lodash";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEdit,
-  faMinus,
-  faPlus,
-  faTrash,
-} from "@fortawesome/pro-light-svg-icons";
 import paths from "core/paths";
 import useDisclosure from "hooks/useDisclosure";
 import useLocalStorage from "hooks/useLocalStorage";
 import Thumbnail from "components/molecules/Thumbnail";
 import Money from "components/atoms/Money";
 import TaxedMoney from "components/molecules/TaxedMoney";
+import { icons } from "core/constants";
 
 import styles from "./CartRangeRow.module.scss";
 
@@ -105,7 +100,7 @@ const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
                 <div className="col-auto">
                   <Link href={path} className="btn btn-sm text-primary">
                     <>
-                      <FontAwesomeIcon icon={faEdit} />
+                      <FontAwesomeIcon icon={icons.faEdit} />
                       <span className="visually-hidden">Edit this item</span>
                     </>
                   </Link>
@@ -115,7 +110,7 @@ const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
                     type="button"
                     className="btn btn-sm text-danger"
                   >
-                    <FontAwesomeIcon icon={faTrash} />
+                    <FontAwesomeIcon icon={icons.faTrash} />
                     <span className="visually-hidden">Remove this item</span>
                   </button>
                 </div>
@@ -157,7 +152,7 @@ const CartRangeRow = ({ range, onRemove, onRemoveAll }) => {
                           type="button"
                           className="btn btn-sm text-danger"
                         >
-                          <FontAwesomeIcon icon={faTrash} />
+                          <FontAwesomeIcon icon={icons.faTrash} />
                           <span className="visually-hidden">
                             Remove this item
                           </span>

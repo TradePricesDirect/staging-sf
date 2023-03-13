@@ -44,8 +44,8 @@
           <mj-text> <b>Full Name:</b> [firstName] [lastName]</mj-text>
           <mj-text> <b>Email Address:</b> [email]</mj-text>
           <mj-text> <b>Telephone:</b> [phone]</mj-text>
+          <mj-text> <b>Products:</b> [products]</mj-text>
           <mj-text> <b>Type:</b> [type]</mj-text>
-          <mj-text> <b>Timeframe:</b> [timeframe]</mj-text>
           <mj-text> <b>Finance:</b> [finance]</mj-text>
         </mj-column>
       </mj-section>

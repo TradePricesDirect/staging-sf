@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import { faArrowRight } from "@fortawesome/pro-light-svg-icons";
 import Input from "components/atoms/Input";
+import Button from "components/atoms/Button";
 
 const ResetPasswordForm = ({ onSubmit, error }) => {
   const { register, handleSubmit, formState, watch } = useForm();
@@ -46,17 +46,7 @@ const ResetPasswordForm = ({ onSubmit, error }) => {
         error={errors.password_repeat}
       />
 
-      <button
-        type="submit"
-        className="btn btn-primary w-100"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? (
-          <FontAwesomeIcon icon={faSpinner} spin />
-        ) : (
-          <span>Reset Password</span>
-        )}
-      </button>
+      <Button submit label="Reset Password" color="secondary" icon={icons.faArrowRight} disabled={isSubmitting} loading={isSubmitting} />
     </form>
   );
 };

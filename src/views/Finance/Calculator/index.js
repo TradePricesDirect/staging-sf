@@ -2,7 +2,7 @@ import { useState } from "react";
 import _ from "lodash";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPoundSign } from "@fortawesome/pro-regular-svg-icons";
+import { icons } from "core/constants";
 import InputRange from "react-input-range";
 import DropdownSelect from "components/atoms/DropdownSelect";
 import { useAPRCalculator } from "./utils";
@@ -50,7 +50,7 @@ const Calculator = () => {
 
               <div className={styles.input}>
                 <div className={styles.icon}>
-                  <FontAwesomeIcon icon={faPoundSign} />
+                  <FontAwesomeIcon icon={icons.faPoundSign} />
                 </div>
                 <input
                   className="form-control form-control-sm mb-4"
@@ -84,6 +84,7 @@ const Calculator = () => {
                   formatLabel={(value) => `${value}%`}
                   value={state.depositPercent}
                   onChange={(value) => onChange("depositPercent", value)}
+                // classNames={}
                 />
               </div>
             </div>

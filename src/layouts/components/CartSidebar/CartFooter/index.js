@@ -1,7 +1,7 @@
 import Image from "next/image";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import { SUPPORT_PHONE } from "core/config";
 
 import styles from "./CartFooter.module.scss";
@@ -25,7 +25,7 @@ const CartFooter = () => {
         href={`tel:${SUPPORT_PHONE.replace(/ /g, "")}`}
         className={clsx("btn btn-sm", styles.phoneButton)}
       >
-        <FontAwesomeIcon icon={faPhoneAlt} />
+        <FontAwesomeIcon icon={icons.faPhoneAlt} />
         {SUPPORT_PHONE}
       </a>
     </div>

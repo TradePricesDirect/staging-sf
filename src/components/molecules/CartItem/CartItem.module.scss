@@ -6,7 +6,9 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
-  padding: 0.5rem;
+  padding: 20px;
+  border: 1px solid $gray-200;
+  border-radius: 20px;
 
   &.loading::before {
     content: "";
@@ -37,10 +39,6 @@
   line-height: $line-height-base;
 }
 
-.variants {
-  @include list-unstyled;
-  margin: 0 0 0.5rem;
-}
 
 .variant {
   font-size: $font-size-sm;
@@ -52,10 +50,25 @@
 }
 
 .footer {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+}
+
+.buttons{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  button{
+    top: 0;
+    right: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+    margin-left: 15px;
+  }
 }
 
 .pricing {
@@ -63,7 +76,7 @@
 }
 
 .subtotalPrice {
-  color: $primary;
+  color: $secondary;
   font-weight: $font-weight-semibold;
   line-height: $line-height-sm;
 }
@@ -75,8 +88,8 @@
 
 .quantitySelector {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
   display: flex;
   flex-wrap: nowrap;
   background-color: $blue-300;

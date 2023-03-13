@@ -1,0 +1,19 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.image {
+  position: relative;
+  padding-top: 100%;
+  margin-bottom: 1rem;
+
+  h3 {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    color: $white;
+  }
+}

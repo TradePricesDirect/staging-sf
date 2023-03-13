@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useAuth, useCart } from "@saleor/sdk";
-import clsx from "clsx";
+
 import { useOverlay } from "contexts/OverlayContext";
 import { formatDate } from "utils/date";
 import { getAvailableQuantity } from "utils/productStock";
 import QuantitySelector from "components/molecules/QuantitySelector";
-import AddToWishlist from "components/molecules/AddToWishlist";
-import SubmitButton from "components/atoms/SubmitButton";
+
 
 import styles from "./AddToCartSection.module.scss";
+import Button from "components/atoms/Button";
+
+import { icons } from "core/constants";
 
 const AddToCartSection = ({
   product,
@@ -88,26 +90,11 @@ const AddToCartSection = ({
 
   return (
     <div className={styles.wrap}>
+      <Button label={"Add To Basket"} icon={icons.faArrowRight} className={styles.addToCartButton} color={"secondary"} onClick={handleAddToCart} loading={loading} disabled={loading} />
       <QuantitySelector
         quantity={quantity}
         onUpdate={setQuantity}
         debounce={false}
-      />
-
-      <SubmitButton
-        type="button"
-        loading={loading}
-        onClick={handleAddToCart}
-        className={clsx("btn btn-primary", styles.button)}
-      >
-        Add To Basket
-      </SubmitButton>
-
-      <AddToWishlist
-        name={product.name}
-        product={product}
-        variant={variant}
-        className={clsx("btn btn-sm text-primary", styles.wishlistButton)}
       />
     </div>
   );

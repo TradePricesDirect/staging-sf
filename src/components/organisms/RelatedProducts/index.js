@@ -1,12 +1,13 @@
 import { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
+
+import { icons } from "core/constants";
 import ProductTile from "components/molecules/ProductTile";
 
 import styles from "./RelatedProducts.module.scss";
+import NavButton from "components/atoms/NavButton";
 
-const RelatedProducts = ({ title, products }) => {
+const RelatedProducts = ({ header, products }) => {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: false,
     align: "start",
@@ -24,32 +25,19 @@ const RelatedProducts = ({ title, products }) => {
 
   return (
     <section className={styles.wrap}>
-      <header className={styles.header}>
+      <header className={styles.headerContainer}>
         <div className="container">
-          <div className="row align-items-end">
-            <div className="col-sm">
-              <h3 className={styles.title}>{title}</h3>
+          <div className="d-flex">
+            <div className="col-sm m-auto">
+              <h4 className={styles.header}>{header}</h4>
             </div>
-
-            <div className="col-sm-auto">
+            <div className="d-flex">
               <div className={styles.nav}>
-                <button
-                  type="button"
-                  className="btn btn-sm"
-                  onClick={handlePrevious}
-                >
-                  <span className="visually-hidden">Previous</span>
-                  <FontAwesomeIcon icon={faArrowLeft} />
-                </button>
 
-                <button
-                  type="button"
-                  className="btn btn-sm"
-                  onClick={handleNext}
-                >
-                  <span className="visually-hidden">Next</span>
-                  <FontAwesomeIcon icon={faArrowRight} />
-                </button>
+                <>
+                  <NavButton onClick={handlePrevious} icon={icons.faArrowLeft} />
+                  <NavButton onClick={handleNext} icon={icons.faArrowRight} />
+                </>
               </div>
             </div>
           </div>

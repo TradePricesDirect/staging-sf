@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useDebouncedCallback } from "use-debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 
 import styles from "./SearchForm.module.scss";
 
@@ -15,7 +15,7 @@ const SearchForm = ({ onChange }) => {
       className={styles.form}
     >
       <label htmlFor="user-search" className={styles.label}>
-        <FontAwesomeIcon icon={faSearch} />
+        <FontAwesomeIcon icon={icons.faSearch} />
         <span className="visually-hidden">Search</span>
       </label>
 

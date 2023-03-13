@@ -1,19 +1,19 @@
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import paths from "core/paths";
 import { convertRichTextToPlainText } from "core/utils";
 import MetaTags from "components/atoms/MetaTags";
 import CategoryHero from "components/molecules/CategoryHero";
-import CategoryStyles from "components/molecules/CategoryStyles";
+// import CategoryStyles from "components/molecules/CategoryStyles";
 import CategoryCarousel from "components/molecules/CategoryCarousel";
-import FeaturedCarousel from "components/organisms/FeaturedCarousel";
-import FeaturedVaillant from "components/molecules/FeaturedVaillant";
-import FeaturedTado from "components/molecules/FeaturedTado";
-import FeaturedFernox from "components/molecules/FeaturedFernox";
+// import FeaturedCarousel from "components/organisms/FeaturedCarousel";
+// import FeaturedVaillant from "components/molecules/FeaturedVaillant";
+// import FeaturedTado from "components/molecules/FeaturedTado";
+// import FeaturedFernox from "components/molecules/FeaturedFernox";
 import TopBrands from "components/molecules/TopBrands";
 import LuxuryGrid from "components/molecules/LuxuryGrid";
 import ConsultationCallToAction from "components/organisms/ConsultationCallToAction";
 import FeaturedBrands from "components/molecules/FeaturedBrands";
-import FAQs from "./FAQs";
+import FAQ from "./FAQ";
 import Intro from "./Intro";
 
 import * as config from "./utils";
@@ -58,13 +58,13 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
         categories={heating}
       />
 
-      <FeaturedCarousel
+      {/* <FeaturedCarousel
         slides={[
           <FeaturedVaillant key="boilers-featured-carousel-vaillant" />,
           <FeaturedTado key="boilers-featured-carousel-tado" />,
           <FeaturedFernox key="boilers-featured-carousel-fernox" />
         ]}
-      />
+      /> */}
 
       {/* <CategoryCarousel
         title="Shop Boiler Consumables"
@@ -104,7 +104,7 @@ const BoilersPage = ({ boilers, boilerTypes, heating, consumables }) => {
         backgroundImage="/images/boilers/boiler-repair-bg.jpg"
       />
 
-      <FAQs />
+      <FAQ />
 
       <FeaturedBrands brands={config.brands} />
     </>

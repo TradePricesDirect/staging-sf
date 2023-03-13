@@ -6,19 +6,19 @@ import CategoryHero from "components/molecules/CategoryHero";
 import CategoryStyles from "components/molecules/CategoryStyles";
 import CategoryPopular from "components/molecules/CategoryPopular";
 import CategoryCarousel from "components/molecules/CategoryCarousel";
-import FeaturedCarousel from "components/organisms/FeaturedCarousel";
-import FeaturedMultipanel from "components/molecules/FeaturedMultipanel";
-import FeaturedGrohe from "components/molecules/FeaturedGrohe";
-import FeaturedSynergy from "components/molecules/FeaturedSynergy";
+// import FeaturedCarousel from "components/organisms/FeaturedCarousel";
+// import FeaturedMultipanel from "components/molecules/FeaturedMultipanel";
+// import FeaturedGrohe from "components/molecules/FeaturedGrohe";
+// import FeaturedSynergy from "components/molecules/FeaturedSynergy";
 import TopBrands from "components/molecules/TopBrands";
 import LuxuryGrid from "components/molecules/LuxuryGrid";
 import ConsultationCallToAction from "components/organisms/ConsultationCallToAction";
 import FeaturedBrands from "components/molecules/FeaturedBrands";
-import FAQs from "./FAQs";
+import FAQ from "./FAQ";
 
 import * as config from "./utils";
-import FeaturedPalio from "components/molecules/FeaturedPalio";
-import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
+// import FeaturedPalio from "components/molecules/FeaturedPalio";
+// import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
 
 const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
   return (
@@ -63,7 +63,7 @@ const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
           ...featured,
         ]}
       />
-
+      {/* 
       <FeaturedCarousel
         viewAll={config.bathroomsUrl}
         slides={[
@@ -73,7 +73,7 @@ const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
           <FeaturedPalio key="bathrooms-featured-carousel-palio" />,
           <FeaturedXLJoinery key="bathrooms-featured-carousel-xljoinery" />,
         ]}
-      />
+      /> */}
 
       <CategoryCarousel
         title="Shop Finishing Touches"
@@ -113,7 +113,7 @@ const BathroomsPage = ({ bathrooms, featured, finishingTouches }) => {
         backgroundImage="/images/bathrooms/bathroom-wireframe.jpg"
       />
 
-      <FAQs />
+      <FAQ />
 
       <FeaturedBrands brands={config.brands} />
     </>

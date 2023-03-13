@@ -1,0 +1,20 @@
+@import "styles/variables";
+
+.header {
+  display: flex;
+  margin: 40px 0 0 40px;
+  align-items: center;
+  color: $gray-600;
+
+  .close {
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+
+  .text {
+    padding: 0 32px;
+    font-weight: 600;
+  }
+}

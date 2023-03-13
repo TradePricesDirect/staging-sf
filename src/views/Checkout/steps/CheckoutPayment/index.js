@@ -1,15 +1,16 @@
 import { useState } from "react";
-import Link from "next/link";
+
 import { useCart, useCheckout } from "@saleor/sdk";
 import {
   PaymentGatewayEnum,
   getAvailablePaymentGateways,
 } from "views/Checkout/utils";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button";
 import CheckoutErrors from "components/organisms/CheckoutErrors";
 import PaymentOption from "./PaymentOption";
 
 import styles from "./CheckoutPayment.module.scss";
+import { icons } from "core/constants";
 
 export const CheckoutPayment = ({ onSubmitSuccess }) => {
   const { totalPrice } = useCart();
@@ -66,7 +67,7 @@ export const CheckoutPayment = ({ onSubmitSuccess }) => {
       <CheckoutErrors errors={errors} />
 
       <form onSubmit={handleSubmit}>
-        <fieldset className="mb-4">
+        <fieldset className={styles.container}>
           <legend className={styles.title}>Payment Method</legend>
 
           <p className={styles.lead}>Select a payment method to continue</p>
@@ -85,14 +86,12 @@ export const CheckoutPayment = ({ onSubmitSuccess }) => {
 
         <div className="row">
           <div className="col-auto">
-            <Link href="/checkout/shipping" className="btn btn-outline-primary">
-              Back
-            </Link>
+            <Button path="/checkout/shipping" label="Back" />
           </div>
 
           {canSubmit && (
             <div className="col-auto">
-              <SubmitButton loading={loading}>Continue</SubmitButton>
+              <Button submit label="Continue" color="secondary" icon={icons.faArrowRight} loading={loading} />
             </div>
           )}
         </div>

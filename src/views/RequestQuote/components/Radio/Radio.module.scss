@@ -8,60 +8,40 @@
   height: 100%;
   margin: 0;
   padding: 1rem;
-  background-color: #f1f6f8;
-  border: 2px solid $white;
-  border-radius: $border-radius;
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: 20px;
   transition: border-color 0.2s ease-in-out;
   cursor: pointer;
 
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    top: 1.75rem;
-    left: 0;
-    display: block;
-    width: 20px;
-    height: 36px;
-    opacity: 0.1;
-    background: url("/icons/title-arrow-primary.svg") left center no-repeat;
-    background-size: 100% 100%;
-  }
 }
 
 .title {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
   margin: 0 0 0.5rem;
-  font-size: 1.375rem;
-  font-weight: $font-weight-semibold;
+  font-size:30px;
+  font-weight: 600;
   color: $gray-900;
+}
 
-  svg {
-    opacity: 0.5;
-    margin-left: auto;
-    opacity: 0.5;
-  }
+.text{
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   z-index: 2;
-  padding-right: 4rem;
   font-size: $font-size-sm;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.icon {
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  right: 0;
-  display: block;
-  width: 7.5rem;
-  height: auto;
 }
 
 .input {
@@ -72,7 +52,7 @@
   }
 
   &:checked + .content {
-    border-color: $primary;
+    border-color: $secondary;
 
     .inner {
       opacity: 1;
@@ -81,15 +61,21 @@
 }
 
 .content:hover {
-  border-color: $primary;
+  border-color: $secondary;
+}
 
-  .inner {
-    opacity: 1;
-  }
+.button{
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $primary;
+  border: 1px solid $gray-200;
+  padding: 10px 25px;
+  border-radius: 30px;
 }
 
 @media (min-width: 576px) {
   .content {
-    padding: 2rem;
+    padding: 3rem;
   }
 }

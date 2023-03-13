@@ -66,6 +66,6 @@ export const STRIPE_APPEARANCE = {
     colorBackground: "#ffffff",
     colorText: "#222321",
     colorDanger: "#ef4444",
-    fontFamily: "soleil, sans-serif",
+    fontFamily: "mazzard, sans-serif",
   },
 };

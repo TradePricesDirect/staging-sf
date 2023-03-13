@@ -25,6 +25,8 @@
   .navItem {
     padding: 0.75rem 0.5rem;
     border-radius: $border-radius-pill;
+    width: 100%;
+    min-width: 0;
   }
 
   @media (min-width: 480px) {

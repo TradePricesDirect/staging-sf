@@ -12,28 +12,32 @@ const ProductList = ({
   activeFilters,
   onClearFilters,
 }) => {
-  if (loading) return <ProductListLoading count={perPage} />;
 
-  if (!products.length) {
-    return (
-      <ProductListEmpty
-        activeFilters={activeFilters}
-        onClearFilters={onClearFilters}
-      />
-    );
-  }
+
+  // if (loading) return <ProductListLoading count={perPage} />;
+
+  // if (!products.length) {
+  //   return (
+  //     <ProductListEmpty
+  //       activeFilters={activeFilters}
+  //       onClearFilters={onClearFilters}
+  //     />
+  //   );
+  // }
 
   return (
     <>
       <ul className={styles.list}>
+        {/* <div className={styles.grid}> */}
         {products.map((product) => (
-          <li key={`product-${product.id}`}>
+          <li key={`product-${product.id}`} >
             <ProductTile product={product} />
           </li>
         ))}
+        {/* </div> */}
       </ul>
 
-      {canLoadMore && (
+      {/* {canLoadMore && (
         <div className="text-center py-4">
           <button
             type="button"
@@ -43,39 +47,39 @@ const ProductList = ({
             Load More
           </button>
         </div>
-      )}
+      )} */}
     </>
   );
 };
 
 export default ProductList;
 
-const ProductListLoading = ({ count }) => {
-  return (
-    <ul className={styles.list}>
-      {[...Array(count)].map((_, index) => (
-        <li key={`skeleton-${index}`}>
-          <ProductTileSkeleton />
-        </li>
-      ))}
-    </ul>
-  );
-};
+// const ProductListLoading = ({ count }) => {
+//   return (
+//     <ul className={styles.list}>
+//       {[...Array(count)].map((_, index) => (
+//         <li key={`skeleton-${index}`}>
+//           <ProductTileSkeleton />
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// };
 
-const ProductListEmpty = ({ activeFilters, onClearFilters }) => {
-  return (
-    <div>
-      <p className="mb-4">No products found.</p>
+// const ProductListEmpty = ({ activeFilters, onClearFilters }) => {
+//   return (
+//     <div>
+//       <p className="mb-4">No products found.</p>
 
-      {activeFilters > 0 && (
-        <button
-          onClick={onClearFilters}
-          type="button"
-          className="btn btn-primary"
-        >
-          Clear Filters
-        </button>
-      )}
-    </div>
-  );
-};
+//       {activeFilters > 0 && (
+//         <button
+//           onClick={onClearFilters}
+//           type="button"
+//           className="btn btn-primary"
+//         >
+//           Clear Filters
+//         </button>
+//       )}
+//     </div>
+//   );
+// };

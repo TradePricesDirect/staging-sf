@@ -8,6 +8,11 @@
 }
 
 .title {
+  margin-top: 20px;
   color: $primary;
   @include font-size(1.25rem);
+}
+
+.text {
+  color: $gray-700;
 }

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import { useOverlay } from "contexts/OverlayContext";
 import Logo from "components/atoms/Logo";
 
@@ -13,16 +13,16 @@ const MenuHeader = () => {
     <div className={styles.header}>
       <button
         type="button"
-        className={clsx("btn btn-sm", styles.close)}
+        className={clsx(styles.close)}
         aria-label="Close"
         title="Close"
         onClick={overlay.hide}
       >
-        <FontAwesomeIcon icon={faTimes} />
-        Close
+        <FontAwesomeIcon icon={icons.faTimes} />
       </button>
-
-      <Logo className={styles.logo} />
+      <div>
+        <Logo link />
+      </div>
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
+
 import { useCheckout } from "@saleor/sdk";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button";
 import CheckoutErrors from "components/organisms/CheckoutErrors";
 import ShippingOption from "./ShippingOption";
 
 import styles from "./CheckoutShipping.module.scss";
+import { icons } from "core/constants";
 
 export const CheckoutShipping = ({ onSubmitSuccess }) => {
   const { checkout, availableShippingMethods, setShippingMethod } =
@@ -73,14 +74,12 @@ export const CheckoutShipping = ({ onSubmitSuccess }) => {
 
         <div className="row">
           <div className="col-auto">
-            <Link href="/checkout/address" className="btn btn-outline-primary">
-              Back
-            </Link>
+            <Button path="/checkout/address" label='Back' />
           </div>
 
           {canSubmit && (
             <div className="col-auto">
-              <SubmitButton loading={loading}>Continue</SubmitButton>
+              <Button submit label='Continue' color='secondary' icon={icons.faArrowRight} loading={loading} />
             </div>
           )}
         </div>

@@ -1,15 +1,16 @@
 import { useSWRConfig } from "swr";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog } from "@fortawesome/pro-solid-svg-icons";
+
+import { icons } from "core/constants";
 import paths from "core/paths";
 import { updateWishlist } from "utils/wishlists";
 import useDisclosure from "hooks/useDisclosure";
 import Modal from "components/organisms/Modal";
 import Input from "components/atoms/Input";
 import DeleteWishlistButton from "components/molecules/DeleteWishlistButton";
-import SubmitButton from "components/atoms/SubmitButton";
+
+import Button from "components/atoms/Button";
 
 const EditWishlist = ({ wishlist }) => {
   const router = useRouter();
@@ -28,14 +29,11 @@ const EditWishlist = ({ wishlist }) => {
 
   return (
     <>
-      <button
+      <Button
         onClick={onOpen}
-        type="button"
-        className="btn btn-sm btn-outline-primary"
-      >
-        <FontAwesomeIcon icon={faCog} className="me-2" />
-        Settings
-      </button>
+        label={`Settings`}
+        icon={icons.faCog}
+      />
 
       <Modal title="Edit List" isOpen={isOpen} onClose={onClose} size="sm">
         <form onSubmit={handleSubmit(onSubmit)} className="d-grid">
@@ -49,8 +47,14 @@ const EditWishlist = ({ wishlist }) => {
           />
 
           <div className="d-flex g-4 justify-content-between">
-            <SubmitButton loading={isSubmitting}>Save Changes</SubmitButton>
 
+            <Button
+              submit
+              color={"secondary"}
+              loading={isSubmitting}
+              label={`Save changes`}
+              icon={icons.faArrowRight}
+            />
             <DeleteWishlistButton
               id={wishlist.id}
               className="btn text-danger"

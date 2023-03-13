@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { faPalette } from "@fortawesome/pro-light-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DropdownSelect from "components/atoms/DropdownSelect";
 import Step from "../Step";
@@ -8,6 +8,7 @@ import { PAINT_TO_ORDER_OPTIONS } from "../utils";
 import styles from "./ColorOptions.module.scss";
 
 const PAINT_TO_ORDER = "paint-to-order";
+import { icons } from "core/constants";
 
 const ColorOptions = ({
   open,
@@ -125,7 +126,7 @@ const PaintToOrderSwatch = ({ name, selected, onClick }) => {
   return (
     <button type="button" onClick={onClick} className={styles.color}>
       <FontAwesomeIcon
-        icon={faPalette}
+        icon={icons.faPalette}
         className={clsx(styles.icon, selected && styles.selected)}
       />
       <div>{name}</div>

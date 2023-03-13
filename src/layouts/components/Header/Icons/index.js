@@ -3,31 +3,24 @@ import Link from "next/link";
 import { useCart } from "@saleor/sdk";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeart as fasHeart,
-  faShoppingBasket as fasShoppingBasket,
-  faUser as fasUser,
-  faBars as fasBars,
-} from "@fortawesome/pro-solid-svg-icons";
-import {
-  faHeart as falHeart,
-  faShoppingBasket as falShoppingBasket,
-  faUser as falUser,
-  faBars as falBars,
-} from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import { useOverlay } from "contexts/OverlayContext";
-
 import styles from "./Icons.module.scss";
+import useIsTablet from "hooks/useIsTablet";
+import useIsMobile from "hooks/useIsMobile";
+
 
 const Icons = () => {
+  const isTablet = useIsTablet();
+  const isMobile = useIsMobile();
   return (
     <ul className={styles.list}>
       <li>
         <IconLink
           href="/account"
           title="Account"
-          icon={falUser}
-          hover={fasUser}
+          icon={icons.faUser}
+          hover={icons.faUser}
         />
       </li>
 
@@ -35,22 +28,23 @@ const Icons = () => {
         <IconLink
           href="/lists"
           title="Lists"
-          icon={falHeart}
-          hover={fasHeart}
+          icon={icons.faHeart}
+          hover={icons.faHeart}
         />
       </li>
 
       <li>
         <IconCart
           title="Basket"
-          icon={falShoppingBasket}
-          hover={fasShoppingBasket}
+          icon={icons.faShoppingBasket}
+          hover={icons.faShoppingBasket}
         />
       </li>
 
-      <li className={styles["menu-list-item"]}>
-        <IconMenu title="Menu" icon={falBars} hover={fasBars} />
-      </li>
+      {(isTablet || isMobile) && <li>
+        <IconMenu title="Menu" icon={icons.faBars} hover={icons.faBars} />
+      </li>}
+
     </ul>
   );
 };
@@ -82,6 +76,9 @@ function IconCart(props) {
 
   const [hover, setHover] = useState(false);
 
+  const isTablet = useIsTablet();
+  const isMobile = useIsMobile();
+
   return (
     <button
       type="button"
@@ -101,13 +98,15 @@ function IconCart(props) {
           </div>
         )}
       </div>
+      {!isTablet && !isMobile && <div className={styles.label}>{props.title}</div>}
 
-      <div className={styles.label}>{props.title}</div>
     </button>
   );
 }
 
+
 function IconMenu(props) {
+
   const overlay = useOverlay();
 
   const [hover, setHover] = useState(false);

@@ -11,7 +11,7 @@ const menuConfig = {
     {
       id: uuid(),
       name: "Trade Account",
-      href: paths.trade,
+      href: paths.register,
     },
     {
       id: uuid(),
@@ -23,7 +23,7 @@ const menuConfig = {
     {
       id: uuid(),
       name: "Shop All",
-      href: paths.category.replace("[slug]", "kitchens"),
+      href: paths.plp.replace("[slug]", "kitchens"),
     },
     {
       id: uuid(),
@@ -33,7 +33,7 @@ const menuConfig = {
     {
       id: uuid(),
       name: "Kitchen Inspiration",
-      href: paths.kitchens,
+      href: paths.content.kitchens,
     },
     {
       id: uuid(),
@@ -45,12 +45,12 @@ const menuConfig = {
     {
       id: uuid(),
       name: "Shop All",
-      href: paths.category.replace("[slug]", "bathrooms"),
+      href: paths.plp.replace("[slug]", "bathrooms"),
     },
     {
       id: uuid(),
       name: "Bathroom Inspiration",
-      href: paths.bathrooms,
+      href: paths.content.bathrooms,
     },
     {
       id: uuid(),
@@ -58,20 +58,54 @@ const menuConfig = {
       href: paths.finance,
     },
   ],
-  boilers: [
+  heating: [
     {
       id: uuid(),
       name: "Shop All",
-      href: paths.category.replace("[slug]", "boilers"),
+      href: paths.plp.replace("[slug]", "heating"),
     },
     {
       id: uuid(),
-      name: "Boiler Guide",
-      href: paths.boilers,
+      name: "Heating Guide",
+      href: paths.content.heating,
     },
     {
       id: uuid(),
-      name: "Boilers on Finance",
+      name: "Heating on Finance",
+      href: paths.finance,
+    },
+  ],
+  plumbing: [
+    {
+      id: uuid(),
+      name: "Shop All",
+      href: paths.plp.replace("[slug]", "plumbing"),
+    },
+    {
+      id: uuid(),
+      name: "Plumbing Guide",
+      href: paths.content.plumbing,
+    },
+    {
+      id: uuid(),
+      name: "Plumbing on Finance",
+      href: paths.finance,
+    },
+  ],
+  renewables: [
+    {
+      id: uuid(),
+      name: "Shop All",
+      href: paths.plp.replace("[slug]", "renewables"),
+    },
+    {
+      id: uuid(),
+      name: "Renewables Guide",
+      href: paths.content.renewables,
+    },
+    {
+      id: uuid(),
+      name: "Renewables on Finance",
       href: paths.finance,
     },
   ],

@@ -1,19 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "@saleor/sdk";
 import paths from "core/paths";
 import { useCreateAccount } from "components/molecules/RegisterForm/queries";
 
 export const QuoteStepEnum = {
+  Products: 0,
   Type: 1,
-  Timeframe: 2,
-  Finance: 3,
-  Details: 4,
+  Finance: 2,
+  Details: 3,
 };
 
 const initialState = {
   type: null,
-  timeframe: null,
   finance: null,
 };
 
@@ -24,18 +23,30 @@ export default function useQuoteForm() {
   const { createAccount } = useCreateAccount();
 
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(QuoteStepEnum.Type);
+  const [step, setStep] = useState(QuoteStepEnum.Products);
 
   const [state, setState] = useState(initialState);
+  const [selectedProducts, setSelectedProducts] = useState([])
 
   const handleStepChange = (step) => setStep(step);
+
+  const handleProductSelection = (selectedProducts) => {
+    setSelectedProducts(selectedProducts)
+  }
+
+  const handleStepProgress = () => {
+    setStep(step + 1);
+  }
+
+  const handleStepPrevious = () => {
+    setStep(step - 1);
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     setState({ ...state, [name]: value });
 
-    setStep(step + 1);
   };
 
   const handleSubmit = async (data) => {
@@ -69,7 +80,7 @@ export default function useQuoteForm() {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...state, ...data }),
+        body: JSON.stringify({ ...{ products: selectedProducts }, ...state, ...data }),
       });
 
       if (!res.ok) throw res;
@@ -78,31 +89,15 @@ export default function useQuoteForm() {
     }
   };
 
-  const maxStep = getMaxStep(state);
-
   const actions = {
     handleStepChange,
     handleInputChange,
     handleSubmit,
+    handleProductSelection,
+    handleStepProgress,
+    handleStepPrevious
   };
 
-  return { step, maxStep, loading, state, actions };
+  return { step, loading, state, actions, selectedProducts };
 }
 
-const getMaxStep = (data) => {
-  let step = 1;
-
-  if (data.type) {
-    step = 2;
-
-    if (data.timeframe) {
-      step = 3;
-
-      if (data.finance) {
-        step = 4;
-      }
-    }
-  }
-
-  return step;
-};

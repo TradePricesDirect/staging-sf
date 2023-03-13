@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.headerContainer {
+  margin-top: 20px;
+}
+.content {
+  display: flex;
+}
+
+.header {
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.center {
+  justify-content: center;
+}
+.menuNav {
+  margin-top: 5px;
+}
+
+.nav {
+  min-width: 30%;
+}

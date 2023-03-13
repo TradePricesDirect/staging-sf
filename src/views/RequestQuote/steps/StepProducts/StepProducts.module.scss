@@ -1,0 +1,89 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.container {
+  padding: 0;
+}
+
+.wrap {
+  position: relative;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 20rem;
+    max-height: 100%;
+  }
+
+  ul {
+    @include list-unstyled;
+    margin: 0;
+  }
+}
+
+.headerContainer {
+    margin: 0 0.5rem 18px 0.5rem;
+    text-align: center;
+  }
+
+  .header {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .subheader{
+        font-size: 22px;
+        font-weight: 200;
+
+  }
+
+  .nav {
+    display: inline-flex;
+    vertical-align: middle;
+    gap: 12px;
+  }
+
+  .carouselWrap {
+    position: relative;
+    outline: none;
+  }
+
+  .productsCarousel {
+    display: grid;
+    grid-auto-flow: column;
+      grid-auto-columns: calc(25%);
+  }
+
+  .slide {
+    position: relative;
+    padding: 0 0.5rem;
+    height: 100%;
+  }
+
+  .buttonWrap{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+
+  @media (min-width: 1200px) {
+    .carouselWrap {
+      max-width: none;
+    }
+
+  }
+
+  @media (min-width: 1400px) {
+    .carouselWrap {
+      max-width: none;
+    }
+  }

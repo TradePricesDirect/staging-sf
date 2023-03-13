@@ -1,14 +1,15 @@
-.image {
+.container {
   display: block;
-  position: relative;
-  padding-top: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 
   &.tall {
     padding-top: 133.33%;
   }
-}
 
-.thumbImage {
-  object-fit: contain;
-  object-position: center;
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
 }

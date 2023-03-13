@@ -12,6 +12,7 @@ const FilterSidebar = ({
   onAttributeFiltersChange,
   parentCategory,
 }) => {
+
   return (
     <div className={styles.wrap} role="complementary">
       {activeFilters > 0 && (
@@ -23,6 +24,7 @@ const FilterSidebar = ({
       )}
 
       <WidgetCategory categories={categories} />
+
 
       {attributes.map(({ id, name, slug, choices }) => {
         const values = choices?.edges.map(({ node }) => node) || [];

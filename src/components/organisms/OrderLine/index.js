@@ -4,6 +4,7 @@ import Thumbnail from "components/molecules/Thumbnail";
 import TaxedMoney from "components/molecules/TaxedMoney";
 
 import styles from "./OrderLine.module.scss";
+import Image from "next/image";
 
 const OrderLine = ({
   variant,
@@ -18,7 +19,9 @@ const OrderLine = ({
         <div className={styles.content}>
           {variant && (
             <Link href={paths.product.replace("[slug]", variant.product.slug)} className={styles.thumbnail}>
-              <Thumbnail thumbnail={variant.product.thumbnail} />
+              <div className={styles.image}>
+                <Image src={variant.product.thumbnail.url} alt={variant.product.thumbnail.alt} fill />
+              </div>
             </Link>
           )}
 

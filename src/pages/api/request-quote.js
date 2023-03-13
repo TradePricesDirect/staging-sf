@@ -56,7 +56,7 @@ const html = (data) => {
   template = template.replace("[phone]", data.phone);
 
   template = template.replace("[type]", data.type);
-  template = template.replace("[timeframe]", data.timeframe);
+  template = template.replace("[products]", data.products.toString());
   template = template.replace("[finance]", data.finance);
 
   return template;

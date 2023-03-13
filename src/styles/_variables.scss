@@ -17,15 +17,19 @@ $gray-700: #4a4a4a;
 $gray-800: #343a40;
 $gray-900: #222321;
 $black: #000;
+$opace: rgba(255, 255, 255, 0);
 
-$blue: #03284c;
+$blue: #00284c;
+$royal-blue: #2658e9;
+$hawkes-blue: #cdd4fd;
+$haiti: #00284c;
 $orange: #fc902b;
-$red: #ef4444;
+$red: #d9463f;
 $yellow: #ffd300;
-$green: #10b981;
+$green: #2caf1a;
 
-$primary: $blue;
-$secondary: $orange;
+$primary: $haiti;
+$secondary: $royal-blue;
 $success: $green;
 $info: $gray-500;
 $warning: $yellow;
@@ -139,7 +143,7 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns: 12;
-$grid-gutter-width: 2rem;
+$grid-gutter-width: 1rem;
 $gutters: $spacers;
 
 // Container padding
@@ -149,6 +153,10 @@ $container-padding-x: $grid-gutter-width * 0.5;
 // Components
 //
 // Define common padding and border radius sizes and more.
+
+$page-margin-lg: 10vw;
+$page-margin-md: 8vw;
+$page-margin-sm: 5vw;
 
 $border-width: 1px;
 $border-color: $gray-300;
@@ -172,7 +180,7 @@ $transition-collapse: height 0.35s ease;
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif: "soleil", sans-serif;
+$font-family-sans-serif: "Mazzard", sans-serif;
 
 $font-size-base: 1rem; // Assumes the browser default, typically `16px`
 $font-size-xs: $font-size-base * 0.75;

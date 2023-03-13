@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 
 const SubmitButton = ({ loading, type = "submit", children, ...props }) => {
   return (
@@ -9,7 +9,7 @@ const SubmitButton = ({ loading, type = "submit", children, ...props }) => {
       disabled={loading}
       {...props}
     >
-      {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : children}
+      {loading ? <FontAwesomeIcon icon={icons.faSpinner} spin /> : children}
     </button>
   );
 };

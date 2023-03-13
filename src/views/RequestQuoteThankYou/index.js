@@ -3,7 +3,7 @@ import { useAuth } from "@saleor/sdk";
 import paths from "core/paths";
 import QuoteLayout from "layouts/Quote";
 import CategoryList from "components/organisms/CategoryList";
-import CategoryCarouselEndless from "components/organisms/CategoryCarouselEndless";
+import Carousel from "components/organisms/Carousel";
 
 import styles from "./RequestQuoteThankYou.module.scss";
 
@@ -56,7 +56,7 @@ const RequestQuoteThankYouPage = ({ categoriesLevel0, categoriesLevel1 }) => {
       </div>
 
       <CategoryList categories={categoriesLevel0} />
-      <CategoryCarouselEndless categories={categoriesLevel1} />
+      <Carousel categories={categoriesLevel1} />
     </>
   );
 };

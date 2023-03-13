@@ -1,8 +1,9 @@
 import { useAuth, useAccountUpdate } from "@saleor/sdk";
 import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+
+import { icons } from "core/constants";
 import Input from "components/atoms/Input";
+import Button from "components/atoms/Button";
 
 const PersonalDetails = () => {
   const { user } = useAuth();
@@ -40,17 +41,15 @@ const PersonalDetails = () => {
           error={errors.lastName}
         />
 
-        <button
-          type="submit"
-          className="btn btn-outline-primary"
+        <Button
+          submit
+          color={"secondary"}
+          loading={isSubmitting}
           disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <FontAwesomeIcon icon={faSpinner} spin />
-          ) : (
-            <span>Save changes</span>
-          )}
-        </button>
+          label={`Save Changes`}
+          icon={icons.faArrowRight}
+        />
+
       </form>
     </>
   );

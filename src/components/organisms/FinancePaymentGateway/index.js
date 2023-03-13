@@ -1,12 +1,13 @@
 import { useState } from "react";
-import Link from "next/link";
+
 import { useCheckout } from "@saleor/sdk";
 import { useOrderAddNoteMutation } from "graphql/mutations";
 import { CheckoutStepEnum } from "views/Checkout/utils";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button";
 import CheckoutErrors from "components/organisms/CheckoutErrors";
 
 import styles from "./FinancePaymentGateway.module.scss";
+import { icons } from "core/constants";
 
 const FinancePaymentGateway = ({ onSubmitSuccess }) => {
   const { completeCheckout } = useCheckout();
@@ -53,13 +54,11 @@ const FinancePaymentGateway = ({ onSubmitSuccess }) => {
 
         <div className="row">
           <div className="col-auto">
-            <Link href="/checkout/payment" className="btn btn-outline-primary">
-              Back
-            </Link>
+            <Button path="/checkout/payment" label="Back" />
           </div>
 
           <div className="col-auto">
-            <SubmitButton loading={loading}>Place Order</SubmitButton>
+            <Button submit label="Place Order" color="secondary" icon={icons.faArrowRight} loading={loading} />
           </div>
         </div>
       </form>

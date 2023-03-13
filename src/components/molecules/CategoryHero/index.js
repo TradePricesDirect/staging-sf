@@ -19,7 +19,7 @@ const CategoryHero = ({ title, description, backgroundImage }) => {
         )}
 
         <Link href={paths.requestQuote}>
-          <a className="btn btn-secondary">Request a Quote</a>
+          <span className="btn btn-secondary">Request a Quote</span>
         </Link>
       </div>
 

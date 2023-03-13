@@ -1,6 +1,6 @@
 import ProductListHero from "components/molecules/ProductListHero";
 import CategoryList from "components/organisms/CategoryList";
-import CategoryCarouselEndless from "components/organisms/CategoryCarouselEndless";
+import Carousel from "components/organisms/Carousel";
 
 const ShopPage = ({ categoriesLevel0, categoriesLevel1 }) => {
   return (
@@ -22,7 +22,7 @@ const ShopPage = ({ categoriesLevel0, categoriesLevel1 }) => {
       />
 
       <CategoryList categories={categoriesLevel0} />
-      <CategoryCarouselEndless
+      <Carousel
         categories={categoriesLevel1}
         viewAllButton={false}
       />

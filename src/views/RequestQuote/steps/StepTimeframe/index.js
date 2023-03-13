@@ -1,65 +1,85 @@
+import { useEffect, useState } from "react";
 import Radio from "../../components/Radio";
+import { faArrowRight } from "@fortawesome/pro-regular-svg-icons";
+import Button from 'components/atoms/Button'
 
 import styles from "../Steps.module.scss";
 
-const StepTimeframe = ({ selected, onChange }) => {
+const StepTimeframe = ({ selected, onChange, onContinue }) => {
+
+  const [select, setSelected] = useState(selected);
+
+  useEffect(() => {
+    setSelected(selected)
+  }, [selected]);
+
+  const handleChange = (e) => {
+    setSelected(e.target.value)
+    onChange(e)
+  }
+
   return (
-    <fieldset>
-      <legend className={styles.title}>
-        {"My "}<strong>{"timeframe"}</strong>{" for starting is..."}
-      </legend>
+    <>
+      <header className={styles.headerContainer}>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 m-auto">
+              <h2 className={styles.header}>How soon would you like to start?</h2>
+              <h4 className={styles.subheader}>Let us know roughly when you&apos;re looking to start your project, or if
+        you&apos;re just browsing.</h4>
+            </div>
+          </div>
+        </div>
+      </header>
+      <fieldset className={styles.fieldsetContainer}>
+        <div className={styles.grid}>
+          <Radio
+            name="timeframe"
+            value="ASAP"
+            checked={select === "ASAP"}
+            onClick={handleChange}
+            onChange={handleChange}
+            title="ASAP"
+            text="I would like to start this project as soon as possible."
+          />
 
-      <p className={styles.lead}>
-        {`Let us know roughly when you're looking to start your project, or if
-        you're just browsing.`}
-      </p>
+          <Radio
+            name="timeframe"
+            value="Within One Month"
+            checked={select === "Within One Month"}
+            onClick={handleChange}
+            onChange={handleChange}
+            title="Within One Month"
+            text="I would like to start this project within the next month."
+          />
 
-      <div className={styles.grid}>
-        <Radio
-          name="timeframe"
-          value="ASAP"
-          checked={selected === "ASAP"}
-          onClick={onChange}
-          onChange={onChange}
-          title="ASAP"
-          text="I would like to start this project as soon as possible."
-          image="/images/request-quote/timeframe-asap.svg"
-        />
+          <Radio
+            name="timeframe"
+            value="Within Three Months"
+            checked={select === "Within Three Months"}
+            onClick={handleChange}
+            onChange={handleChange}
+            title="Within Three Months"
+            text="I would like to start this project within the next three months."
+          />
 
-        <Radio
-          name="timeframe"
-          value="Within One Month"
-          checked={selected === "Within One Month"}
-          onClick={onChange}
-          onChange={onChange}
-          title="Within One Month"
-          text="I would like to start this project within the next month."
-          image="/images/request-quote/timeframe-one-month.svg"
-        />
-
-        <Radio
-          name="timeframe"
-          value="Within Three Months"
-          checked={selected === "Within Three Months"}
-          onClick={onChange}
-          onChange={onChange}
-          title="Within Three Months"
-          text="I would like to start this project within the next three months."
-          image="/images/request-quote/timeframe-three-months.svg"
-        />
-
-        <Radio
-          name="timeframe"
-          value="Just Browsing"
-          checked={selected === "Just Browsing"}
-          onClick={onChange}
-          onChange={onChange}
-          title="Just Browsing"
-          text="I have no plans yet and am just browsing for ideas."
-          image="/images/request-quote/timeframe-browsing.svg"
-        />
-      </div>
-    </fieldset>
+          <Radio
+            name="timeframe"
+            value="Just Browsing"
+            checked={select === "Just Browsing"}
+            onClick={handleChange}
+            onChange={handleChange}
+            title="Just Browsing"
+            text="I have no plans yet and am just browsing for ideas."
+          />
+        </div>
+        {select && (
+                    <div className={styles.buttonWrap}>
+                        <Button onClick={onContinue} color="secondary" label="Continue" icon={faArrowRight} />
+                    </div>
+                )}
+      </fieldset>
+    </>
   );
 };
 

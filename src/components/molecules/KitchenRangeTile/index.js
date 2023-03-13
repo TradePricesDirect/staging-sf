@@ -5,9 +5,9 @@ import Skeleton from "react-loading-skeleton";
 import _ from "lodash";
 import useEmblaCarousel from "embla-carousel-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/pro-solid-svg-icons";
+import { icons } from "core/constants";
 import paths from "core/paths";
-import Money from "components/atoms/Money";
+
 
 import styles from "./KitchenRangeTile.module.scss";
 
@@ -55,12 +55,12 @@ const KitchenRangeTile = ({ range }) => {
               onClick={handlePrevious}
             >
               <span className="visually-hidden">Previous</span>
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FontAwesomeIcon icon={icons.faArrowLeft} />
             </button>
 
             <button type="button" className="btn btn-sm" onClick={handleNext}>
               <span className="visually-hidden">Next</span>
-              <FontAwesomeIcon icon={faArrowRight} />
+              <FontAwesomeIcon icon={icons.faArrowRight} />
             </button>
           </div>
         )}

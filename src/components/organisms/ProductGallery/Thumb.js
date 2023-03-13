@@ -4,10 +4,10 @@ import styles from "./ProductGallery.module.scss";
 
 const Thumb = ({ image, selected, onClick }) => {
   return (
-    <div className={clsx(styles.thumb, selected && styles.selected)}>
-      <button className={styles.thumbButton} onClick={onClick}>
+    <div className={clsx(styles.thumb)}>
+      <button className={clsx(styles.thumbButton, selected && styles.selected)} onClick={onClick}>
         <Image
-          className={styles.thumbImage}
+          className={styles.image}
           src={image.url}
           alt={image.alt}
           fill

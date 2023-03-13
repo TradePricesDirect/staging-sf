@@ -2,15 +2,20 @@
 @import "styles/mixins";
 
 .badge {
-  display: inline-block;
-  padding: 0.5rem 0.75rem;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  line-height: 1;
-  text-align: center;
+  height: 48px;
+  border-radius: 48px;
+  background-color: #fff;
+  color: #00284c;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-overflow: clip;
   white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: $border-radius;
+  border: 1px solid #dee2e6;
+  max-width: 122px;
+
+  // padding: 15px 20px;
 
   &.red {
     color: #fff;
@@ -29,6 +34,6 @@
 
   &.blue {
     color: #fff;
-    background-color: $blue;
+    background-color: $secondary;
   }
 }

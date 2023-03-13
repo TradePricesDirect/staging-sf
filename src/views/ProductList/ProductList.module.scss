@@ -1,0 +1,35 @@
+@import "styles/variables";
+@import "styles/mixins";
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.header {
+  margin-bottom: 15px;
+}
+
+.menuNav {
+  margin-top: 5px;
+}
+.list {
+  @include list-unstyled;
+  display: grid;
+  margin: 0;
+  li {
+    margin-bottom: 1rem;
+  }
+}
+
+.tile {
+  // height: 270px;
+}
+
+.pageIndex {
+  margin-top: 40px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

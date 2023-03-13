@@ -1,10 +1,10 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
+import { icons } from "core/constants";
 import { useOverlay } from "contexts/OverlayContext";
 
-import styles from "./MenuNavigation.module.scss";
+// import styles from "./MenuNavigation.module.scss";
 
 const MenuLink = ({ name, slug, url }) => {
   const overlay = useOverlay();
@@ -24,7 +24,7 @@ const MenuLink = ({ name, slug, url }) => {
       {name}
       {isFeatured && (
         <div className={styles.icon}>
-          <FontAwesomeIcon icon={faArrowRight} />
+          <FontAwesomeIcon icon={icons.faArrowRight} />
         </div>
       )}
     </Link >

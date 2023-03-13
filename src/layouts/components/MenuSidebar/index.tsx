@@ -4,11 +4,30 @@ import MenuHeader from "./MenuHeader";
 import MenuNavigation from "./MenuNavigation";
 import MenuContactDetails from "./MenuContactDetails";
 import MenuAccount from "./MenuAccount";
+import MenuBack from "./MenuBack";
 
 import styles from "./MenuSidebar.module.scss";
+import clsx from "clsx";
+import useKeyPress from "hooks/useKeyPress";
+import { FC, useEffect } from "react";
 
-const MenuSidebar = ({ categoryTree, featuredCategories }) => {
+const MenuSidebar: FC<{
+  categories: any;
+  featuredCategories: any;
+  className?: string;
+}> = ({ categories, featuredCategories, className }) => {
   const overlay = useOverlay();
+  const escapePress = useKeyPress("Escape");
+
+  const visible = overlay.type !== null;
+
+  useEffect(() => {
+    if (escapePress) {
+      overlay.hide();
+    }
+  }, [escapePress, overlay]);
+
+  const isParent = overlay.type === "menu";
 
   const isOpen: boolean = ["menu", ...featuredCategories].includes(
     overlay.type
@@ -16,19 +35,17 @@ const MenuSidebar = ({ categoryTree, featuredCategories }) => {
 
   return (
     <Drawer isOpen={isOpen} position="left">
-      <div className={styles.wrap}>
+      <div className={clsx(styles.wrap, className)}>
         <MenuHeader />
-
+        {!isParent && <MenuBack />}
         <div className={styles.body}>
           <MenuNavigation
-            categories={categoryTree}
+            categories={categories}
             featuredCategories={featuredCategories}
+            sidebar
           />
-
-          <MenuContactDetails />
-
-          <MenuAccount />
         </div>
+        <MenuAccount />
       </div>
     </Drawer>
   );

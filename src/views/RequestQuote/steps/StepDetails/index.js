@@ -2,12 +2,12 @@ import { useAuth } from "@saleor/sdk";
 import { useForm } from "react-hook-form";
 import Input from "components/atoms/Input";
 import Checkbox from "components/atoms/Checkbox";
-import RadioInput from "components/atoms/RadioInput";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button";
 
 import styles from "../Steps.module.scss";
+import { faArrowRight } from "@fortawesome/pro-regular-svg-icons";
 
-export default function StepDetails({ onSubmit }) {
+export default function StepDetails({ onSubmit, handleBack }) {
   const { user } = useAuth();
 
   const { register, handleSubmit, watch, formState } = useForm({
@@ -21,132 +21,106 @@ export default function StepDetails({ onSubmit }) {
   });
   const { errors, isSubmitting, isSubmitSuccessful } = formState;
 
-  const isTrade = watch("type") === "trade";
-
   return (
-    <fieldset>
-      <legend className={styles.title}>
-        {"You're at the finish line, register now & "}<strong>{"start saving"}</strong>
-        {"..."}
-      </legend>
-
-      <p className={styles.lead}>
-        {` This is it - one more step and you'll get access to 100's of top brands
-        at rock bottom prices.`}
-      </p>
-
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className="row gx-4">
-          <div className="col-sm">
-            <Input
-              label="First name"
-              name="firstName"
-              register={register}
-              validation={{ required: true }}
-              error={errors.firstName}
-            />
-          </div>
-
-          <div className="col-sm">
-            <Input
-              label="Last name"
-              name="lastName"
-              register={register}
-              validation={{ required: true }}
-              error={errors.lastName}
-            />
+    <>
+      <header className={styles.headerContainer}>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 m-auto">
+              <h2 className={styles.header}>Almost done, one last thing</h2>
+              <h4 className={styles.subheader}>You&apos;re seconds away from trade prices on 1000&apos;s of brands, simply set up an account to start shopping</h4>
+            </div>
           </div>
         </div>
-
-        <Input
-          type="email"
-          label="Email Address"
-          name="email"
-          register={register}
-          validation={{ required: true }}
-          error={errors.email}
-        />
-
-        <Input
-          type="tel"
-          label="Phone Number"
-          name="phone"
-          register={register}
-          validation={{ required: true }}
-          error={errors.phone}
-        />
-
-        {!user && (
-          <Input
-            label="Password"
-            name="password"
-            type="password"
-            autoComplete="password"
-            register={register}
-            validation={{
-              required: true,
-              minLength: {
-                value: 8,
-                message: "Password must have at least 8 characters",
-              },
-            }}
-            error={errors.password}
-          />
-        )}
-
-        <div className="row gx-4">
-          <div className="col-sm">
-            <RadioInput
-              name="type"
-              defaultChecked={true}
-              register={register}
-              label="I'm a Customer"
-              value="customer"
-            />
+      </header>
+      <fieldset>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <div className={styles.formHeader}>
+            <h5>About you</h5><button onClick={handleBack}>Back</button>
           </div>
-          <div className="col-sm">
-            <RadioInput
-              name="type"
-              register={register}
-              label="I'm a Tradesperson"
-              value="trade"
-            />
-          </div>
-        </div>
+          <div className={styles.formContent}>
+            <div className="row gx-4">
+              <div className="col-sm">
+                <Input
+                  label="First name"
+                  name="firstName"
+                  register={register}
+                  validation={{ required: true }}
+                  error={errors.firstName}
+                />
+              </div>
 
-        <Checkbox
-          label="I'm happy to be contacted regarding my enquiry & receive future
+              <div className="col-sm">
+                <Input
+                  label="Last name"
+                  name="lastName"
+                  register={register}
+                  validation={{ required: true }}
+                  error={errors.lastName}
+                />
+              </div>
+            </div>
+
+            <Input
+              type="email"
+              label="Email Address"
+              name="email"
+              register={register}
+              validation={{ required: true }}
+              error={errors.email}
+            />
+
+            <Input
+              type="tel"
+              label="Phone Number"
+              name="phone"
+              register={register}
+              validation={{ required: true }}
+              error={errors.phone}
+            />
+
+            {!user && (
+              <Input
+                label="Password"
+                name="password"
+                type="password"
+                autoComplete="password"
+                register={register}
+                validation={{
+                  required: true,
+                  minLength: {
+                    value: 8,
+                    message: "Password must have at least 8 characters",
+                  },
+                }}
+                error={errors.password}
+              />
+            )}
+
+            <Checkbox
+              label="I'm happy to be contacted regarding my enquiry & receive future
               offers from Trade Prices Direct."
-          name="consent"
-          register={register}
-          validation={{ required: true }}
-          error={errors.consent}
-        />
+              name="consent"
+              register={register}
+              validation={{ required: true }}
+              error={errors.consent}
+            />
 
-        {isTrade ? (
-          <Checkbox
-            label={`I agree to the Trade Prices Direct <a href="/trade-account-terms-conditions" target="_blank">trade account terms & conditions</a>.`}
-            name="terms"
-            register={register}
-            validation={{ required: true }}
-            error={errors.terms}
-          />
-        ) : (
-          <Checkbox
-            label={`I agree to the Trade Prices Direct <a href="/customer-account-terms-conditions" target="_blank">customer account terms & conditions</a>.`}
-            name="terms"
-            register={register}
-            validation={{ required: true }}
-            error={errors.terms}
-          />
-        )}
+              <Checkbox
+                label={`I agree to the Trade Prices Direct <a href="/customer-account-terms-conditions" target="_blank">customer account terms & conditions</a>.`}
+                name="terms"
+                register={register}
+                validation={{ required: true }}
+                error={errors.terms}
+              />
 
-        <div className="d-grid">
-          <SubmitButton loading={isSubmitting || isSubmitSuccessful}>
-            Submit
-          </SubmitButton>
-        </div>
-      </form>
-    </fieldset>
+
+            <div className="d-flex justify-content-end">
+              <Button submit loading={isSubmitting || isSubmitSuccessful} label="Register Now" color="secondary" icon={faArrowRight}/>
+            </div>
+          </div>
+        </form>
+      </fieldset>
+    </>
   );
 }

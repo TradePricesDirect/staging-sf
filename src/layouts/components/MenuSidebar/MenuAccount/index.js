@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { useAuth } from "@saleor/sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBoxOpen, faHeart, faUser } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import paths from "core/paths";
 import useGreeting from "hooks/useGreeting";
 
 import styles from "./MenuAccount.module.scss";
+import clsx from "clsx";
 
 const MenuAccount = () => {
   const { user } = useAuth();
@@ -22,38 +23,76 @@ function MenuAccountUser({ user }) {
 
   return (
     <div className={styles.wrap}>
-      <h3 className={styles.title}>{greeting}</h3>
+      <div className={styles.container}>
+        <h3 className={styles.title}>{greeting}</h3>
 
-      <nav className={styles.nav}>
-        <ul className={styles.list}>
-          <li>
-            <Link href={paths.account.dashboard} className={styles.link}>
-              My Account
-              <FontAwesomeIcon icon={faUser} />
-            </Link>
-          </li>
-          <li>
-            <Link href={paths.account.orders} className={styles.link}>
-              My Orders
-              <FontAwesomeIcon icon={faBoxOpen} />
-            </Link>
-          </li>
-          <li>
-            <Link href={paths.wishlists} className={styles.link}>
-              Wishlists
-              <FontAwesomeIcon icon={faHeart} />
-            </Link>
-          </li>
-        </ul>
-      </nav>
-
-      <button
-        onClick={() => signOut()}
-        className="btn btn-outline-primary d-block w-100"
-      >
-        Sign Out
-      </button>
-    </div >
+        <nav className={styles.nav}>
+          <ul className={styles.list}>
+            <li>
+              <Link
+                href={paths.account.dashboard}
+                className={styles.link}>
+                <span className={styles.icon}>
+                  <FontAwesomeIcon icon={icons.faUser} />
+                </span>
+                <span className={styles.text}>
+                  {"My Account"}
+                </span>
+                <span className={styles.chevron}>
+                  <FontAwesomeIcon icon={icons.faChevronRight} />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={paths.account.orders}
+                className={styles.link}>
+                <span className={styles.icon}>
+                  <FontAwesomeIcon icon={icons.faTruck} />
+                </span>
+                <span className={styles.text}>
+                  {"My Orders"}
+                </span>
+                <span className={styles.chevron}>
+                  <FontAwesomeIcon icon={icons.faChevronRight} />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={paths.wishlists}
+                className={styles.link}>
+                <span className={styles.icon}>
+                  <FontAwesomeIcon icon={icons.faHeart} />
+                </span>
+                <span className={styles.text}>
+                  {"Wishlists"}
+                </span>
+                <span className={styles.chevron}>
+                  <FontAwesomeIcon icon={icons.faChevronRight} />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <button
+                type="button"
+                className={clsx(styles.button, styles.link)}
+                onClick={signOut}>
+                <span className={styles.icon}>
+                  <FontAwesomeIcon icon={icons.faSignOut} />
+                </span>
+                <span className={styles.text}>
+                  {"Sign Out"}
+                </span>
+                <span className={styles.chevron}>
+                  <FontAwesomeIcon icon={icons.faChevronRight} />
+                </span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
 }
 

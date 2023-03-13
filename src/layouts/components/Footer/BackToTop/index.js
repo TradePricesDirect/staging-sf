@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/pro-solid-svg-icons";
+import { icons } from "core/constants";
 
 import styles from "./BackToTop.module.scss";
 import Link from "next/link";
@@ -13,7 +13,7 @@ const BackToTop = () => {
   return (
     <div className={styles.link}>
       <Link href="/" onClick={handleBackToTop} className="btn btn-circle">
-        {"Back to top"} <FontAwesomeIcon icon={faArrowUp} />
+        {"Back to top"} <FontAwesomeIcon icon={icons.faArrowUp} />
       </Link>
     </div>
   );

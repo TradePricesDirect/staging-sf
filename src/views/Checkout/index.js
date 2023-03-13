@@ -22,7 +22,9 @@ const CheckoutPage = () => {
 };
 
 CheckoutPage.getLayout = (page, _, footerMenus) => (
-  <CheckoutLayout footerMenus={footerMenus}>{page}</CheckoutLayout>
+  <CheckoutLayout footerMenus={footerMenus}>
+    {page}
+  </CheckoutLayout>
 );
 
 export default CheckoutPage;

@@ -1,19 +1,42 @@
-import { getTotalProducts, getCategoriesByLevel } from "utils/ssr";
+import {
+  getCarousels,
+  getShopAttributes,
+  getStory,
+  getStoryBlokAssets,
+} from "utils/ssr";
+import { incrementalStaticRegenerationRevalidate } from "core/constants";
 import HomePage from "views/Home";
 
 export default HomePage;
 
-export async function getStaticProps() {
-  const categoriesLevel0 = await getCategoriesByLevel(0, 3);
-  const categoriesLevel1 = await getCategoriesByLevel(1, 50);
+export async function getStaticProps({ preview = false }) {
+  const slug = "home";
+  const storyblokData = await getStory(slug);
+  const carousels = await getCarousels(storyblokData);
 
-  const totalCounts = await getTotalProducts();
+  const attributes = await getShopAttributes({});
+  const { assets: logoAssets } = await getStoryBlokAssets(205301);
+  const logos = {};
+  logoAssets.forEach((logoAsset) => {
+    if (logoAsset.title) {
+      logos[logoAsset.title] = logoAsset;
+    }
+  });
+
+  const brands = attributes
+    .filter((attribute) => attribute.slug === "brand")[0]
+    .choices.edges.map(({ node }) => ({
+      ...node,
+      backgroundImage: logos[node.slug] || null,
+    }));
 
   return {
     props: {
-      categoriesLevel0,
-      categoriesLevel1,
-      totalCounts,
+      carousels,
+      brands,
+      story: storyblokData ? storyblokData.story : false,
+      key: storyblokData ? storyblokData.story.id : false,
     },
+    revalidate: incrementalStaticRegenerationRevalidate,
   };
 }

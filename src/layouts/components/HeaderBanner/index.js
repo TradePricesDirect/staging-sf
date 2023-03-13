@@ -1,10 +1,6 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPiggyBank,
-  faTruck,
-  faPhoneAlt,
-} from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 
 import styles from "./HeaderBanner.module.scss";
 import paths from "core/paths";
@@ -23,20 +19,20 @@ const HeaderBanner = () => {
             <ul className={styles.menu}>
               <li>
                 <Link href={paths.finance}>
-                  <FontAwesomeIcon icon={faPiggyBank} />
+                  <FontAwesomeIcon icon={icons.faPiggyBank} />
                   Finance Available
                 </Link>
               </li>
               <li>
                 <span>
-                  <FontAwesomeIcon icon={faTruck} />
+                  <FontAwesomeIcon icon={icons.faTruck} />
                   Free UK Delivery & Returns
                 </span>
               </li>
               <li>
                 <Link href="tel:03333350439">
                   <>
-                    <FontAwesomeIcon icon={faPhoneAlt} />
+                    <FontAwesomeIcon icon={icons.faPhoneAlt} />
                     {"0333 335 0439"}
                   </>
                 </Link>

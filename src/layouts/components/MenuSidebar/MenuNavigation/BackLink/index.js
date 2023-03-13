@@ -1,21 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
+import { icons } from "core/constants";
 import { useOverlay } from "contexts/OverlayContext";
 
 import styles from "./BackLink.module.scss";
 
 const BackLink = () => {
   const overlay = useOverlay();
+  const showParentMenu = () => overlay.show("menu");
 
   return (
-    <button
-      type="button"
-      className={styles.backLink}
-      onClick={() => overlay.show("menu")}
-    >
-      <FontAwesomeIcon icon={faArrowLeft} />
-      <span className="visually-hidden">Back</span>
-    </button>
+    <div>
+      <button
+        type="button"
+        className={styles.backLink}
+        onClick={showParentMenu}
+      >
+        <FontAwesomeIcon icon={icons.faArrowLeft} />
+        {/* <span className="visually-hidden">Back</span> */}
+      </button>
+    </div>
   );
 };
 

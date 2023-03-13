@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "@saleor/sdk";
 import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import Button from "components/atoms/Button";
 import paths from "core/paths";
 import Input from "components/atoms/Input";
+import { faArrowRight } from "@fortawesome/pro-light-svg-icons";
 
 const ResetPasswordRequestForm = () => {
   const router = useRouter();
@@ -52,17 +52,8 @@ const ResetPasswordRequestForm = () => {
         disabled={isSubmitting || isSubmitSuccessful}
       />
 
-      <button
-        type="submit"
-        className="btn btn-primary w-100"
-        disabled={isSubmitting || isSubmitSuccessful}
-      >
-        {isSubmitting || isSubmitSuccessful ? (
-          <FontAwesomeIcon icon={faSpinner} spin />
-        ) : (
-          <span>Reset Password</span>
-        )}
-      </button>
+      <Button submit label="Reset Password" color="secondary" icon={icons.faArrowRight} disabled={isSubmitting || isSubmitSuccessful} loading={isSubmitting || isSubmitSuccessful} />
+
     </form>
   );
 };

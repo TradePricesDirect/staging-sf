@@ -1,0 +1,116 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.headerContainer {
+  // padding: 2rem 0;
+  margin: 0 0.5rem 18px 0.5rem;
+  text-align: center;
+  // h6 {
+  //   margin: 0;
+  //   color: $secondary;
+  // }
+
+  // h3 {
+  //   margin: 0;
+  //   color: $primary;
+  // }
+}
+
+.slide {
+  padding: 0 15px;
+}
+
+.list {
+  @include list-unstyled;
+  display: flex;
+  justify-content: flex-end;
+  // flex-wrap: wrap;
+  gap: 0.5rem;
+
+  li {
+    position: relative;
+  }
+
+  .link {
+    position: relative;
+    z-index: 1;
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: color 0.15s;
+    cursor: pointer;
+    border: 0;
+    border-radius: $border-radius-pill;
+    color: $gray-700;
+  }
+
+  .activeBg {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: $border-radius-pill;
+    background-color: $blue-300;
+  }
+}
+
+.wrap {
+  position: relative;
+  padding: 1rem 0;
+
+  .header {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .nav {
+    display: inline-flex;
+    vertical-align: middle;
+    gap: 0.5rem;
+  }
+
+  // .container {
+  //   position: relative;
+  //   max-width: 1232px;
+  //   // height: 350px;
+  //   margin: 0 auto;
+  // }
+
+  .carouselWrap {
+    position: relative;
+    z-index: 1;
+    outline: none;
+    overflow: hidden;
+  }
+
+  .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    align-items: center;
+  }
+
+  .navPills {
+    margin-top: 20px;
+    // text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      text-align: center;
+    }
+    .list {
+      justify-content: center;
+    }
+
+    // .navPills {
+    //   text-align: right;
+    // }
+  }
+
+  @media (min-width: 992px) {
+    .header {
+      margin-bottom: -2rem;
+    }
+  }
+}

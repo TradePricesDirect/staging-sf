@@ -1,11 +1,13 @@
 import clsx from "clsx";
-import Thumbnail from "components/molecules/Thumbnail";
 import { useProductVariantSelection } from "./utils";
 
 import styles from "./ProductVariantSelection.module.scss";
+import Image from "next/image";
 
 const ProductVariantSelection = (props) => {
   const { attributes, onAttributeChange } = useProductVariantSelection(props);
+
+
 
   return (
     <div className={styles.wrap}>
@@ -15,7 +17,7 @@ const ProductVariantSelection = (props) => {
         return (
           <div key={attribute.id} className={styles.variant}>
             <h4 className={styles.label}>
-              {attribute.name}: <span>{selected?.name}</span>
+              {attribute.name}{` : `}<span>{selected?.name}</span>
             </h4>
 
             <ul className={styles.values}>
@@ -36,7 +38,10 @@ const ProductVariantSelection = (props) => {
                   }
                 >
                   {value.thumbnail ? (
-                    <Thumbnail thumbnail={value.thumbnail} />
+                    // <Thumbnail thumbnail={value.thumbnail} />
+                    <div className={styles.image}>
+                      <Image src={value.thumbnail.url} alt={value.thumbnail.alt} fill />
+                    </div>
                   ) : (
                     <span>{value.name}</span>
                   )}

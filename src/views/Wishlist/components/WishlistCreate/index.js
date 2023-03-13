@@ -1,10 +1,11 @@
 import { useAuth } from "@saleor/sdk";
 import { useSWRConfig } from "swr";
+import { icons } from "core/constants";
 import { useForm } from "react-hook-form";
 import useDisclosure from "hooks/useDisclosure";
 import Modal from "components/organisms/Modal";
 import Input from "components/atoms/Input";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button";
 import { createWishlist } from "utils/wishlists";
 
 const WishlistCreate = () => {
@@ -28,9 +29,12 @@ const WishlistCreate = () => {
 
   return (
     <>
-      <button onClick={onOpen} type="button" className="btn btn-primary">
-        Create a List
-      </button>
+      <Button
+        color={"secondary"}
+        label={`Create a List`}
+        onClick={onOpen}
+        icon={icons.faArrowRight}
+      />
 
       <Modal title="Create a List" isOpen={isOpen} onClose={onClose}>
         <form onSubmit={handleSubmit(onSubmit)} className="d-grid">
@@ -42,7 +46,14 @@ const WishlistCreate = () => {
             error={errors.name}
           />
 
-          <SubmitButton loading={isSubmitting}>Create List</SubmitButton>
+          <Button
+            submit
+            color={"secondary"}
+            label={`Create list`}
+            icon={icons.faArrowRight}
+            loading={isSubmitting}
+            disabled={isSubmitting}
+          />
         </form>
       </Modal>
     </>

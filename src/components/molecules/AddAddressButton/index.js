@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/pro-regular-svg-icons";
+import { icons } from "core/constants";
 import Box from "components/organisms/Box";
 
 import styles from "./AddAddressButton.module.scss";
@@ -14,7 +14,7 @@ const AddAddressButton = ({ onClick }) => {
       center
     >
       <span className="btn">
-        <FontAwesomeIcon icon={faPlus} className="me-2" />
+        <FontAwesomeIcon icon={icons.faPlus} className="me-2" />
         Add Address
       </span>
     </Box>

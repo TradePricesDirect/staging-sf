@@ -19,44 +19,37 @@
   }
 }
 
-.wrap {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-  height: 100%;
-}
-
-.close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  text-align: right;
-}
-
 .header {
-  padding: 1rem 2rem 0.5rem 1rem;
+  display: flex;
+  margin-top: 10px;
 
-  .subTitle {
+  h3 {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
     margin: 0;
-    color: $gray-700;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-normal;
-    line-height: 1.5;
+    padding-left: 20px;
+    color: $primary;
   }
 
-  .title {
-    margin: 0;
-    color: $primary;
-    @include font-size(1.5rem);
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    // padding: 20px;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // padding: 0.5rem;
+    // text-align: right;
   }
 }
 
 .body {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 0.5rem 1rem;
+  padding: 10px 20px;
 }
 
 .table {
@@ -67,12 +60,14 @@
 
   .th,
   .td {
-    padding: 0.75rem 0;
+    // padding: 0.75rem 0;
+    padding: 12px 0;
     border-bottom: 1px solid $border-color;
   }
 
   .th {
-    font-weight: $font-weight-semibold;
+    font-weight: 600;
+    // color: $primary;
   }
 
   .td {
@@ -84,24 +79,23 @@
   padding: 0.5rem 1rem 1rem;
 }
 
-.addToCart {
-  margin: 0 -1rem;
-}
+// .addToCart {
+// }
 
 @media (min-width: 400px) {
-  .wrap {
-    padding: 1rem;
-  }
+  // .wrap {
+  //   padding: 1rem;
+  // }
 
-  .header {
-    padding: 1rem 1.5rem 1rem 1rem;
-  }
+  // .header {
+  //   padding: 1rem 1.5rem 1rem 1rem;
+  // }
 
-  .footer {
-    padding: 1rem 1rem 0;
-  }
+  // .footer {
+  //   padding: 1rem 1rem 0;
+  // }
 
-  .addToCart {
-    margin: 0 -1.5rem;
-  }
+  // .addToCart {
+  //   margin: 0 -1.5rem;
+  // }
 }

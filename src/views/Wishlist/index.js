@@ -8,7 +8,7 @@ const WishlistView = () => {
   const { user } = useAuth();
 
   return (
-    <div className="container py-4">
+    <div className="container-fluid">
       {user ? <WishlistLists /> : <WishlistGuest />}
 
       {user?.isStaff && (

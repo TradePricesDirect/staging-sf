@@ -4,7 +4,7 @@
 .wrap {
   display: block;
   color: $primary;
-  font-size: 1.5rem;
+  font-size: 30px;
   font-weight: $font-weight-semibold;
   line-height: $line-height-sm;
 
@@ -22,8 +22,8 @@
 .suffix {
   display: block;
   color: $gray-600;
-  font-size: 0.7em;
-  font-weight: $font-weight-normal;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .muted {

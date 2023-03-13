@@ -1,29 +1,41 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.banner {
-  padding: 1rem;
+.monthlyPayments{
+  display: flex;
+  gap: 4px;
+}
+
+.small{
+  font-size: 14px;
+  color: $gray-600;
+  margin-bottom: 5px;
+}
+
+.financeOption {
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
-  border-radius: $border-radius-lg;
-  box-shadow: $box-shadow;
-  text-align: center;
 
   p {
     margin: 0;
+    font-size: 14px;
   }
 }
 
 .logo {
   display: inline-block;
-  margin-bottom: 0.5rem;
+  padding: 5px;
+  border-radius: 4px;
+  margin-right: 10px;
 }
 
 .klarna {
   background-color: #ffb3c7;
   color: #000;
-
   .logo {
-    max-width: 8rem;
+    border-radius: 4px;
+    max-width: 3rem;
   }
 }
 

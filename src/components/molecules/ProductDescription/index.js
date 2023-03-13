@@ -5,9 +5,9 @@ import styles from "./ProductDescription.module.scss";
 const ProductDescription = ({ description }) => {
   return (
     <div className={styles.wrap}>
-      <h2 className={styles.title}>Description</h2>
+      <h2 className={styles.title}>{`Product Overview`}</h2>
 
-      <RichTextEditorContent jsonData={description} />
+      <RichTextEditorContent className={styles.text} jsonData={description} />
     </div>
   );
 };

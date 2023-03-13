@@ -1,0 +1,64 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+@mixin hover {
+  text-decoration: none;
+  background-color: $gray-200;
+}
+
+.button {
+  min-width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  background-color: $white;
+  color: $haiti;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-overflow: clip;
+  white-space: nowrap;
+  background-color: $gray-100;
+  &:hover {
+    @include hover;
+  }
+  .label {
+    margin: 0 13px;
+  }
+
+  &.active {
+    // border: 1px solid $gray-500;
+    background-color: $gray-200;
+  }
+
+  &.primary {
+    background-color: $primary;
+    color: $white;
+  }
+  &.secondary {
+    background-color: $secondary;
+    color: $white;
+  }
+}
+// .hover {
+//   @include hover;
+// }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $black;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  &.primary {
+    background-color: $primary;
+    color: $white;
+  }
+  &.secondary {
+    background-color: $secondary;
+    color: $white;
+  }
+}

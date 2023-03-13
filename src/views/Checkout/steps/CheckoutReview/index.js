@@ -1,11 +1,7 @@
 import { useMemo } from "react";
 import { useCheckout } from "@saleor/sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAddressBook,
-  faCreditCard,
-  faTruck,
-} from "@fortawesome/pro-regular-svg-icons";
+import { icons } from "core/constants";
 import { FormattedAddress } from "utils/address";
 import {
   getPaymentGatewayInfo,
@@ -54,42 +50,44 @@ export const CheckoutReview = ({
         <Box>
           <h3 className={styles.subtitle}>
             <FontAwesomeIcon
-              icon={faAddressBook}
+              icon={icons.faAddressBook}
               fixedWidth
               size="sm"
-              className="me-2"
+              className="me-2 text-secondary"
             />
             Delivery Address
           </h3>
-
-          <FormattedAddress address={checkout.shippingAddress} />
+          <div className="p-3">
+            <FormattedAddress className="p-3" address={checkout.shippingAddress} />
+          </div>
         </Box>
 
         <Box>
           <h3 className={styles.subtitle}>
             <FontAwesomeIcon
-              icon={faAddressBook}
+              icon={icons.faAddressBook}
               fixedWidth
               size="sm"
-              className="me-2"
+              className="me-2 text-secondary"
             />
             Billing Address
           </h3>
-
-          <FormattedAddress address={checkout.billingAddress} />
+          <div className="p-3">
+            <FormattedAddress address={checkout.billingAddress} />
+          </div>
         </Box>
 
         <Box>
           <h3 className={styles.subtitle}>
             <FontAwesomeIcon
-              icon={faTruck}
+              icon={icons.faTruck}
               fixedWidth
               size="sm"
-              className="me-2"
+              className="me-2 text-secondary"
             />
             Delivery Method
           </h3>
-          <p className="m-0">
+          <p className="m-0 p-3">
             {checkout.shippingMethod.name}:{" "}
             <Money money={checkout.shippingMethod.price} />
           </p>
@@ -98,15 +96,15 @@ export const CheckoutReview = ({
         <Box>
           <h3 className={styles.subtitle}>
             <FontAwesomeIcon
-              icon={faCreditCard}
+              icon={icons.faCreditCard}
               fixedWidth
               size="sm"
-              className="me-2"
+              className="me-2 text-secondary"
             />
             Payment Method
           </h3>
 
-          <p className="m-0">{paymentGateway?.label}</p>
+          <p className="m-0 p-3">{paymentGateway?.label}</p>
         </Box>
       </div>
 

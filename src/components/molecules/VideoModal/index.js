@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/pro-solid-svg-icons";
+
 import useDisclosure from "hooks/useDisclosure";
 import Modal from "components/organisms/Modal";
 import Embed from "components/organisms/Embed";
-
 import styles from "./VideoModal.module.scss";
+import { icons } from "core/constants";
 
 const VideoModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -13,7 +13,7 @@ const VideoModal = () => {
     <>
       <button type="button" onClick={onOpen} className={styles.button}>
         <span className={styles.icon}>
-          <FontAwesomeIcon icon={faPlay} />
+          <FontAwesomeIcon icon={icons.faPlay} />
         </span>
         How it Works
       </button>

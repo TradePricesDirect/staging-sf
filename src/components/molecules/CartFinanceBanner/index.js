@@ -1,49 +1,64 @@
 import Image from "next/image";
 import { useCart } from "@saleor/sdk";
+import { useShop } from "contexts/ShopContext";
 import clsx from "clsx";
+import Money from "components/atoms/Money";
 
 import styles from "./CartFinanceBanner.module.scss";
 
 const CartFinanceBanner = () => {
   const { totalPrice } = useCart();
+  const { displayGrossPrices } = useShop();
 
-  const amount = totalPrice?.gross.amount;
+  const payInThreeAmount = {
+    net: totalPrice?.net.amount / 3,
+    gross: totalPrice?.gross.amount / 3,
+  };
 
-  if (amount < 1000) {
-    return (
-      <aside className={clsx(styles.banner, styles.klarna)}>
-        <div className={styles.logo}>
+
+  if (totalPrice?.gross.amount < 1000) {
+    return (<>
+      <hr />
+      <p className={styles.small}>Finance options available</p>
+      <aside className={styles.financeOption}>
+        <div className={clsx(styles.logo, styles.klarna)}>
           <Image
-            src="/icons/klarna-logo.svg"
-            alt="Propensio"
-            width={624}
-            height={140}
+            src="/icons/klarna-small.svg"
+            alt="klarna"
+            width={20}
+            height={20}
           />
         </div>
-        <p>
-          Shop Now, Pay Later, with Klarna <br />
-          for purchases up to £1,000.
-        </p>
+
+        <p className={styles.monthlyPayments}> Pay with <strong>3 interest-free </strong>payments of <Money
+          money={
+            displayGrossPrices
+              ? { ...totalPrice.gross, amount: payInThreeAmount.gross }
+              : { ...totalPrice.net, amount: payInThreeAmount.net }
+          }
+        /> </p>
       </aside>
+    </>
     );
   }
 
   return (
-    <aside className={clsx(styles.banner, styles.propensio)}>
-      <div className={styles.logo}>
-        <Image
-          src="/icons/payment-propensio-landscape.svg"
-          alt="Propensio"
-          width={590}
-          height={164}
-        />
-      </div>
+    <>
+      <hr />
+      <p className={styles.small}>Finance options available</p>
+      <aside className={styles.financeOption}>
+        <div className={clsx(styles.logo, styles.propensio)}>
+          <Image
+            src="/icons/payment-propensio-landscape.svg"
+            alt="Propensio"
+            width={20}
+            height={20}
+          />
+        </div>
 
-      <p>
-        Spread up to £25,000 over 10 years with <br />
-        £0 Deposit and fund your dream renovation.
-      </p>
-    </aside>
+        <p><strong>Instant apply and decision</strong> with Propensio Finance</p>
+      </aside>
+    </>
   );
 };
 

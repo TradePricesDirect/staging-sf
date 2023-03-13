@@ -1,13 +1,13 @@
 import Welcome from "./Welcome";
 import CategoryList from "components/organisms/CategoryList";
-import CategoryCarouselEndless from "components/organisms/CategoryCarouselEndless";
+import Carousel from "components/organisms/Carousel";
 
 const NewUserPage = ({ categoriesLevel0, categoriesLevel1 }) => {
   return (
     <>
       <Welcome />
       <CategoryList categories={categoriesLevel0} />
-      <CategoryCarouselEndless categories={categoriesLevel1} />
+      <Carousel categories={categoriesLevel1} />
     </>
   );
 };

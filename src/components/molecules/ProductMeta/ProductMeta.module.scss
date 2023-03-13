@@ -4,10 +4,16 @@
 .list {
   @include list-unstyled;
   display: flex;
-  grid-gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 15px;
+  // margin-bottom: 1rem;
+  margin-bottom: 10px;
   min-height: 21px;
-  font-size: $font-size-sm;
+  font-size: 12px;
+}
+
+.sku {
+  color: $primary;
+  font-weight: 600;
 }
 
 .stock {

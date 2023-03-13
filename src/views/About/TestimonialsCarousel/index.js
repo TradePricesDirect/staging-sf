@@ -124,7 +124,7 @@ const TestimonialsCarousel = () => {
                   onClick={handlePrevious}
                 >
                   <span className="visually-hidden">Previous</span>
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={icons.faArrowLeft} />
                 </button>
 
                 <button
@@ -133,7 +133,7 @@ const TestimonialsCarousel = () => {
                   onClick={handleNext}
                 >
                   <span className="visually-hidden">Next</span>
-                  <FontAwesomeIcon icon={faArrowRight} />
+                  <FontAwesomeIcon icon={icons.faArrowRight} />
                 </button>
               </div>
 

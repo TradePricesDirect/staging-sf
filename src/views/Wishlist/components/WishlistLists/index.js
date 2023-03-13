@@ -4,6 +4,7 @@ import Loader from "components/atoms/Loader";
 import WishlistTile from "components/molecules/WishlistTile";
 import WishlistEmpty from "../WishlistEmpty";
 import WishlistCreate from "../WishlistCreate";
+import Account from "components/templates/Account";
 
 import styles from "./WishlistLists.module.scss";
 
@@ -15,8 +16,8 @@ const WishlistLists = () => {
   if (!wishlists.length) return <WishlistEmpty />;
 
   return (
-    <>
-      <h2 className="mb-4">My Lists</h2>
+    <Account>
+      <h2 class={styles.title}>My Lists</h2>
 
       {wishlists.length ? (
         <div className={styles.grid}>
@@ -34,7 +35,7 @@ const WishlistLists = () => {
       )}
 
       <WishlistCreate />
-    </>
+    </Account>
   );
 };
 

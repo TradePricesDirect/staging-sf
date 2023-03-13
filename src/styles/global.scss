@@ -1,6 +1,7 @@
 @import "./variables";
 @import "./functions";
 @import "./mixins";
+@import "./customHelpers";
 
 @import "~bootstrap/scss/maps";
 @import "vendors/bootstrap";
@@ -8,4 +9,5 @@
 
 @import "base/reset";
 @import "base/typography";
+// @import "base/fonts";
 @import "base/nprogress";

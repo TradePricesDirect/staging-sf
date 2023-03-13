@@ -17,7 +17,7 @@ const WishlistListView = () => {
   }
 
   return (
-    <div className="container py-4">
+    <div className="container-fluid">
       <Page wishlist={wishlist} />
     </div>
   );

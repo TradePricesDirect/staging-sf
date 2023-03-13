@@ -1,14 +1,19 @@
 import { PER_PAGE_OPTIONS, SORT_OPTIONS } from "utils/collections";
-import Breadcrumbs, { extractBreadcrumbs } from "components/atoms/Breadcrumbs";
+import Breadcrumbs, { getBreadcrumbs } from "components/atoms/Breadcrumbs";
 import ProductListHero from "components/molecules/ProductListHero";
 import ProductListHeader from "components/molecules/ProductListHeader";
 import ProductList from "components/organisms/ProductList";
 import FilterSidebar from "components/organisms/FilterSidebar";
 import QuookerContent from "./SEOContent/Quooker";
 
+import MenuNavigation from "layouts/components/MenuSidebar/MenuNavigation";
+import styles from "./Page.module.scss";
+import CategoryList from "components/organisms/CategoryList";
+
 const Page = ({
   displayLoader,
-  category: { attributes, details, ancestors, children },
+  category,
+  // category: { attributes, details, ancestors, children },
   parentCategory,
   products,
   numberOfProducts,
@@ -23,59 +28,62 @@ const Page = ({
   onPerPageChange,
   onLoadMore,
 }) => {
+
+
+
+
   return (
     <>
-      <ProductListHero
+      {/* <ProductListHero
         key={details.id}
         title={details.name}
         description={details.description}
         backgroundImage={details.backgroundImage}
+      /> */}
+
+      {/* <div className="container-fluid"> */}
+      <Breadcrumbs
+        breadcrumbs={getBreadcrumbs(category, category.ancestors)}
       />
 
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-lg order-lg-2">
-            <ProductListHeader
-              numberOfProducts={numberOfProducts}
-              renderBreadcrumb={
-                <Breadcrumbs
-                  breadcrumbs={extractBreadcrumbs(details, ancestors)}
-                />
-              }
-              // onClearFilters={onClearFilters}
-              // activeSortOption={activeSortOption}
-              // sortOptions={SORT_OPTIONS}
-              // onSortChange={onSortChange}
-              // activePerPageOption={activePerPageOption}
-              // perPageOptions={PER_PAGE_OPTIONS}
-              // onPerPageChange={onPerPageChange}
-            />
+      {/* <div className="row"> */}
+      {/* <div className="col-lg order-lg-2"> */}
+      {/* <ProductListHeader
+        numberOfProducts={numberOfProducts}
+      /> */}
 
-            <ProductList
-              products={products}
-              perPage={activePerPageOption}
-              canLoadMore={hasNextPage}
-              loading={displayLoader}
-              onLoadMore={onLoadMore}
-              activeFilters={activeFilters}
-              onClearFilters={onClearFilters}
-            />
-          </div>
+      <h4 className={styles.header}>{category.name}</h4>
+      <div className={styles.container}>
+        {category.children.length > 0 && <MenuNavigation category={category} subCategories={category.children} className={styles.menuNav} />}
 
-          <div className="col-lg-auto order-lg-1">
-            <FilterSidebar
-              categories={children}
-              attributes={attributes}
-              filters={filters}
-              activeFilters={activeFilters}
-              onAttributeFiltersChange={onAttributeFiltersChange}
-              parentCategory={parentCategory}
-            />
-          </div>
-        </div>
+
+        {/* <FilterSidebar
+          categories={children}
+          attributes={attributes}
+          filters={filters}
+          activeFilters={activeFilters}
+          onAttributeFiltersChange={onAttributeFiltersChange}
+          parentCategory={parentCategory}
+        /> */}
+        {/* <ProductList
+          products={products}
+          perPage={activePerPageOption}
+          canLoadMore={hasNextPage}
+          loading={displayLoader}
+          onLoadMore={onLoadMore}
+          activeFilters={activeFilters}
+          onClearFilters={onClearFilters}
+        /> */}
+        {/* </div> */}
+        <CategoryList category={category} />
+        {/* <div className="col-lg-auto order-lg-1"> */}
+
       </div>
+      {/* </div> */}
+      {/* </div> */}
+      {/* </div> */}
 
-      {details.slug === "quooker" && <QuookerContent />}
+      {/* {details.slug === "quooker" && <QuookerContent />} */}
     </>
   );
 };

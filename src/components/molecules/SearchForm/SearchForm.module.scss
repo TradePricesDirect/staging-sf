@@ -2,33 +2,43 @@
 @import "styles/mixins";
 
 .form {
+  input[type="search" i]::-webkit-search-cancel-button {
+    position: relative;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background: white;
+  }
   position: relative;
-  width: 100%;
 
   .label {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: 15px;
     display: block;
-    padding: 0.75rem;
     pointer-events: none;
-    line-height: 1;
+    color: $secondary;
+  }
+  .clear {
+    position: absolute;
+    top: 11px;
+    right: 25px;
+    display: block;
+    pointer-events: none;
+    color: $secondary;
   }
 
   .input {
     padding: 0.5rem 1rem 0.5rem 3rem;
-    color: $primary;
-    background-color: $blue-100;
-    border: 0;
+    background-color: $white;
+    border: 1px solid $hawkes-blue;
     border-radius: $border-radius-pill;
 
     &:focus {
-      color: inherit;
-      background-color: $blue-100;
-    }
-
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px $blue-100 inset;
+      border: 1px solid $hawkes-blue;
+      border-radius: $border-radius-pill;
+      box-shadow: none;
     }
   }
 }

@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useAuth } from "@saleor/sdk";
 import { useSWRConfig } from "swr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/pro-regular-svg-icons";
+import { icons } from "core/constants";
 import useDisclosure from "hooks/useDisclosure";
 import { deleteWishlist } from "utils/wishlists";
 import Modal from "components/organisms/Modal";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button"
 
 const DeleteWishlistButton = ({ id, className, onDelete }) => {
   const { user } = useAuth();
@@ -30,16 +30,21 @@ const DeleteWishlistButton = ({ id, className, onDelete }) => {
   return (
     <>
       <button type="button" onClick={onOpen} className={className}>
-        <FontAwesomeIcon icon={faTrash} />
+        <FontAwesomeIcon icon={icons.faTrash} />
       </button>
 
       <Modal title="Are you sure?" isOpen={isOpen} onClose={onClose}>
         <p>Are you sure you want to delete this list? It cannot be undone.</p>
 
         <div className="d-flex g-4 justify-content-between">
-          <SubmitButton type="button" loading={loading} onClick={handleDelete}>
+          {/* <SubmitButton type="button" loading={loading} onClick={handleDelete}>
             Delete
-          </SubmitButton>
+          </SubmitButton> */}
+          <Button
+            loading={loading} onClick={handleDelete}
+            label={`Delete`}
+            icon={icons.faArrowRight}
+          />
 
           <button
             type="button"

@@ -3,13 +3,14 @@ import Box from "components/organisms/Box";
 
 import styles from "./AccountWidget.module.scss";
 
-const AccountWidget = ({ icon, title, body, footer }) => {
+const AccountWidget = ({ icon, title, body, headerLink }) => {
   return (
     <Box className={styles.box}>
       <section className={styles.box}>
         <header className={styles.header}>
           <h2 className={styles.title}>
             <FontAwesomeIcon
+              color="#2658e9"
               icon={icon}
               fixedWidth
               size="sm"
@@ -17,11 +18,10 @@ const AccountWidget = ({ icon, title, body, footer }) => {
             />
             {title}
           </h2>
+          {headerLink}
         </header>
 
         <div className={styles.body}>{body}</div>
-
-        <footer className={styles.footer}>{footer}</footer>
       </section>
     </Box>
   );

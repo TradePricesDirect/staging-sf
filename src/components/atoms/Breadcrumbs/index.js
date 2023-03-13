@@ -29,7 +29,13 @@ const Breadcrumbs = ({ breadcrumbs }) => {
             itemType="https://schema.org/ListItem"
             className={clsx(index === breadcrumbs.length - 1 && styles.active)}
           >
-            <Link href={breadcrumb.href}>{breadcrumb.name}</Link>
+
+            {index + 1 < breadcrumbs.length
+              ?
+              <Link href={breadcrumb.href}>{breadcrumb.name}</Link>
+              :
+              <span className={styles.activeBreadcrumb}>{breadcrumb.name}</span>
+            }
             <meta itemProp="position" content={index + 2} />
           </li>
         ))}
@@ -40,17 +46,20 @@ const Breadcrumbs = ({ breadcrumbs }) => {
 
 export default Breadcrumbs;
 
-export const extractBreadcrumbs = (category, ancestors) => {
+export const getBreadcrumbs = (category, ancestors, product = null) => {
   const constructLink = ({ slug, name }) => ({
     href: paths.category.replace("[slug]", slug),
     name: name,
   });
-
-  let breadcrumbs = [constructLink(category)];
+  const breadcrumbs = [];
 
   if (ancestors && ancestors.length) {
-    const ancestorsList = ancestors.map((category) => constructLink(category));
-    breadcrumbs = ancestorsList.concat(breadcrumbs);
+    ancestors.forEach(ancestor => breadcrumbs.push(constructLink(ancestor)))
+    breadcrumbs.push(constructLink(category));
+    if (product) {
+      breadcrumbs.push(constructLink(product))
+    }
   }
+
   return breadcrumbs;
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDebouncedCallback } from "use-debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus, faTrash } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import paths from "core/paths";
 import TaxedMoney from "components/molecules/TaxedMoney";
 import Thumbnail from "components/molecules/Thumbnail";
@@ -37,18 +37,15 @@ const CartItem = ({
           <span className={styles.name}>{variant.product.name}</span>
         ) : (
           <Link href={paths.product.replace("[slug]", variant.product.slug)} className={styles.name}>
-            {variant.product.name}
+            {variant.product.name} {variant.attributes.map(({ attribute, values }) => (
+            <span key={attribute.id} className={styles.variant}>
+            {" "}  - {attribute.name}{" "}
+              <span>{values.map((value) => value.name).join(", ")}</span>
+            </span>
+          ))}
           </Link>
         )}
 
-        <ul className={styles.variants}>
-          {variant.attributes.map(({ attribute, values }) => (
-            <li key={attribute.id} className={styles.variant}>
-              {attribute.name}:{" "}
-              <span>{values.map((value) => value.name).join(", ")}</span>
-            </li>
-          ))}
-        </ul>
 
         <div className={styles.footer}>
           <div className={styles.pricing}>
@@ -68,22 +65,21 @@ const CartItem = ({
           </div>
 
           {!isCheckout && (
-            <div>
+            <div className={styles.buttons}>
+              <button
+                onClick={onRemove}
+                type="button"
+                className="btn btn-sm text-danger"
+              >
+                <FontAwesomeIcon icon={icons.faTrash} />
+                <span className="visually-hidden">Remove this item</span>
+              </button>
               <AddToWishlist
                 name={variant.product.name}
                 variant={variant}
                 product={variant.product}
                 className="btn btn-sm text-primary me-2"
               />
-
-              <button
-                onClick={onRemove}
-                type="button"
-                className="btn btn-sm text-danger"
-              >
-                <FontAwesomeIcon icon={faTrash} />
-                <span className="visually-hidden">Remove this item</span>
-              </button>
             </div>
           )}
         </div>
@@ -102,7 +98,7 @@ const CartItem = ({
             onClick={() => setValue((prevValue) => Math.max(prevValue - 1, 1))}
             className={styles.minus}
           >
-            <FontAwesomeIcon icon={faMinus} />
+            <FontAwesomeIcon icon={icons.faMinus} />
           </button>
 
           <div className={styles.quantity}>
@@ -114,7 +110,7 @@ const CartItem = ({
             onClick={() => setValue((prevValue) => prevValue + 1)}
             className={styles.plus}
           >
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={icons.faPlus} />
           </button>
         </div>
       )}

@@ -5,10 +5,12 @@ import { useMediaQuery } from "react-responsive";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus, faTimes } from "@fortawesome/pro-regular-svg-icons";
+
 import paths from "core/paths";
 import useDisclosure from "hooks/useDisclosure";
 import { FILTERS } from "./utils";
+
+import { icons } from "core/constants";
 
 import styles from "./KitchenRangeFilters.module.scss";
 
@@ -82,7 +84,7 @@ const KitchenRangeFilters = ({ filters, onFiltersChange }) => {
                     <h3 className={styles.label}>{title}</h3>
                     {selected && (
                       <span className={styles.closeIcon}>
-                        <FontAwesomeIcon icon={faTimes} />
+                        <FontAwesomeIcon icon={icons.faTimes} />
                       </span>
                     )}
                   </button>

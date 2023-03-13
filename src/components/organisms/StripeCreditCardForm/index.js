@@ -1,13 +1,14 @@
 import { useState } from "react";
-import Link from "next/link";
+
 import {
   useStripe,
   useElements,
   PaymentElement,
 } from "@stripe/react-stripe-js";
 import paths from "core/paths";
-import SubmitButton from "components/atoms/SubmitButton";
+import Button from "components/atoms/Button";
 import CheckoutErrors from "../CheckoutErrors";
+import { icons } from "core/constants";
 
 const StripeCreditCardForm = ({ onSubmitPaymentSuccess }) => {
   const stripe = useStripe();
@@ -56,13 +57,11 @@ const StripeCreditCardForm = ({ onSubmitPaymentSuccess }) => {
 
         <div className="row">
           <div className="col-auto">
-            <Link href="/checkout/payment" className="btn btn-outline-primary">
-              Back
-            </Link>
+            <Button label="Back" path="/checkout/payment" />
           </div>
 
           <div className="col-auto">
-            <SubmitButton loading={loading}>Place Order</SubmitButton>
+            <Button submit label="Place Order" color="secondary" icon={icons.faArrowRight} loading={loading} />
           </div>
         </div>
       </form>

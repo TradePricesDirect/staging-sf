@@ -1,18 +1,6 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.title {
-  display: block;
-  margin: 0 0 1rem;
-  color: $primary;
-  font-size: 1.25rem;
-  font-weight: $font-weight-semibold;
-  text-align: center;
-
-  strong {
-    color: $secondary;
-  }
-}
 
 .grid {
   display: grid;
@@ -20,15 +8,57 @@
   margin-bottom: 2rem;
 }
 
-.lead {
-  margin-bottom: 1.5rem;
-  color: $primary;
+.fieldsetContainer{
+  flex-grow: 1;
+    width: 100%;
+    margin: 0 auto;
+  max-width: 50rem;
+}
+
+.headerContainer {
+  max-width: 38rem;
+  margin: 0 auto;
+  // margin: 0 0.5rem 18px 0.5rem;
   text-align: center;
 }
 
+.header {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.subheader{
+      font-size: 22px;
+      font-weight: 200;
+
+}
+
 .form {
-  max-width: 30rem;
-  margin: 0 auto;
+  max-width: 40rem;
+  margin: 20px auto;
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: 20px;
+}
+
+.formHeader{
+  padding: 30px 30px 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-200;
+}
+
+.formContent{
+  padding: 30px;
+}
+
+.buttonWrap{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 576px) {

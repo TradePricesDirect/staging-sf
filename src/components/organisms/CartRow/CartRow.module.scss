@@ -6,15 +6,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
   margin-bottom: 1rem;
-  border-bottom: $border-width solid $border-color;
+  border: 1px solid $gray-200;
+  border-radius: 20px;
+  // border-bottom: $border-width solid $border-color;
 }
 
 .thumbnail {
   display: block;
+  position: relative;
   width: 4rem;
-  width: 20vw;
+  height: 4rem;
+  // width: 20vw;
 }
 
 .content {
@@ -80,6 +84,7 @@
 @media (min-width: 576px) {
   .thumbnail {
     width: 8rem;
+    height: 8rem;
   }
 
   .pricing {
@@ -95,6 +100,7 @@
 
   .thumbnail {
     width: 9rem;
+    height: 9rem;
   }
 
   .name,

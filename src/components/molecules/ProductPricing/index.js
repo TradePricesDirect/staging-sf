@@ -2,6 +2,8 @@
 import TaxedMoneyProduct from "components/molecules/TaxedMoneyProduct";
 
 const ProductPricing = ({ variantPricing, productPricing }) => {
+
+
   if (variantPricing) {
     return <TaxedMoneyProduct taxedMoney={variantPricing.price} />;
 

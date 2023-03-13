@@ -3,8 +3,12 @@
 
 .wrap {
   margin-bottom: 1rem;
-  color: $gray-700;
+  color: $gray-500;
   font-size: $font-size-sm;
+}
+
+.activeBreadcrumb {
+  cursor: default;
 }
 
 .list {
@@ -26,6 +30,6 @@
   }
 
   .active {
-    font-weight: $font-weight-bold;
+    // font-weight: $font-weight-bold;
   }
 }

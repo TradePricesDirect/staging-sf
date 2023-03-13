@@ -8,6 +8,7 @@ const AccountWidgetDetails = () => {
 
   return (
     <table className={clsx("table table-borderless", styles.table)}>
+      <h6>Registered Details</h6>
       <tbody>
         <tr>
           <th className={styles.th}>First Name</th>

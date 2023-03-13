@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/pro-solid-svg-icons";
+import { icons } from "core/constants";
 import useMenuLink from "hooks/useMenuLink";
 
 import styles from "./MenuButton.module.scss";
@@ -17,8 +17,8 @@ const MenuButton = () => {
         aria-controls="site-menu"
         onClick={openMenu}
       >
-        <FontAwesomeIcon icon={faBars} className={styles.icon} />
-        Menu
+        <FontAwesomeIcon icon={icons.faBars} className={styles.icon} />
+        <span className={styles.text}>{"Menu"}</span>
       </button>
     </div>
   );

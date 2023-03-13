@@ -1,7 +1,8 @@
 import Link from "next/link";
 import clsx from "clsx";
 import useCheckoutStepState from "hooks/useCheckoutStepState";
-
+import { icons } from "core/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CheckoutProgressBar.module.scss";
 import { Fragment } from "react";
 
@@ -15,8 +16,6 @@ const CheckoutProgressBar = ({ steps, activeStep }) => {
       <ul className={styles.list}>
         {steps?.map((step, index) => (
           <Fragment key={`step-${step.index}`}>
-            {index !== 0 && <li className={styles.line} />}
-
             <li className={styles.listItem}>
               <Step
                 step={step}
@@ -27,6 +26,10 @@ const CheckoutProgressBar = ({ steps, activeStep }) => {
             </li>
           </Fragment>
         ))}
+        <li className={styles.listItemSupport}>
+          <Link href="" className={clsx(styles.link)}>
+            <FontAwesomeIcon className={styles.icon} icon={icons.faQuestionCircle} />Support</Link>
+        </li>
       </ul>
     </nav>
   );
@@ -37,101 +40,22 @@ export default CheckoutProgressBar;
 const Step = ({ step, activeStepIndex, maxPossibleStep, numberOfSteps }) => {
   const isDisabled = step.index > maxPossibleStep;
 
-  const isActive = step.index === activeStepIndex;
+  const isActive = step.index <= activeStepIndex;
+  const isCurrent = step.index === activeStepIndex;
 
   if (isDisabled) {
     return (
-      <button
-        type="button"
-        className={clsx(styles.link, isActive && styles.active)}
-        disabled
-      >
-        0{step.index}
-        <Label
-          stepIndex={step.index}
-          name={step.name}
-          numberOfSteps={numberOfSteps}
-        />
-      </button>
+      <span className={clsx(styles.link, styles.disabled)} disabled href={step.link}>
+        {`${step.index}. ${step.name}`}
+      </span>
     );
   }
 
   return (
-    <Link href={step.link} className={clsx(styles.link, isActive && styles.active)}>
-      {0}{step.index}
-      <Label
-        stepIndex={step.index}
-        name={step.name}
-        numberOfSteps={numberOfSteps}
-      />
+    <Link className={clsx(styles.link, isActive && styles.active, isCurrent && styles.current)} href={step.link}>
+      {`${step.index}. ${step.name}`}
     </Link>
   );
-
-  // return (
-  //   <div className={styles.step}>
-  //     {isDisabled ? (
-  //       <span className={styles.link}>
-  //         <Dot stepIndex={step.index} activeStepIndex={activeStepIndex} />
-
-  //         <Label
-  //           stepIndex={step.index}
-  //           name={step.name}
-  //           numberOfSteps={numberOfSteps}
-  //         />
-  //       </span>
-  //     ) : (
-  //       <Link  href={step.link}>
-  //         <a className={styles.link}>
-  //           <Dot stepIndex={step.index} activeStepIndex={activeStepIndex} />
-
-  //           <Label
-  //             stepIndex={step.index}
-  //             name={step.name}
-  //             numberOfSteps={numberOfSteps}
-  //           />
-  //         </a>
-  //       </Link>
-  //     )}
-
-  //     <ProgressBar
-  //       stepIndex={step.index}
-  //       activeStepIndex={activeStepIndex}
-  //       numberOfSteps={numberOfSteps}
-  //     />
-  //   </div>
-  // );
 };
 
-const Dot = ({ stepIndex, activeStepIndex }) => {
-  if (stepIndex < activeStepIndex) {
-    return <div className={clsx(styles.dot, styles.done)} />;
-  }
-  if (stepIndex === activeStepIndex) {
-    return <div className={clsx(styles.dot, styles.active)} />;
-  }
-  if (stepIndex > activeStepIndex) {
-    return <div className={styles.dot} />;
-  }
-};
 
-const Label = ({ stepIndex, name, numberOfSteps }) => {
-  if (stepIndex === 1) {
-    return <span className={clsx(styles.label, styles.first)}>{name}</span>;
-  }
-
-  if (stepIndex === numberOfSteps) {
-    return <span className={clsx(styles.label, styles.last)}>{name}</span>;
-  }
-
-  return <span className={styles.label}>{name}</span>;
-};
-
-const ProgressBar = ({ stepIndex, activeStepIndex, numberOfSteps }) => {
-  if (stepIndex === numberOfSteps) return null;
-
-  return (
-    <div
-      className={clsx(styles.bar, activeStepIndex > stepIndex && styles.done)}
-    />
-  );
-};

@@ -1,10 +1,18 @@
 const paths = {
   // Shop
+  content: {
+    kitchens: "/c/kitchens",
+    bathrooms: "/c/bathrooms",
+    heating: "/c/heating",
+    plumbing: "/c/plumbing",
+    renewables: "/c/renewables",
+  },
   home: "/",
   category: "/category/[slug]",
+  plp: "/plp/[slug]",
+  search: "/plp",
   collection: "/collection/[slug]",
-  search: "/search",
-  product: "/product/[slug]",
+  product: "/pdp/[slug]",
   page: "/[slug]",
   basket: "/basket",
   // Checkout

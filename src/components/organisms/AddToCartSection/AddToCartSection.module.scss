@@ -2,11 +2,13 @@
 @import "styles/mixins";
 
 .wrap {
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
+  margin: 0;
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  // flex-wrap: nowrap;
   align-items: center;
-  gap: 0.5rem;
+  // gap: 0.5rem;
 }
 
 .message {

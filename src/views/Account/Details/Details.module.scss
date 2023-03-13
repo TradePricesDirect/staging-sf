@@ -2,9 +2,8 @@
 @import "styles/mixins";
 
 .title {
-  margin-bottom: 1rem;
+  margin-bottom: 40px;
   @include font-size(2rem);
-  color: $primary;
 }
 
 .subtitle {

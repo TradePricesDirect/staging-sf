@@ -6,18 +6,18 @@ import CategoryHero from "components/molecules/CategoryHero";
 import CategoryStyles from "components/molecules/CategoryStyles";
 import KitchenRangesPopular from "components/molecules/KitchenRangesPopular";
 import CategoryCarousel from "components/molecules/CategoryCarousel";
-import FeaturedCarousel from "components/organisms/FeaturedCarousel";
-import FeaturedQuooker from "components/molecules/FeaturedQuooker";
-import FeaturedAeg from "components/molecules/FeaturedAeg";
+// import FeaturedCarousel from "components/organisms/FeaturedCarousel";
+// import FeaturedQuooker from "components/molecules/FeaturedQuooker";
+// import FeaturedAeg from "components/molecules/FeaturedAeg";
 import TopBrands from "components/molecules/TopBrands";
 import LuxuryGrid from "components/molecules/LuxuryGrid";
 import ConsultationCallToAction from "components/organisms/ConsultationCallToAction";
 import FeaturedBrands from "components/molecules/FeaturedBrands";
-import FAQs from "./FAQs";
+import FAQ from "./FAQ";
 
 import * as config from "./utils";
-import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
-import FeaturedPalio from "components/molecules/FeaturedPalio";
+// import FeaturedXLJoinery from "components/molecules/FeaturedXLJoinery";
+// import FeaturedPalio from "components/molecules/FeaturedPalio";
 
 const KitchensPage = ({ ranges, kitchens, appliances, finishingTouches }) => {
   return (
@@ -63,14 +63,14 @@ const KitchensPage = ({ ranges, kitchens, appliances, finishingTouches }) => {
         ]}
       />
 
-      <FeaturedCarousel
+      {/* <FeaturedCarousel
         slides={[
           <FeaturedQuooker key="featured-quooker" />,
           <FeaturedAeg key="featured-aeg" />,
           <FeaturedXLJoinery key="featured-xl-joinery" />,
           <FeaturedPalio key="featured-palio" />,
         ]}
-      />
+      /> */}
 
       <CategoryCarousel
         title="Shop Finishing Touches"
@@ -110,7 +110,7 @@ const KitchensPage = ({ ranges, kitchens, appliances, finishingTouches }) => {
         backgroundImage="/images/kitchens/kitchen-wireframe.jpg"
       />
 
-      <FAQs />
+      <FAQ />
 
       <FeaturedBrands brands={config.brands} />
     </>

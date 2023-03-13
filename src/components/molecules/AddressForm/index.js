@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from "react";
 import { useAuth } from "@saleor/sdk";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/pro-light-svg-icons";
+import { icons } from "core/constants";
 import { useForm } from "react-hook-form";
 import { useShop } from "contexts/ShopContext";
 import Input from "components/atoms/Input";
 import Select from "components/atoms/Select";
+import Button from "components/atoms/Button"
 
 const AddressForm = ({ address, onSubmit, errors: formErrors }) => {
   const { user } = useAuth();
@@ -23,22 +23,22 @@ const AddressForm = ({ address, onSubmit, errors: formErrors }) => {
   const data = useMemo(() => {
     return address
       ? {
-          ...address,
-          country: address.country.code,
-        }
+        ...address,
+        country: address.country.code,
+      }
       : {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          companyName: "",
-          streetAddress1: "",
-          streetAddress2: "",
-          city: "", // town_or_city
-          cityArea: "", // district
-          postalCode: "", // postcode
-          country: defaultCountry?.code || "GB", // country code
-          countryArea: "", // county
-          phone: "",
-        };
+        firstName: user.firstName,
+        lastName: user.lastName,
+        companyName: "",
+        streetAddress1: "",
+        streetAddress2: "",
+        city: "", // town_or_city
+        cityArea: "", // district
+        postalCode: "", // postcode
+        country: defaultCountry?.code || "GB", // country code
+        countryArea: "", // county
+        phone: "",
+      };
   }, [address]);
 
   return (
@@ -140,17 +140,14 @@ const AddressForm = ({ address, onSubmit, errors: formErrors }) => {
         }))}
       />
 
-      <button
-        type="submit"
-        className="btn btn-primary me-2"
+      <Button
+        submit
+        color={"secondary"}
+        loading={isSubmitting}
         disabled={isSubmitting}
-      >
-        {isSubmitting ? (
-          <FontAwesomeIcon icon={faSpinner} spin />
-        ) : (
-          <span>Save address</span>
-        )}
-      </button>
+        label={`Save address`}
+        icon={icons.faArrowRight}
+      />
     </form>
   );
 };
